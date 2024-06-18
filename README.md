@@ -16,3 +16,24 @@ Welcome to the repository for my internship report, produced with Quarto on RStu
 - 'references.bib': BibTeX file containing bibliographic references.
 - 'styles/': Folder containing style files (CSS, LaTeX files, etc.).
 - 'output/': Folder containing rendered versions of the dissertation (PDF, HTML, etc.).
+
+# Instructions for reproducing the report
+
+## Clone the repository :
+git clone https://github.com/MartinAmiens/Internship-Report-Quarto.git
+cd Internship-Report-Quarto
+
+## Installing dependencies :
+Make sure you have R and RStudio installed, as well as the necessary packages. You can use the install_packages.R file to install the required packages.
+source('install_packages.R')
+
+## Open the project in RStudio :
+Open the file Internship-Report-Quarto.Rproj in RStudio.
+
+## Render the document :
+Use Quarto to render the document in the desired format.
+quarto render index.qmd --to pdf
+
+# Notes
+Please check that all file paths in the project are correct and appropriate for your working environment.
+Analyses and visualisations can be modified in R scripts as required.
