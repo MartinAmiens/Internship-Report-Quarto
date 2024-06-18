@@ -1,0 +1,12 @@
+project:
+  type: report
+
+book:
+  title: "Titre du Mémoire"
+  author: "Votre Nom"
+  date: "2024-06-18"
+  chapters:
+    - index.qmd
+
+bibliography: [bibliography/references.bib]
+
