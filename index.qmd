@@ -1,0 +1,22 @@
+---
+title: "Titre du Mémoire"
+author: "Votre Nom"
+date: "2024-06-18"
+output: 
+  html: 
+    toc: true
+  pdf: 
+    toc: true
+---
+
+# Introduction
+
+Texte de l'introduction...
+
+# Méthodologie
+
+Texte de la méthodologie...
+
+# Résultats
+
+Texte des résultats...
