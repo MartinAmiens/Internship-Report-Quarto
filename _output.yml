@@ -1,0 +1,9 @@
+html:
+  toc: true
+  toc-title: "Table des matières"
+  number-sections: true
+
+pdf:
+  toc: true
+  number-sections: true
+  documentclass: article
