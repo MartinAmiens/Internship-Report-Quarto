@@ -21,10 +21,12 @@ Welcome to the repository for my internship report, produced with Quarto on RStu
 
 ## Clone the repository :
 git clone https://github.com/MartinAmiens/Internship-Report-Quarto.git
+
 cd Internship-Report-Quarto
 
 ## Installing dependencies :
 Make sure you have R and RStudio installed, as well as the necessary packages. You can use the install_packages.R file to install the required packages.
+
 source('install_packages.R')
 
 ## Open the project in RStudio :
@@ -32,6 +34,7 @@ Open the file Internship-Report-Quarto.Rproj in RStudio.
 
 ## Render the document :
 Use Quarto to render the document in the desired format.
+
 quarto render index.qmd --to pdf
 
 # Notes
