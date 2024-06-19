@@ -219,7 +219,7 @@ window.Quarto = {
   </ul></li>
   <li><a href="#resultats" id="toc-resultats" class="nav-link" data-scroll-target="#resultats"><span class="header-section-number">0.3</span> RESULTATS</a>
   <ul class="collapse">
-  <li><a href="#accessibilité-et-généralité-de-managhal" id="toc-accessibilité-et-généralité-de-managhal" class="nav-link" data-scroll-target="#accessibilité-et-généralité-de-managhal"><span class="header-section-number">0.3.1</span> Accessibilité et généralité de ManagHAL</a></li>
+  <li><a href="#accessibilité-et-généricité-de-managhal" id="toc-accessibilité-et-généricité-de-managhal" class="nav-link" data-scroll-target="#accessibilité-et-généricité-de-managhal"><span class="header-section-number">0.3.1</span> Accessibilité et généricité de ManagHAL</a></li>
   <li><a href="#conclusion-des-résultats" id="toc-conclusion-des-résultats" class="nav-link" data-scroll-target="#conclusion-des-résultats"><span class="header-section-number">0.3.2</span> Conclusion des Résultats</a></li>
   </ul></li>
   <li><a href="#discussion" id="toc-discussion" class="nav-link" data-scroll-target="#discussion"><span class="header-section-number">0.4</span> DISCUSSION</a></li>
@@ -319,7 +319,7 @@ Y_{ij} = 0 &amp; \quad \text{si aucun lien n'existe entre les nœuds } i \text{ 
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(g, <span class="at">layout =</span> layout_as_bipartite, <span class="at">vertex.color =</span> <span class="fu">c</span>(<span class="st">"skyblue"</span>, <span class="st">"salmon"</span>)[<span class="fu">V</span>(g)<span class="sc">$</span>type <span class="sc">+</span> <span class="dv">1</span>],</span>
 <span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>     <span class="at">vertex.label.color =</span> <span class="st">"black"</span>, <span class="at">vertex.shape =</span> <span class="st">"circle"</span>, <span class="at">vertex.size =</span> <span class="dv">30</span>, <span class="at">edge.width =</span> <span class="dv">2</span>, <span class="at">main =</span> <span class="st">"Réseau Bipartite"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="line-block"><img src="figures/unipartite_graph.png" class="img-fluid" alt="Réseau Unipartite"> | <img src="figures/bipartite.png" class="img-fluid" alt="Réseau Bipartite"> |</div>
+<div class="line-block"><img src="figures/unipartite_graph.png" class="img-fluid" width="324" alt="Réseau Unipartite"> <img src="figures/bipartite.png" class="img-fluid" width="324" alt="Réseau Bipartite"></div>
 <p>Il existe plusieurs approches différentes pour analyser la structure d’un réseau. Dans ce mémoire, une seule approche sera considérée. Elle suppose l’existence de groupe fonctionnels partageant un même patron de connexion. Nous nous baserons par la suite sur une méthode possible pour cette approche: les modèles probabilistes génératifs.</p>
 <p>Les Modèles en Bloc Stochastiques (aussi appelé SBM) sont des modèles probabilistes. Ils supposent que les nœuds d’un même réseau sont divisés en blocs (groupe, clusters) latents regroupant les entités ayant des modèles de connectivité similaires. Latents signifie qu’il n’y a pas d’apriori sur le type de structure recherchée (Aubert et al., 2022).</p>
 </section>
@@ -327,8 +327,8 @@ Y_{ij} = 0 &amp; \quad \text{si aucun lien n'existe entre les nœuds } i \text{ 
 <section id="resultats" class="level2" data-number="0.3">
 <h2 data-number="0.3" class="anchored" data-anchor-id="resultats"><span class="header-section-number">0.3</span> RESULTATS</h2>
 <p>Cette section présente les résultats obtenus au cours de mon stage. Elle est divisée en deux parties principales: les fonctions et algorithmes développés, modifiés ainsi que les résultats de leur application via un exemple. Cet exemple consistera en des données provenant des Ressources Humaines du Laboratoire MIA d’AgroPariTech. Chaque fonction est expliquée en détail, suivie des raisons justifiant son développement. Il est important de noter que mon stage se terminant le 26 juillet, Le package est donc encore en développement. Les fonctions présentées fonctionnent dans le cadre de l’exemple.</p>
-<section id="accessibilité-et-généralité-de-managhal" class="level3" data-number="0.3.1">
-<h3 data-number="0.3.1" class="anchored" data-anchor-id="accessibilité-et-généralité-de-managhal"><span class="header-section-number">0.3.1</span> Accessibilité et généralité de ManagHAL</h3>
+<section id="accessibilité-et-généricité-de-managhal" class="level3" data-number="0.3.1">
+<h3 data-number="0.3.1" class="anchored" data-anchor-id="accessibilité-et-généricité-de-managhal"><span class="header-section-number">0.3.1</span> Accessibilité et généricité de ManagHAL</h3>
 <p>Lors de mon stage, j’ai d’abord décidé de rendre le package plus accessible et générique. Pour ce faire, il m’était nécessaire de réorganiser et modifier certaines fonctions déjà présentes codées par Théodore Vanrengterghem. J’ai commencé par modifier dans le fichier <strong>mia_table.R</strong> la fonction . J’ai fait le choix de renommer le fichier</p>
 <section id="modifications-de-lalgorithme-load_mia_table" class="level4" data-number="0.3.1.1">
 <h4 data-number="0.3.1.1" class="anchored" data-anchor-id="modifications-de-lalgorithme-load_mia_table"><span class="header-section-number">0.3.1.1</span> Modifications de l’Algorithme <em>load_mia_table</em></h4>
