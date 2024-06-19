@@ -40,3 +40,6 @@ quarto render index.qmd --to pdf
 # Notes
 Please check that all file paths in the project are correct and appropriate for your working environment.
 Analyses and visualisations can be modified in R scripts as required.
+
+# Writing instructions
+Please open the file Guide_stage_M1_BIBS_2023-24.pdf to read the writing instructions.
