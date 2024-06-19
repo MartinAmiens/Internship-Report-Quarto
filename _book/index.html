@@ -332,10 +332,25 @@ Y_{ij} = 0 &amp; \quad \text{si aucun lien n'existe entre les nœuds } i \text{ 
 </section>
 <section id="resultats" class="level2" data-number="0.3">
 <h2 data-number="0.3" class="anchored" data-anchor-id="resultats"><span class="header-section-number">0.3</span> RESULTATS</h2>
-<p>Afin de mieux comprendre l’intérêt, l’utilité et le fonctionnement du package ManagHAL, les parties qui suivent seront basées sur un exemple. Cet exemple consistera en des données provenant des Ressources Humaines du Laboratoire MIA d’AgroPariTech.</p>
+<p>Cette section présente les résultats obtenus au cours de mon stage. Elle est divisée en deux parties principales: les méthodes et algorithmes développés, modifiés ainsi que les résultats de leur application via un exemple. Cet exemple consistera en des données provenant des Ressources Humaines du Laboratoire MIA d’AgroPariTech. Chaque méthode est expliquée en détail, suivie des raisons justifiant son développement par rapport aux alternatives existantes.</p>
 <section id="accessibilité-et-généralité-de-managhal" class="level3" data-number="0.3.1">
 <h3 data-number="0.3.1" class="anchored" data-anchor-id="accessibilité-et-généralité-de-managhal"><span class="header-section-number">0.3.1</span> Accessibilité et généralité de ManagHAL</h3>
-<p>Lors de mon stage, j’ai d’abord décidé de rendre le package plus accessible et générique. Pour ce faire, il m’était nécessaire de réorganiser et modifier certaines fonctions déjà présentes codées par Théodore Vanrengterghem. J’ai commencé par modifier dans le fichier <strong>mia_table.R</strong> la fonction <em>load_mia_table</em>. J’ai fait le choix de renommer le fichier</p>
+<p>Lors de mon stage, j’ai d’abord décidé de rendre le package plus accessible et générique. Pour ce faire, il m’était nécessaire de réorganiser et modifier certaines fonctions déjà présentes codées par Théodore Vanrengterghem. J’ai commencé par modifier dans le fichier <strong>mia_table.R</strong> la fonction . J’ai fait le choix de renommer le fichier</p>
+<section id="méthode-1-optimisation-de-lalgorithme-load_mia_table" class="level4" data-number="0.3.1.1">
+<h4 data-number="0.3.1.1" class="anchored" data-anchor-id="méthode-1-optimisation-de-lalgorithme-load_mia_table"><span class="header-section-number">0.3.1.1</span> Méthode 1 : Optimisation de l’Algorithme <em>load_mia_table</em></h4>
+<section id="description" class="level5" data-number="0.3.1.1.1">
+<h5 data-number="0.3.1.1.1" class="anchored" data-anchor-id="description"><span class="header-section-number">0.3.1.1.1</span> Description</h5>
+<p>J’ai commencé par modifier dans le fichier <strong>mia_table.R</strong> la fonction <em>load_mia_table</em>. J’ai fait le choix de renommer le fichier <strong>load_table.R</strong>. J’ai remplacé la fonction <em>load_mia_table</em> par trois fonctions.</p>
+</section>
+<section id="justification" class="level5" data-number="0.3.1.1.2">
+<h5 data-number="0.3.1.1.2" class="anchored" data-anchor-id="justification"><span class="header-section-number">0.3.1.1.2</span> Justification</h5>
+<p>L’algorithme original présentait des limitations en termes de scalabilité. En analysant les goulots d’étranglement, j’ai déterminé que le partitionnement des données permettrait de réduire significativement le temps de traitement.</p>
+</section>
+<section id="schémas-et-courbes" class="level5" data-number="0.3.1.1.3">
+<h5 data-number="0.3.1.1.3" class="anchored" data-anchor-id="schémas-et-courbes"><span class="header-section-number">0.3.1.1.3</span> Schémas et Courbes</h5>
+<p><img src="images/schema_algorithme_x.png" class="img-fluid" alt="Schéma de l’algorithme X optimisé"> <img src="images/courbe_performance_x.png" class="img-fluid" alt="Courbe de performance de l’algorithme X"></p>
+</section>
+</section>
 </section>
 </section>
 <section id="discussion" class="level2" data-number="0.4">

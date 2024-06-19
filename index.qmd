@@ -96,11 +96,25 @@ Les Modèles en Bloc Stochastiques (aussi appelé SBM) sont des modèles probabi
 
 ## RESULTATS
 
-Afin de mieux comprendre l'intérêt, l'utilité et le fonctionnement du package ManagHAL, les parties qui suivent seront basées sur un exemple. Cet exemple consistera en des données provenant des Ressources Humaines du Laboratoire MIA d'AgroPariTech.
+Cette section présente les résultats obtenus au cours de mon stage. Elle est divisée en deux parties principales: les fonctions et algorithmes développés, modifiés ainsi que les résultats de leur application via un exemple. Cet exemple consistera en des données provenant des Ressources Humaines du Laboratoire MIA d'AgroPariTech. Chaque fonction est expliquée en détail, suivie des raisons justifiant son développement. Il est important de noter que mon stage se terminant le 26 juillet, Le package est donc encore en développement. Les fonctions présentées fonctionnent dans le cadre de l'exemple.
 
 ### Accessibilité et généralité de ManagHAL
 
-Lors de mon stage, j'ai d'abord décidé de rendre le package plus accessible et générique. Pour ce faire, il m'était nécessaire de réorganiser et modifier certaines fonctions déjà présentes codées par Théodore Vanrengterghem. J'ai commencé par modifier dans le fichier **mia_table.R** la fonction *load_mia_table*. J'ai fait le choix de renommer le fichier
+Lors de mon stage, j'ai d'abord décidé de rendre le package plus accessible et générique. Pour ce faire, il m'était nécessaire de réorganiser et modifier certaines fonctions déjà présentes codées par Théodore Vanrengterghem. J'ai commencé par modifier dans le fichier **mia_table.R** la fonction . J'ai fait le choix de renommer le fichier
+
+#### Méthode 1 : Optimisation de l'Algorithme *load_mia_table*
+
+##### Description
+J'ai commencé par modifier dans le fichier **mia_table.R** la fonction *load_mia_table*. J'ai fait le choix de renommer le fichier **load_table.R**. J'ai remplacé la fonction *load_mia_table* par trois fonctions *load_team_table_csv*, *load_team_table_url*, et *load_team_table*. *load_team_table_csv* permet de charger un csv dans Rstudio depuis un fichier local de la machine de l'utilisateur. *load_team_table_url* permet de charger un csv dans Rstudio depuis un fichier en ligne. *load_team_table* fait appel aux deux fonctions précédentes et permet par le biais d'argument de fonctions de spécifier la provenance du fichier et de charger le csv soit depuis un url soit depuis un fichier local.
+J'ai crée une documentation via le package "Roxygène2" conforme aux critères requis pour un package mis en ligne.
+
+##### Justification
+La fonction original *load_mia_table* ne permettait de charger de manière spécifique le csv fourni par les Ressources Humaines depuis un url seafile. Dans un soucis de généricité, j'ai 
+
+##### Schémas et Courbes
+![Schéma de l'algorithme X optimisé](images/schema_algorithme_x.png)
+![Courbe de performance de l'algorithme X](images/courbe_performance_x.png)
+
 
 ## DISCUSSION
 
