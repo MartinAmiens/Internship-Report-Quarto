@@ -68,12 +68,13 @@ peut etre explique comment on peut coder un réseau ?
 
 Vous trouverez ci-dessous des exemples de code R pour créer et visualiser des réseaux unipartite et bipartite.
 
-```{r exemple de reseau}
+```{r exemple de reseau, eval = FALSE}
 
 # Création d'un réseau unipartite
 set.seed(42) # Pour la reproductibilité 
-unipartite <- erdos.renyi.game(10, 0.3) 
-plot(unipartite, main = "Réseau Unipartite")
+unipartite <- erdos.renyi.game(10, 0.3)
+unipartite_graph <- plot(unipartite, main = "Réseau Unipartite", width = 800, height = 600)
+print(unipartite_graph)
 
 # Création d'un réseau bipartite
 # Noms des nœuds
@@ -86,9 +87,9 @@ g <- graph(edges, directed = FALSE)
 V(g)$type <- bipartite_mapping(g)$type
 plot(g, layout = layout_as_bipartite, vertex.color = c("skyblue", "salmon")[V(g)$type + 1],
      vertex.label.color = "black", vertex.shape = "circle", vertex.size = 30, edge.width = 2, main = "Réseau Bipartite")
-
-
 ```
+
+| ![Réseau Unipartite](figures/unipartite_graph.png) | ![Réseau Bipartite](figures/bipartite.png) |
 
 Il existe plusieurs approches différentes pour analyser la structure d’un réseau. Dans ce mémoire, une seule approche sera considérée. Elle suppose l’existence de groupe fonctionnels partageant un même patron de connexion. Nous nous baserons par la suite sur une méthode possible pour cette approche: les modèles probabilistes génératifs.
 
@@ -102,7 +103,7 @@ Cette section présente les résultats obtenus au cours de mon stage. Elle est d
 
 Lors de mon stage, j'ai d'abord décidé de rendre le package plus accessible et générique. Pour ce faire, il m'était nécessaire de réorganiser et modifier certaines fonctions déjà présentes codées par Théodore Vanrengterghem. J'ai commencé par modifier dans le fichier **mia_table.R** la fonction . J'ai fait le choix de renommer le fichier
 
-#### Méthode 1 : Optimisation de l'Algorithme *load_mia_table*
+#### Modifications de l'Algorithme *load_mia_table*
 
 J'ai commencé par modifier dans le fichier **mia_table.R** la fonction *load_mia_table*. J'ai fait le choix de renommer le fichier **load_table.R**. J'ai remplacé la fonction *load_mia_table* par trois fonctions *load_team_table_csv*, *load_team_table_url*, et *load_team_table*. *load_team_table_csv* permet de charger un csv dans Rstudio depuis un fichier local de la machine de l'utilisateur. *load_team_table_url* permet de charger un csv dans Rstudio depuis un fichier en ligne. *load_team_table* fait appel aux deux fonctions précédentes et permet par le biais d'argument de fonctions de spécifier la provenance du fichier et de charger le csv soit depuis un url soit depuis un fichier local. J'ai aussi modifier la majorité des fonctions déjà présentes dans le package faisant appel à *load_mia_table*. J'ai ensuite crée une documentation via le package "Roxygène2" conforme aux critères requis pour un package mis en ligne.
 
@@ -110,7 +111,41 @@ La fonction original *load_mia_table* ne permettait que de charger de manière s
 
 ![exemple de comment mettre une image](images/exemple.png)
 
+#### Résultat de l'Application de *load_team_table*
+
+Exemple par chatGPT
+
+Description
+
+La méthode optimisée a été appliquée à un jeu de données de grande taille pour évaluer sa performance en conditions réelles.
+
+Résultats
+
+Les résultats montrent une réduction du temps de traitement de 40% par rapport à l'algorithme original.
+
+![Graphique de comparaison des temps de traitement](images/comparaison_temps_traitement.png)
+
+Essentiels vs Secondaires
+
+Les résultats essentiels incluent la réduction du temps de traitement et l'amélioration de la scalabilité. Les résultats secondaires, détaillés en annexe, incluent des tests sur des jeux de données plus petits.
+
+### Conclusion des Résultats
+
+Les méthodes développées au cours de ce stage ont permis d'améliorer significativement les performances des algorithmes existants. L'optimisation de l'algorithme X a réduit le temps de traitement de 40%, tandis que les ajustements apportés au modèle Y ont augmenté la précision de 5%. Ces résultats démontrent l'efficacité des approches choisies pour répondre aux limitations des méthodes précédentes.
 
 ## DISCUSSION
 
+## ANNEXES
+
+Exemple par chatGPT
+
+### Tableau des résultats détaillés
+
+Voici les tableaux des résultats détaillés pour les différentes méthodes et tests effectués.
+
+![Tableau des résultats détaillés](images/tableau_resultats_detailles.png)
+
+
 ## BIBLIOGRAPHIE
+
+

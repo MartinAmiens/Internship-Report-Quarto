@@ -5,12 +5,13 @@ book:
   title: "ManagHAL"
   author:
     - name: "Martin AMIENS"
-    - affiliations:
-      - name: "Université Paris-saclay - Master BIBS"
+      affiliations:
+        - name: "Université Paris-saclay - Master BIBS"
   date: "2024-06-16"
   chapters:
     - index.qmd
     - remerciement.qmd
-
+classoption: 
+  - titlepage
 bibliography: [bibliography/references.bib]
 
