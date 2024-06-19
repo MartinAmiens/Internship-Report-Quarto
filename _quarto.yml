@@ -2,9 +2,12 @@ project:
   type: report
 
 book:
-  title: "Titre du Mémoire"
-  author: "Votre Nom"
-  date: "2024-06-18"
+  title: "Mémoire de stage - ManagHAL"
+  author:
+    - name: "Martin AMIENS"
+    - affiliations:
+      - name: "Université Paris-saclay - Master BIBS"
+  date: "2024-06-16"
   chapters:
     - index.qmd
 

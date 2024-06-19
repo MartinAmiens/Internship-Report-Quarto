@@ -5,5 +5,13 @@ html:
 
 pdf:
   toc: true
+  toc-title: "Table des matières"
   number-sections: true
   documentclass: article
+  mainfont: Times New Roman
+  classoption:
+    - titlepage
+    - 12pt
+  header-includes:
+    - \usepackage{geometry}
+  geometry: margin=1in

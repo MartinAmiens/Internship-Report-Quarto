@@ -15,18 +15,6 @@ output:
     toc: true
 ---
 
-format:
-  pdf:
-    documentclass: article
-    classoption: 
-      - titlepage
-      - 12pt
-    header-includes:
-      - \usepackage{geometry}
-    geometry: margin=1in
-    mainfont: Times New Roman
-editor: visual
-
 
 ```{r chargement des librairies, echo = FALSE, warning = FALSE, message=FALSE}
 library(igraph, quietly = TRUE)
