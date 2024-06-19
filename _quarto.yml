@@ -10,6 +10,7 @@ book:
   date: "2024-06-16"
   chapters:
     - index.qmd
+    - remerciement.qmd
 
 bibliography: [bibliography/references.bib]
 

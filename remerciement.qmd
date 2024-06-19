@@ -1,0 +1,13 @@
+---
+title: "Remerciements"
+author: 
+  - name: "Martin AMIENS"
+  - affiliations:
+    - name: "Université Paris-saclay - Master BIBS"
+date: "2024-06-16"
+output: 
+  html: 
+    toc: true
+  pdf: 
+    toc: true
+---

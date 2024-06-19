@@ -1,5 +1,5 @@
 ---
-title: "Mémoire de stage - ManagHAL"
+title: "ManagHAL"
 author: 
   - name: "Martin AMIENS"
   - affiliations:
@@ -31,7 +31,7 @@ library(sbm, quietly = TRUE)
 
 ## INTRODUCTION
 
-En 2017, AgroParisTech signe l’Appel de Jussieu. Cet appel a été rédigé dans l’objectif de mettre en avant des engagements pour promouvoir la Bibliodiversité. La bibliodiversité correspond à la diversité dans le monde éditorial afin d’éviter une appropriation des espaces de ventes par des grands groupes éditeurs. Dans la continuité de la signature de l’Appel de Jussieu, AgroParisTech a adopté en 2020, une politique d’établissement « dédié à la science ouverte. » (La science ouverte à AgroParisTech – Politique d’établissement janvier 2020 ). Pour AgroParisTech, la science ouverte correspond à l’ « ensemble des principes et des actions qui facilitent l’ouverture et la libre dissémination, à destination de l’ensemble de la société, des productions de la recherche scientifique, ainsi que la transparence et l’ouverture des processus de la recherche »1 . Un exemple concret des principes appliqués par l’établissement sont les principes FAIR pour la gestion des données de recherches. Ces derniers stipulent que les données doivent être :
+En 2017, AgroParisTech signe l’Appel de Jussieu. Cet appel a été rédigé dans l’objectif de mettre en avant des engagements pour promouvoir la Bibliodiversité. La bibliodiversité correspond à la diversité dans le monde éditorial afin d’éviter une appropriation des espaces de ventes par des grands groupes éditeurs. Dans la continuité de la signature de l’Appel de Jussieu, AgroParisTech a adopté en 2020, une politique d’établissement « dédié à la science ouverte. » (La science ouverte à AgroParisTech – Politique d’établissement janvier 2020 ) @science-ouverte . Pour AgroParisTech, la science ouverte correspond à l’ « ensemble des principes et des actions qui facilitent l’ouverture et la libre dissémination, à destination de l’ensemble de la société, des productions de la recherche scientifique, ainsi que la transparence et l’ouverture des processus de la recherche »1 . Un exemple concret des principes appliqués par l’établissement sont les principes FAIR pour la gestion des données de recherches. Ces derniers stipulent que les données doivent être :
 
 Findable : facilement trouvable.
 
@@ -55,7 +55,7 @@ La finalité du package « ManagHAL » est de faciliter l’utilisation et la co
 
 ## CONTEXTE STATISTIQUE
 
-Cette partie est principalement basée sur la publication suivante Using Latent Block Models to Detect Structure in Ecological Networks (Aubert et al., 2022).
+Cette partie est principalement basée sur la publication suivante Using Latent Block Models to Detect Structure in Ecological Networks (Aubert et al., 2022). @latent-block-models
 
 Un réseau d’interaction est composé de nœuds (les entités) et d’arêtes (les liens entre ces entités). Les réseaux sont répartis en deux groupes principaux: les réseaux Unipartites, où tous les nœuds sont du même type, et les réseaux Bipartites, où il y a deux types distincts de nœuds et les liens ne se forme qu’entre des nœuds de types différents. (mettre des images faites avec r mettre le code aussi ?) Les interactions dans un réseau peuvent être binaires ou pondérées. Un réseau peut être encodé dans une matrice $Y$ telle que :
 
