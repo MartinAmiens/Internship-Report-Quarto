@@ -97,7 +97,7 @@ Les Modèles en Bloc Stochastiques (aussi appelé SBM) sont des modèles probabi
 
 ## RESULTATS
 
-Cette section présente les résultats obtenus au cours de mon stage. Elle est divisée en deux parties principales: les fonctions et algorithmes développés, modifiés ainsi que les résultats de leur application via un exemple. Cet exemple consistera en des données provenant des Ressources Humaines du Laboratoire MIA d'AgroPariTech. Chaque fonction est expliquée en détail, suivie des raisons justifiant son développement. Il est important de noter que mon stage se terminant le 26 juillet, Le package est donc encore en développement. Les fonctions présentées fonctionnent dans le cadre de l'exemple.
+Cette section présente les résultats obtenus au cours de mon stage. Elle est divisée en deux parties principales: les fonctions et algorithmes développés, modifiés ainsi que les résultats obtenus via un exemple. Cet exemple consistera en des données provenant des Ressources Humaines du Laboratoire MIA d'AgroPariTech. Chaque fonction est expliquée en détail, suivie des raisons justifiant son développement. Il est important de noter que mon stage se terminant le 26 juillet, Le package est donc encore en développement. Les fonctions présentées fonctionnent dans le cadre de l'exemple.
 
 ### Accessibilité et généricité de ManagHAL
 
@@ -109,7 +109,6 @@ J'ai commencé par modifier dans le fichier **mia_table.R** la fonction *load_mi
 
 La fonction original *load_mia_table* ne permettait que de charger de manière spécifique le csv fourni par les Ressources Humaines depuis un url seafile. Cette fonction n'était pas générique. Ainsi, il était nécéssaire de la modifier. J'ai décidé de diviser en trois fonctions différentes afin de permettre à l'utilisateur de choisir de charger des tables de provencance locale ou depuis internet. J'ai décidé pour *load_team_table_url* de garder en majeur partie le code d'origine et de simplement le réadapter par soucis de temps. *load_team_table_csv* est basé
 
-![exemple de comment mettre une image](images/exemple.png)
 
 #### Résultat de l'Application de *load_team_table*
 
@@ -123,7 +122,7 @@ Résultats
 
 Les résultats montrent une réduction du temps de traitement de 40% par rapport à l'algorithme original.
 
-![Graphique de comparaison des temps de traitement](images/comparaison_temps_traitement.png)
+
 
 Essentiels vs Secondaires
 
@@ -133,7 +132,14 @@ Les résultats essentiels incluent la réduction du temps de traitement et l'am�
 
 Les méthodes développées au cours de ce stage ont permis d'améliorer significativement les performances des algorithmes existants. L'optimisation de l'algorithme X a réduit le temps de traitement de 40%, tandis que les ajustements apportés au modèle Y ont augmenté la précision de 5%. Ces résultats démontrent l'efficacité des approches choisies pour répondre aux limitations des méthodes précédentes.
 
+## METHODES
+
+Comme précisé dans l'introduction l'entiereté des méthodes informatiques développés ont été réalisé sur Rstudio. J'ai donc travaillé avec le language R. Les packages utilisés sont : faire la liste des packages utilisés...
+expliquer l'api HAL ?? peut etre en parler dans l'intro
+
 ## DISCUSSION
+
+parler de l'efficacité de ce que j'ai code, des modifications à venir et de ce que je souhaite faire avant la fin de stage. Parler de l'api HAL et du cauchemar que c'est, parler des potentiels utilisations du package pour HAL mais aussi faire un parallèle avec la bio avec par exemple en ouverture les réseaux de gènes ? 
 
 ## ANNEXES
 
@@ -143,6 +149,5 @@ Exemple par chatGPT
 
 Voici les tableaux des résultats détaillés pour les différentes méthodes et tests effectués.
 
-![Tableau des résultats détaillés](images/tableau_resultats_detailles.png)
 
 ## BIBLIOGRAPHIE
