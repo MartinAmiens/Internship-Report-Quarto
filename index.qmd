@@ -64,7 +64,7 @@ Y_{ij} = 0 & \quad \text{si aucun lien n'existe entre les nœuds } i \text{ et }
 ```
 peut etre explique comment on peut coder un réseau ?
 
-#### Exemples de réseaux en R
+### Exemples de réseaux en R
 
 Vous trouverez ci-dessous des exemples de code R pour créer et visualiser des réseaux unipartite et bipartite.
 
@@ -96,7 +96,11 @@ Les Modèles en Bloc Stochastiques (aussi appelé SBM) sont des modèles probabi
 
 ## RESULTATS
 
-Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see \[https://quarto.org\\\](https://quarto.org){.uri}.
+Afin de mieux comprendre l'intérêt, l'utilité et le fonctionnement du package ManagHAL, les parties qui suivent seront basées sur un exemple. Cet exemple consistera en des données provenant des Ressources Humaines du Laboratoire MIA d'AgroPariTech.
+
+### Accessibilité et généralité de ManagHAL
+
+Lors de mon stage, j'ai d'abord décidé de rendre le package plus accessible et générique. Pour ce faire, il m'était nécessaire de réorganiser et modifier certaines fonctions déjà présentes codées par Théodore Vanrengterghem. J'ai commencé par modifier dans le fichier **mia_table.R** la fonction *load_mia_table*. J'ai fait le choix de renommer le fichier
 
 ## DISCUSSION
 
