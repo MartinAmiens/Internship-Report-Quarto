@@ -1,5 +1,5 @@
 project:
-  type: report
+  type: book
 
 book:
   title: "Mémoire de stage - ManagHAL"
