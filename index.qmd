@@ -54,7 +54,7 @@ La finalité du package "ManagHAL" est de faciliter l’utilisation et la compr�
 
 Cette partie est principalement basée sur la publication "Using Latent Block Models to Detect Structure in Ecological Networks" @latent-block-models
 
-Un réseau d’interaction est composé de nœuds (les entités) et d’arêtes (les liens entre ces entités). Les réseaux sont répartis en deux groupes principaux: les réseaux Unipartites, où tous les nœuds sont du même type, et les réseaux Bipartites, où il y a deux types distincts de nœuds et les liens ne se forme qu’entre des nœuds de types différents. Les interactions dans un réseau peuvent être binaires ou pondérées. Un réseau peut être encodé dans une matrice $Y$ d'adjacence telle que :
+Un réseau d’interaction est composé de nœuds (les entités) et d’arêtes (les liens entre ces entités). Toutes entités nommables peuvent être modèlisés sous forme de noeuds, et leur interactions entre elles peuent être modélisés par des arrêtes. On peut prendre pour exemple les réseaux de gènes à partir de données de co-expression. Les réseaux sont répartis en deux groupes principaux: les réseaux Unipartites, où tous les nœuds sont du même type, et les réseaux Bipartites, où il y a deux types distincts de nœuds et les liens ne se forme qu’entre des nœuds de types différents. Les interactions dans un réseau peuvent être binaires ou pondérées. Un réseau peut être encodé dans une matrice $Y$ d'adjacence telle que :
 
 ```{=tex}
 \begin{align*}
@@ -90,11 +90,13 @@ matrice_adjacence_bipartite <- as.matrix(bipartite, "adjacency")
 | ![Réseau Unipartite](figures/unipartite_graph.png){width="324"} ![Réseau Bipartite](figures/bipartite.png){width="324"}
 | [**mettre une légende avec titre important !!!**]{.underline}
 
+Nous décrivons les noeuds d'un réseau comme : $V = { 1,..,N }$ , ($N$ correspond à la taille du réseau). Les arrêtes peuvent être décrit comme $E = ...$ .
+
 Il existe plusieurs approches différentes pour analyser la structure d’un réseau. Dans ce mémoire, une seule approche sera considérée. Elle suppose l’existence de groupe fonctionnels partageant un même patron de connexion. Nous nous baserons par la suite sur une méthode possible pour cette approche: les modèles probabilistes génératifs.
 
 Les Modèles en Bloc Stochastiques (aussi appelé SBM) sont des modèles probabilistes. Ils supposent que les nœuds d’un même réseau sont divisés en blocs (groupe, clusters) latents regroupant les entités ayant des modèles de connectivité similaires. Latents signifie qu’il n’y a pas d’apriori sur le type de structure recherchée. Ces modèles sont utiles pour détecter les communautés, les clusters aux sein d'un réseau complexe.
 
-Nous décrivons les noeuds d'un réseau comme : $i = 1,..,n$ ($n$ correspond à la taille du réseau). Les noeuds sont partitionnés en $K$ groupes latents.
+Les noeuds sont partitionnés en $K$ groupes latents.
 
 ## RESULTATS
 
