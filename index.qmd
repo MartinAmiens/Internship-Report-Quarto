@@ -97,7 +97,7 @@ Les Modèles en Bloc Stochastiques (aussi appelé SBM) sont des modèles probabi
 
 ## RESULTATS
 
-Cette section présente les résultats obtenus au cours de mon stage. Elle est divisée en deux parties principales: les fonctions et algorithmes développés, modifiés ainsi que les résultats obtenus via un exemple. Cet exemple consistera en des données provenant des Ressources Humaines du Laboratoire MIA d'AgroPariTech. Chaque fonction est expliquée en détail, suivie des raisons justifiant son développement. Il est important de noter que mon stage se terminant le 26 juillet, Le package est donc encore en développement. Les fonctions présentées fonctionnent dans le cadre de l'exemple.
+Cette section présente les résultats obtenus au cours de mon stage. Elle est divisée en deux parties principales: les fonctions et algorithmes développés, modifiés ainsi que les résultats obtenus via un exemple. Cet exemple consistera en des données provenant des Ressources Humaines du Laboratoire MIA d'AgroPariTech. Chaque fonction est expliquée en détail, suivie des raisons justifiant son développement. Il est important de noter que mon stage se terminant le 26 juillet, Le package est donc encore en développement. Les fonctions présentées fonctionnent dans le cadre de l'exemple. Dans cette section, les noms de *fonctions* seront en italique et les noms des **scripts R** contenant les fonctions seront en gras.
 
 ### Accessibilité et généricité de ManagHAL
 
@@ -107,7 +107,7 @@ Lors de mon stage, j'ai d'abord décidé de rendre le package plus accessible et
 
 J'ai commencé par modifier dans le fichier **mia_table.R** la fonction *load_mia_table*. A l'origine, cette fonction permettait le chargement d'un csv en ligne depuis une addresse spécifique vers un fichier contenant des informations tel que le nom, le prenom, l'idhal, l'equipe, etc, des personnes appartenant au labo. J'ai fait le choix de renommer le fichier **load_table.R**. J'ai remplacé la fonction *load_mia_table* par trois fonctions *load_team_table_csv*, *load_team_table_url*, et *load_team_table*. *load_team_table_csv* permet de charger un csv dans Rstudio depuis un fichier local de la machine de l'utilisateur. *load_team_table_url* permet de charger un csv dans Rstudio depuis un fichier en ligne. *load_team_table* fait appel aux deux fonctions précédentes et permet par le biais d'argument de fonctions de spécifier la provenance du fichier et de charger le csv soit depuis un url soit depuis un fichier local. J'ai aussi modifier la majorité des fonctions déjà présentes dans le package faisant appel à *load_mia_table*. Les paramètres en entrée des trois fonctions sont les même que la fonction [load_mia_table]{.underline} d'origine avec l'ajout d'un paramètre permettant à l'utilisateur de rentrer l'adresse du fichier. J'ai ensuite crée une documentation via le package "Roxygène2" conforme aux critères requis pour un package mis en ligne (voir : exemple d'une documentation classique en annexe) pour chacune des trois fonctions.
 
-La fonction original *load_mia_table* ne permettait que de charger de manière spécifique le csv fourni par les Ressources Humaines depuis un url seafile. Cette fonction n'était pas générique. Ainsi, il était nécéssaire de la modifier. J'ai décidé de diviser en trois fonctions différentes afin de permettre à l'utilisateur de choisir de charger des tables de provenance locale ou depuis internet. J'ai décidé pour *load_team_table_url* de garder en majeur partie le code d'origine et de simplement le réadapter par soucis de temps. J'y ajouter des conditions de présence de colone obligatoire afin d'obliger l'utilisateur à fournir des colonnes sous un format spécifique.
+La fonction original *load_mia_table* ne permettait que de charger de manière spécifique le csv fourni par les Ressources Humaines depuis un url seafile. Cette fonction n'était pas générique. Ainsi, il était nécéssaire de la modifier. J'ai décidé de diviser en trois fonctions différentes afin de permettre à l'utilisateur de choisir de charger des tables de provenance locale ou depuis internet. J'ai décidé pour *load_team_table_url* de garder en majeur partie le code d'origine et de simplement le réadapter par soucis de temps. J'y ai ajouté des conditions de présence de colonnes obligatoires afin d'obliger l'utilisateur à fournir des colonnes sous un format spécifique.
 
 ```{r load_team_table_url example, eval=FALSE}
 load_team_table_url <- function(filter_id = TRUE,
@@ -153,17 +153,13 @@ load_team_table_url <- function(filter_id = TRUE,
 }
 ```
 
-*load_team_table_csv* est basé sur la construction de *load_team_table_url*. Je l'ai adapté pour pouvoir charger depuis un fichier local en utilisant read.csv
+*load_team_table_csv* est basé sur la construction de *load_team_table_url*. Je l'ai adapté pour pouvoir charger depuis un fichier local en utilisant *read.csv*. De même que dans *load_team_table_url*, j'y ai ajouté des conditions de présence de colonnes obligatoires afin d'obliger l'utilisateur à fournir des colonnes sous un format spécifique.
 
 ```{r load_team_table_csv example, eval=FALSE}
 load_team_table_csv <- function(filter_id = TRUE,
                                 date_cols,
                                 filepath){
   idhal <- NULL
-  
-  # read the csv table  TODO : Add message error to guide user
-  # if sep is different than ";" 
-  # and if header = false
   nbcol <- ncol(read.csv(filepath, header = TRUE, sep = ";", encoding = "UTF-8"))
   
   # define column types (dates or text if not dates)
