@@ -227,6 +227,8 @@ Lors de l'application de la fonction *`load_team_table`* ci-dessus en utilisant 
 
 ### Conclusion des Résultats
 
+Exemple via chatGPT
+
 Les méthodes développées au cours de ce stage ont permis d'améliorer significativement les performances des algorithmes existants. L'optimisation de l'algorithme X a réduit le temps de traitement de 40%, tandis que les ajustements apportés au modèle Y ont augmenté la précision de 5%. Ces résultats démontrent l'efficacité des approches choisies pour répondre aux limitations des méthodes précédentes.
 
 ## METHODES
