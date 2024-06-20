@@ -92,7 +92,9 @@ matrice_adjacence_bipartite <- as.matrix(bipartite, "adjacency")
 
 Il existe plusieurs approches différentes pour analyser la structure d’un réseau. Dans ce mémoire, une seule approche sera considérée. Elle suppose l’existence de groupe fonctionnels partageant un même patron de connexion. Nous nous baserons par la suite sur une méthode possible pour cette approche: les modèles probabilistes génératifs.
 
-Les Modèles en Bloc Stochastiques (aussi appelé SBM) sont des modèles probabilistes. Ils supposent que les nœuds d’un même réseau sont divisés en blocs (groupe, clusters) latents regroupant les entités ayant des modèles de connectivité similaires. Latents signifie qu’il n’y a pas d’apriori sur le type de structure recherchée. Ces modèles sont utiles pour détecter les groupes, les clusters aux sein d'un réseau complexe.
+Les Modèles en Bloc Stochastiques (aussi appelé SBM) sont des modèles probabilistes. Ils supposent que les nœuds d’un même réseau sont divisés en blocs (groupe, clusters) latents regroupant les entités ayant des modèles de connectivité similaires. Latents signifie qu’il n’y a pas d’apriori sur le type de structure recherchée. Ces modèles sont utiles pour détecter les communautés, les clusters aux sein d'un réseau complexe.
+
+Nous décrivons les noeuds d'un réseau comme : $i = 1,..,n$ ($n$ correspond à la taille du réseau). Les noeuds sont partitionnés en $K$ groupes latents.
 
 ## RESULTATS
 
