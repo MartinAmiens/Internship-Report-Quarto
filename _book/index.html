@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.553">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2024-06-16">
+<meta name="keywords" content="R, Rstudio, ManagHAL, Réseaux, SBM, LBM">
+
+<title>ManagHAL</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./remerciement.html" rel="next">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Mémoire de Stage</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">ManagHAL</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Mémoire de Stage</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./remerciement.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Remerciements</span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">0.1</span> INTRODUCTION</a></li>
+  <li><a href="#contexte-statistique" id="toc-contexte-statistique" class="nav-link" data-scroll-target="#contexte-statistique"><span class="header-section-number">0.2</span> CONTEXTE STATISTIQUE</a>
+  <ul class="collapse">
+  <li><a href="#exemples-de-réseaux-en-r" id="toc-exemples-de-réseaux-en-r" class="nav-link" data-scroll-target="#exemples-de-réseaux-en-r"><span class="header-section-number">0.2.1</span> Exemples de réseaux en R</a></li>
+  </ul></li>
+  <li><a href="#resultats" id="toc-resultats" class="nav-link" data-scroll-target="#resultats"><span class="header-section-number">0.3</span> RESULTATS</a>
+  <ul class="collapse">
+  <li><a href="#accessibilité-et-généricité-de-managhal" id="toc-accessibilité-et-généricité-de-managhal" class="nav-link" data-scroll-target="#accessibilité-et-généricité-de-managhal"><span class="header-section-number">0.3.1</span> Accessibilité et généricité de ManagHAL</a></li>
+  <li><a href="#conclusion-des-résultats" id="toc-conclusion-des-résultats" class="nav-link" data-scroll-target="#conclusion-des-résultats"><span class="header-section-number">0.3.2</span> Conclusion des Résultats</a></li>
+  </ul></li>
+  <li><a href="#methodes" id="toc-methodes" class="nav-link" data-scroll-target="#methodes"><span class="header-section-number">0.4</span> METHODES</a></li>
+  <li><a href="#discussion" id="toc-discussion" class="nav-link" data-scroll-target="#discussion"><span class="header-section-number">0.5</span> DISCUSSION</a></li>
+  <li><a href="#annexes" id="toc-annexes" class="nav-link" data-scroll-target="#annexes"><span class="header-section-number">0.6</span> ANNEXES</a>
+  <ul class="collapse">
+  <li><a href="#tableau-des-résultats-détaillés" id="toc-tableau-des-résultats-détaillés" class="nav-link" data-scroll-target="#tableau-des-résultats-détaillés"><span class="header-section-number">0.6.1</span> Tableau des résultats détaillés</a></li>
+  </ul></li>
+  <li><a href="#bibliographie" id="toc-bibliographie" class="nav-link" data-scroll-target="#bibliographie"><span class="header-section-number">0.7</span> BIBLIOGRAPHIE</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">ManagHAL</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">June 16, 2024</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+<div>
+  <div class="abstract">
+    <div class="block-title">Abstract</div>
+    <p>En 2017, AgroParisTech a signé l’Appel de Jussieu, visant à promouvoir la bibliodiversité, c’est-à-dire la diversité éditoriale pour éviter la domination des grands groupes. En 2020, l’institution a adopté une politique de ‘science ouverte’ pour faciliter la libre diffusion des résultats de la recherche scientifique et la transparence des processus de recherche. En réponse à ses engagements, le 2 janvier 2023, AgroParisTech crée une cellule HAL pour accompagner ses chercheurs dans l’utilisation de l’archive ouverte HAL. Cependant, un package R pour l’extraction et l’analyse des données HAL n’existait pas, ce qui a conduit à la mission de Théodore Vanrengterghem de développer le package ‘ManagHAL’. Par la suite, j’ai eu l’opportunité de reprendre le projet “ManagHAL” durant mon stage financé par la Direction de la Recherche et de l’Innovation d’AgroParisTech. Ainsi, j’ai pu travailler sur la mise en place de réseaux à partir des données, l’adaptation et l’intégration d’outils d’analyse statistique de réseaux tel que la modélisation en blocs stochastiques dans le package ‘ManagHAL’.</p>
+  </div>
+</div>
+
+<div>
+  <div class="keywords">
+    <div class="block-title">Keywords</div>
+    <p>R, Rstudio, ManagHAL, Réseaux, SBM, LBM</p>
+  </div>
+</div>
+
+</header>
+
+
+<section id="introduction" class="level2" data-number="0.1">
+<h2 data-number="0.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">0.1</span> INTRODUCTION</h2>
+<p>En 2017, AgroParisTech signe l’Appel de Jussieu. Cet appel a été rédigé dans l’objectif de mettre en avant des engagements pour promouvoir la Bibliodiversité. La bibliodiversité correspond à la diversité dans le monde éditorial afin d’éviter une appropriation des espaces de ventes par des grands groupes éditeurs. Dans la continuité de la signature de l’Appel de Jussieu, AgroParisTech a adopté en 2020, une politique d’établissement dédié à la science ouverte (<span class="citation" data-cites="science-ouverte">AgroParisTech (<a href="#ref-science-ouverte" role="doc-biblioref">2024</a>)</span> , voir : La science ouverte à AgroParisTech – Politique d’établissement janvier 2020). Pour AgroParisTech, la science ouverte correspond à l’ « ensemble des principes et des actions qui facilitent l’ouverture et la libre dissémination, à destination de l’ensemble de la société, des productions de la recherche scientifique, ainsi que la transparence et l’ouverture des processus de la recherche » (<span class="citation" data-cites="science-ouverte">AgroParisTech (<a href="#ref-science-ouverte" role="doc-biblioref">2024</a>)</span>) . Un exemple concret des principes appliqués par l’établissement sont les principes FAIR pour la gestion des données de recherches. Ces derniers stipulent que les données doivent être :</p>
+<ul>
+<li>Findable : facilement trouvable.</li>
+<li>Accessible : avec des conditions d’accès clairement définies.</li>
+<li>Interoperable : intégrable et capable d’interagir avec d’autres outils extérieurs ou données.</li>
+<li>Reusable : réutilisables, avec toutes les informations nécessaires à la compréhension de ces dernières et au cadre d’utilisation autorisé par les auteurs.</li>
+</ul>
+<p>Afin de progresser vers l’accomplissement des objectifs énoncés par AgroParisTech, de nombreuses actions ont été mises en place. Notamment, la création, le 2 janvier 2023, d’une cellule HAL au sein de l’établissement. Cette cellule HAL est dirigée par la Direction de la Recherche, de l’Innovation et du Transfert Technologique et par la Direction de la Documentation et du Patrimoine Culturelle. La cellule a pour vocation à faciliter l’intégration de l’archive ouverte HAL et des services associés dans la communauté de recherche d’AgroParisTech. Elle assure et veille à la qualité des métadonnées et référentiels pour le portail HAL-AgroParisTech (<span class="citation" data-cites="science-ouverte">AgroParisTech (<a href="#ref-science-ouverte" role="doc-biblioref">2024</a>)</span> , voir : Cellule HAL d’AgroParisTech Missions et Services). HAL est « l’archive nationale choisie par la communauté scientifique et universitaire française pour la diffusion ouverte de ses résultats de recherche. » (<span class="citation" data-cites="declaration-hal">Comité d’orientation du CCSD &amp; Assemblée des partenaires HAL (<a href="#ref-declaration-hal" role="doc-biblioref">2022</a>)</span>).</p>
+<p>Bien qu’il existe des outils d’extraction de publications HAL et de création de rapport bibliographique en ligne comme ExtrHAL (<span class="citation" data-cites="extrhal">LJonchere (<a href="#ref-extrhal" role="doc-biblioref">n.d.</a>)</span>), il n’existe pas aujourd’hui de package R permettant d’extraire ces données et de réaliser des analyses statistiques sur ces dernières. C’est pourquoi l’unité de recherche Mathématiques et Informatiques Appliquées et la cellule HAL ont missionné Théodore Vanrengterghem pour la programmation d’un package R nommé “ManagHAL” réalisant l’extraction de donnée HAL et la création d’un bilan bibliographique.</p>
+<p>R est un langage de programmation gratuit et en open-source, qui a été conçu pour réaliser des analyses statistiques et manipuler des données. Rstudio, est l’environnement de programmation gratuit utilisant le langage R. Dans Rstudio, il existe la possibilité de télécharger des packages. Ces derniers sont des fichiers contenant des fonctions et des données qui partagent un même thème. Ils sont très utilisés par les utilisateurs de Rstudio car les packages facilitent le développement. Il existe actuellement plus de 18000 packages en ligne.</p>
+<p>Durant les 2 mois et 17 jours de mon stage, j’ai eu la chance d’être accueilli au sein du département Modélisation Mathématiques, Informatique, et Physique d’AgroParisTech Palaiseau dans l’unité de recherche Mathématiques et Informatiques Appliquées. J’ai eu l’opportunité d’être encadré par deux tuteurs nommés Julie Albert et Pierre Barbillon qui m’ont accompagné tout au long de cette expérience. L’unité Mathématiques et Informatiques Appliquées est composée de nombreux chercheurs, doctorants et stagiaire, et est hébergé au sein du bâtiment E d’AgroParisTech Palaiseau. J’ai travaillé sur l’adaptation, la programmation, et l’intégration d’outils de constructions de réseau, et d’outils d’analyse statistiques de réseau au package ManagHAL. J’ai donc pu travailler à la mise en forme du package, à la création de fonctions. Mon stage était financé par la Direction de la Recherche, de l’Innovation et du Transfert Technologique de la cellule HAL d’AgroParisTech présenté dans les paragraphes précédents.</p>
+<p>Afin de comprendre les choix que j’ai réalisé lors du développement du package, il est nécessaire de présenter le package d’origine avant mes modifications, ses limitations. Un point rapide sera fait au cours de la partie contexte statistique sur les réseaux et les méthodes d’analyse statistique de réseau que j’ai utilisé. Le package “ManagHAL” contenait des fichiers essentiels dans la construction d’un package R tel que buildRignore (contenant la liste des fichiers à ignorer lors de la construction du package sur l’ordinateur de l’utilisateur). Il contenait aussi des fichiers de fonctions contenant les fonctions principales du package. Celles-ci permettent de récupérer toutes les publications associées à un unique ou à des multiples identifiants d’auteurs HAL, provenant d’un fichier tabulé d’identifiants fournie par les ressources humaines. Lors de la récupération, il est possible de spécifier les données des publications à récupérer. Ces dernières se présentent sous le format d’un fichier csv. Certaines de ces fonctions permettaient aussi de créer un rapport bibliographique automatique en ne donnant en entrée uniquement un identifiant auteur. Il existait des fonctions utiles au développement du package, afin de nettoyer mes données. Prenons par exemple “BorneDate” qui remplace les valeurs manquantes dans un vecteur de dates par une date limite spécifiée. Enfin, des fonctions permettaient réaliser des figures à partir des données des publications récupérés depuis HAL tel que des wordclouds ou des graphes.</p>
+<p>à retravailler !!!</p>
+<p>La finalité du package “ManagHAL” est de faciliter l’utilisation et la compréhension des données de publications. Afin de manipuler les données de publications et comprendre celles-ci, l’approche adoptée est de réaliser des réseaux et ensuite d’utiliser des outils d’analyse statistique de réseau. Les outils principaux utilisés à l’avenir dans “ManagHAL” seront les modélisations en blocs stochastiques ou latents. Mon mémoire est organisé de la manière suivante: En premier lieu, le contexte statistique nécessaire à la compréhension des outils utilisés est présenté. Puis, dans la partie suivante sont abordés, les méthodes informatiques développées et les résultats d’analyse de données-exemples obtenus. (pour lequel tout marche, précisez que je fais ça pcq mon stage n’est pas terminé). Dans un troisième temps, les méthodes déjà publiées utilisées sont précisées. Enfin, dans une ultime partie, les résultats sont discutés.</p>
+</section>
+<section id="contexte-statistique" class="level2" data-number="0.2">
+<h2 data-number="0.2" class="anchored" data-anchor-id="contexte-statistique"><span class="header-section-number">0.2</span> CONTEXTE STATISTIQUE</h2>
+<p>Cette partie est principalement basée sur la publication “Using Latent Block Models to Detect Structure in Ecological Networks” <span class="citation" data-cites="latent-block-models">Aubert et al. (<a href="#ref-latent-block-models" role="doc-biblioref">2022</a>)</span></p>
+<p>Un réseau d’interaction est composé de nœuds (les entités) et d’arêtes (les liens entre ces entités). Les réseaux sont répartis en deux groupes principaux: les réseaux Unipartites, où tous les nœuds sont du même type, et les réseaux Bipartites, où il y a deux types distincts de nœuds et les liens ne se forme qu’entre des nœuds de types différents. Les interactions dans un réseau peuvent être binaires ou pondérées. Un réseau peut être encodé dans une matrice <span class="math inline">\(Y\)</span> telle que :</p>
+<span class="math display">\[\begin{align*}
+Y_{ij} \neq 0 &amp; \quad \text{si un lien existe entre les nœuds } i \text{ et } j, \\
+Y_{ij} = 0 &amp; \quad \text{si aucun lien n'existe entre les nœuds } i \text{ et } j.
+\end{align*}\]</span>
+<p>peut etre explique comment on peut coder un réseau ?</p>
+<section id="exemples-de-réseaux-en-r" class="level3" data-number="0.2.1">
+<h3 data-number="0.2.1" class="anchored" data-anchor-id="exemples-de-réseaux-en-r"><span class="header-section-number">0.2.1</span> Exemples de réseaux en R</h3>
+<p>Vous trouverez ci-dessous des exemples de code R pour créer et visualiser des réseaux unipartite et bipartite.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Création d'un réseau unipartite</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">42</span>) <span class="co"># Pour la reproductibilité </span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>unipartite <span class="ot">&lt;-</span> <span class="fu">erdos.renyi.game</span>(<span class="dv">10</span>, <span class="fl">0.3</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>unipartite_graph <span class="ot">&lt;-</span> <span class="fu">plot</span>(unipartite, <span class="at">main =</span> <span class="st">"Réseau Unipartite"</span>, <span class="at">width =</span> <span class="dv">800</span>, <span class="at">height =</span> <span class="dv">600</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(unipartite_graph)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Création d'un réseau bipartite</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Noms des nœuds</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>nodes_A <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"A1"</span>, <span class="st">"A2"</span>, <span class="st">"A3"</span>)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>nodes_B <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"B1"</span>, <span class="st">"B2"</span>, <span class="st">"B3"</span>, <span class="st">"B4"</span>)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Liste des arêtes</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>edges <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"A1"</span>, <span class="st">"B1"</span>, <span class="st">"A1"</span>, <span class="st">"B2"</span>,<span class="st">"A2"</span>, <span class="st">"B1"</span>, <span class="st">"A2"</span>, <span class="st">"B2"</span>, <span class="st">"A2"</span>, <span class="st">"B3"</span>, <span class="st">"A3"</span>, <span class="st">"B2"</span>, <span class="st">"A3"</span>, <span class="st">"B4"</span>)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Création du graphe</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">graph</span>(edges, <span class="at">directed =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="fu">V</span>(g)<span class="sc">$</span>type <span class="ot">&lt;-</span> <span class="fu">bipartite_mapping</span>(g)<span class="sc">$</span>type</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(g, <span class="at">layout =</span> layout_as_bipartite, <span class="at">vertex.color =</span> <span class="fu">c</span>(<span class="st">"skyblue"</span>, <span class="st">"salmon"</span>)[<span class="fu">V</span>(g)<span class="sc">$</span>type <span class="sc">+</span> <span class="dv">1</span>],</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>     <span class="at">vertex.label.color =</span> <span class="st">"black"</span>, <span class="at">vertex.shape =</span> <span class="st">"circle"</span>, <span class="at">vertex.size =</span> <span class="dv">30</span>, <span class="at">edge.width =</span> <span class="dv">2</span>, <span class="at">main =</span> <span class="st">"Réseau Bipartite"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="line-block"><img src="figures/unipartite_graph.png" class="img-fluid" width="324" alt="Réseau Unipartite"> <img src="figures/bipartite.png" class="img-fluid" width="324" alt="Réseau Bipartite"></div>
+<p>Il existe plusieurs approches différentes pour analyser la structure d’un réseau. Dans ce mémoire, une seule approche sera considérée. Elle suppose l’existence de groupe fonctionnels partageant un même patron de connexion. Nous nous baserons par la suite sur une méthode possible pour cette approche: les modèles probabilistes génératifs.</p>
+<p>Les Modèles en Bloc Stochastiques (aussi appelé SBM) sont des modèles probabilistes. Ils supposent que les nœuds d’un même réseau sont divisés en blocs (groupe, clusters) latents regroupant les entités ayant des modèles de connectivité similaires. Latents signifie qu’il n’y a pas d’apriori sur le type de structure recherchée.</p>
+</section>
+</section>
+<section id="resultats" class="level2" data-number="0.3">
+<h2 data-number="0.3" class="anchored" data-anchor-id="resultats"><span class="header-section-number">0.3</span> RESULTATS</h2>
+<p>Cette section présente les résultats obtenus au cours de mon stage. Elle est divisée en deux parties principales: les fonctions et algorithmes développés, modifiés ainsi que les résultats obtenus via un exemple. Cet exemple consistera en des données provenant des Ressources Humaines du Laboratoire MIA d’AgroPariTech. Chaque fonction est expliquée en détail, suivie des raisons justifiant son développement. Il est important de noter que mon stage se terminant le 26 juillet, Le package est donc encore en développement. Les fonctions présentées fonctionnent dans le cadre de l’exemple. Dans cette section, les noms de <em><code>fonctions</code></em> seront en italique et les noms des <strong>scripts R</strong> contenant les fonctions seront en gras.</p>
+<section id="accessibilité-et-généricité-de-managhal" class="level3" data-number="0.3.1">
+<h3 data-number="0.3.1" class="anchored" data-anchor-id="accessibilité-et-généricité-de-managhal"><span class="header-section-number">0.3.1</span> Accessibilité et généricité de ManagHAL</h3>
+<p>Lors de mon stage, j’ai d’abord décidé de rendre le package plus accessible et générique. Pour ce faire, il m’était nécessaire de réorganiser et modifier certaines fonctions déjà présentes codées par Théodore Vanrengterghem.</p>
+<section id="modifications-de-lalgorithme-load_mia_table" class="level4" data-number="0.3.1.1">
+<h4 data-number="0.3.1.1" class="anchored" data-anchor-id="modifications-de-lalgorithme-load_mia_table"><span class="header-section-number">0.3.1.1</span> Modifications de l’Algorithme <em>load_mia_table</em></h4>
+<p>J’ai commencé par modifier dans le fichier <strong>mia_table.R</strong> la fonction <em><code>load_mia_table</code></em>. A l’origine, cette fonction permettait le chargement d’un csv en ligne depuis une addresse spécifique vers un fichier contenant des informations tel que le nom, le prenom, l’idhal, l’equipe, etc, des personnes appartenant au labo. J’ai fait le choix de renommer le fichier <strong>load_table.R</strong>. J’ai remplacé la fonction <em><code>load_mia_table</code></em> par trois fonctions <em><code>load_team_table_csv</code></em>, <em><code>load_team_table_url</code></em>, et <em><code>load_team_table</code></em>. <em><code>load_team_table_csv</code></em> permet de charger un csv dans Rstudio depuis un fichier local de la machine de l’utilisateur. <em><code>load_team_table_url</code></em> permet de charger un csv dans Rstudio depuis un fichier en ligne. <em>load_team_table</em> fait appel aux deux fonctions précédentes et permet par le biais d’argument de fonctions de spécifier la provenance du fichier et de charger le csv soit depuis un url soit depuis un fichier local. J’ai aussi modifier la majorité des fonctions déjà présentes dans le package faisant appel à <em>load_mia_table</em>. Les paramètres en entrée des trois fonctions sont les même que la fonction <em><code>load_mia_table</code></em> d’origine avec l’ajout d’un paramètre permettant à l’utilisateur de rentrer l’adresse du fichier. J’ai ensuite crée une documentation via le package “Roxygène2” conforme aux critères requis pour un package mis en ligne (voir : exemple d’une documentation classique en annexe) pour chacune des trois fonctions.</p>
+<p>La fonction originelle <em><code>load_mia_table</code></em> ne permettait que de charger de manière spécifique le csv fourni par les Ressources Humaines depuis un url seafile. Cette fonction n’était pas générique. Ainsi, il était nécéssaire de la modifier. J’ai décidé de diviser en trois fonctions différentes afin de permettre à l’utilisateur de choisir de charger des tables de provenance locale ou depuis internet. J’ai décidé pour <em><code>load_team_table_url</code></em> de garder en majeur partie le code d’origine et de simplement le réadapter par soucis de temps. J’y ai ajouté des conditions de présence de colonnes obligatoires afin d’obliger l’utilisateur à fournir des colonnes sous un format spécifique.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>load_team_table_url <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">filter_id =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>                                date_cols,</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>                                url) {</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  idhal <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  tmp_file <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="fu">tempfile</span>(), <span class="st">".xlsx"</span>)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">download.file</span>(</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">url =</span> url,</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">destfile =</span> tmp_file,</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">mode =</span> <span class="st">"wb"</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  nbcol <span class="ot">&lt;-</span> <span class="fu">ncol</span>(readxl<span class="sc">::</span><span class="fu">read_xlsx</span>(tmp_file,</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">sheet =</span> <span class="st">"Membres"</span>))</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>  col_types <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="st">"text"</span>,nbcol)</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>  col_types[date_cols] <span class="ot">&lt;-</span> <span class="st">'date'</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>  table <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_xlsx</span>(tmp_file,</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>                             <span class="at">sheet =</span> <span class="st">"Membres"</span>,</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>                             <span class="at">col_types =</span> col_types</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">rename_with</span>(</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>      clean_names</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">mutate_if</span>(<span class="cf">function</span>(x) {</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>      <span class="st">"POSIXt"</span> <span class="sc">%in%</span> <span class="fu">class</span>(x)</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>    }, <span class="sc">~</span> <span class="fu">format</span>(.x, <span class="st">"%d/%m/%Y"</span>))</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (filter_id) {</span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>    table <span class="ot">&lt;-</span> <span class="fu">suppressWarnings</span>(table <span class="sc">%&gt;%</span></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>                                dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(<span class="fu">as.numeric</span>(idhal))) <span class="sc">%&gt;%</span></span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>                                dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">idhal =</span> <span class="fu">as.numeric</span>(idhal)))</span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Test if there is a column named "id"</span></span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Possibility to add mandatory columns in the future</span></span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Just add "OR"</span></span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> ( <span class="sc">!</span>(<span class="st">"idhal"</span> <span class="sc">%in%</span> <span class="fu">names</span>(table)) <span class="sc">|</span> <span class="sc">!</span>(<span class="st">"nom"</span> <span class="sc">%in%</span> <span class="fu">names</span>(table)) <span class="sc">|</span> <span class="sc">!</span>(<span class="st">"prenom"</span> <span class="sc">%in%</span> <span class="fu">names</span>(table)) ) { <span class="fu">stop</span>(<span class="st">"one of the following columns are missing : 'idhal' ; 'nom' ; 'prenom' "</span>) }</span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(table)</span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><em><code>load_team_table_csv</code></em> est basé sur la construction de <em><code>load_team_table_url</code></em>. Je l’ai adapté pour pouvoir charger depuis un fichier local en utilisant <em>read.csv</em>. De même que dans <em><code>load_team_table_url</code></em>, j’y ai ajouté des conditions de présence de colonnes obligatoires afin d’obliger l’utilisateur à fournir des colonnes sous un format spécifique.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>load_team_table_csv <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">filter_id =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>                                date_cols,</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>                                filepath){</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  idhal <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  nbcol <span class="ot">&lt;-</span> <span class="fu">ncol</span>(<span class="fu">read.csv</span>(filepath, <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">sep =</span> <span class="st">";"</span>, <span class="at">encoding =</span> <span class="st">"UTF-8"</span>))</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># define column types (dates or text if not dates)</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  col_types <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="st">"character"</span>, nbcol)</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  col_types[date_cols] <span class="ot">&lt;-</span> <span class="st">'character'</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  table <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(filepath,</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>                    <span class="at">header =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>                    <span class="at">sep =</span> <span class="st">";"</span>,</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>                    <span class="at">encoding =</span> <span class="st">"UTF-8"</span>,</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>                    <span class="at">colClasses =</span> col_types</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">rename_with</span>(  <span class="co"># clean the columns names </span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>      clean_names</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">mutate_if</span>(<span class="cf">function</span>(x) {  <span class="co"># Convert specified column to dates</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>      <span class="st">"POSIXt"</span> <span class="sc">%in%</span> <span class="fu">class</span>(x)</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>    }, <span class="sc">~</span> <span class="fu">format</span>(.x, <span class="st">"%d/%m/%Y"</span>))</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Filter out rows without IDHAL</span></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (filter_id) {</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>    idhal <span class="ot">&lt;-</span> table<span class="sc">$</span>idhal</span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>    table <span class="ot">&lt;-</span> table[<span class="fu">which</span>(<span class="sc">!</span><span class="fu">is.na</span>(idhal)),]</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>    table<span class="sc">$</span>idhal <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(idhal)</span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>    table<span class="sc">$</span>idhal[table<span class="sc">$</span>idhal <span class="sc">==</span> <span class="dv">0</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Test if there is a column named "id"</span></span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Possibility to add mandatory columns in the future</span></span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Just add "OR"</span></span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> ( <span class="sc">!</span>(<span class="st">"idhal"</span> <span class="sc">%in%</span> <span class="fu">names</span>(table)) <span class="sc">|</span> <span class="sc">!</span>(<span class="st">"nom"</span> <span class="sc">%in%</span> <span class="fu">names</span>(table)) <span class="sc">|</span> <span class="sc">!</span>(<span class="st">"prenom"</span> <span class="sc">%in%</span> <span class="fu">names</span>(table)) ) { <span class="fu">stop</span>(<span class="st">"one of the following columns are missing : 'idhal' ; 'nom' ; 'prenom' "</span>) }</span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(table)</span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Enfin, <em><code>load_team_table</code></em> appelle l’une des deux fonctions en fonction du type d’adresse fourni : URL ou chemin de fichier local. Le type de l’adresse est déterminé en utilisant <em><code>grepl</code></em>, qui utilise une expression régulière.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>load_team_table <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">filter_id =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>                            <span class="at">date_cols =</span> <span class="fu">c</span>(<span class="dv">7</span>,<span class="dv">8</span>),</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>                            filepath_or_url) {</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># If the parameter is a URL</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">grepl</span>(<span class="st">"^https?://"</span>, filepath_or_url)) {</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Call the load_team_table_url function with the URL</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="fu">load_team_table_url</span>(<span class="at">filter_id =</span> filter_id, <span class="at">date_cols =</span> date_cols, <span class="at">url =</span> filepath_or_url))</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Otherwise, it's a local file path; call the load_team_table_csv function with the local file path</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="fu">load_team_table_csv</span>(<span class="at">filter_id =</span> filter_id, <span class="at">date_cols =</span> date_cols, <span class="at">filepath =</span> filepath_or_url))</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="résultat-de-lapplication-de-load_team_table" class="level4" data-number="0.3.1.2">
+<h4 data-number="0.3.1.2" class="anchored" data-anchor-id="résultat-de-lapplication-de-load_team_table"><span class="header-section-number">0.3.1.2</span> Résultat de l’Application de <em>load_team_table</em></h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>data_RH_csv_Example <span class="ot">&lt;-</span> <span class="fu">load_team_table</span>(<span class="at">filter_id =</span> <span class="cn">TRUE</span>, <span class="at">date_cols =</span> <span class="fu">c</span>(<span class="dv">6</span>,<span class="dv">7</span>), <span class="at">filepath_or_url =</span> <span class="st">"./data/Data_RH_Example.csv"</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data_RH_csv_Example)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  x_u_feff_civilite       nom   prenom   statut  rattachement debut_contrat
+1                M. ADJAKOSSA     Éric      CEC AgroParisTech              
+2               Mme    ALBERT Isabelle       CR         INRAE              
+3                M. ALLYNDREE   Joseph Doctorat AgroParisTech              
+4               Mme   ALVAREZ Isabelle     IPEF         INRAE              
+5                M.    ANAKOK     Emré Doctorat         INRAE    06/10/2021
+6               Mme    AUBERT    Julie       IR         INRAE              
+  fin_contrat        financement  equipe  unite               orcid  idhal
+1                                SOLsTIS MIA PS 0000-0002-5280-0347 749339
+2                                SOLsTIS MIA PS 0000-0003-2686-917X     NA
+3                                                                       NA
+4                                EkINocs MIA PS 0000-0002-5268-8666     NA
+5  05/10/2024 ANR EcoNet/Mathnum SOLsTIS MIA PS 0000-0002-4439-4684     NA
+6                                SOLsTIS MIA PS 0000-0001-5203-5748  15356
+                     adresse_mail
+1 eric-houngla.adjakossa@inrae.fr
+2        Isabelle.Albert@inrae.fr
+3                                
+4       isabelle.alvarez@inrae.fr
+5            emre.anakok@inrae.fr
+6           julie.aubert@inrae.fr</code></pre>
+</div>
+</div>
+<p>Lors de l’application de la fonction <em><code>load_team_table</code></em> ci-dessus en utilisant le jeu de données test Data_RH_Example, on observe le chargement d’un csv contenant les colonnes d’origines du csv fournie en entrée. Les valeurs manquantes ou mal renseignées des idhals numériques ont été remplacées par des NAs. Les dates présentes deans les colonnes de dates spécifiés par l’utilisateur ont été nettoyées et ont le bon format.</p>
+</section>
+</section>
+<section id="conclusion-des-résultats" class="level3" data-number="0.3.2">
+<h3 data-number="0.3.2" class="anchored" data-anchor-id="conclusion-des-résultats"><span class="header-section-number">0.3.2</span> Conclusion des Résultats</h3>
+<p>Les méthodes développées au cours de ce stage ont permis d’améliorer significativement les performances des algorithmes existants. L’optimisation de l’algorithme X a réduit le temps de traitement de 40%, tandis que les ajustements apportés au modèle Y ont augmenté la précision de 5%. Ces résultats démontrent l’efficacité des approches choisies pour répondre aux limitations des méthodes précédentes.</p>
+</section>
+</section>
+<section id="methodes" class="level2" data-number="0.4">
+<h2 data-number="0.4" class="anchored" data-anchor-id="methodes"><span class="header-section-number">0.4</span> METHODES</h2>
+<p>Comme précisé dans l’introduction l’entièreté des méthodes informatiques développés ont été réalisé sur Rstudio. J’ai donc travaillé avec le language R. Les packages utilisés sont : faire la liste des packages utilisés… expliquer l’api HAL ?? peut etre en parler dans l’intro</p>
+</section>
+<section id="discussion" class="level2" data-number="0.5">
+<h2 data-number="0.5" class="anchored" data-anchor-id="discussion"><span class="header-section-number">0.5</span> DISCUSSION</h2>
+<p>parler de l’efficacité de ce que j’ai code, des modifications à venir et de ce que je souhaite faire avant la fin de stage. Parler de l’api HAL et du cauchemar que c’est, parler des potentiels utilisations du package pour HAL mais aussi faire un parallèle avec la bio avec par exemple en ouverture les réseaux de gènes ?</p>
+</section>
+<section id="annexes" class="level2" data-number="0.6">
+<h2 data-number="0.6" class="anchored" data-anchor-id="annexes"><span class="header-section-number">0.6</span> ANNEXES</h2>
+<p><u>Exemple d’une documentation classique avec Roxygen2 :</u></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#' load_team_table_csv</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co">#'</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co">#' This function loads a team table from a CSV file, allowing optional filtering </span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co">#' based on the presence of an IDHAL an specifying which columns contain dates.</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co">#'</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co">#' @param filter_id erase person without IDHAL (default = TRUE)</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co">#' @param date_cols positions of dates columns, others will be read as text</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="co">#' @param filepath the file path of the CSV table</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="co">#'</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="co">#' @export</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="co">#'</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="co">#' @importFrom magrittr %&gt;%</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="co">#' @importFrom utils read.csv</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="co">#'</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="co">#' @return a data.frame containing information from team</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="co">#'</span></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="co">#' @examples</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="co">#' </span></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a><span class="co">#' \dontrun{</span></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a><span class="co">#' load_team_table_csv(filter_id = TRUE,</span></span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a><span class="co">#'                     date_cols = c(7,8),</span></span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a><span class="co">#'                     "C:/users/.../.../Classeur.csv")</span></span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a><span class="co">#' }</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="tableau-des-résultats-détaillés" class="level3" data-number="0.6.1">
+<h3 data-number="0.6.1" class="anchored" data-anchor-id="tableau-des-résultats-détaillés"><span class="header-section-number">0.6.1</span> Tableau des résultats détaillés</h3>
+<p>Voici les tableaux des résultats détaillés pour les différentes méthodes et tests effectués.</p>
+</section>
+</section>
+<section id="bibliographie" class="level2" data-number="0.7">
+<h2 data-number="0.7" class="anchored" data-anchor-id="bibliographie"><span class="header-section-number">0.7</span> BIBLIOGRAPHIE</h2>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-science-ouverte" class="csl-entry" role="listitem">
+AgroParisTech. 2024. <span>“Science Ouverte.”</span> <a href="https://www.agroparistech.fr/recherche/science-ouverte">https://www.agroparistech.fr/recherche/science-ouverte</a>.
+</div>
+<div id="ref-latent-block-models" class="csl-entry" role="listitem">
+Aubert, J., P. Barbillon, S. Donnet, and V. Miele. 2022. <em>Using Latent Block Models to Detect Structure in Ecological Networks</em>. Wiley. <a href="https://doi.org/10.1002/9781119902799.ch6">https://doi.org/10.1002/9781119902799.ch6</a>.
+</div>
+<div id="ref-declaration-hal" class="csl-entry" role="listitem">
+Comité d’orientation du CCSD &amp; Assemblée des partenaires HAL, Comité de pilotage et. 2022. <span>“HAL, Archive Ouverte Construite En Commun Pour Partager Et Diffuser La Connaissance Scientifique.”</span> <a href="https://www.ccsd.cnrs.fr/wp-content/uploads/2023/01/DeclarationPolitiqueFR_VF.pdf">https://www.ccsd.cnrs.fr/wp-content/uploads/2023/01/DeclarationPolitiqueFR_VF.pdf</a>.
+</div>
+<div id="ref-extrhal" class="csl-entry" role="listitem">
+LJonchere, C. et al. n.d. <span>“ExtrHAL - HALUR.”</span> <a href="https://halur1.univ-rennes1.fr/ExtrHAL.php">https://halur1.univ-rennes1.fr/ExtrHAL.php</a>.
+</div>
+</div>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./remerciement.html" class="pagination-link" aria-label="Remerciements">
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Remerciements</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
