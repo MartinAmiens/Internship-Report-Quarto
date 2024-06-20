@@ -46,7 +46,7 @@ Durant les 2 mois et 17 jours de mon stage, j’ai eu la chance d’être accuei
 
 Afin de comprendre les choix que j’ai réalisé lors du développement du package, il est nécessaire de présenter le package d’origine avant mes modifications, ses limitations. Un point rapide sera fait au cours de la partie contexte statistique sur les réseaux et les méthodes d’analyse statistique de réseau que j’ai utilisé. Le package "ManagHAL" contenait des fichiers essentiels dans la construction d’un package R tel que buildRignore (contenant la liste des fichiers à ignorer lors de la construction du package sur l’ordinateur de l’utilisateur). Il contenait aussi des fichiers de fonctions contenant les fonctions principales du package. Celles-ci permettent de récupérer toutes les publications associées à un unique ou à des multiples identifiants d’auteurs HAL, provenant d’un fichier tabulé d’identifiants fournie par les ressources humaines. Lors de la récupération, il est possible de spécifier les données des publications à récupérer. Ces dernières se présentent sous le format d’un fichier csv. Certaines de ces fonctions permettaient aussi de créer un rapport bibliographique automatique en ne donnant en entrée uniquement un identifiant auteur. Il existait des fonctions utiles au développement du package, afin de nettoyer mes données. Prenons par exemple "BorneDate" qui remplace les valeurs manquantes dans un vecteur de dates par une date limite spécifiée. Enfin, des fonctions permettaient réaliser des figures à partir des données des publications récupérés depuis HAL tel que des wordclouds ou des graphes.
 
-[**Dernier paragraphe ne me convient pas, je vais le retravailler !!!**]{.underline}
+[**Paragraphe précédent ne me convient pas, je vais le retravailler !!!**]{.underline}
 
 La finalité du package "ManagHAL" est de faciliter l’utilisation et la compréhension des données de publications. Afin de manipuler les données de publications et comprendre celles-ci, l’approche adoptée est de réaliser des réseaux et ensuite d’utiliser des outils d’analyse statistique de réseau. Les outils principaux utilisés à l’avenir dans "ManagHAL" seront les modélisations en blocs stochastiques ou latents. Mon mémoire est organisé de la manière suivante: En premier lieu, le contexte statistique nécessaire à la compréhension des outils utilisés est présenté. Puis, dans la partie suivante sont abordés, les méthodes informatiques développées et les résultats d’analyse de données-exemples obtenus. (pour lequel tout marche, précisez que je fais ça pcq mon stage n’est pas terminé). Dans un troisième temps, les méthodes déjà publiées utilisées sont précisées. Enfin, dans une ultime partie, les résultats sont discutés.
 
@@ -54,7 +54,7 @@ La finalité du package "ManagHAL" est de faciliter l’utilisation et la compr�
 
 Cette partie est principalement basée sur la publication "Using Latent Block Models to Detect Structure in Ecological Networks" @latent-block-models
 
-Un réseau d’interaction est composé de nœuds (les entités) et d’arêtes (les liens entre ces entités). Les réseaux sont répartis en deux groupes principaux: les réseaux Unipartites, où tous les nœuds sont du même type, et les réseaux Bipartites, où il y a deux types distincts de nœuds et les liens ne se forme qu’entre des nœuds de types différents. Les interactions dans un réseau peuvent être binaires ou pondérées. Un réseau peut être encodé dans une matrice $Y$ telle que :
+Un réseau d’interaction est composé de nœuds (les entités) et d’arêtes (les liens entre ces entités). Les réseaux sont répartis en deux groupes principaux: les réseaux Unipartites, où tous les nœuds sont du même type, et les réseaux Bipartites, où il y a deux types distincts de nœuds et les liens ne se forme qu’entre des nœuds de types différents. Les interactions dans un réseau peuvent être binaires ou pondérées. Un réseau peut être encodé dans une matrice $Y$ d'adjacence telle que :
 
 ```{=tex}
 \begin{align*}
@@ -62,10 +62,6 @@ Y_{ij} \neq 0 & \quad \text{si un lien existe entre les nœuds } i \text{ et } j
 Y_{ij} = 0 & \quad \text{si aucun lien n'existe entre les nœuds } i \text{ et } j.
 \end{align*}
 ```
-peut etre explique comment on peut coder un réseau ?
-
-### Exemples de réseaux en R
-
 Vous trouverez ci-dessous des exemples de code R pour créer et visualiser des réseaux unipartite et bipartite.
 
 ```{r exemple de reseau, eval = FALSE}
@@ -73,8 +69,9 @@ Vous trouverez ci-dessous des exemples de code R pour créer et visualiser des r
 # Création d'un réseau unipartite
 set.seed(42) # Pour la reproductibilité 
 unipartite <- erdos.renyi.game(10, 0.3)
-unipartite_graph <- plot(unipartite, main = "Réseau Unipartite", width = 800, height = 600)
-print(unipartite_graph)
+# unipartite_graph <- plot(unipartite, main = "Réseau Unipartite", width = 800, height = 600)
+# print(unipartite_graph)
+matrice_adjacence_unipartite <- as.matrix(unipartite, "adjacency")
 
 # Création d'un réseau bipartite
 # Noms des nœuds
@@ -83,17 +80,19 @@ nodes_B <- c("B1", "B2", "B3", "B4")
 # Liste des arêtes
 edges <- c("A1", "B1", "A1", "B2","A2", "B1", "A2", "B2", "A2", "B3", "A3", "B2", "A3", "B4")
 # Création du graphe
-g <- graph(edges, directed = FALSE)
-V(g)$type <- bipartite_mapping(g)$type
-plot(g, layout = layout_as_bipartite, vertex.color = c("skyblue", "salmon")[V(g)$type + 1],
+bipartite <- graph(edges, directed = FALSE)
+V(bipartite)$type <- bipartite_mapping(bipartite)$type
+plot(bipartite, layout = layout_as_bipartite, vertex.color = c("skyblue", "salmon")[V(bipartite)$type + 1],
      vertex.label.color = "black", vertex.shape = "circle", vertex.size = 30, edge.width = 2, main = "Réseau Bipartite")
+matrice_adjacence_bipartite <- as.matrix(bipartite, "adjacency")
 ```
 
 | ![Réseau Unipartite](figures/unipartite_graph.png){width="324"} ![Réseau Bipartite](figures/bipartite.png){width="324"}
+| [**mettre une légende avec titre important !!!**]{.underline}
 
 Il existe plusieurs approches différentes pour analyser la structure d’un réseau. Dans ce mémoire, une seule approche sera considérée. Elle suppose l’existence de groupe fonctionnels partageant un même patron de connexion. Nous nous baserons par la suite sur une méthode possible pour cette approche: les modèles probabilistes génératifs.
 
-Les Modèles en Bloc Stochastiques (aussi appelé SBM) sont des modèles probabilistes. Ils supposent que les nœuds d’un même réseau sont divisés en blocs (groupe, clusters) latents regroupant les entités ayant des modèles de connectivité similaires. Latents signifie qu’il n’y a pas d’apriori sur le type de structure recherchée.
+Les Modèles en Bloc Stochastiques (aussi appelé SBM) sont des modèles probabilistes. Ils supposent que les nœuds d’un même réseau sont divisés en blocs (groupe, clusters) latents regroupant les entités ayant des modèles de connectivité similaires. Latents signifie qu’il n’y a pas d’apriori sur le type de structure recherchée. Ces modèles sont utiles pour détecter les groupes, les clusters aux sein d'un réseau complexe.
 
 ## RESULTATS
 
@@ -226,6 +225,8 @@ head(data_RH_csv_Example)
 Lors de l'application de la fonction *`load_team_table`* ci-dessus en utilisant le jeu de données test Data_RH_Example, on observe le chargement d'un csv contenant les colonnes d'origines du csv fournie en entrée. Les valeurs manquantes ou mal renseignées des idhals numériques ont été remplacées par des NAs. Les dates présentes deans les colonnes de dates spécifiés par l'utilisateur ont été nettoyées et ont le bon format.
 
 #### Modifications des fonctions régissant la requète HAL
+
+Parler des modification faites a HAL_query (add_outputs), pourquoi ? (je souhaite obtenir des informations bien particulières pour pouvoir coder le reseau de co-author et construire un sbm sur le reseau ?
 
 ### Conclusion des Résultats
 
