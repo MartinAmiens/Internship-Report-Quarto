@@ -102,8 +102,9 @@ Les noeuds sont partitionnés en $K$ groupes latents. On définit un vecteur $Z$
 
 -   $P(Y_{ij} = 1 | Z_i = k, Z_j = k') = \gamma_{kk'}$ , est la probabilité pour une paire de noeuds appartenant à un bloc $k$ et à un bloc $k'$ d'être en interaction (dans le cas binaire).
 
-à finir...
+Nous avons donc comme paramètre du modèle $\theta = (\gamma, \pi)$. A partir du réseau connu, il est possible d'inférer les paramètres du modèle. Par nécessité d'écourter le rapport, une explication détaillé ne sera pas réalisé. Je vous conseille cependant d'aller voir la publication "Using Latent Block Models to Detect Structure in Ecological Networks" @latent-block-models où les explications à ce propos sont claires et précises.
 
+à finir...
 
 ## METHODES
 
