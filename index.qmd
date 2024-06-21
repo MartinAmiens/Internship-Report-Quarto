@@ -96,7 +96,13 @@ Il existe plusieurs approches différentes pour analyser la structure d’un ré
 
 Les Modèles en Bloc Stochastiques (aussi appelé SBM) sont des modèles probabilistes. Ils supposent que les nœuds d’un même réseau sont divisés en blocs (groupe, clusters) latents regroupant les entités ayant des modèles de connectivité similaires. Latents signifie qu’il n’y a pas d’apriori sur le type de structure recherchée. Ces modèles sont utiles pour détecter les communautés, les clusters aux sein d'un réseau complexe. Pour réaliser un modèle en bloc stochastique, il est nécessaire de supposer que le réseau obtenu à partir de mes données est une réalisation de mon modèle.
 
-Les noeuds sont partitionnés en $K$ groupes latents. On définit un vecteur $Z$ où $Zi = k$ , $k$ est le bloc auquel appartient le noeud $i$ .
+Les noeuds sont partitionnés en $K$ groupes latents. On définit un vecteur $Z$ où $Zi = k$ , $k$ est le bloc auquel appartient le noeud $i$ . Dans le cas d'un réseau unipartite, on définit deux probabilités :
+
+-   $P(Zi = k) = \pi_k$ , est la probabilité d'appartenance au groupe $k$.
+
+-   $P(Y_{ij} = 1 | Z_i = k, Z_j = k') = \gamma_{kk'}$ , est la probabilité pour une paire de noeuds appartenant à un bloc $k$ et à un bloc $k'$ d'être en interaction (dans le cas binaire).
+
+-   
 
 ## RESULTATS
 
