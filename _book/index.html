@@ -330,8 +330,9 @@ Y_{ij} = 0 &amp; \quad \text{si aucun lien n'existe entre les nœuds } i \text{ 
 </section>
 <section id="methodes" class="level2" data-number="0.3">
 <h2 data-number="0.3" class="anchored" data-anchor-id="methodes"><span class="header-section-number">0.3</span> METHODES</h2>
-<p>Comme précisé dans l’introduction l’entièreté des méthodes informatiques développés ont été réalisé sur Rstudio. J’ai donc travaillé avec le language R. Les packages utilisés sont : dplyr (<strong>pourquoi ?</strong>), mailR<strong>(pourquoi ?</strong>), <strong>… faire la liste des packages utilisés …</strong></p>
-<p><strong>Expliquer l’api HAL ?</strong> La construction d’une requete consiste en réalité en la construction d’une url contenant différents paramètres. Ainsi, une requète est composée des paramètres suivants : … expliquer la construction d’une requete HAL</p>
+<p>Comme précisé dans l’introduction, l’entièreté des méthodes informatiques développées ont été réalisées sur RStudio en utilisant le langage R version 4.4.1 sous windows 11 x64. Les packages utilisés sont les suivants :</p>
+<p>Le package “dplyr” est utilisé pour la manipulation et la transformation des données grâce à une syntaxe claire et cohérente. Ce package facilite les opérations courantes telles que la sélection, le filtrage, le regroupement et le résumé des données. Le package “mailR” est utilisé pour l’envoi d’emails avec des pièces jointes directement depuis R, ce qui est utile pour automatiser l’envoi de rapports. Le package “askpass” est utilisé pour gérer les mots de passe de manière sécurisée. Le package “furrr” est utilisé pour paralléliser les tâches en combinaison avec le package “future”. Le package “future” permet l’exécution de code en parallèle, ce qui réduit le temps de traitement des tâches lourdes. Le package “ggplot2” est utilisé pour la création de visualisations graphiques sophistiquées. Le package “magrittr” fournit des opérateurs pour améliorer la lisibilité du code, en particulier l’opérateur <code>%&gt;%</code> (pipe). Le package “purrr” est utilisé pour les opérations fonctionnelles sur les listes et autres structures de données. Le package “quarto” est utilisé pour la création de documents dynamiques et de rapports. Le package “readxl” permet la lecture de fichiers Excel. Le package “rvest” est utilisé pour le web scraping, c’est-à-dire l’extraction de données à partir de pages web. Le package “SnowballC” est utilisé pour le traitement de la langue naturelle, en particulier pour la lemmatisation. Le package “stringr” fournit des fonctions pour la manipulation des chaînes de caractères. Le package “tictoc” est utilisé pour mesurer le temps d’exécution des morceaux de code. Le package “tm” est utilisé pour le text mining (extraction de connaissances à partir de textes). Le package “wordcloud” est utilisé pour la création de nuages de mots.</p>
+<p>Afin de pouvoir construire une requète HAL pour récupèrer des données bibliographiques de publications d’auteurs, il est nécessaire de comprendre comment construire une requete.</p>
 </section>
 <section id="resultats" class="level2" data-number="0.4">
 <h2 data-number="0.4" class="anchored" data-anchor-id="resultats"><span class="header-section-number">0.4</span> RESULTATS</h2>
@@ -452,20 +453,20 @@ Y_{ij} = 0 &amp; \quad \text{si aucun lien n'existe entre les nœuds } i \text{ 
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>data_RH_csv_Example <span class="ot">&lt;-</span> <span class="fu">load_team_table</span>(<span class="at">filter_id =</span> <span class="cn">TRUE</span>, <span class="at">date_cols =</span> <span class="fu">c</span>(<span class="dv">6</span>,<span class="dv">7</span>), <span class="at">filepath_or_url =</span> <span class="st">"./data/Data_RH_Example.csv"</span>)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data_RH_csv_Example)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  x_u_feff_civilite       nom   prenom   statut  rattachement debut_contrat
-1                M. ADJAKOSSA     Éric      CEC AgroParisTech              
-2               Mme    ALBERT Isabelle       CR         INRAE              
-3                M. ALLYNDREE   Joseph Doctorat AgroParisTech              
-4               Mme   ALVAREZ Isabelle     IPEF         INRAE              
-5                M.    ANAKOK     Emré Doctorat         INRAE    06/10/2021
-6               Mme    AUBERT    Julie       IR         INRAE              
-  fin_contrat        financement  equipe  unite               orcid  idhal
-1                                SOLsTIS MIA PS 0000-0002-5280-0347 749339
-2                                SOLsTIS MIA PS 0000-0003-2686-917X     NA
-3                                                                       NA
-4                                EkINocs MIA PS 0000-0002-5268-8666     NA
-5  05/10/2024 ANR EcoNet/Mathnum SOLsTIS MIA PS 0000-0002-4439-4684     NA
-6                                SOLsTIS MIA PS 0000-0001-5203-5748  15356
+<pre><code>  civilite       nom   prenom   statut  rattachement debut_contrat fin_contrat
+1       M. ADJAKOSSA     Éric      CEC AgroParisTech                          
+2      Mme    ALBERT Isabelle       CR         INRAE                          
+3       M. ALLYNDREE   Joseph Doctorat AgroParisTech                          
+4      Mme   ALVAREZ Isabelle     IPEF         INRAE                          
+5       M.    ANAKOK     Emré Doctorat         INRAE    06/10/2021  05/10/2024
+6      Mme    AUBERT    Julie       IR         INRAE                          
+         financement  equipe  unite               orcid  idhal
+1                    SOLsTIS MIA PS 0000-0002-5280-0347 749339
+2                    SOLsTIS MIA PS 0000-0003-2686-917X     NA
+3                                                           NA
+4                    EkINocs MIA PS 0000-0002-5268-8666     NA
+5 ANR EcoNet/Mathnum SOLsTIS MIA PS 0000-0002-4439-4684     NA
+6                    SOLsTIS MIA PS 0000-0001-5203-5748  15356
                      adresse_mail
 1 eric-houngla.adjakossa@inrae.fr
 2        Isabelle.Albert@inrae.fr

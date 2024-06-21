@@ -106,43 +106,11 @@ Nous avons donc comme paramètres du modèle $\theta = (\gamma, \pi)$. A partir 
 
 ## METHODES
 
-```         
-R version 4.1.2 (2021-11-01) Platform: x86_64-w64-mingw32/x64 (64-bit) Running under: Windows 10 x64 (build 22631)
-```
+Comme précisé dans l'introduction, l'entièreté des méthodes informatiques développées ont été réalisées sur RStudio en utilisant le langage R version 4.4.1 sous windows 11 x64. Les packages utilisés sont les suivants :
 
-Comme précisé dans l'introduction, l'entièreté des méthodes informatiques développées ont été réalisées sur RStudio en utilisant le langage R version 4.1.2. Les packages utilisés sont les suivants :
+Le package "dplyr" est utilisé pour la manipulation et la transformation des données grâce à une syntaxe claire et cohérente. Ce package facilite les opérations courantes telles que la sélection, le filtrage, le regroupement et le résumé des données. Le package "mailR" est utilisé pour l'envoi d'emails avec des pièces jointes directement depuis R, ce qui est utile pour automatiser l'envoi de rapports. Le package "askpass" est utilisé pour gérer les mots de passe de manière sécurisée. Le package "furrr" est utilisé pour paralléliser les tâches en combinaison avec le package "future". Le package "future" permet l'exécution de code en parallèle, ce qui réduit le temps de traitement des tâches lourdes. Le package "ggplot2" est utilisé pour la création de visualisations graphiques sophistiquées. Le package "magrittr" fournit des opérateurs pour améliorer la lisibilité du code, en particulier l'opérateur `%>%` (pipe). Le package "purrr" est utilisé pour les opérations fonctionnelles sur les listes et autres structures de données. Le package "quarto" est utilisé pour la création de documents dynamiques et de rapports. Le package "readxl" permet la lecture de fichiers Excel. Le package "rvest" est utilisé pour le web scraping, c'est-à-dire l'extraction de données à partir de pages web. Le package "SnowballC" est utilisé pour le traitement de la langue naturelle, en particulier pour la lemmatisation. Le package "stringr" fournit des fonctions pour la manipulation des chaînes de caractères. Le package "tictoc" est utilisé pour mesurer le temps d'exécution des morceaux de code. Le package "tm" est utilisé pour le text mining (extraction de connaissances à partir de textes). Le package "wordcloud" est utilisé pour la création de nuages de mots.
 
--   **dplyr** : Utilisé pour la manipulation et la transformation des données grâce à une syntaxe claire et cohérente. Ce package facilite les opérations courantes telles que la sélection, le filtrage, le regroupement et le résumé des données.
-
--   **mailR** : Utilisé pour l'envoi d'emails automatiques. Ce package permet d'envoyer des emails avec des pièces jointes directement depuis R, ce qui est utile pour automatiser l'envoi de rapports.
-
--   **askpass** : Utilisé pour gérer les mots de passe de manière sécurisée.
-
--   **furrr** : Utilisé pour paralléliser les tâches en combinaison avec le package **future**.
-
--   **future** : Permet l'exécution de code en parallèle, ce qui réduit le temps de traitement des tâches lourdes.
-
--   **ggplot2** : Utilisé pour la création de visualisations graphiques sophistiquées.
-
--   **magrittr** : Fournit des opérateurs pour améliorer la lisibilité du code, en particulier l'opérateur `%>%` (pipe).
-
--   **purrr** : Utilisé pour les opérations fonctionnelles sur les listes et autres structures de données.
-
--   **quarto** : Utilisé pour la création de documents dynamiques et de rapports.
-
--   **readxl** : Permet la lecture de fichiers Excel.
-
--   **rvest** : Utilisé pour le web scraping, c'est-à-dire l'extraction de données à partir de pages web.
-
--   **SnowballC** : Utilisé pour le traitement de la langue naturelle, en particulier pour la lemmatisation.
-
--   **stringr** : Fournit des fonctions pour la manipulation des chaînes de caractères.
-
--   **tictoc** : Utilisé pour mesurer le temps d'exécution des morceaux de code.
-
--   **tm** : Utilisé pour le text mining (extraction de connaissances à partir de textes).
-
--   **wordcloud** : Utilisé pour la création de nuages de mots.
+Afin de pouvoir construire une requète HAL pour récupèrer des données bibliographiques de publications d'auteurs, il est nécessaire de comprendre comment construire une requete.
 
 ## RESULTATS
 
