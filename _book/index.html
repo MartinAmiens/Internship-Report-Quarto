@@ -219,9 +219,11 @@ window.Quarto = {
   <li><a href="#discussion" id="toc-discussion" class="nav-link" data-scroll-target="#discussion"><span class="header-section-number">1.5</span> DISCUSSION</a></li>
   <li><a href="#annexes" id="toc-annexes" class="nav-link" data-scroll-target="#annexes"><span class="header-section-number">1.6</span> ANNEXES</a>
   <ul class="collapse">
-  <li><a href="#load-team-table-url" id="toc-load-team-table-url" class="nav-link" data-scroll-target="#load-team-table-url"><span class="header-section-number">1.6.1</span> load_team_table_url :</a></li>
-  <li><a href="#doc-Roxygen2" id="toc-doc-Roxygen2" class="nav-link" data-scroll-target="#doc-Roxygen2"><span class="header-section-number">1.6.2</span> Exemple d’une documentation classique avec Roxygen2 :</a></li>
-  <li><a href="#tableau-des-résultats-détaillés" id="toc-tableau-des-résultats-détaillés" class="nav-link" data-scroll-target="#tableau-des-résultats-détaillés"><span class="header-section-number">1.6.3</span> Tableau des résultats détaillés</a></li>
+  <li><a href="#load-team-table-url" id="toc-load-team-table-url" class="nav-link" data-scroll-target="#load-team-table-url"><span class="header-section-number">1.6.1</span> load_team_table_url</a></li>
+  <li><a href="#load-team-table-csv" id="toc-load-team-table-csv" class="nav-link" data-scroll-target="#load-team-table-csv"><span class="header-section-number">1.6.2</span> load_team_table_csv</a></li>
+  <li><a href="#load-team-table" id="toc-load-team-table" class="nav-link" data-scroll-target="#load-team-table"><span class="header-section-number">1.6.3</span> load_team_table</a></li>
+  <li><a href="#doc-Roxygen2" id="toc-doc-Roxygen2" class="nav-link" data-scroll-target="#doc-Roxygen2"><span class="header-section-number">1.6.4</span> Exemple d’une documentation classique avec Roxygen2</a></li>
+  <li><a href="#tableau-des-résultats-détaillés" id="toc-tableau-des-résultats-détaillés" class="nav-link" data-scroll-target="#tableau-des-résultats-détaillés"><span class="header-section-number">1.6.5</span> Tableau des résultats détaillés</a></li>
   </ul></li>
   <li><a href="#bibliographie" id="toc-bibliographie" class="nav-link" data-scroll-target="#bibliographie"><span class="header-section-number">1.7</span> BIBLIOGRAPHIE</a></li>
   </ul></li>
@@ -356,73 +358,16 @@ Y_{ij} = 0 &amp; \quad \text{si aucun lien n'existe entre les nœuds } i \text{ 
 <p>Lors de mon stage, j’ai d’abord décidé de rendre le package plus accessible et générique. Pour ce faire, il m’était nécessaire de réorganiser et modifier certaines fonctions déjà présentes codées par Théodore Vanrengterghem.</p>
 <section id="modifications-de-la-fonction-load_mia_table" class="level4" data-number="1.4.1.1">
 <h4 data-number="1.4.1.1" class="anchored" data-anchor-id="modifications-de-la-fonction-load_mia_table"><span class="header-section-number">1.4.1.1</span> Modifications de la fonction <em><code>load_mia_table</code></em></h4>
-<p>J’ai commencé par modifier dans le fichier <strong>mia_table.R</strong> la fonction <em><code>load_mia_table</code></em>. A l’origine, cette fonction permettait le chargement d’un csv en ligne depuis une addresse spécifique vers un fichier contenant des informations tel que le nom, le prenom, l’idhal, l’equipe, etc, des personnes appartenant au labo. J’ai fait le choix de renommer le fichier <strong>load_table.R</strong>. J’ai remplacé la fonction <em><code>load_mia_table</code></em> par trois fonctions <em><code>load_team_table_csv</code></em>, <em><code>load_team_table_url</code></em>, et <em><code>load_team_table</code></em>. <em><code>load_team_table_csv</code></em> permet de charger un csv dans Rstudio depuis un fichier local de la machine de l’utilisateur. <em><code>load_team_table_url</code></em> permet de charger un csv dans Rstudio depuis un fichier en ligne. <em>load_team_table</em> fait appel aux deux fonctions précédentes et permet par le biais d’argument de fonctions de spécifier la provenance du fichier et de charger le csv soit depuis un url soit depuis un fichier local. J’ai aussi modifier la majorité des fonctions déjà présentes dans le package faisant appel à <em>load_mia_table</em>. Les paramètres en entrée des trois fonctions sont les même que la fonction <em><code>load_mia_table</code></em> d’origine avec l’ajout d’un paramètre permettant à l’utilisateur de rentrer l’adresse du fichier. J’ai ensuite crée une documentation via le package “Roxygène2” conforme aux critères requis pour un package mis en ligne (veuillez vous referez à l’annexe : <span class="citation" data-cites="doc-Roxygen2">(<a href="#ref-doc-Roxygen2" role="doc-biblioref"><strong>doc-Roxygen2?</strong></a>)</span> ) pour chacune des trois fonctions.</p>
-<p>La fonction originelle <em><code>load_mia_table</code></em> ne permettait que de charger de manière spécifique le csv fourni par les Ressources Humaines depuis un url seafile. Cette fonction n’était pas générique. Ainsi, il était nécéssaire de la modifier. J’ai décidé de diviser en trois fonctions différentes afin de permettre à l’utilisateur de choisir de charger des tables de provenance locale ou depuis internet. J’ai décidé pour <em><code>load_team_table_url</code></em> de garder en majeur partie le code d’origine et de simplement le réadapter par soucis de temps. J’y ai ajouté des conditions de présence de colonnes obligatoires afin d’obliger l’utilisateur à fournir des colonnes sous un format spécifique. (Pour voir le corps de la fonction, veuillez vous référer à l’annexe : <span class="citation" data-cites="load-team-table-url">(<a href="#ref-load-team-table-url" role="doc-biblioref"><strong>load-team-table-url?</strong></a>)</span> )</p>
-<p><em><code>load_team_table_csv</code></em> est basé sur la construction de <em><code>load_team_table_url</code></em>. Je l’ai adapté pour pouvoir charger depuis un fichier local en utilisant <em>read.csv</em>. De même que dans <em><code>load_team_table_url</code></em>, j’y ai ajouté des conditions de présence de colonnes obligatoires afin d’obliger l’utilisateur à fournir des colonnes sous un format spécifique.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>load_team_table_csv <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">filter_id =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>                                date_cols,</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>                                filepath){</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  idhal <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  nbcol <span class="ot">&lt;-</span> <span class="fu">ncol</span>(<span class="fu">read.csv</span>(filepath, <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">sep =</span> <span class="st">";"</span>, <span class="at">encoding =</span> <span class="st">"UTF-8"</span>))</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># define column types (dates or text if not dates)</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  col_types <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="st">"character"</span>, nbcol)</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  col_types[date_cols] <span class="ot">&lt;-</span> <span class="st">'character'</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  table <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(filepath,</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>                    <span class="at">header =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>                    <span class="at">sep =</span> <span class="st">";"</span>,</span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>                    <span class="at">encoding =</span> <span class="st">"UTF-8"</span>,</span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>                    <span class="at">colClasses =</span> col_types</span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">rename_with</span>(  <span class="co"># clean the columns names </span></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>      clean_names</span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span></span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">mutate_if</span>(<span class="cf">function</span>(x) {  <span class="co"># Convert specified column to dates</span></span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>      <span class="st">"POSIXt"</span> <span class="sc">%in%</span> <span class="fu">class</span>(x)</span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>    }, <span class="sc">~</span> <span class="fu">format</span>(.x, <span class="st">"%d/%m/%Y"</span>))</span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Filter out rows without IDHAL</span></span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (filter_id) {</span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>    idhal <span class="ot">&lt;-</span> table<span class="sc">$</span>idhal</span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>    table <span class="ot">&lt;-</span> table[<span class="fu">which</span>(<span class="sc">!</span><span class="fu">is.na</span>(idhal)),]</span>
-<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>    table<span class="sc">$</span>idhal <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(idhal)</span>
-<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>    table<span class="sc">$</span>idhal[table<span class="sc">$</span>idhal <span class="sc">==</span> <span class="dv">0</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
-<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Test if there is a column named "id"</span></span>
-<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Possibility to add mandatory columns in the future</span></span>
-<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Just add "OR"</span></span>
-<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> ( <span class="sc">!</span>(<span class="st">"idhal"</span> <span class="sc">%in%</span> <span class="fu">names</span>(table)) <span class="sc">|</span> <span class="sc">!</span>(<span class="st">"nom"</span> <span class="sc">%in%</span> <span class="fu">names</span>(table)) <span class="sc">|</span> <span class="sc">!</span>(<span class="st">"prenom"</span> <span class="sc">%in%</span> <span class="fu">names</span>(table)) ) { <span class="fu">stop</span>(<span class="st">"one of the following columns are missing : 'idhal' ; 'nom' ; 'prenom' "</span>) }</span>
-<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(table)</span>
-<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Enfin, <em><code>load_team_table</code></em> appelle l’une des deux fonctions en fonction du type d’adresse fourni : URL ou chemin de fichier local. Le type de l’adresse est déterminé en utilisant <em><code>grepl</code></em>, qui utilise une expression régulière.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>load_team_table <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">filter_id =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>                            <span class="at">date_cols =</span> <span class="fu">c</span>(<span class="dv">7</span>,<span class="dv">8</span>),</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>                            filepath_or_url) {</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># If the parameter is a URL</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">grepl</span>(<span class="st">"^https?://"</span>, filepath_or_url)) {</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Call the load_team_table_url function with the URL</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="fu">load_team_table_url</span>(<span class="at">filter_id =</span> filter_id, <span class="at">date_cols =</span> date_cols, <span class="at">url =</span> filepath_or_url))</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Otherwise, it's a local file path; call the load_team_table_csv function with the local file path</span></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="fu">load_team_table_csv</span>(<span class="at">filter_id =</span> filter_id, <span class="at">date_cols =</span> date_cols, <span class="at">filepath =</span> filepath_or_url))</span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<p>J’ai commencé par modifier dans le fichier <strong>mia_table.R</strong> la fonction <em><code>load_mia_table</code></em>. A l’origine, cette fonction permettait le chargement d’un csv en ligne depuis une addresse spécifique vers un fichier contenant des informations tel que le nom, le prenom, l’idhal, l’equipe, etc, des personnes appartenant au labo. J’ai fait le choix de renommer le fichier <strong>load_table.R</strong>. J’ai remplacé la fonction <em><code>load_mia_table</code></em> par trois fonctions <em><code>load_team_table_csv</code></em>, <em><code>load_team_table_url</code></em>, et <em><code>load_team_table</code></em>. <em><code>load_team_table_csv</code></em> permet de charger un csv dans Rstudio depuis un fichier local de la machine de l’utilisateur. <em><code>load_team_table_url</code></em> permet de charger un csv dans Rstudio depuis un fichier en ligne. <em>load_team_table</em> fait appel aux deux fonctions précédentes et permet par le biais d’argument de fonctions de spécifier la provenance du fichier et de charger le csv soit depuis un url soit depuis un fichier local. J’ai aussi modifier la majorité des fonctions déjà présentes dans le package faisant appel à <em>load_mia_table</em>. Les paramètres en entrée des trois fonctions sont les même que la fonction <em><code>load_mia_table</code></em> d’origine avec l’ajout d’un paramètre permettant à l’utilisateur de rentrer l’adresse du fichier. J’ai ensuite crée une documentation via le package “Roxygène2” conforme aux critères requis pour un package mis en ligne (veuillez vous referez à l’annexe : <a href="#doc-Roxygen2">Exemple d’une documentation classique avec Roxygen2</a> ) pour chacune des trois fonctions.</p>
+<p>La fonction originelle <em><code>load_mia_table</code></em> ne permettait que de charger de manière spécifique le csv fourni par les Ressources Humaines depuis un url seafile. Cette fonction n’était pas générique. Ainsi, il était nécéssaire de la modifier. J’ai décidé de diviser en trois fonctions différentes afin de permettre à l’utilisateur de choisir de charger des tables de provenance locale ou depuis internet. J’ai décidé pour <em><code>load_team_table_url</code></em> de garder en majeur partie le code d’origine et de simplement le réadapter par soucis de temps. J’y ai ajouté des conditions de présence de colonnes obligatoires afin d’obliger l’utilisateur à fournir des colonnes sous un format spécifique. (Pour voir le corps de la fonction, veuillez vous référer à l’annexe : <a href="#load-team-table-url">load_team_table_url</a>)</p>
+<p><em><code>load_team_table_csv</code></em> est basé sur la construction de <em><code>load_team_table_url</code></em>. Je l’ai adapté pour pouvoir charger depuis un fichier local en utilisant <em>read.csv</em>. De même que dans <em><code>load_team_table_url</code></em>, j’y ai ajouté des conditions de présence de colonnes obligatoires afin d’obliger l’utilisateur à fournir des colonnes sous un format spécifique. (Pour voir le corps de la fonction, veuillez vous référer à l’annexe : <a href="#load-team-table-csv">load_team_table_csv</a>)</p>
+<p>Enfin, <em><code>load_team_table</code></em> appelle l’une des deux fonctions en fonction du type d’adresse fourni : URL ou chemin de fichier local. Le type de l’adresse est déterminé en utilisant <em><code>grepl</code></em>, qui utilise une expression régulière. (Pour voir le corps de la fonction, veuillez vous référer à l’annexe : <a href="#load-team-table">load_team_table</a>)</p>
 </section>
 <section id="résultat-de-lapplication-de-load_team_table" class="level4" data-number="1.4.1.2">
 <h4 data-number="1.4.1.2" class="anchored" data-anchor-id="résultat-de-lapplication-de-load_team_table"><span class="header-section-number">1.4.1.2</span> Résultat de l’Application de <em>load_team_table</em></h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>data_RH_csv_Example <span class="ot">&lt;-</span> <span class="fu">load_team_table</span>(<span class="at">filter_id =</span> <span class="cn">TRUE</span>, <span class="at">date_cols =</span> <span class="fu">c</span>(<span class="dv">6</span>,<span class="dv">7</span>), <span class="at">filepath_or_url =</span> <span class="st">"./data/Data_RH_Example.csv"</span>)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data_RH_csv_Example)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>data_RH_csv_Example <span class="ot">&lt;-</span> <span class="fu">load_team_table</span>(<span class="at">filter_id =</span> <span class="cn">TRUE</span>, <span class="at">date_cols =</span> <span class="fu">c</span>(<span class="dv">6</span>,<span class="dv">7</span>), <span class="at">filepath_or_url =</span> <span class="st">"./data/Data_RH_Example.csv"</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data_RH_csv_Example)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  civilite       nom   prenom   statut  rattachement debut_contrat fin_contrat
 1       M. ADJAKOSSA     Éric      CEC AgroParisTech                          
@@ -467,54 +412,117 @@ Y_{ij} = 0 &amp; \quad \text{si aucun lien n'existe entre les nœuds } i \text{ 
 </section>
 <section id="annexes" class="level2" data-number="1.6">
 <h2 data-number="1.6" class="anchored" data-anchor-id="annexes"><span class="header-section-number">1.6</span> ANNEXES</h2>
-<section id="load-team-table-url" class="level3" data-number="1.6.1">
-<h3 data-number="1.6.1" class="anchored" data-anchor-id="load-team-table-url"><span class="header-section-number">1.6.1</span> load_team_table_url :</h3>
+<section id="load-team-table-url" class="level3 Sections" data-number="1.6.1">
+<h3 class="Sections anchored" data-number="1.6.1" data-anchor-id="load-team-table-url"><span class="header-section-number">1.6.1</span> load_team_table_url</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>load_team_table_url <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">filter_id =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>                                date_cols,</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>                                url) {</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  idhal <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  tmp_file <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="fu">tempfile</span>(), <span class="st">".xlsx"</span>)</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">download.file</span>(</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">url =</span> url,</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">destfile =</span> tmp_file,</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">mode =</span> <span class="st">"wb"</span></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>  nbcol <span class="ot">&lt;-</span> <span class="fu">ncol</span>(readxl<span class="sc">::</span><span class="fu">read_xlsx</span>(tmp_file,</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">sheet =</span> <span class="st">"Membres"</span>))</span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>  col_types <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="st">"text"</span>,nbcol)</span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>  col_types[date_cols] <span class="ot">&lt;-</span> <span class="st">'date'</span></span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>  table <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_xlsx</span>(tmp_file,</span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>                             <span class="at">sheet =</span> <span class="st">"Membres"</span>,</span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>                             <span class="at">col_types =</span> col_types</span>
-<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">rename_with</span>(</span>
-<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>      clean_names</span>
-<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span></span>
-<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">mutate_if</span>(<span class="cf">function</span>(x) {</span>
-<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>      <span class="st">"POSIXt"</span> <span class="sc">%in%</span> <span class="fu">class</span>(x)</span>
-<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>    }, <span class="sc">~</span> <span class="fu">format</span>(.x, <span class="st">"%d/%m/%Y"</span>))</span>
-<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (filter_id) {</span>
-<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>    table <span class="ot">&lt;-</span> <span class="fu">suppressWarnings</span>(table <span class="sc">%&gt;%</span></span>
-<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>                                dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(<span class="fu">as.numeric</span>(idhal))) <span class="sc">%&gt;%</span></span>
-<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>                                dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">idhal =</span> <span class="fu">as.numeric</span>(idhal)))</span>
-<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Test if there is a column named "id"</span></span>
-<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Possibility to add mandatory columns in the future</span></span>
-<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Just add "OR"</span></span>
-<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> ( <span class="sc">!</span>(<span class="st">"idhal"</span> <span class="sc">%in%</span> <span class="fu">names</span>(table)) <span class="sc">|</span> <span class="sc">!</span>(<span class="st">"nom"</span> <span class="sc">%in%</span> <span class="fu">names</span>(table)) <span class="sc">|</span> <span class="sc">!</span>(<span class="st">"prenom"</span> <span class="sc">%in%</span> <span class="fu">names</span>(table)) ) { <span class="fu">stop</span>(<span class="st">"one of the following columns are missing : 'idhal' ; 'nom' ; 'prenom' "</span>) }</span>
-<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(table)</span>
-<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>load_team_table_url <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">filter_id =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>                                date_cols,</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>                                url) {</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  idhal <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  tmp_file <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="fu">tempfile</span>(), <span class="st">".xlsx"</span>)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">download.file</span>(</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">url =</span> url,</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">destfile =</span> tmp_file,</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">mode =</span> <span class="st">"wb"</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>  nbcol <span class="ot">&lt;-</span> <span class="fu">ncol</span>(readxl<span class="sc">::</span><span class="fu">read_xlsx</span>(tmp_file,</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">sheet =</span> <span class="st">"Membres"</span>))</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>  col_types <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="st">"text"</span>,nbcol)</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>  col_types[date_cols] <span class="ot">&lt;-</span> <span class="st">'date'</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>  table <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_xlsx</span>(tmp_file,</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>                             <span class="at">sheet =</span> <span class="st">"Membres"</span>,</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>                             <span class="at">col_types =</span> col_types</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">rename_with</span>(</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>      clean_names</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">mutate_if</span>(<span class="cf">function</span>(x) {</span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>      <span class="st">"POSIXt"</span> <span class="sc">%in%</span> <span class="fu">class</span>(x)</span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>    }, <span class="sc">~</span> <span class="fu">format</span>(.x, <span class="st">"%d/%m/%Y"</span>))</span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (filter_id) {</span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>    table <span class="ot">&lt;-</span> <span class="fu">suppressWarnings</span>(table <span class="sc">%&gt;%</span></span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>                                dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(<span class="fu">as.numeric</span>(idhal))) <span class="sc">%&gt;%</span></span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>                                dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">idhal =</span> <span class="fu">as.numeric</span>(idhal)))</span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Test if there is a column named "id"</span></span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Possibility to add mandatory columns in the future</span></span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Just add "OR"</span></span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> ( <span class="sc">!</span>(<span class="st">"idhal"</span> <span class="sc">%in%</span> <span class="fu">names</span>(table)) <span class="sc">|</span> <span class="sc">!</span>(<span class="st">"nom"</span> <span class="sc">%in%</span> <span class="fu">names</span>(table)) <span class="sc">|</span> <span class="sc">!</span>(<span class="st">"prenom"</span> <span class="sc">%in%</span> <span class="fu">names</span>(table)) ) { <span class="fu">stop</span>(<span class="st">"one of the following columns are missing : 'idhal' ; 'nom' ; 'prenom' "</span>) }</span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(table)</span>
+<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="doc-Roxygen2" class="level3" data-number="1.6.2">
-<h3 data-number="1.6.2" class="anchored" data-anchor-id="doc-Roxygen2"><span class="header-section-number">1.6.2</span> Exemple d’une documentation classique avec Roxygen2 :</h3>
+<section id="load-team-table-csv" class="level3 Sections" data-number="1.6.2">
+<h3 class="Sections anchored" data-number="1.6.2" data-anchor-id="load-team-table-csv"><span class="header-section-number">1.6.2</span> load_team_table_csv</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>load_team_table_csv <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">filter_id =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>                                date_cols,</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>                                filepath){</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  idhal <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  nbcol <span class="ot">&lt;-</span> <span class="fu">ncol</span>(<span class="fu">read.csv</span>(filepath, <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">sep =</span> <span class="st">";"</span>, <span class="at">encoding =</span> <span class="st">"UTF-8"</span>))</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># define column types (dates or text if not dates)</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  col_types <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="st">"character"</span>, nbcol)</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  col_types[date_cols] <span class="ot">&lt;-</span> <span class="st">'character'</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>  table <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(filepath,</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>                    <span class="at">header =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>                    <span class="at">sep =</span> <span class="st">";"</span>,</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>                    <span class="at">encoding =</span> <span class="st">"UTF-8"</span>,</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>                    <span class="at">colClasses =</span> col_types</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">rename_with</span>(  <span class="co"># clean the columns names </span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>      clean_names</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">mutate_if</span>(<span class="cf">function</span>(x) {  <span class="co"># Convert specified column to dates</span></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>      <span class="st">"POSIXt"</span> <span class="sc">%in%</span> <span class="fu">class</span>(x)</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>    }, <span class="sc">~</span> <span class="fu">format</span>(.x, <span class="st">"%d/%m/%Y"</span>))</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Filter out rows without IDHAL</span></span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (filter_id) {</span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>    idhal <span class="ot">&lt;-</span> table<span class="sc">$</span>idhal</span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>    table <span class="ot">&lt;-</span> table[<span class="fu">which</span>(<span class="sc">!</span><span class="fu">is.na</span>(idhal)),]</span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>    table<span class="sc">$</span>idhal <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(idhal)</span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>    table<span class="sc">$</span>idhal[table<span class="sc">$</span>idhal <span class="sc">==</span> <span class="dv">0</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Test if there is a column named "id"</span></span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Possibility to add mandatory columns in the future</span></span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Just add "OR"</span></span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> ( <span class="sc">!</span>(<span class="st">"idhal"</span> <span class="sc">%in%</span> <span class="fu">names</span>(table)) <span class="sc">|</span> <span class="sc">!</span>(<span class="st">"nom"</span> <span class="sc">%in%</span> <span class="fu">names</span>(table)) <span class="sc">|</span> <span class="sc">!</span>(<span class="st">"prenom"</span> <span class="sc">%in%</span> <span class="fu">names</span>(table)) ) { <span class="fu">stop</span>(<span class="st">"one of the following columns are missing : 'idhal' ; 'nom' ; 'prenom' "</span>) }</span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(table)</span>
+<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="load-team-table" class="level3 Sections" data-number="1.6.3">
+<h3 class="Sections anchored" data-number="1.6.3" data-anchor-id="load-team-table"><span class="header-section-number">1.6.3</span> load_team_table</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>load_team_table <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">filter_id =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>                            <span class="at">date_cols =</span> <span class="fu">c</span>(<span class="dv">7</span>,<span class="dv">8</span>),</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>                            filepath_or_url) {</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># If the parameter is a URL</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">grepl</span>(<span class="st">"^https?://"</span>, filepath_or_url)) {</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Call the load_team_table_url function with the URL</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="fu">load_team_table_url</span>(<span class="at">filter_id =</span> filter_id, <span class="at">date_cols =</span> date_cols, <span class="at">url =</span> filepath_or_url))</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Otherwise, it's a local file path; call the load_team_table_csv function with the local file path</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="fu">load_team_table_csv</span>(<span class="at">filter_id =</span> filter_id, <span class="at">date_cols =</span> date_cols, <span class="at">filepath =</span> filepath_or_url))</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="doc-Roxygen2" class="level3 Sections" data-number="1.6.4">
+<h3 class="Sections anchored" data-number="1.6.4" data-anchor-id="doc-Roxygen2"><span class="header-section-number">1.6.4</span> Exemple d’une documentation classique avec Roxygen2</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#' load_team_table_csv</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co">#'</span></span>
@@ -541,8 +549,8 @@ Y_{ij} = 0 &amp; \quad \text{si aucun lien n'existe entre les nœuds } i \text{ 
 <span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a><span class="co">#' }</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="tableau-des-résultats-détaillés" class="level3" data-number="1.6.3">
-<h3 data-number="1.6.3" class="anchored" data-anchor-id="tableau-des-résultats-détaillés"><span class="header-section-number">1.6.3</span> Tableau des résultats détaillés</h3>
+<section id="tableau-des-résultats-détaillés" class="level3" data-number="1.6.5">
+<h3 data-number="1.6.5" class="anchored" data-anchor-id="tableau-des-résultats-détaillés"><span class="header-section-number">1.6.5</span> Tableau des résultats détaillés</h3>
 <p>Voici les tableaux des résultats détaillés pour les différentes méthodes et tests effectués.</p>
 </section>
 </section>

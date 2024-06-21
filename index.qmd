@@ -107,72 +107,13 @@ Lors de mon stage, j'ai d'abord décidé de rendre le package plus accessible et
 
 #### Modifications de la fonction *`load_mia_table`*
 
-J'ai commencé par modifier dans le fichier **mia_table.R** la fonction *`load_mia_table`*. A l'origine, cette fonction permettait le chargement d'un csv en ligne depuis une addresse spécifique vers un fichier contenant des informations tel que le nom, le prenom, l'idhal, l'equipe, etc, des personnes appartenant au labo. J'ai fait le choix de renommer le fichier **load_table.R**. J'ai remplacé la fonction *`load_mia_table`* par trois fonctions *`load_team_table_csv`*, *`load_team_table_url`*, et *`load_team_table`*. *`load_team_table_csv`* permet de charger un csv dans Rstudio depuis un fichier local de la machine de l'utilisateur. *`load_team_table_url`* permet de charger un csv dans Rstudio depuis un fichier en ligne. *load_team_table* fait appel aux deux fonctions précédentes et permet par le biais d'argument de fonctions de spécifier la provenance du fichier et de charger le csv soit depuis un url soit depuis un fichier local. J'ai aussi modifier la majorité des fonctions déjà présentes dans le package faisant appel à *load_mia_table*. Les paramètres en entrée des trois fonctions sont les même que la fonction *`load_mia_table`* d'origine avec l'ajout d'un paramètre permettant à l'utilisateur de rentrer l'adresse du fichier. J'ai ensuite crée une documentation via le package "Roxygène2" conforme aux critères requis pour un package mis en ligne (veuillez vous referez à l'annexe : [@doc-Roxygen2] ) pour chacune des trois fonctions.
+J'ai commencé par modifier dans le fichier **mia_table.R** la fonction *`load_mia_table`*. A l'origine, cette fonction permettait le chargement d'un csv en ligne depuis une addresse spécifique vers un fichier contenant des informations tel que le nom, le prenom, l'idhal, l'equipe, etc, des personnes appartenant au labo. J'ai fait le choix de renommer le fichier **load_table.R**. J'ai remplacé la fonction *`load_mia_table`* par trois fonctions *`load_team_table_csv`*, *`load_team_table_url`*, et *`load_team_table`*. *`load_team_table_csv`* permet de charger un csv dans Rstudio depuis un fichier local de la machine de l'utilisateur. *`load_team_table_url`* permet de charger un csv dans Rstudio depuis un fichier en ligne. *load_team_table* fait appel aux deux fonctions précédentes et permet par le biais d'argument de fonctions de spécifier la provenance du fichier et de charger le csv soit depuis un url soit depuis un fichier local. J'ai aussi modifier la majorité des fonctions déjà présentes dans le package faisant appel à *load_mia_table*. Les paramètres en entrée des trois fonctions sont les même que la fonction *`load_mia_table`* d'origine avec l'ajout d'un paramètre permettant à l'utilisateur de rentrer l'adresse du fichier. J'ai ensuite crée une documentation via le package "Roxygène2" conforme aux critères requis pour un package mis en ligne (veuillez vous referez à l'annexe : [Exemple d'une documentation classique avec Roxygen2](#doc-Roxygen2) ) pour chacune des trois fonctions.
 
-La fonction originelle *`load_mia_table`* ne permettait que de charger de manière spécifique le csv fourni par les Ressources Humaines depuis un url seafile. Cette fonction n'était pas générique. Ainsi, il était nécéssaire de la modifier. J'ai décidé de diviser en trois fonctions différentes afin de permettre à l'utilisateur de choisir de charger des tables de provenance locale ou depuis internet. J'ai décidé pour *`load_team_table_url`* de garder en majeur partie le code d'origine et de simplement le réadapter par soucis de temps. J'y ai ajouté des conditions de présence de colonnes obligatoires afin d'obliger l'utilisateur à fournir des colonnes sous un format spécifique. (Pour voir le corps de la fonction, veuillez vous référer à l'annexe : [@load-team-table-url] )
+La fonction originelle *`load_mia_table`* ne permettait que de charger de manière spécifique le csv fourni par les Ressources Humaines depuis un url seafile. Cette fonction n'était pas générique. Ainsi, il était nécéssaire de la modifier. J'ai décidé de diviser en trois fonctions différentes afin de permettre à l'utilisateur de choisir de charger des tables de provenance locale ou depuis internet. J'ai décidé pour *`load_team_table_url`* de garder en majeur partie le code d'origine et de simplement le réadapter par soucis de temps. J'y ai ajouté des conditions de présence de colonnes obligatoires afin d'obliger l'utilisateur à fournir des colonnes sous un format spécifique. (Pour voir le corps de la fonction, veuillez vous référer à l'annexe : [load_team_table_url](#load-team-table-url))
 
-*`load_team_table_csv`* est basé sur la construction de *`load_team_table_url`*. Je l'ai adapté pour pouvoir charger depuis un fichier local en utilisant *read.csv*. De même que dans *`load_team_table_url`*, j'y ai ajouté des conditions de présence de colonnes obligatoires afin d'obliger l'utilisateur à fournir des colonnes sous un format spécifique.
+*`load_team_table_csv`* est basé sur la construction de *`load_team_table_url`*. Je l'ai adapté pour pouvoir charger depuis un fichier local en utilisant *read.csv*. De même que dans *`load_team_table_url`*, j'y ai ajouté des conditions de présence de colonnes obligatoires afin d'obliger l'utilisateur à fournir des colonnes sous un format spécifique. (Pour voir le corps de la fonction, veuillez vous référer à l'annexe : [load_team_table_csv](#load-team-table-csv))
 
-```{r load_team_table_csv example, eval=FALSE}
-load_team_table_csv <- function(filter_id = TRUE,
-                                date_cols,
-                                filepath){
-  idhal <- NULL
-  nbcol <- ncol(read.csv(filepath, header = TRUE, sep = ";", encoding = "UTF-8"))
-  
-  # define column types (dates or text if not dates)
-  col_types <- rep("character", nbcol)
-  col_types[date_cols] <- 'character'
-  
-  table <- read.csv(filepath,
-                    header = TRUE,
-                    sep = ";",
-                    encoding = "UTF-8",
-                    colClasses = col_types
-  ) %>%
-    dplyr::rename_with(  # clean the columns names 
-      clean_names
-    ) %>%
-    dplyr::mutate_if(function(x) {  # Convert specified column to dates
-      "POSIXt" %in% class(x)
-    }, ~ format(.x, "%d/%m/%Y"))
-  
-  # Filter out rows without IDHAL
-  if (filter_id) {
-    idhal <- table$idhal
-    table <- table[which(!is.na(idhal)),]
-    table$idhal <- as.numeric(idhal)
-    table$idhal[table$idhal == 0] <- NA
-  }
-  
-  # Test if there is a column named "id"
-  # Possibility to add mandatory columns in the future
-  # Just add "OR"
-  if ( !("idhal" %in% names(table)) | !("nom" %in% names(table)) | !("prenom" %in% names(table)) ) { stop("one of the following columns are missing : 'idhal' ; 'nom' ; 'prenom' ") }
-  
-  return(table)
-}
-```
-
-Enfin, *`load_team_table`* appelle l'une des deux fonctions en fonction du type d'adresse fourni : URL ou chemin de fichier local. Le type de l'adresse est déterminé en utilisant *`grepl`*, qui utilise une expression régulière.
-
-```{r load_team_table example, eval=FALSE}
-load_team_table <- function(filter_id = TRUE,
-                            date_cols = c(7,8),
-                            filepath_or_url) {
-  
-  # If the parameter is a URL
-  if (grepl("^https?://", filepath_or_url)) {
-    
-    # Call the load_team_table_url function with the URL
-    return(load_team_table_url(filter_id = filter_id, date_cols = date_cols, url = filepath_or_url))
-  } else {
-    
-    # Otherwise, it's a local file path; call the load_team_table_csv function with the local file path
-    return(load_team_table_csv(filter_id = filter_id, date_cols = date_cols, filepath = filepath_or_url))
-  }
-}
-```
+Enfin, *`load_team_table`* appelle l'une des deux fonctions en fonction du type d'adresse fourni : URL ou chemin de fichier local. Le type de l'adresse est déterminé en utilisant *`grepl`*, qui utilise une expression régulière. (Pour voir le corps de la fonction, veuillez vous référer à l'annexe : [load_team_table](#load-team-table))
 
 #### Résultat de l'Application de *load_team_table*
 
@@ -201,7 +142,7 @@ parler de l'efficacité de ce que j'ai code, des modifications à venir et de ce
 
 ## ANNEXES
 
-### load_team_table_url : {#load-team-table-url}
+### load_team_table_url {#load-team-table-url .Sections}
 
 ```{r load_team_table_url example, eval=FALSE}
 load_team_table_url <- function(filter_id = TRUE,
@@ -247,7 +188,71 @@ load_team_table_url <- function(filter_id = TRUE,
 }
 ```
 
-### Exemple d'une documentation classique avec Roxygen2 : {#doc-Roxygen2}
+### load_team_table_csv {#load-team-table-csv .Sections}
+
+```{r load_team_table_csv example, eval=FALSE}
+load_team_table_csv <- function(filter_id = TRUE,
+                                date_cols,
+                                filepath){
+  idhal <- NULL
+  nbcol <- ncol(read.csv(filepath, header = TRUE, sep = ";", encoding = "UTF-8"))
+  
+  # define column types (dates or text if not dates)
+  col_types <- rep("character", nbcol)
+  col_types[date_cols] <- 'character'
+  
+  table <- read.csv(filepath,
+                    header = TRUE,
+                    sep = ";",
+                    encoding = "UTF-8",
+                    colClasses = col_types
+  ) %>%
+    dplyr::rename_with(  # clean the columns names 
+      clean_names
+    ) %>%
+    dplyr::mutate_if(function(x) {  # Convert specified column to dates
+      "POSIXt" %in% class(x)
+    }, ~ format(.x, "%d/%m/%Y"))
+  
+  # Filter out rows without IDHAL
+  if (filter_id) {
+    idhal <- table$idhal
+    table <- table[which(!is.na(idhal)),]
+    table$idhal <- as.numeric(idhal)
+    table$idhal[table$idhal == 0] <- NA
+  }
+  
+  # Test if there is a column named "id"
+  # Possibility to add mandatory columns in the future
+  # Just add "OR"
+  if ( !("idhal" %in% names(table)) | !("nom" %in% names(table)) | !("prenom" %in% names(table)) ) { stop("one of the following columns are missing : 'idhal' ; 'nom' ; 'prenom' ") }
+  
+  return(table)
+}
+```
+
+### load_team_table {#load-team-table .Sections}
+
+```{r load_team_table example, eval=FALSE}
+load_team_table <- function(filter_id = TRUE,
+                            date_cols = c(7,8),
+                            filepath_or_url) {
+  
+  # If the parameter is a URL
+  if (grepl("^https?://", filepath_or_url)) {
+    
+    # Call the load_team_table_url function with the URL
+    return(load_team_table_url(filter_id = filter_id, date_cols = date_cols, url = filepath_or_url))
+  } else {
+    
+    # Otherwise, it's a local file path; call the load_team_table_csv function with the local file path
+    return(load_team_table_csv(filter_id = filter_id, date_cols = date_cols, filepath = filepath_or_url))
+  }
+}
+```
+
+
+### Exemple d'une documentation classique avec Roxygen2 {#doc-Roxygen2 .Sections}
 
 ```{r, eval=FALSE}
 #' load_team_table_csv
