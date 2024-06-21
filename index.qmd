@@ -1,19 +1,4 @@
----
-title: "Mémoire de Stage"
-author: 
-  - name: "Martin AMIENS"
-  - affiliations:
-    - name: "Université Paris-saclay - Master BIBS"
-date: "2024-06-16"
-abstract: >+
-  En 2017, AgroParisTech a signé l’Appel de Jussieu, visant à promouvoir la bibliodiversité, c'est-à-dire la diversité éditoriale pour éviter la domination des grands groupes. En 2020, l'institution a adopté une politique de 'science ouverte' pour faciliter la libre diffusion des résultats de la recherche scientifique et la transparence des processus de recherche. En réponse à ses engagements, le 2 janvier 2023, AgroParisTech crée une cellule HAL pour accompagner ses chercheurs dans l'utilisation de l'archive ouverte HAL. Cependant, un package R pour l’extraction et l’analyse des données HAL n'existait pas, ce qui a conduit à la mission de Théodore Vanrengterghem de développer le package 'ManagHAL'. Par la suite, j'ai eu l'opportunité de reprendre le projet "ManagHAL" durant mon stage financé par la Direction de la Recherche et de l’Innovation d’AgroParisTech. Ainsi, j'ai pu travailler sur la mise en place de réseaux à partir des données, l’adaptation et l’intégration d’outils d’analyse statistique de réseaux tel que la modélisation en blocs stochastiques dans le package 'ManagHAL'.
-keywords: [R, Rstudio, ManagHAL, Réseaux, SBM, LBM]
-output: 
-  html: 
-    toc: true
-  pdf: 
-    toc: true
----
+# MANAGHAL, DONNEES BIBLIOMETRIQUES, RESEAUX ET ANALYSES STATISTIQUES DE RESEAUX
 
 ```{r chargement des librairies, echo = FALSE, warning = FALSE, message=FALSE}
 library(igraph, quietly = TRUE)
@@ -108,7 +93,7 @@ Nous avons donc comme paramètres du modèle $\theta = (\gamma, \pi)$. A partir 
 
 Comme précisé dans l'introduction, l'entièreté des méthodes informatiques développées ont été réalisées sur RStudio en utilisant le langage R version 4.4.1 sous windows 11 x64. Les packages utilisés sont les suivants :
 
-Le package "dplyr" est utilisé pour la manipulation et la transformation des données grâce à une syntaxe claire et cohérente. Ce package facilite les opérations courantes telles que la sélection, le filtrage, le regroupement et le résumé des données. Le package "mailR" est utilisé pour l'envoi d'emails avec des pièces jointes directement depuis R, ce qui est utile pour automatiser l'envoi de rapports. Le package "askpass" est utilisé pour gérer les mots de passe de manière sécurisée. Le package "furrr" est utilisé pour paralléliser les tâches en combinaison avec le package "future". Le package "future" permet l'exécution de code en parallèle, ce qui réduit le temps de traitement des tâches lourdes. Le package "ggplot2" est utilisé pour la création de visualisations graphiques sophistiquées. Le package "magrittr" fournit des opérateurs pour améliorer la lisibilité du code, en particulier l'opérateur `%>%` (pipe). Le package "purrr" est utilisé pour les opérations fonctionnelles sur les listes et autres structures de données. Le package "quarto" est utilisé pour la création de documents dynamiques et de rapports. Le package "readxl" permet la lecture de fichiers Excel. Le package "rvest" est utilisé pour le web scraping, c'est-à-dire l'extraction de données à partir de pages web. Le package "SnowballC" est utilisé pour le traitement de la langue naturelle, en particulier pour la lemmatisation. Le package "stringr" fournit des fonctions pour la manipulation des chaînes de caractères. Le package "tictoc" est utilisé pour mesurer le temps d'exécution des morceaux de code. Le package "tm" est utilisé pour le text mining (extraction de connaissances à partir de textes). Le package "wordcloud" est utilisé pour la création de nuages de mots.
+Le package dplyr [@dplyr] est utilisé pour la manipulation et la transformation des données grâce à une syntaxe claire et cohérente. Ce package facilite les opérations courantes telles que la sélection, le filtrage, le regroupement et le résumé des données. Le package mailR [@mailR] est utilisé pour l'envoi d'emails avec des pièces jointes directement depuis R, ce qui est utile pour automatiser l'envoi de rapports. Le package askpass [@askpass] est utilisé pour gérer les mots de passe de manière sécurisée. Le package furrr [@furrr] est utilisé pour paralléliser les tâches en combinaison avec le package future [@future]. Le package future [@future] permet l'exécution de code en parallèle, ce qui réduit le temps de traitement des tâches lourdes. Le package ggplot2 [@ggplot2] est utilisé pour la création de visualisations graphiques sophistiquées. Le package matgrittr [@magrittr] fournit des opérateurs pour améliorer la lisibilité du code, en particulier l'opérateur `%>%` (pipe). Le package purrr [@purrr] est utilisé pour les opérations fonctionnelles sur les listes et autres structures de données. Le package quarto [@quarto] est utilisé pour la création de documents dynamiques et de rapports. Le package readxl [@readxl] permet la lecture de fichiers Excel. Le package rvest [@rvest] est utilisé pour le web scraping, c'est-à-dire l'extraction de données à partir de pages web. Le package SnowballC [@SnowballC] est utilisé pour le traitement de la langue naturelle, en particulier pour la lemmatisation. Le package stringr [@stringr] fournit des fonctions pour la manipulation des chaînes de caractères. Le package tictoc [@tictoc] est utilisé pour mesurer le temps d'exécution des morceaux de code. Le package tm [@tm] est utilisé pour le text mining (extraction de connaissances à partir de textes). Le package wordcloud [@wordcloud] est utilisé pour la création de nuages de mots. Le package Visnetwork **\[la citation ne fonctionne pas\]** est utilisé pour la visualisation de réseaux dynamiques. Le package Sbm [@sbm] est utilisé pour réaliser les analyses statisitiques de réseaux.
 
 Afin de pouvoir construire une requête HAL pour récupèrer des données bibliographiques de publications d'auteurs, il est nécessaire de comprendre comment construire une requête. Pour construire une requête HAL, il faut au moins un paramètre `q` qui contient la requête de recherche. Ce paramètre doit spécifier le champ de recherche suivi de la valeur. Par exemple, pour rechercher le terme "test" : `http://api.archives-ouvertes.fr/search/?q=test&wt=xml` . Si le champ n'est pas spécifié, la recherche s'effectue par défaut dans l'index texte. Pour rechercher dans un champ particulier, il faut utiliser `champ:terme` : `http://api.archives-ouvertes.fr/search/?q=title_t:japon&wt=xml` . Pour échapper certains caractères spéciaux utilisés par Apache Solr, utilisez `\`. Par exemple, `(1+1):2` devient `\(1\+1\)\:2`. (voir @api-hal). Il est possible d'indiquer le format de la réponse (sous-entendant le format des données récupérées) via le paramètre `wt` . Pour finir il est possible de spécifier les champs à retourner dans la réponse via le paramètre `fl` et de faire un filtre des données via le paramètre `fq` . Tous les possibilités de l'API HAL n'ont pas été abordé dans ce court résumé. Il est pourtant compréhensible que l'API HAL est très diverse et permet une grande liberté à l'utilisateur pour l'extraction des données. De plus, il existe un nombre de champs considérables. Certains seront abordés par la suite dans la section résultats.
 
@@ -122,53 +107,9 @@ Lors de mon stage, j'ai d'abord décidé de rendre le package plus accessible et
 
 #### Modifications de la fonction *`load_mia_table`*
 
-J'ai commencé par modifier dans le fichier **mia_table.R** la fonction *`load_mia_table`*. A l'origine, cette fonction permettait le chargement d'un csv en ligne depuis une addresse spécifique vers un fichier contenant des informations tel que le nom, le prenom, l'idhal, l'equipe, etc, des personnes appartenant au labo. J'ai fait le choix de renommer le fichier **load_table.R**. J'ai remplacé la fonction *`load_mia_table`* par trois fonctions *`load_team_table_csv`*, *`load_team_table_url`*, et *`load_team_table`*. *`load_team_table_csv`* permet de charger un csv dans Rstudio depuis un fichier local de la machine de l'utilisateur. *`load_team_table_url`* permet de charger un csv dans Rstudio depuis un fichier en ligne. *load_team_table* fait appel aux deux fonctions précédentes et permet par le biais d'argument de fonctions de spécifier la provenance du fichier et de charger le csv soit depuis un url soit depuis un fichier local. J'ai aussi modifier la majorité des fonctions déjà présentes dans le package faisant appel à *load_mia_table*. Les paramètres en entrée des trois fonctions sont les même que la fonction *`load_mia_table`* d'origine avec l'ajout d'un paramètre permettant à l'utilisateur de rentrer l'adresse du fichier. J'ai ensuite crée une documentation via le package "Roxygène2" conforme aux critères requis pour un package mis en ligne (voir : exemple d'une documentation classique en annexe) pour chacune des trois fonctions.
+J'ai commencé par modifier dans le fichier **mia_table.R** la fonction *`load_mia_table`*. A l'origine, cette fonction permettait le chargement d'un csv en ligne depuis une addresse spécifique vers un fichier contenant des informations tel que le nom, le prenom, l'idhal, l'equipe, etc, des personnes appartenant au labo. J'ai fait le choix de renommer le fichier **load_table.R**. J'ai remplacé la fonction *`load_mia_table`* par trois fonctions *`load_team_table_csv`*, *`load_team_table_url`*, et *`load_team_table`*. *`load_team_table_csv`* permet de charger un csv dans Rstudio depuis un fichier local de la machine de l'utilisateur. *`load_team_table_url`* permet de charger un csv dans Rstudio depuis un fichier en ligne. *load_team_table* fait appel aux deux fonctions précédentes et permet par le biais d'argument de fonctions de spécifier la provenance du fichier et de charger le csv soit depuis un url soit depuis un fichier local. J'ai aussi modifier la majorité des fonctions déjà présentes dans le package faisant appel à *load_mia_table*. Les paramètres en entrée des trois fonctions sont les même que la fonction *`load_mia_table`* d'origine avec l'ajout d'un paramètre permettant à l'utilisateur de rentrer l'adresse du fichier. J'ai ensuite crée une documentation via le package "Roxygène2" conforme aux critères requis pour un package mis en ligne (veuillez vous referez à l'annexe : [@doc-Roxygen2] ) pour chacune des trois fonctions.
 
-La fonction originelle *`load_mia_table`* ne permettait que de charger de manière spécifique le csv fourni par les Ressources Humaines depuis un url seafile. Cette fonction n'était pas générique. Ainsi, il était nécéssaire de la modifier. J'ai décidé de diviser en trois fonctions différentes afin de permettre à l'utilisateur de choisir de charger des tables de provenance locale ou depuis internet. J'ai décidé pour *`load_team_table_url`* de garder en majeur partie le code d'origine et de simplement le réadapter par soucis de temps. J'y ai ajouté des conditions de présence de colonnes obligatoires afin d'obliger l'utilisateur à fournir des colonnes sous un format spécifique.
-
-```{r load_team_table_url example, eval=FALSE}
-load_team_table_url <- function(filter_id = TRUE,
-                                date_cols,
-                                url) {
-  idhal <- NULL
-  tmp_file <- paste0(tempfile(), ".xlsx")
-  download.file(
-    url = url,
-    destfile = tmp_file,
-    mode = "wb"
-  )
-  nbcol <- ncol(readxl::read_xlsx(tmp_file,
-                                  sheet = "Membres"))
-  col_types <- rep("text",nbcol)
-  col_types[date_cols] <- 'date'
-  
-  
-  table <- readxl::read_xlsx(tmp_file,
-                             sheet = "Membres",
-                             col_types = col_types
-  ) %>%
-    dplyr::rename_with(
-      clean_names
-    ) %>%
-    dplyr::mutate_if(function(x) {
-      "POSIXt" %in% class(x)
-    }, ~ format(.x, "%d/%m/%Y"))
-  
-  
-  if (filter_id) {
-    table <- suppressWarnings(table %>%
-                                dplyr::filter(!is.na(as.numeric(idhal))) %>%
-                                dplyr::mutate(idhal = as.numeric(idhal)))
-  }
-  
-  # Test if there is a column named "id"
-  # Possibility to add mandatory columns in the future
-  # Just add "OR"
-  if ( !("idhal" %in% names(table)) | !("nom" %in% names(table)) | !("prenom" %in% names(table)) ) { stop("one of the following columns are missing : 'idhal' ; 'nom' ; 'prenom' ") }
-  
-  return(table)
-}
-```
+La fonction originelle *`load_mia_table`* ne permettait que de charger de manière spécifique le csv fourni par les Ressources Humaines depuis un url seafile. Cette fonction n'était pas générique. Ainsi, il était nécéssaire de la modifier. J'ai décidé de diviser en trois fonctions différentes afin de permettre à l'utilisateur de choisir de charger des tables de provenance locale ou depuis internet. J'ai décidé pour *`load_team_table_url`* de garder en majeur partie le code d'origine et de simplement le réadapter par soucis de temps. J'y ai ajouté des conditions de présence de colonnes obligatoires afin d'obliger l'utilisateur à fournir des colonnes sous un format spécifique. (Pour voir le corps de la fonction, veuillez vous référer à l'annexe : [@load-team-table-url] )
 
 *`load_team_table_csv`* est basé sur la construction de *`load_team_table_url`*. Je l'ai adapté pour pouvoir charger depuis un fichier local en utilisant *read.csv*. De même que dans *`load_team_table_url`*, j'y ai ajouté des conditions de présence de colonnes obligatoires afin d'obliger l'utilisateur à fournir des colonnes sous un format spécifique.
 
@@ -260,7 +201,53 @@ parler de l'efficacité de ce que j'ai code, des modifications à venir et de ce
 
 ## ANNEXES
 
-[Exemple d'une documentation classique avec Roxygen2 :]{.underline}
+### load_team_table_url : {#load-team-table-url}
+
+```{r load_team_table_url example, eval=FALSE}
+load_team_table_url <- function(filter_id = TRUE,
+                                date_cols,
+                                url) {
+  idhal <- NULL
+  tmp_file <- paste0(tempfile(), ".xlsx")
+  download.file(
+    url = url,
+    destfile = tmp_file,
+    mode = "wb"
+  )
+  nbcol <- ncol(readxl::read_xlsx(tmp_file,
+                                  sheet = "Membres"))
+  col_types <- rep("text",nbcol)
+  col_types[date_cols] <- 'date'
+  
+  
+  table <- readxl::read_xlsx(tmp_file,
+                             sheet = "Membres",
+                             col_types = col_types
+  ) %>%
+    dplyr::rename_with(
+      clean_names
+    ) %>%
+    dplyr::mutate_if(function(x) {
+      "POSIXt" %in% class(x)
+    }, ~ format(.x, "%d/%m/%Y"))
+  
+  
+  if (filter_id) {
+    table <- suppressWarnings(table %>%
+                                dplyr::filter(!is.na(as.numeric(idhal))) %>%
+                                dplyr::mutate(idhal = as.numeric(idhal)))
+  }
+  
+  # Test if there is a column named "id"
+  # Possibility to add mandatory columns in the future
+  # Just add "OR"
+  if ( !("idhal" %in% names(table)) | !("nom" %in% names(table)) | !("prenom" %in% names(table)) ) { stop("one of the following columns are missing : 'idhal' ; 'nom' ; 'prenom' ") }
+  
+  return(table)
+}
+```
+
+### Exemple d'une documentation classique avec Roxygen2 : {#doc-Roxygen2}
 
 ```{r, eval=FALSE}
 #' load_team_table_csv

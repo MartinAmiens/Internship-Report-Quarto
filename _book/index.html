@@ -6,10 +6,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Martin AMIENS">
 <meta name="dcterms.date" content="2024-06-16">
-<meta name="keywords" content="R, Rstudio, ManagHAL, Réseaux, SBM, LBM">
+<meta name="keywords" content="R, Rstudio, ManagHAL, Réseaux, SBM, LBM, Sciences Ouvertes, HAL">
 
-<title>ManagHAL</title>
+<title>Mémoire de Stage - Package ManagHAL</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -86,7 +87,6 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./remerciement.html" rel="next">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -165,7 +165,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Mémoire de Stage</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">MANAGHAL, DONNEES BIBLIOMETRIQUES, RESEAUX ET ANALYSES STATISTIQUES DE RESEAUX</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -180,7 +180,7 @@ window.Quarto = {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">ManagHAL</a> 
+      <a href="./">Mémoire de Stage - Package ManagHAL</a> 
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -193,13 +193,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Mémoire de Stage</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./remerciement.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Remerciements</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">MANAGHAL, DONNEES BIBLIOMETRIQUES, RESEAUX ET ANALYSES STATISTIQUES DE RESEAUX</span></span></a>
   </div>
 </li>
     </ul>
@@ -212,20 +206,25 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">0.1</span> INTRODUCTION</a></li>
-  <li><a href="#contexte-statistique" id="toc-contexte-statistique" class="nav-link" data-scroll-target="#contexte-statistique"><span class="header-section-number">0.2</span> CONTEXTE STATISTIQUE</a></li>
-  <li><a href="#methodes" id="toc-methodes" class="nav-link" data-scroll-target="#methodes"><span class="header-section-number">0.3</span> METHODES</a></li>
-  <li><a href="#resultats" id="toc-resultats" class="nav-link" data-scroll-target="#resultats"><span class="header-section-number">0.4</span> RESULTATS</a>
+  <li><a href="#managhal-donnees-bibliometriques-reseaux-et-analyses-statistiques-de-reseaux" id="toc-managhal-donnees-bibliometriques-reseaux-et-analyses-statistiques-de-reseaux" class="nav-link active" data-scroll-target="#managhal-donnees-bibliometriques-reseaux-et-analyses-statistiques-de-reseaux"><span class="header-section-number">1</span> MANAGHAL, DONNEES BIBLIOMETRIQUES, RESEAUX ET ANALYSES STATISTIQUES DE RESEAUX</a>
   <ul class="collapse">
-  <li><a href="#accessibilité-et-généricité-de-managhal" id="toc-accessibilité-et-généricité-de-managhal" class="nav-link" data-scroll-target="#accessibilité-et-généricité-de-managhal"><span class="header-section-number">0.4.1</span> Accessibilité et généricité de ManagHAL</a></li>
-  <li><a href="#conclusion-des-résultats" id="toc-conclusion-des-résultats" class="nav-link" data-scroll-target="#conclusion-des-résultats"><span class="header-section-number">0.4.2</span> Conclusion des Résultats</a></li>
-  </ul></li>
-  <li><a href="#discussion" id="toc-discussion" class="nav-link" data-scroll-target="#discussion"><span class="header-section-number">0.5</span> DISCUSSION</a></li>
-  <li><a href="#annexes" id="toc-annexes" class="nav-link" data-scroll-target="#annexes"><span class="header-section-number">0.6</span> ANNEXES</a>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction"><span class="header-section-number">1.1</span> INTRODUCTION</a></li>
+  <li><a href="#contexte-statistique" id="toc-contexte-statistique" class="nav-link" data-scroll-target="#contexte-statistique"><span class="header-section-number">1.2</span> CONTEXTE STATISTIQUE</a></li>
+  <li><a href="#methodes" id="toc-methodes" class="nav-link" data-scroll-target="#methodes"><span class="header-section-number">1.3</span> METHODES</a></li>
+  <li><a href="#resultats" id="toc-resultats" class="nav-link" data-scroll-target="#resultats"><span class="header-section-number">1.4</span> RESULTATS</a>
   <ul class="collapse">
-  <li><a href="#tableau-des-résultats-détaillés" id="toc-tableau-des-résultats-détaillés" class="nav-link" data-scroll-target="#tableau-des-résultats-détaillés"><span class="header-section-number">0.6.1</span> Tableau des résultats détaillés</a></li>
+  <li><a href="#accessibilité-et-généricité-de-managhal" id="toc-accessibilité-et-généricité-de-managhal" class="nav-link" data-scroll-target="#accessibilité-et-généricité-de-managhal"><span class="header-section-number">1.4.1</span> Accessibilité et généricité de ManagHAL</a></li>
+  <li><a href="#conclusion-des-résultats" id="toc-conclusion-des-résultats" class="nav-link" data-scroll-target="#conclusion-des-résultats"><span class="header-section-number">1.4.2</span> Conclusion des Résultats</a></li>
   </ul></li>
-  <li><a href="#bibliographie" id="toc-bibliographie" class="nav-link" data-scroll-target="#bibliographie"><span class="header-section-number">0.7</span> BIBLIOGRAPHIE</a></li>
+  <li><a href="#discussion" id="toc-discussion" class="nav-link" data-scroll-target="#discussion"><span class="header-section-number">1.5</span> DISCUSSION</a></li>
+  <li><a href="#annexes" id="toc-annexes" class="nav-link" data-scroll-target="#annexes"><span class="header-section-number">1.6</span> ANNEXES</a>
+  <ul class="collapse">
+  <li><a href="#load-team-table-url" id="toc-load-team-table-url" class="nav-link" data-scroll-target="#load-team-table-url"><span class="header-section-number">1.6.1</span> load_team_table_url :</a></li>
+  <li><a href="#doc-Roxygen2" id="toc-doc-Roxygen2" class="nav-link" data-scroll-target="#doc-Roxygen2"><span class="header-section-number">1.6.2</span> Exemple d’une documentation classique avec Roxygen2 :</a></li>
+  <li><a href="#tableau-des-résultats-détaillés" id="toc-tableau-des-résultats-détaillés" class="nav-link" data-scroll-target="#tableau-des-résultats-détaillés"><span class="header-section-number">1.6.3</span> Tableau des résultats détaillés</a></li>
+  </ul></li>
+  <li><a href="#bibliographie" id="toc-bibliographie" class="nav-link" data-scroll-target="#bibliographie"><span class="header-section-number">1.7</span> BIBLIOGRAPHIE</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -234,14 +233,27 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">ManagHAL</h1>
+<h1 class="title">Mémoire de Stage - Package ManagHAL</h1>
 </div>
 
 
+<div class="quarto-title-meta-author">
+  <div class="quarto-title-meta-heading">Author</div>
+  <div class="quarto-title-meta-heading">Affiliation</div>
+  
+    <div class="quarto-title-meta-contents">
+    <p class="author">Martin AMIENS </p>
+  </div>
+  <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            Université Paris-saclay - Master BIBS
+          </p>
+      </div>
+  </div>
 
 <div class="quarto-title-meta">
 
-    
+      
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
@@ -262,15 +274,17 @@ window.Quarto = {
 <div>
   <div class="keywords">
     <div class="block-title">Keywords</div>
-    <p>R, Rstudio, ManagHAL, Réseaux, SBM, LBM</p>
+    <p>R, Rstudio, ManagHAL, Réseaux, SBM, LBM, Sciences Ouvertes, HAL</p>
   </div>
 </div>
 
 </header>
 
 
-<section id="introduction" class="level2" data-number="0.1">
-<h2 data-number="0.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">0.1</span> INTRODUCTION</h2>
+<section id="managhal-donnees-bibliometriques-reseaux-et-analyses-statistiques-de-reseaux" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> MANAGHAL, DONNEES BIBLIOMETRIQUES, RESEAUX ET ANALYSES STATISTIQUES DE RESEAUX</h1>
+<section id="introduction" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">1.1</span> INTRODUCTION</h2>
 <p>En 2017, AgroParisTech signe l’Appel de Jussieu. Cet appel a été rédigé dans l’objectif de mettre en avant des engagements pour promouvoir la Bibliodiversité. La bibliodiversité correspond à la diversité dans le monde éditorial afin d’éviter une appropriation des espaces de ventes par des grands groupes éditeurs. Dans la continuité de la signature de l’Appel de Jussieu, AgroParisTech en partenariat avec INRAE, a adopté en 2020, une politique d’établissement dédié à la science ouverte (<span class="citation" data-cites="science-ouverte">AgroParisTech (<a href="#ref-science-ouverte" role="doc-biblioref">2024</a>)</span> , voir : La science ouverte à AgroParisTech – Politique d’établissement janvier 2020). Pour AgroParisTech, la science ouverte correspond à l’ « ensemble des principes et des actions qui facilitent l’ouverture et la libre dissémination, à destination de l’ensemble de la société, des productions de la recherche scientifique, ainsi que la transparence et l’ouverture des processus de la recherche » (<span class="citation" data-cites="science-ouverte">AgroParisTech (<a href="#ref-science-ouverte" role="doc-biblioref">2024</a>)</span>) . Un exemple concret des principes appliqués par l’établissement sont les principes FAIR pour la gestion des données de recherches. Ces derniers stipulent que les données doivent être :</p>
 <ul>
 <li>Findable : facilement trouvable.</li>
@@ -286,8 +300,8 @@ window.Quarto = {
 <p><u><strong>Paragraphe précédent ne me convient pas, je vais le retravailler !!!</strong></u></p>
 <p>La finalité du package “ManagHAL” est de faciliter l’utilisation et la compréhension des données de publications. Afin de manipuler les données de publications et comprendre celles-ci, l’approche adoptée est de réaliser des réseaux et ensuite d’utiliser des outils d’analyse statistique de réseau. Les outils principaux utilisés à l’avenir dans “ManagHAL” seront les modélisations en blocs stochastiques ou latents. Mon mémoire est organisé de la manière suivante: En premier lieu, le contexte statistique nécessaire à la compréhension des outils utilisés est présenté. Puis, dans la partie suivante sont abordés, les méthodes informatiques développées et les résultats d’analyse de données-exemples obtenus. (pour lequel tout marche, précisez que je fais ça pcq mon stage n’est pas terminé). Dans un troisième temps, les méthodes déjà publiées utilisées sont précisées. Enfin, dans une ultime partie, les résultats sont discutés.</p>
 </section>
-<section id="contexte-statistique" class="level2" data-number="0.2">
-<h2 data-number="0.2" class="anchored" data-anchor-id="contexte-statistique"><span class="header-section-number">0.2</span> CONTEXTE STATISTIQUE</h2>
+<section id="contexte-statistique" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="contexte-statistique"><span class="header-section-number">1.2</span> CONTEXTE STATISTIQUE</h2>
 <p>Cette partie est principalement basée sur la publication “Using Latent Block Models to Detect Structure in Ecological Networks” <span class="citation" data-cites="latent-block-models">Aubert et al. (<a href="#ref-latent-block-models" role="doc-biblioref">2022</a>)</span></p>
 <p>Un réseau d’interaction est composé de nœuds (les entités) et d’arêtes (les liens entre ces entités). Toutes entités nommables peuvent être modèlisés sous forme de noeuds, et leur interactions entre elles peuent être modélisés par des arrêtes. On peut prendre pour exemple les réseaux de gènes à partir de données de co-expression. Les réseaux sont répartis en deux groupes principaux: les réseaux Unipartites, où tous les nœuds sont du même type, et les réseaux Bipartites, où il y a deux types distincts de nœuds et les liens ne se forme qu’entre des nœuds de types différents. Les interactions dans un réseau peuvent être binaires ou pondérées. Un réseau peut être encodé dans une matrice <span class="math inline">\(Y\)</span> d’adjacence telle que :</p>
 <span class="math display">\[\begin{align*}
@@ -328,130 +342,87 @@ Y_{ij} = 0 &amp; \quad \text{si aucun lien n'existe entre les nœuds } i \text{ 
 </ul>
 <p>Nous avons donc comme paramètres du modèle <span class="math inline">\(\theta = (\gamma, \pi)\)</span>. A partir du réseau connu, il est possible d’inférer les paramètres du modèle. Par nécessité d’écourter le rapport, une explication détaillée ne sera pas réalisée. Je vous conseille cependant d’aller voir la publication “Using Latent Block Models to Detect Structure in Ecological Networks” <span class="citation" data-cites="latent-block-models">Aubert et al. (<a href="#ref-latent-block-models" role="doc-biblioref">2022</a>)</span> où les explications à ce propos sont claires et précises.</p>
 </section>
-<section id="methodes" class="level2" data-number="0.3">
-<h2 data-number="0.3" class="anchored" data-anchor-id="methodes"><span class="header-section-number">0.3</span> METHODES</h2>
+<section id="methodes" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="methodes"><span class="header-section-number">1.3</span> METHODES</h2>
 <p>Comme précisé dans l’introduction, l’entièreté des méthodes informatiques développées ont été réalisées sur RStudio en utilisant le langage R version 4.4.1 sous windows 11 x64. Les packages utilisés sont les suivants :</p>
-<p>Le package “dplyr” est utilisé pour la manipulation et la transformation des données grâce à une syntaxe claire et cohérente. Ce package facilite les opérations courantes telles que la sélection, le filtrage, le regroupement et le résumé des données. Le package “mailR” est utilisé pour l’envoi d’emails avec des pièces jointes directement depuis R, ce qui est utile pour automatiser l’envoi de rapports. Le package “askpass” est utilisé pour gérer les mots de passe de manière sécurisée. Le package “furrr” est utilisé pour paralléliser les tâches en combinaison avec le package “future”. Le package “future” permet l’exécution de code en parallèle, ce qui réduit le temps de traitement des tâches lourdes. Le package “ggplot2” est utilisé pour la création de visualisations graphiques sophistiquées. Le package “magrittr” fournit des opérateurs pour améliorer la lisibilité du code, en particulier l’opérateur <code>%&gt;%</code> (pipe). Le package “purrr” est utilisé pour les opérations fonctionnelles sur les listes et autres structures de données. Le package “quarto” est utilisé pour la création de documents dynamiques et de rapports. Le package “readxl” permet la lecture de fichiers Excel. Le package “rvest” est utilisé pour le web scraping, c’est-à-dire l’extraction de données à partir de pages web. Le package “SnowballC” est utilisé pour le traitement de la langue naturelle, en particulier pour la lemmatisation. Le package “stringr” fournit des fonctions pour la manipulation des chaînes de caractères. Le package “tictoc” est utilisé pour mesurer le temps d’exécution des morceaux de code. Le package “tm” est utilisé pour le text mining (extraction de connaissances à partir de textes). Le package “wordcloud” est utilisé pour la création de nuages de mots.</p>
-<p>Afin de pouvoir construire une requête HAL pour récupèrer des données bibliographiques de publications d’auteurs, il est nécessaire de comprendre comment construire une requête. Pour construire une requête HAL, il faut au moins un paramètre <code>q</code> qui contient la requête de recherche. Ce paramètre doit spécifier le champ de recherche suivi de la valeur. Par exemple, pour rechercher le terme “test” : <code>http://api.archives-ouvertes.fr/search/?q=test&amp;wt=xml</code> . Si le champ n’est pas spécifié, la recherche s’effectue par défaut dans l’index texte. Pour rechercher dans un champ particulier, il faut utiliser <code>champ:terme</code> : <code>http://api.archives-ouvertes.fr/search/?q=title_t:japon&amp;wt=xml</code> . Pour échapper certains caractères spéciaux utilisés par Apache Solr, utilisez <code>\</code>. Par exemple, <code>(1+1):2</code> devient <code>\(1\+1\)\:2</code>. (voir <span class="citation" data-cites="api-hal">Ouvertes (<a href="#ref-api-hal" role="doc-biblioref">n.d.</a>)</span>). Il est possible d’indiquer le format de la réponse (sous-entendant le format des données récupérées) via le paramètre <code>wt</code> . Pour finir il est possible de spécifier les champs à retourner dans la réponse via le paramètre <code>fl</code> et de faire un filtre des données via le paramètre <code>fq</code> . Tous les possibilités de l’API HAL n’ont pas été abordé dans ce court résumé. Il est pourtant compréhensible que l’API HAL est très diverse et permet une grande liberté à l’utilisateur pour l’extraction des données. De plus, il existe un nombre de champs considérables. Certains seront abordés par la suite dans la section résultats.</p>
+<p>Le package dplyr <span class="citation" data-cites="dplyr">(<a href="#ref-dplyr" role="doc-biblioref">Wickham et al. 2023</a>)</span> est utilisé pour la manipulation et la transformation des données grâce à une syntaxe claire et cohérente. Ce package facilite les opérations courantes telles que la sélection, le filtrage, le regroupement et le résumé des données. Le package mailR <span class="citation" data-cites="mailR">(<a href="#ref-mailR" role="doc-biblioref">Premraj 2021</a>)</span> est utilisé pour l’envoi d’emails avec des pièces jointes directement depuis R, ce qui est utile pour automatiser l’envoi de rapports. Le package askpass <span class="citation" data-cites="askpass">(<a href="#ref-askpass" role="doc-biblioref">Ooms 2023</a>)</span> est utilisé pour gérer les mots de passe de manière sécurisée. Le package furrr <span class="citation" data-cites="furrr">(<a href="#ref-furrr" role="doc-biblioref">Vaughan and Dancho 2022</a>)</span> est utilisé pour paralléliser les tâches en combinaison avec le package future <span class="citation" data-cites="future">(<a href="#ref-future" role="doc-biblioref">Bengtsson 2021</a>)</span>. Le package future <span class="citation" data-cites="future">(<a href="#ref-future" role="doc-biblioref">Bengtsson 2021</a>)</span> permet l’exécution de code en parallèle, ce qui réduit le temps de traitement des tâches lourdes. Le package ggplot2 <span class="citation" data-cites="ggplot2">(<a href="#ref-ggplot2" role="doc-biblioref">Wickham 2016</a>)</span> est utilisé pour la création de visualisations graphiques sophistiquées. Le package matgrittr <span class="citation" data-cites="magrittr">(<a href="#ref-magrittr" role="doc-biblioref">Bache and Wickham 2022</a>)</span> fournit des opérateurs pour améliorer la lisibilité du code, en particulier l’opérateur <code>%&gt;%</code> (pipe). Le package purrr <span class="citation" data-cites="purrr">(<a href="#ref-purrr" role="doc-biblioref">Wickham and Henry 2023</a>)</span> est utilisé pour les opérations fonctionnelles sur les listes et autres structures de données. Le package quarto <span class="citation" data-cites="quarto">(<a href="#ref-quarto" role="doc-biblioref">Allaire and Dervieux 2024</a>)</span> est utilisé pour la création de documents dynamiques et de rapports. Le package readxl <span class="citation" data-cites="readxl">(<a href="#ref-readxl" role="doc-biblioref">Wickham and Bryan 2023</a>)</span> permet la lecture de fichiers Excel. Le package rvest <span class="citation" data-cites="rvest">(<a href="#ref-rvest" role="doc-biblioref">Wickham 2024</a>)</span> est utilisé pour le web scraping, c’est-à-dire l’extraction de données à partir de pages web. Le package SnowballC <span class="citation" data-cites="SnowballC">(<a href="#ref-SnowballC" role="doc-biblioref">Bouchet-Valat 2023</a>)</span> est utilisé pour le traitement de la langue naturelle, en particulier pour la lemmatisation. Le package stringr <span class="citation" data-cites="stringr">(<a href="#ref-stringr" role="doc-biblioref">Wickham 2023</a>)</span> fournit des fonctions pour la manipulation des chaînes de caractères. Le package tictoc <span class="citation" data-cites="tictoc">(<a href="#ref-tictoc" role="doc-biblioref">Izrailev 2024</a>)</span> est utilisé pour mesurer le temps d’exécution des morceaux de code. Le package tm <span class="citation" data-cites="tm">(<a href="#ref-tm" role="doc-biblioref">Feinerer and Hornik 2024</a>)</span> est utilisé pour le text mining (extraction de connaissances à partir de textes). Le package wordcloud <span class="citation" data-cites="wordcloud">(<a href="#ref-wordcloud" role="doc-biblioref">Fellows 2018</a>)</span> est utilisé pour la création de nuages de mots. Le package Visnetwork <strong>[la citation ne fonctionne pas]</strong> est utilisé pour la visualisation de réseaux dynamiques. Le package Sbm <span class="citation" data-cites="sbm">(<a href="#ref-sbm" role="doc-biblioref">Chiquet, Donnet, and Barbillon 2024</a>)</span> est utilisé pour réaliser les analyses statisitiques de réseaux.</p>
+<p>Afin de pouvoir construire une requête HAL pour récupèrer des données bibliographiques de publications d’auteurs, il est nécessaire de comprendre comment construire une requête. Pour construire une requête HAL, il faut au moins un paramètre <code>q</code> qui contient la requête de recherche. Ce paramètre doit spécifier le champ de recherche suivi de la valeur. Par exemple, pour rechercher le terme “test” : <code>http://api.archives-ouvertes.fr/search/?q=test&amp;wt=xml</code> . Si le champ n’est pas spécifié, la recherche s’effectue par défaut dans l’index texte. Pour rechercher dans un champ particulier, il faut utiliser <code>champ:terme</code> : <code>http://api.archives-ouvertes.fr/search/?q=title_t:japon&amp;wt=xml</code> . Pour échapper certains caractères spéciaux utilisés par Apache Solr, utilisez <code>\</code>. Par exemple, <code>(1+1):2</code> devient <code>\(1\+1\)\:2</code>. (voir <span class="citation" data-cites="api-hal"><span>“Documentation API-HAL”</span> (<a href="#ref-api-hal" role="doc-biblioref">n.d.</a>)</span>). Il est possible d’indiquer le format de la réponse (sous-entendant le format des données récupérées) via le paramètre <code>wt</code> . Pour finir il est possible de spécifier les champs à retourner dans la réponse via le paramètre <code>fl</code> et de faire un filtre des données via le paramètre <code>fq</code> . Tous les possibilités de l’API HAL n’ont pas été abordé dans ce court résumé. Il est pourtant compréhensible que l’API HAL est très diverse et permet une grande liberté à l’utilisateur pour l’extraction des données. De plus, il existe un nombre de champs considérables. Certains seront abordés par la suite dans la section résultats.</p>
 </section>
-<section id="resultats" class="level2" data-number="0.4">
-<h2 data-number="0.4" class="anchored" data-anchor-id="resultats"><span class="header-section-number">0.4</span> RESULTATS</h2>
+<section id="resultats" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="resultats"><span class="header-section-number">1.4</span> RESULTATS</h2>
 <p>Cette section présente les résultats obtenus au cours de mon stage. Elle est divisée en deux parties principales: les fonctions et algorithmes développés, modifiés ainsi que les résultats obtenus via un exemple. Cet exemple consistera en des données provenant des Ressources Humaines du Laboratoire MIA d’AgroPariTech. Chaque fonction est expliquée en détail, suivie des raisons justifiant son développement. Il est important de noter que mon stage se terminant le 26 juillet, Le package est donc encore en développement. Les fonctions présentées fonctionnent dans le cadre de l’exemple. Dans cette section, les noms de <em><code>fonctions</code></em> seront en italique et les noms des <strong>scripts R</strong> contenant les fonctions seront en gras.</p>
-<section id="accessibilité-et-généricité-de-managhal" class="level3" data-number="0.4.1">
-<h3 data-number="0.4.1" class="anchored" data-anchor-id="accessibilité-et-généricité-de-managhal"><span class="header-section-number">0.4.1</span> Accessibilité et généricité de ManagHAL</h3>
+<section id="accessibilité-et-généricité-de-managhal" class="level3" data-number="1.4.1">
+<h3 data-number="1.4.1" class="anchored" data-anchor-id="accessibilité-et-généricité-de-managhal"><span class="header-section-number">1.4.1</span> Accessibilité et généricité de ManagHAL</h3>
 <p>Lors de mon stage, j’ai d’abord décidé de rendre le package plus accessible et générique. Pour ce faire, il m’était nécessaire de réorganiser et modifier certaines fonctions déjà présentes codées par Théodore Vanrengterghem.</p>
-<section id="modifications-de-la-fonction-load_mia_table" class="level4" data-number="0.4.1.1">
-<h4 data-number="0.4.1.1" class="anchored" data-anchor-id="modifications-de-la-fonction-load_mia_table"><span class="header-section-number">0.4.1.1</span> Modifications de la fonction <em><code>load_mia_table</code></em></h4>
-<p>J’ai commencé par modifier dans le fichier <strong>mia_table.R</strong> la fonction <em><code>load_mia_table</code></em>. A l’origine, cette fonction permettait le chargement d’un csv en ligne depuis une addresse spécifique vers un fichier contenant des informations tel que le nom, le prenom, l’idhal, l’equipe, etc, des personnes appartenant au labo. J’ai fait le choix de renommer le fichier <strong>load_table.R</strong>. J’ai remplacé la fonction <em><code>load_mia_table</code></em> par trois fonctions <em><code>load_team_table_csv</code></em>, <em><code>load_team_table_url</code></em>, et <em><code>load_team_table</code></em>. <em><code>load_team_table_csv</code></em> permet de charger un csv dans Rstudio depuis un fichier local de la machine de l’utilisateur. <em><code>load_team_table_url</code></em> permet de charger un csv dans Rstudio depuis un fichier en ligne. <em>load_team_table</em> fait appel aux deux fonctions précédentes et permet par le biais d’argument de fonctions de spécifier la provenance du fichier et de charger le csv soit depuis un url soit depuis un fichier local. J’ai aussi modifier la majorité des fonctions déjà présentes dans le package faisant appel à <em>load_mia_table</em>. Les paramètres en entrée des trois fonctions sont les même que la fonction <em><code>load_mia_table</code></em> d’origine avec l’ajout d’un paramètre permettant à l’utilisateur de rentrer l’adresse du fichier. J’ai ensuite crée une documentation via le package “Roxygène2” conforme aux critères requis pour un package mis en ligne (voir : exemple d’une documentation classique en annexe) pour chacune des trois fonctions.</p>
-<p>La fonction originelle <em><code>load_mia_table</code></em> ne permettait que de charger de manière spécifique le csv fourni par les Ressources Humaines depuis un url seafile. Cette fonction n’était pas générique. Ainsi, il était nécéssaire de la modifier. J’ai décidé de diviser en trois fonctions différentes afin de permettre à l’utilisateur de choisir de charger des tables de provenance locale ou depuis internet. J’ai décidé pour <em><code>load_team_table_url</code></em> de garder en majeur partie le code d’origine et de simplement le réadapter par soucis de temps. J’y ai ajouté des conditions de présence de colonnes obligatoires afin d’obliger l’utilisateur à fournir des colonnes sous un format spécifique.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>load_team_table_url <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">filter_id =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>                                date_cols,</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>                                url) {</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  idhal <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  tmp_file <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="fu">tempfile</span>(), <span class="st">".xlsx"</span>)</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">download.file</span>(</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">url =</span> url,</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">destfile =</span> tmp_file,</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">mode =</span> <span class="st">"wb"</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  nbcol <span class="ot">&lt;-</span> <span class="fu">ncol</span>(readxl<span class="sc">::</span><span class="fu">read_xlsx</span>(tmp_file,</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">sheet =</span> <span class="st">"Membres"</span>))</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>  col_types <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="st">"text"</span>,nbcol)</span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>  col_types[date_cols] <span class="ot">&lt;-</span> <span class="st">'date'</span></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>  table <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_xlsx</span>(tmp_file,</span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>                             <span class="at">sheet =</span> <span class="st">"Membres"</span>,</span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>                             <span class="at">col_types =</span> col_types</span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">rename_with</span>(</span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>      clean_names</span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span></span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">mutate_if</span>(<span class="cf">function</span>(x) {</span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>      <span class="st">"POSIXt"</span> <span class="sc">%in%</span> <span class="fu">class</span>(x)</span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>    }, <span class="sc">~</span> <span class="fu">format</span>(.x, <span class="st">"%d/%m/%Y"</span>))</span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (filter_id) {</span>
-<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>    table <span class="ot">&lt;-</span> <span class="fu">suppressWarnings</span>(table <span class="sc">%&gt;%</span></span>
-<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>                                dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(<span class="fu">as.numeric</span>(idhal))) <span class="sc">%&gt;%</span></span>
-<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>                                dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">idhal =</span> <span class="fu">as.numeric</span>(idhal)))</span>
-<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Test if there is a column named "id"</span></span>
-<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Possibility to add mandatory columns in the future</span></span>
-<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Just add "OR"</span></span>
-<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> ( <span class="sc">!</span>(<span class="st">"idhal"</span> <span class="sc">%in%</span> <span class="fu">names</span>(table)) <span class="sc">|</span> <span class="sc">!</span>(<span class="st">"nom"</span> <span class="sc">%in%</span> <span class="fu">names</span>(table)) <span class="sc">|</span> <span class="sc">!</span>(<span class="st">"prenom"</span> <span class="sc">%in%</span> <span class="fu">names</span>(table)) ) { <span class="fu">stop</span>(<span class="st">"one of the following columns are missing : 'idhal' ; 'nom' ; 'prenom' "</span>) }</span>
-<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(table)</span>
-<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<section id="modifications-de-la-fonction-load_mia_table" class="level4" data-number="1.4.1.1">
+<h4 data-number="1.4.1.1" class="anchored" data-anchor-id="modifications-de-la-fonction-load_mia_table"><span class="header-section-number">1.4.1.1</span> Modifications de la fonction <em><code>load_mia_table</code></em></h4>
+<p>J’ai commencé par modifier dans le fichier <strong>mia_table.R</strong> la fonction <em><code>load_mia_table</code></em>. A l’origine, cette fonction permettait le chargement d’un csv en ligne depuis une addresse spécifique vers un fichier contenant des informations tel que le nom, le prenom, l’idhal, l’equipe, etc, des personnes appartenant au labo. J’ai fait le choix de renommer le fichier <strong>load_table.R</strong>. J’ai remplacé la fonction <em><code>load_mia_table</code></em> par trois fonctions <em><code>load_team_table_csv</code></em>, <em><code>load_team_table_url</code></em>, et <em><code>load_team_table</code></em>. <em><code>load_team_table_csv</code></em> permet de charger un csv dans Rstudio depuis un fichier local de la machine de l’utilisateur. <em><code>load_team_table_url</code></em> permet de charger un csv dans Rstudio depuis un fichier en ligne. <em>load_team_table</em> fait appel aux deux fonctions précédentes et permet par le biais d’argument de fonctions de spécifier la provenance du fichier et de charger le csv soit depuis un url soit depuis un fichier local. J’ai aussi modifier la majorité des fonctions déjà présentes dans le package faisant appel à <em>load_mia_table</em>. Les paramètres en entrée des trois fonctions sont les même que la fonction <em><code>load_mia_table</code></em> d’origine avec l’ajout d’un paramètre permettant à l’utilisateur de rentrer l’adresse du fichier. J’ai ensuite crée une documentation via le package “Roxygène2” conforme aux critères requis pour un package mis en ligne (veuillez vous referez à l’annexe : <span class="citation" data-cites="doc-Roxygen2">(<a href="#ref-doc-Roxygen2" role="doc-biblioref"><strong>doc-Roxygen2?</strong></a>)</span> ) pour chacune des trois fonctions.</p>
+<p>La fonction originelle <em><code>load_mia_table</code></em> ne permettait que de charger de manière spécifique le csv fourni par les Ressources Humaines depuis un url seafile. Cette fonction n’était pas générique. Ainsi, il était nécéssaire de la modifier. J’ai décidé de diviser en trois fonctions différentes afin de permettre à l’utilisateur de choisir de charger des tables de provenance locale ou depuis internet. J’ai décidé pour <em><code>load_team_table_url</code></em> de garder en majeur partie le code d’origine et de simplement le réadapter par soucis de temps. J’y ai ajouté des conditions de présence de colonnes obligatoires afin d’obliger l’utilisateur à fournir des colonnes sous un format spécifique. (Pour voir le corps de la fonction, veuillez vous référer à l’annexe : <span class="citation" data-cites="load-team-table-url">(<a href="#ref-load-team-table-url" role="doc-biblioref"><strong>load-team-table-url?</strong></a>)</span> )</p>
 <p><em><code>load_team_table_csv</code></em> est basé sur la construction de <em><code>load_team_table_url</code></em>. Je l’ai adapté pour pouvoir charger depuis un fichier local en utilisant <em>read.csv</em>. De même que dans <em><code>load_team_table_url</code></em>, j’y ai ajouté des conditions de présence de colonnes obligatoires afin d’obliger l’utilisateur à fournir des colonnes sous un format spécifique.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>load_team_table_csv <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">filter_id =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>                                date_cols,</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>                                filepath){</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  idhal <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  nbcol <span class="ot">&lt;-</span> <span class="fu">ncol</span>(<span class="fu">read.csv</span>(filepath, <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">sep =</span> <span class="st">";"</span>, <span class="at">encoding =</span> <span class="st">"UTF-8"</span>))</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># define column types (dates or text if not dates)</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  col_types <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="st">"character"</span>, nbcol)</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  col_types[date_cols] <span class="ot">&lt;-</span> <span class="st">'character'</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  table <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(filepath,</span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>                    <span class="at">header =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>                    <span class="at">sep =</span> <span class="st">";"</span>,</span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>                    <span class="at">encoding =</span> <span class="st">"UTF-8"</span>,</span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>                    <span class="at">colClasses =</span> col_types</span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">rename_with</span>(  <span class="co"># clean the columns names </span></span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>      clean_names</span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span></span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">mutate_if</span>(<span class="cf">function</span>(x) {  <span class="co"># Convert specified column to dates</span></span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>      <span class="st">"POSIXt"</span> <span class="sc">%in%</span> <span class="fu">class</span>(x)</span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>    }, <span class="sc">~</span> <span class="fu">format</span>(.x, <span class="st">"%d/%m/%Y"</span>))</span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Filter out rows without IDHAL</span></span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (filter_id) {</span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>    idhal <span class="ot">&lt;-</span> table<span class="sc">$</span>idhal</span>
-<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>    table <span class="ot">&lt;-</span> table[<span class="fu">which</span>(<span class="sc">!</span><span class="fu">is.na</span>(idhal)),]</span>
-<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>    table<span class="sc">$</span>idhal <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(idhal)</span>
-<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>    table<span class="sc">$</span>idhal[table<span class="sc">$</span>idhal <span class="sc">==</span> <span class="dv">0</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
-<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Test if there is a column named "id"</span></span>
-<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Possibility to add mandatory columns in the future</span></span>
-<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Just add "OR"</span></span>
-<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> ( <span class="sc">!</span>(<span class="st">"idhal"</span> <span class="sc">%in%</span> <span class="fu">names</span>(table)) <span class="sc">|</span> <span class="sc">!</span>(<span class="st">"nom"</span> <span class="sc">%in%</span> <span class="fu">names</span>(table)) <span class="sc">|</span> <span class="sc">!</span>(<span class="st">"prenom"</span> <span class="sc">%in%</span> <span class="fu">names</span>(table)) ) { <span class="fu">stop</span>(<span class="st">"one of the following columns are missing : 'idhal' ; 'nom' ; 'prenom' "</span>) }</span>
-<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(table)</span>
-<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>load_team_table_csv <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">filter_id =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>                                date_cols,</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>                                filepath){</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  idhal <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  nbcol <span class="ot">&lt;-</span> <span class="fu">ncol</span>(<span class="fu">read.csv</span>(filepath, <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">sep =</span> <span class="st">";"</span>, <span class="at">encoding =</span> <span class="st">"UTF-8"</span>))</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># define column types (dates or text if not dates)</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  col_types <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="st">"character"</span>, nbcol)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  col_types[date_cols] <span class="ot">&lt;-</span> <span class="st">'character'</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  table <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(filepath,</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>                    <span class="at">header =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>                    <span class="at">sep =</span> <span class="st">";"</span>,</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>                    <span class="at">encoding =</span> <span class="st">"UTF-8"</span>,</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>                    <span class="at">colClasses =</span> col_types</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">rename_with</span>(  <span class="co"># clean the columns names </span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>      clean_names</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">mutate_if</span>(<span class="cf">function</span>(x) {  <span class="co"># Convert specified column to dates</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>      <span class="st">"POSIXt"</span> <span class="sc">%in%</span> <span class="fu">class</span>(x)</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>    }, <span class="sc">~</span> <span class="fu">format</span>(.x, <span class="st">"%d/%m/%Y"</span>))</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Filter out rows without IDHAL</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (filter_id) {</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>    idhal <span class="ot">&lt;-</span> table<span class="sc">$</span>idhal</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>    table <span class="ot">&lt;-</span> table[<span class="fu">which</span>(<span class="sc">!</span><span class="fu">is.na</span>(idhal)),]</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>    table<span class="sc">$</span>idhal <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(idhal)</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>    table<span class="sc">$</span>idhal[table<span class="sc">$</span>idhal <span class="sc">==</span> <span class="dv">0</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Test if there is a column named "id"</span></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Possibility to add mandatory columns in the future</span></span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Just add "OR"</span></span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> ( <span class="sc">!</span>(<span class="st">"idhal"</span> <span class="sc">%in%</span> <span class="fu">names</span>(table)) <span class="sc">|</span> <span class="sc">!</span>(<span class="st">"nom"</span> <span class="sc">%in%</span> <span class="fu">names</span>(table)) <span class="sc">|</span> <span class="sc">!</span>(<span class="st">"prenom"</span> <span class="sc">%in%</span> <span class="fu">names</span>(table)) ) { <span class="fu">stop</span>(<span class="st">"one of the following columns are missing : 'idhal' ; 'nom' ; 'prenom' "</span>) }</span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(table)</span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Enfin, <em><code>load_team_table</code></em> appelle l’une des deux fonctions en fonction du type d’adresse fourni : URL ou chemin de fichier local. Le type de l’adresse est déterminé en utilisant <em><code>grepl</code></em>, qui utilise une expression régulière.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>load_team_table <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">filter_id =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>                            <span class="at">date_cols =</span> <span class="fu">c</span>(<span class="dv">7</span>,<span class="dv">8</span>),</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>                            filepath_or_url) {</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># If the parameter is a URL</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">grepl</span>(<span class="st">"^https?://"</span>, filepath_or_url)) {</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Call the load_team_table_url function with the URL</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="fu">load_team_table_url</span>(<span class="at">filter_id =</span> filter_id, <span class="at">date_cols =</span> date_cols, <span class="at">url =</span> filepath_or_url))</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Otherwise, it's a local file path; call the load_team_table_csv function with the local file path</span></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="fu">load_team_table_csv</span>(<span class="at">filter_id =</span> filter_id, <span class="at">date_cols =</span> date_cols, <span class="at">filepath =</span> filepath_or_url))</span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>load_team_table <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">filter_id =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>                            <span class="at">date_cols =</span> <span class="fu">c</span>(<span class="dv">7</span>,<span class="dv">8</span>),</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>                            filepath_or_url) {</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># If the parameter is a URL</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">grepl</span>(<span class="st">"^https?://"</span>, filepath_or_url)) {</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Call the load_team_table_url function with the URL</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="fu">load_team_table_url</span>(<span class="at">filter_id =</span> filter_id, <span class="at">date_cols =</span> date_cols, <span class="at">url =</span> filepath_or_url))</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Otherwise, it's a local file path; call the load_team_table_csv function with the local file path</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="fu">load_team_table_csv</span>(<span class="at">filter_id =</span> filter_id, <span class="at">date_cols =</span> date_cols, <span class="at">filepath =</span> filepath_or_url))</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="résultat-de-lapplication-de-load_team_table" class="level4" data-number="0.4.1.2">
-<h4 data-number="0.4.1.2" class="anchored" data-anchor-id="résultat-de-lapplication-de-load_team_table"><span class="header-section-number">0.4.1.2</span> Résultat de l’Application de <em>load_team_table</em></h4>
+<section id="résultat-de-lapplication-de-load_team_table" class="level4" data-number="1.4.1.2">
+<h4 data-number="1.4.1.2" class="anchored" data-anchor-id="résultat-de-lapplication-de-load_team_table"><span class="header-section-number">1.4.1.2</span> Résultat de l’Application de <em>load_team_table</em></h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>data_RH_csv_Example <span class="ot">&lt;-</span> <span class="fu">load_team_table</span>(<span class="at">filter_id =</span> <span class="cn">TRUE</span>, <span class="at">date_cols =</span> <span class="fu">c</span>(<span class="dv">6</span>,<span class="dv">7</span>), <span class="at">filepath_or_url =</span> <span class="st">"./data/Data_RH_Example.csv"</span>)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data_RH_csv_Example)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>data_RH_csv_Example <span class="ot">&lt;-</span> <span class="fu">load_team_table</span>(<span class="at">filter_id =</span> <span class="cn">TRUE</span>, <span class="at">date_cols =</span> <span class="fu">c</span>(<span class="dv">6</span>,<span class="dv">7</span>), <span class="at">filepath_or_url =</span> <span class="st">"./data/Data_RH_Example.csv"</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data_RH_csv_Example)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  civilite       nom   prenom   statut  rattachement debut_contrat fin_contrat
 1       M. ADJAKOSSA     Éric      CEC AgroParisTech                          
@@ -478,25 +449,72 @@ Y_{ij} = 0 &amp; \quad \text{si aucun lien n'existe entre les nœuds } i \text{ 
 </div>
 <p>Lors de l’application de la fonction <em><code>load_team_table</code></em> ci-dessus en utilisant le jeu de données test Data_RH_Example, on observe le chargement d’un csv contenant les colonnes d’origines du csv fournie en entrée. Les valeurs manquantes ou mal renseignées des idhals numériques ont été remplacées par des NAs. Les dates présentes deans les colonnes de dates spécifiés par l’utilisateur ont été nettoyées et ont le bon format.</p>
 </section>
-<section id="modifications-des-fonctions-régissant-la-requête-hal" class="level4" data-number="0.4.1.3">
-<h4 data-number="0.4.1.3" class="anchored" data-anchor-id="modifications-des-fonctions-régissant-la-requête-hal"><span class="header-section-number">0.4.1.3</span> Modifications des fonctions régissant la requête HAL</h4>
+<section id="modifications-des-fonctions-régissant-la-requête-hal" class="level4" data-number="1.4.1.3">
+<h4 data-number="1.4.1.3" class="anchored" data-anchor-id="modifications-des-fonctions-régissant-la-requête-hal"><span class="header-section-number">1.4.1.3</span> Modifications des fonctions régissant la requête HAL</h4>
 <p>Dans le package managHAL originel, il y avait deux fichiers contenant les fonctions nécéssaires à la construction d’une requête HAL. Ces deux fichiers se nomment <strong>HAL_reports.R</strong> et <strong>HAL_queries.R</strong>. La fonction principale de construction d’une requête HAL est <em><code>HAL_query</code></em>.</p>
 <p>Parler des modification faites a HAL_query (add_outputs), pourquoi ? (je souhaite obtenir des informations bien particulières pour pouvoir coder le reseau de co-author et construire un sbm sur le reseau ?</p>
 </section>
 </section>
-<section id="conclusion-des-résultats" class="level3" data-number="0.4.2">
-<h3 data-number="0.4.2" class="anchored" data-anchor-id="conclusion-des-résultats"><span class="header-section-number">0.4.2</span> Conclusion des Résultats</h3>
+<section id="conclusion-des-résultats" class="level3" data-number="1.4.2">
+<h3 data-number="1.4.2" class="anchored" data-anchor-id="conclusion-des-résultats"><span class="header-section-number">1.4.2</span> Conclusion des Résultats</h3>
 <p>Exemple via chatGPT</p>
 <p>Les méthodes développées au cours de ce stage ont permis d’améliorer significativement les performances des algorithmes existants. L’optimisation de l’algorithme X a réduit le temps de traitement de 40%, tandis que les ajustements apportés au modèle Y ont augmenté la précision de 5%. Ces résultats démontrent l’efficacité des approches choisies pour répondre aux limitations des méthodes précédentes.</p>
 </section>
 </section>
-<section id="discussion" class="level2" data-number="0.5">
-<h2 data-number="0.5" class="anchored" data-anchor-id="discussion"><span class="header-section-number">0.5</span> DISCUSSION</h2>
+<section id="discussion" class="level2" data-number="1.5">
+<h2 data-number="1.5" class="anchored" data-anchor-id="discussion"><span class="header-section-number">1.5</span> DISCUSSION</h2>
 <p>parler de l’efficacité de ce que j’ai code, des modifications à venir et de ce que je souhaite faire avant la fin de stage. Parler de l’api HAL et du cauchemar que c’est, parler des potentiels utilisations du package pour HAL mais aussi faire un parallèle avec la bio avec par exemple en ouverture les réseaux de gènes ?</p>
 </section>
-<section id="annexes" class="level2" data-number="0.6">
-<h2 data-number="0.6" class="anchored" data-anchor-id="annexes"><span class="header-section-number">0.6</span> ANNEXES</h2>
-<p><u>Exemple d’une documentation classique avec Roxygen2 :</u></p>
+<section id="annexes" class="level2" data-number="1.6">
+<h2 data-number="1.6" class="anchored" data-anchor-id="annexes"><span class="header-section-number">1.6</span> ANNEXES</h2>
+<section id="load-team-table-url" class="level3" data-number="1.6.1">
+<h3 data-number="1.6.1" class="anchored" data-anchor-id="load-team-table-url"><span class="header-section-number">1.6.1</span> load_team_table_url :</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>load_team_table_url <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">filter_id =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>                                date_cols,</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>                                url) {</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  idhal <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  tmp_file <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="fu">tempfile</span>(), <span class="st">".xlsx"</span>)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">download.file</span>(</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">url =</span> url,</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">destfile =</span> tmp_file,</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">mode =</span> <span class="st">"wb"</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>  nbcol <span class="ot">&lt;-</span> <span class="fu">ncol</span>(readxl<span class="sc">::</span><span class="fu">read_xlsx</span>(tmp_file,</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">sheet =</span> <span class="st">"Membres"</span>))</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>  col_types <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="st">"text"</span>,nbcol)</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>  col_types[date_cols] <span class="ot">&lt;-</span> <span class="st">'date'</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>  table <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_xlsx</span>(tmp_file,</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>                             <span class="at">sheet =</span> <span class="st">"Membres"</span>,</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>                             <span class="at">col_types =</span> col_types</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">rename_with</span>(</span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>      clean_names</span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span></span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">mutate_if</span>(<span class="cf">function</span>(x) {</span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>      <span class="st">"POSIXt"</span> <span class="sc">%in%</span> <span class="fu">class</span>(x)</span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>    }, <span class="sc">~</span> <span class="fu">format</span>(.x, <span class="st">"%d/%m/%Y"</span>))</span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (filter_id) {</span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>    table <span class="ot">&lt;-</span> <span class="fu">suppressWarnings</span>(table <span class="sc">%&gt;%</span></span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>                                dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(<span class="fu">as.numeric</span>(idhal))) <span class="sc">%&gt;%</span></span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>                                dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">idhal =</span> <span class="fu">as.numeric</span>(idhal)))</span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Test if there is a column named "id"</span></span>
+<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Possibility to add mandatory columns in the future</span></span>
+<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Just add "OR"</span></span>
+<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> ( <span class="sc">!</span>(<span class="st">"idhal"</span> <span class="sc">%in%</span> <span class="fu">names</span>(table)) <span class="sc">|</span> <span class="sc">!</span>(<span class="st">"nom"</span> <span class="sc">%in%</span> <span class="fu">names</span>(table)) <span class="sc">|</span> <span class="sc">!</span>(<span class="st">"prenom"</span> <span class="sc">%in%</span> <span class="fu">names</span>(table)) ) { <span class="fu">stop</span>(<span class="st">"one of the following columns are missing : 'idhal' ; 'nom' ; 'prenom' "</span>) }</span>
+<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(table)</span>
+<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="doc-Roxygen2" class="level3" data-number="1.6.2">
+<h3 data-number="1.6.2" class="anchored" data-anchor-id="doc-Roxygen2"><span class="header-section-number">1.6.2</span> Exemple d’une documentation classique avec Roxygen2 :</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#' load_team_table_csv</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co">#'</span></span>
@@ -522,32 +540,85 @@ Y_{ij} = 0 &amp; \quad \text{si aucun lien n'existe entre les nœuds } i \text{ 
 <span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a><span class="co">#'                     "C:/users/.../.../Classeur.csv")</span></span>
 <span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a><span class="co">#' }</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="tableau-des-résultats-détaillés" class="level3" data-number="0.6.1">
-<h3 data-number="0.6.1" class="anchored" data-anchor-id="tableau-des-résultats-détaillés"><span class="header-section-number">0.6.1</span> Tableau des résultats détaillés</h3>
+</section>
+<section id="tableau-des-résultats-détaillés" class="level3" data-number="1.6.3">
+<h3 data-number="1.6.3" class="anchored" data-anchor-id="tableau-des-résultats-détaillés"><span class="header-section-number">1.6.3</span> Tableau des résultats détaillés</h3>
 <p>Voici les tableaux des résultats détaillés pour les différentes méthodes et tests effectués.</p>
 </section>
 </section>
-<section id="bibliographie" class="level2" data-number="0.7">
-<h2 data-number="0.7" class="anchored" data-anchor-id="bibliographie"><span class="header-section-number">0.7</span> BIBLIOGRAPHIE</h2>
+<section id="bibliographie" class="level2" data-number="1.7">
+<h2 data-number="1.7" class="anchored" data-anchor-id="bibliographie"><span class="header-section-number">1.7</span> BIBLIOGRAPHIE</h2>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-science-ouverte" class="csl-entry" role="listitem">
 AgroParisTech. 2024. <span>“Science Ouverte.”</span> <a href="https://www.agroparistech.fr/recherche/science-ouverte">https://www.agroparistech.fr/recherche/science-ouverte</a>.
 </div>
+<div id="ref-quarto" class="csl-entry" role="listitem">
+Allaire, JJ, and Christophe Dervieux. 2024. <span>“Quarto: R Interface to ’Quarto’ Markdown Publishing System.”</span> <a href="https://CRAN.R-project.org/package=quarto">https://CRAN.R-project.org/package=quarto</a>.
+</div>
 <div id="ref-latent-block-models" class="csl-entry" role="listitem">
 Aubert, J., P. Barbillon, S. Donnet, and V. Miele. 2022. <em>Using Latent Block Models to Detect Structure in Ecological Networks</em>. Wiley. <a href="https://doi.org/10.1002/9781119902799.ch6">https://doi.org/10.1002/9781119902799.ch6</a>.
+</div>
+<div id="ref-magrittr" class="csl-entry" role="listitem">
+Bache, Stefan Milton, and Hadley Wickham. 2022. <span>“Magrittr: A Forward-Pipe Operator for r.”</span> <a href="https://CRAN.R-project.org/package=magrittr">https://CRAN.R-project.org/package=magrittr</a>.
+</div>
+<div id="ref-future" class="csl-entry" role="listitem">
+Bengtsson, Henrik. 2021. <span>“A Unifying Framework for Parallel and Distributed Processing in r Using Futures”</span> 13. <a href="https://doi.org/10.32614/RJ-2021-048">https://doi.org/10.32614/RJ-2021-048</a>.
+</div>
+<div id="ref-SnowballC" class="csl-entry" role="listitem">
+Bouchet-Valat, Milan. 2023. <span>“SnowballC: Snowball Stemmers Based on the c ’Libstemmer’ UTF-8 Library.”</span> <a href="https://CRAN.R-project.org/package=SnowballC">https://CRAN.R-project.org/package=SnowballC</a>.
+</div>
+<div id="ref-sbm" class="csl-entry" role="listitem">
+Chiquet, Julien, Sophie Donnet, and Pierre Barbillon. 2024. <span>“Sbm: Stochastic Blockmodels.”</span> <a href="https://CRAN.R-project.org/package=sbm">https://CRAN.R-project.org/package=sbm</a>.
 </div>
 <div id="ref-declaration-hal" class="csl-entry" role="listitem">
 Comité d’orientation du CCSD &amp; Assemblée des partenaires HAL, Comité de pilotage et. 2022. <span>“HAL, Archive Ouverte Construite En Commun Pour Partager Et Diffuser La Connaissance Scientifique.”</span> <a href="https://www.ccsd.cnrs.fr/wp-content/uploads/2023/01/DeclarationPolitiqueFR_VF.pdf">https://www.ccsd.cnrs.fr/wp-content/uploads/2023/01/DeclarationPolitiqueFR_VF.pdf</a>.
 </div>
+<div id="ref-api-hal" class="csl-entry" role="listitem">
+<span>“Documentation API-HAL.”</span> n.d. <a href="https://api.archives-ouvertes.fr/docs/search/?#q">https://api.archives-ouvertes.fr/docs/search/?#q</a>.
+</div>
+<div id="ref-tm" class="csl-entry" role="listitem">
+Feinerer, Ingo, and Kurt Hornik. 2024. <span>“Tm: Text Mining Package.”</span> <a href="https://CRAN.R-project.org/package=tm">https://CRAN.R-project.org/package=tm</a>.
+</div>
+<div id="ref-wordcloud" class="csl-entry" role="listitem">
+Fellows, Ian. 2018. <span>“Wordcloud: Word Clouds.”</span> <a href="https://CRAN.R-project.org/package=wordcloud">https://CRAN.R-project.org/package=wordcloud</a>.
+</div>
+<div id="ref-tictoc" class="csl-entry" role="listitem">
+Izrailev, Sergei. 2024. <span>“Tictoc: Functions for Timing r Scripts, as Well as Implementations of <span>"</span>Stack<span>"</span> and <span>"</span>StackList<span>"</span> Structures.”</span> <a href="https://CRAN.R-project.org/package=tictoc">https://CRAN.R-project.org/package=tictoc</a>.
+</div>
 <div id="ref-extrhal" class="csl-entry" role="listitem">
 LJonchere, C. et al. n.d. <span>“ExtrHAL - HALUR.”</span> <a href="https://halur1.univ-rennes1.fr/ExtrHAL.php">https://halur1.univ-rennes1.fr/ExtrHAL.php</a>.
 </div>
-<div id="ref-api-hal" class="csl-entry" role="listitem">
-Ouvertes, Archives. n.d. <span>“Documentation API-HAL.”</span> <a href="https://api.archives-ouvertes.fr/docs/search/?#q">https://api.archives-ouvertes.fr/docs/search/?#q</a>.
+<div id="ref-askpass" class="csl-entry" role="listitem">
+Ooms, Jeroen. 2023. <span>“Askpass: Password Entry Utilities for r, Git, and SSH.”</span> <a href="https://CRAN.R-project.org/package=askpass">https://CRAN.R-project.org/package=askpass</a>.
+</div>
+<div id="ref-mailR" class="csl-entry" role="listitem">
+Premraj, Rahul. 2021. <span>“mailR: A Utility to Send Emails from r.”</span> <a href="https://CRAN.R-project.org/package=mailR">https://CRAN.R-project.org/package=mailR</a>.
+</div>
+<div id="ref-furrr" class="csl-entry" role="listitem">
+Vaughan, Davis, and Matt Dancho. 2022. <span>“Furrr: Apply Mapping Functions in Parallel Using Futures.”</span> <a href="https://CRAN.R-project.org/package=furrr">https://CRAN.R-project.org/package=furrr</a>.
+</div>
+<div id="ref-ggplot2" class="csl-entry" role="listitem">
+Wickham, Hadley. 2016. <span>“Ggplot2: Elegant Graphics for Data Analysis.”</span> <a href="https://ggplot2.tidyverse.org">https://ggplot2.tidyverse.org</a>.
+</div>
+<div id="ref-stringr" class="csl-entry" role="listitem">
+———. 2023. <span>“Stringr: Simple, Consistent Wrappers for Common String Operations.”</span> <a href="https://CRAN.R-project.org/package=stringr">https://CRAN.R-project.org/package=stringr</a>.
+</div>
+<div id="ref-rvest" class="csl-entry" role="listitem">
+———. 2024. <span>“Rvest: Easily Harvest (Scrape) Web Pages.”</span> <a href="https://CRAN.R-project.org/package=rvest">https://CRAN.R-project.org/package=rvest</a>.
+</div>
+<div id="ref-readxl" class="csl-entry" role="listitem">
+Wickham, Hadley, and Jennifer Bryan. 2023. <span>“Readxl: Read Excel Files.”</span> <a href="https://CRAN.R-project.org/package=readxl">https://CRAN.R-project.org/package=readxl</a>.
+</div>
+<div id="ref-dplyr" class="csl-entry" role="listitem">
+Wickham, Hadley, Romain François, Lionel Henry, Kirill Müller, and Davis Vaughan. 2023. <span>“Dplyr: A Grammar of Data Manipulation.”</span> <a href="https://CRAN.R-project.org/package=dplyr">https://CRAN.R-project.org/package=dplyr</a>.
+</div>
+<div id="ref-purrr" class="csl-entry" role="listitem">
+Wickham, Hadley, and Lionel Henry. 2023. <span>“Purrr: Functional Programming Tools.”</span> <a href="https://CRAN.R-project.org/package=purrr">https://CRAN.R-project.org/package=purrr</a>.
 </div>
 </div>
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -960,15 +1031,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="./remerciement.html" class="pagination-link" aria-label="Remerciements">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Remerciements</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
 </div> <!-- /content -->
 
 
