@@ -126,7 +126,7 @@ Lors de l'application de la fonction *`load_team_table`* ci-dessus en utilisant 
 
 #### Modifications des fonctions régissant la requête HAL
 
-Dans le package managHAL originel, il y avait deux fichiers contenant les fonctions nécéssaires à la construction d'une requête HAL. Ces deux fichiers se nomment **HAL_reports.R** et **HAL_queries.R**. La fonction principale de construction d'une requête HAL est *`HAL_query`*.
+Dans le package managHAL originel, il y avait deux fichiers contenant les fonctions nécéssaires à la construction d'une requête HAL. Ces deux fichiers se nomment **HAL_reports.R** et **HAL_queries.R**. La fonction principale de construction d'une requête HAL est *`HAL_query`*. Elle prend en entrée différents paramètres et construit une url correspondant à une requête HAL. Ces différents paramètres définissent les différents champs, filtres, sorties demandées de la requête. Ainsi, après réflexion et discussion avec mes tuteurs Julie Aubert et Pierre Barbillon, j'ai modifié les différents champs de sorties afin d'obtenir les données nécéssaires et essentielles à la construction d'un réseau. 
 
 Parler des modification faites a HAL_query (add_outputs), pourquoi ? (je souhaite obtenir des informations bien particulières pour pouvoir coder le reseau de co-author et construire un sbm sur le reseau ?
 
