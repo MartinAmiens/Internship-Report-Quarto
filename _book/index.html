@@ -223,7 +223,8 @@ window.Quarto = {
   <li><a href="#load-team-table-csv" id="toc-load-team-table-csv" class="nav-link" data-scroll-target="#load-team-table-csv"><span class="header-section-number">1.6.2</span> load_team_table_csv</a></li>
   <li><a href="#load-team-table" id="toc-load-team-table" class="nav-link" data-scroll-target="#load-team-table"><span class="header-section-number">1.6.3</span> load_team_table</a></li>
   <li><a href="#doc-Roxygen2" id="toc-doc-Roxygen2" class="nav-link" data-scroll-target="#doc-Roxygen2"><span class="header-section-number">1.6.4</span> Exemple d’une documentation classique avec Roxygen2</a></li>
-  <li><a href="#tableau-des-résultats-détaillés" id="toc-tableau-des-résultats-détaillés" class="nav-link" data-scroll-target="#tableau-des-résultats-détaillés"><span class="header-section-number">1.6.5</span> Tableau des résultats détaillés</a></li>
+  <li><a href="#HAL-query" id="toc-HAL-query" class="nav-link" data-scroll-target="#HAL-query"><span class="header-section-number">1.6.5</span> HAL_query</a></li>
+  <li><a href="#tableau-des-résultats-détaillés" id="toc-tableau-des-résultats-détaillés" class="nav-link" data-scroll-target="#tableau-des-résultats-détaillés"><span class="header-section-number">1.6.6</span> Tableau des résultats détaillés</a></li>
   </ul></li>
   <li><a href="#bibliographie" id="toc-bibliographie" class="nav-link" data-scroll-target="#bibliographie"><span class="header-section-number">1.7</span> BIBLIOGRAPHIE</a></li>
   </ul></li>
@@ -349,6 +350,7 @@ Y_{ij} = 0 &amp; \quad \text{si aucun lien n'existe entre les nœuds } i \text{ 
 <p>Comme précisé dans l’introduction, l’entièreté des méthodes informatiques développées ont été réalisées sur RStudio en utilisant le langage R version 4.4.1 sous windows 11 x64. Les packages utilisés sont les suivants :</p>
 <p>Le package dplyr <span class="citation" data-cites="dplyr">(<a href="#ref-dplyr" role="doc-biblioref">Wickham et al. 2023</a>)</span> est utilisé pour la manipulation et la transformation des données grâce à une syntaxe claire et cohérente. Ce package facilite les opérations courantes telles que la sélection, le filtrage, le regroupement et le résumé des données. Le package mailR <span class="citation" data-cites="mailR">(<a href="#ref-mailR" role="doc-biblioref">Premraj 2021</a>)</span> est utilisé pour l’envoi d’emails avec des pièces jointes directement depuis R, ce qui est utile pour automatiser l’envoi de rapports. Le package askpass <span class="citation" data-cites="askpass">(<a href="#ref-askpass" role="doc-biblioref">Ooms 2023</a>)</span> est utilisé pour gérer les mots de passe de manière sécurisée. Le package furrr <span class="citation" data-cites="furrr">(<a href="#ref-furrr" role="doc-biblioref">Vaughan and Dancho 2022</a>)</span> est utilisé pour paralléliser les tâches en combinaison avec le package future <span class="citation" data-cites="future">(<a href="#ref-future" role="doc-biblioref">Bengtsson 2021</a>)</span>. Le package future <span class="citation" data-cites="future">(<a href="#ref-future" role="doc-biblioref">Bengtsson 2021</a>)</span> permet l’exécution de code en parallèle, ce qui réduit le temps de traitement des tâches lourdes. Le package ggplot2 <span class="citation" data-cites="ggplot2">(<a href="#ref-ggplot2" role="doc-biblioref">Wickham 2016</a>)</span> est utilisé pour la création de visualisations graphiques sophistiquées. Le package matgrittr <span class="citation" data-cites="magrittr">(<a href="#ref-magrittr" role="doc-biblioref">Bache and Wickham 2022</a>)</span> fournit des opérateurs pour améliorer la lisibilité du code, en particulier l’opérateur <code>%&gt;%</code> (pipe). Le package purrr <span class="citation" data-cites="purrr">(<a href="#ref-purrr" role="doc-biblioref">Wickham and Henry 2023</a>)</span> est utilisé pour les opérations fonctionnelles sur les listes et autres structures de données. Le package quarto <span class="citation" data-cites="quarto">(<a href="#ref-quarto" role="doc-biblioref">Allaire and Dervieux 2024</a>)</span> est utilisé pour la création de documents dynamiques et de rapports. Le package readxl <span class="citation" data-cites="readxl">(<a href="#ref-readxl" role="doc-biblioref">Wickham and Bryan 2023</a>)</span> permet la lecture de fichiers Excel. Le package rvest <span class="citation" data-cites="rvest">(<a href="#ref-rvest" role="doc-biblioref">Wickham 2024</a>)</span> est utilisé pour le web scraping, c’est-à-dire l’extraction de données à partir de pages web. Le package SnowballC <span class="citation" data-cites="SnowballC">(<a href="#ref-SnowballC" role="doc-biblioref">Bouchet-Valat 2023</a>)</span> est utilisé pour le traitement de la langue naturelle, en particulier pour la lemmatisation. Le package stringr <span class="citation" data-cites="stringr">(<a href="#ref-stringr" role="doc-biblioref">Wickham 2023</a>)</span> fournit des fonctions pour la manipulation des chaînes de caractères. Le package tictoc <span class="citation" data-cites="tictoc">(<a href="#ref-tictoc" role="doc-biblioref">Izrailev 2024</a>)</span> est utilisé pour mesurer le temps d’exécution des morceaux de code. Le package tm <span class="citation" data-cites="tm">(<a href="#ref-tm" role="doc-biblioref">Feinerer and Hornik 2024</a>)</span> est utilisé pour le text mining (extraction de connaissances à partir de textes). Le package wordcloud <span class="citation" data-cites="wordcloud">(<a href="#ref-wordcloud" role="doc-biblioref">Fellows 2018</a>)</span> est utilisé pour la création de nuages de mots. Le package Visnetwork <strong>[la citation ne fonctionne pas]</strong> est utilisé pour la visualisation de réseaux dynamiques. Le package Sbm <span class="citation" data-cites="sbm">(<a href="#ref-sbm" role="doc-biblioref">Chiquet, Donnet, and Barbillon 2024</a>)</span> est utilisé pour réaliser les analyses statisitiques de réseaux.</p>
 <p>Afin de pouvoir construire une requête HAL pour récupèrer des données bibliographiques de publications d’auteurs, il est nécessaire de comprendre comment construire une requête. Pour construire une requête HAL, il faut au moins un paramètre <code>q</code> qui contient la requête de recherche. Ce paramètre doit spécifier le champ de recherche suivi de la valeur. Par exemple, pour rechercher le terme “test” : <code>http://api.archives-ouvertes.fr/search/?q=test&amp;wt=xml</code> . Si le champ n’est pas spécifié, la recherche s’effectue par défaut dans l’index texte. Pour rechercher dans un champ particulier, il faut utiliser <code>champ:terme</code> : <code>http://api.archives-ouvertes.fr/search/?q=title_t:japon&amp;wt=xml</code> . Pour échapper certains caractères spéciaux utilisés par Apache Solr, utilisez <code>\</code>. Par exemple, <code>(1+1):2</code> devient <code>\(1\+1\)\:2</code>. (voir <span class="citation" data-cites="api-hal"><span>“Documentation API-HAL”</span> (<a href="#ref-api-hal" role="doc-biblioref">n.d.</a>)</span>). Il est possible d’indiquer le format de la réponse (sous-entendant le format des données récupérées) via le paramètre <code>wt</code> . Pour finir il est possible de spécifier les champs à retourner dans la réponse via le paramètre <code>fl</code> et de faire un filtre des données via le paramètre <code>fq</code> . Tous les possibilités de l’API HAL n’ont pas été abordé dans ce court résumé. Il est pourtant compréhensible que l’API HAL est très diverse et permet une grande liberté à l’utilisateur pour l’extraction des données. De plus, il existe un nombre de champs considérables. Certains seront abordés par la suite dans la section résultats.</p>
+<p>Pour finir, l’entièreté du stage s’est inscrit dans une dynamique de développement et d’intégration continue via la forge gitlab d’AgroParisTech. La forge gitLab MIA, du partenariat INRAE et AgroParisTech, est un logiciel DevOps passant par le language Git. Git est un système de controle, de versionnage du code des dévéloppeurs gratuit et open source. Il permet à plusieurs développeurs de travailler sur un code sur un même dépot et d’avancer ensemble par le biais de “merge”. “Merge” siginife que la personne modifiant un fichier contenant du code pousse en ligne sur le depot partagé , les modifications réalisées.</p>
 </section>
 <section id="resultats" class="level2" data-number="1.4">
 <h2 data-number="1.4" class="anchored" data-anchor-id="resultats"><span class="header-section-number">1.4</span> RESULTATS</h2>
@@ -396,8 +398,17 @@ Y_{ij} = 0 &amp; \quad \text{si aucun lien n'existe entre les nœuds } i \text{ 
 </section>
 <section id="modifications-des-fonctions-régissant-la-requête-hal" class="level4" data-number="1.4.1.3">
 <h4 data-number="1.4.1.3" class="anchored" data-anchor-id="modifications-des-fonctions-régissant-la-requête-hal"><span class="header-section-number">1.4.1.3</span> Modifications des fonctions régissant la requête HAL</h4>
-<p>Dans le package managHAL originel, il y avait deux fichiers contenant les fonctions nécéssaires à la construction d’une requête HAL. Ces deux fichiers se nomment <strong>HAL_reports.R</strong> et <strong>HAL_queries.R</strong>. La fonction principale de construction d’une requête HAL est <em><code>HAL_query</code></em>.</p>
-<p>Parler des modification faites a HAL_query (add_outputs), pourquoi ? (je souhaite obtenir des informations bien particulières pour pouvoir coder le reseau de co-author et construire un sbm sur le reseau ?</p>
+<p>Dans le package managHAL originel, il y avait deux fichiers contenant les fonctions nécéssaires à la construction d’une requête HAL. Ces deux fichiers se nomment <strong>HAL_reports.R</strong> et <strong>HAL_queries.R</strong>. La fonction principale de construction d’une requête HAL est <em><code>HAL_query</code></em>. Elle prend en entrée différents paramètres et construit une url correspondant à une requête HAL. Ces différents paramètres définissent les différents champs, filtres, sorties demandées de la requête. Les champs de sortie ne convenant pas et manquait d’information pour la construction d’un réseau. Ainsi, après réflexion et discussion avec mes tuteurs Julie Aubert et Pierre Barbillon, j’ai modifié les différents champs de sorties afin d’obtenir les données nécessaires et essentielles à la construction d’un réseau. Par exemple, le champ ‘authFullNamePersonIDIDHal_fs’ permet de spécifier à HAL_query de récupérer les noms et les identifiants HAL numériques des autheurs d’une même publication. Le paramètre add_output ajouté par Théodore Vanrengterghem dans la fonction d’origine permet à l’utilisateur de rentrer des champs de sortie spécifiques en plus. Ce paramètre a été beaucoup utilisé au cours de ce stage dans la création de fonction permettant la création de réseau.</p>
+<p>La fonction d’origine ne créer pas d’url d’une page permettant de récupérer les publications autres qu’à partir d’identifiants numériques d’auteurs, j’ai modifié les paramètres d’entrée et le corps de la fonction afin que l’utilisateur puissent spécifier si les identifiants fournis sont des identifiants de structures ou des identifiants de personnes. La nouvelle fonction HAL_query créer donc un url qui peut donc récupérer au choix de l’utilisateur une liste de publications associés à une structure via son identifiant ou une liste de publications associés à un identifiant numérique. (Pour voir le corps de la fonction, veuillez vous référer à l’annexe : <a href="#HAL-query">HAL_query</a>)</p>
+<p>Plusieurs fonctions présentes avant mes modifications faisait appel à HAL_query. Ces dernières comme HAL_extract_csv ont donc été modifiées afin de corespondre à la nouvelle version de HAL_query. De même Les fonctions auquelles fait appel HAL_query ont elles aussi été modifiées pour correspondre à HAL_query. HAL_extract_csv est une fonction récupèrant l’url via HAL_query. Pour montrer les résultats obtenus avec HAL_query, des exemples ci-dessous seront réalisés avec HAL_extract_csv pour une liste d’identifiants numérique d’auteurs et pour un identifiant d’une unité/laboratoire. Il sera ajouté des sorties via le paramètres add_outputs :</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>date_min <span class="ot">=</span> <span class="st">"01/01/2022"</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>date_max <span class="ot">=</span> <span class="st">"01/01/2023"</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>HAL_publis_auteurs <span class="ot">&lt;-</span> managHAL<span class="sc">::</span><span class="fu">HAL_extract_csv</span>(<span class="at">id =</span> <span class="dv">1002311</span>, date_min,date_max, <span class="at">type_id =</span> <span class="st">"struct_id"</span>, <span class="at">add_output =</span> <span class="fu">c</span>(<span class="st">"structAcronym_s"</span>,<span class="st">"structId_i"</span>, <span class="st">"structHasAlphaAuthIdHalPersonid_fs"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Mettre un exemple de code faisant appel à HAL_extract_csv.</p>
+<p>Parler du quarto avec la construction d’un réseau et la création d’un réseau sur un soous groupe puis parler du premier sbm réalisé;</p>
 </section>
 </section>
 <section id="conclusion-des-résultats" class="level3" data-number="1.4.2">
@@ -415,142 +426,249 @@ Y_{ij} = 0 &amp; \quad \text{si aucun lien n'existe entre les nœuds } i \text{ 
 <section id="load-team-table-url" class="level3 Sections" data-number="1.6.1">
 <h3 class="Sections anchored" data-number="1.6.1" data-anchor-id="load-team-table-url"><span class="header-section-number">1.6.1</span> load_team_table_url</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>load_team_table_url <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">filter_id =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>                                date_cols,</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>                                url) {</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  idhal <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  tmp_file <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="fu">tempfile</span>(), <span class="st">".xlsx"</span>)</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">download.file</span>(</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">url =</span> url,</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">destfile =</span> tmp_file,</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">mode =</span> <span class="st">"wb"</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>  nbcol <span class="ot">&lt;-</span> <span class="fu">ncol</span>(readxl<span class="sc">::</span><span class="fu">read_xlsx</span>(tmp_file,</span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">sheet =</span> <span class="st">"Membres"</span>))</span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>  col_types <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="st">"text"</span>,nbcol)</span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>  col_types[date_cols] <span class="ot">&lt;-</span> <span class="st">'date'</span></span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>  table <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_xlsx</span>(tmp_file,</span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>                             <span class="at">sheet =</span> <span class="st">"Membres"</span>,</span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>                             <span class="at">col_types =</span> col_types</span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">rename_with</span>(</span>
-<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>      clean_names</span>
-<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span></span>
-<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">mutate_if</span>(<span class="cf">function</span>(x) {</span>
-<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>      <span class="st">"POSIXt"</span> <span class="sc">%in%</span> <span class="fu">class</span>(x)</span>
-<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>    }, <span class="sc">~</span> <span class="fu">format</span>(.x, <span class="st">"%d/%m/%Y"</span>))</span>
-<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (filter_id) {</span>
-<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>    table <span class="ot">&lt;-</span> <span class="fu">suppressWarnings</span>(table <span class="sc">%&gt;%</span></span>
-<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>                                dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(<span class="fu">as.numeric</span>(idhal))) <span class="sc">%&gt;%</span></span>
-<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>                                dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">idhal =</span> <span class="fu">as.numeric</span>(idhal)))</span>
-<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Test if there is a column named "id"</span></span>
-<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Possibility to add mandatory columns in the future</span></span>
-<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Just add "OR"</span></span>
-<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> ( <span class="sc">!</span>(<span class="st">"idhal"</span> <span class="sc">%in%</span> <span class="fu">names</span>(table)) <span class="sc">|</span> <span class="sc">!</span>(<span class="st">"nom"</span> <span class="sc">%in%</span> <span class="fu">names</span>(table)) <span class="sc">|</span> <span class="sc">!</span>(<span class="st">"prenom"</span> <span class="sc">%in%</span> <span class="fu">names</span>(table)) ) { <span class="fu">stop</span>(<span class="st">"one of the following columns are missing : 'idhal' ; 'nom' ; 'prenom' "</span>) }</span>
-<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(table)</span>
-<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>load_team_table_url <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">filter_id =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>                                date_cols,</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>                                url) {</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  idhal <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  tmp_file <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="fu">tempfile</span>(), <span class="st">".xlsx"</span>)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">download.file</span>(</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">url =</span> url,</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">destfile =</span> tmp_file,</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">mode =</span> <span class="st">"wb"</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>  nbcol <span class="ot">&lt;-</span> <span class="fu">ncol</span>(readxl<span class="sc">::</span><span class="fu">read_xlsx</span>(tmp_file,</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">sheet =</span> <span class="st">"Membres"</span>))</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>  col_types <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="st">"text"</span>,nbcol)</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>  col_types[date_cols] <span class="ot">&lt;-</span> <span class="st">'date'</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>  table <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_xlsx</span>(tmp_file,</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>                             <span class="at">sheet =</span> <span class="st">"Membres"</span>,</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>                             <span class="at">col_types =</span> col_types</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">rename_with</span>(</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>      clean_names</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">mutate_if</span>(<span class="cf">function</span>(x) {</span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>      <span class="st">"POSIXt"</span> <span class="sc">%in%</span> <span class="fu">class</span>(x)</span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>    }, <span class="sc">~</span> <span class="fu">format</span>(.x, <span class="st">"%d/%m/%Y"</span>))</span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (filter_id) {</span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>    table <span class="ot">&lt;-</span> <span class="fu">suppressWarnings</span>(table <span class="sc">%&gt;%</span></span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>                                dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(<span class="fu">as.numeric</span>(idhal))) <span class="sc">%&gt;%</span></span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>                                dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">idhal =</span> <span class="fu">as.numeric</span>(idhal)))</span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Test if there is a column named "id"</span></span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Possibility to add mandatory columns in the future</span></span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Just add "OR"</span></span>
+<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> ( <span class="sc">!</span>(<span class="st">"idhal"</span> <span class="sc">%in%</span> <span class="fu">names</span>(table)) <span class="sc">|</span> <span class="sc">!</span>(<span class="st">"nom"</span> <span class="sc">%in%</span> <span class="fu">names</span>(table)) <span class="sc">|</span> <span class="sc">!</span>(<span class="st">"prenom"</span> <span class="sc">%in%</span> <span class="fu">names</span>(table)) ) { <span class="fu">stop</span>(<span class="st">"one of the following columns are missing : 'idhal' ; 'nom' ; 'prenom' "</span>) }</span>
+<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(table)</span>
+<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="load-team-table-csv" class="level3 Sections" data-number="1.6.2">
 <h3 class="Sections anchored" data-number="1.6.2" data-anchor-id="load-team-table-csv"><span class="header-section-number">1.6.2</span> load_team_table_csv</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>load_team_table_csv <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">filter_id =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>                                date_cols,</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>                                filepath){</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  idhal <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  nbcol <span class="ot">&lt;-</span> <span class="fu">ncol</span>(<span class="fu">read.csv</span>(filepath, <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">sep =</span> <span class="st">";"</span>, <span class="at">encoding =</span> <span class="st">"UTF-8"</span>))</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># define column types (dates or text if not dates)</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  col_types <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="st">"character"</span>, nbcol)</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  col_types[date_cols] <span class="ot">&lt;-</span> <span class="st">'character'</span></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>  table <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(filepath,</span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>                    <span class="at">header =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>                    <span class="at">sep =</span> <span class="st">";"</span>,</span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>                    <span class="at">encoding =</span> <span class="st">"UTF-8"</span>,</span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>                    <span class="at">colClasses =</span> col_types</span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">rename_with</span>(  <span class="co"># clean the columns names </span></span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>      clean_names</span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span></span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">mutate_if</span>(<span class="cf">function</span>(x) {  <span class="co"># Convert specified column to dates</span></span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>      <span class="st">"POSIXt"</span> <span class="sc">%in%</span> <span class="fu">class</span>(x)</span>
-<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>    }, <span class="sc">~</span> <span class="fu">format</span>(.x, <span class="st">"%d/%m/%Y"</span>))</span>
-<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Filter out rows without IDHAL</span></span>
-<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (filter_id) {</span>
-<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>    idhal <span class="ot">&lt;-</span> table<span class="sc">$</span>idhal</span>
-<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>    table <span class="ot">&lt;-</span> table[<span class="fu">which</span>(<span class="sc">!</span><span class="fu">is.na</span>(idhal)),]</span>
-<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>    table<span class="sc">$</span>idhal <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(idhal)</span>
-<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>    table<span class="sc">$</span>idhal[table<span class="sc">$</span>idhal <span class="sc">==</span> <span class="dv">0</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
-<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Test if there is a column named "id"</span></span>
-<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Possibility to add mandatory columns in the future</span></span>
-<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Just add "OR"</span></span>
-<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> ( <span class="sc">!</span>(<span class="st">"idhal"</span> <span class="sc">%in%</span> <span class="fu">names</span>(table)) <span class="sc">|</span> <span class="sc">!</span>(<span class="st">"nom"</span> <span class="sc">%in%</span> <span class="fu">names</span>(table)) <span class="sc">|</span> <span class="sc">!</span>(<span class="st">"prenom"</span> <span class="sc">%in%</span> <span class="fu">names</span>(table)) ) { <span class="fu">stop</span>(<span class="st">"one of the following columns are missing : 'idhal' ; 'nom' ; 'prenom' "</span>) }</span>
-<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(table)</span>
-<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>load_team_table_csv <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">filter_id =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>                                date_cols,</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>                                filepath){</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  idhal <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  nbcol <span class="ot">&lt;-</span> <span class="fu">ncol</span>(<span class="fu">read.csv</span>(filepath, <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">sep =</span> <span class="st">";"</span>, <span class="at">encoding =</span> <span class="st">"UTF-8"</span>))</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># define column types (dates or text if not dates)</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  col_types <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="st">"character"</span>, nbcol)</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  col_types[date_cols] <span class="ot">&lt;-</span> <span class="st">'character'</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>  table <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(filepath,</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>                    <span class="at">header =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>                    <span class="at">sep =</span> <span class="st">";"</span>,</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>                    <span class="at">encoding =</span> <span class="st">"UTF-8"</span>,</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>                    <span class="at">colClasses =</span> col_types</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">rename_with</span>(  <span class="co"># clean the columns names </span></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>      clean_names</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">mutate_if</span>(<span class="cf">function</span>(x) {  <span class="co"># Convert specified column to dates</span></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>      <span class="st">"POSIXt"</span> <span class="sc">%in%</span> <span class="fu">class</span>(x)</span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>    }, <span class="sc">~</span> <span class="fu">format</span>(.x, <span class="st">"%d/%m/%Y"</span>))</span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Filter out rows without IDHAL</span></span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (filter_id) {</span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>    idhal <span class="ot">&lt;-</span> table<span class="sc">$</span>idhal</span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>    table <span class="ot">&lt;-</span> table[<span class="fu">which</span>(<span class="sc">!</span><span class="fu">is.na</span>(idhal)),]</span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>    table<span class="sc">$</span>idhal <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(idhal)</span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>    table<span class="sc">$</span>idhal[table<span class="sc">$</span>idhal <span class="sc">==</span> <span class="dv">0</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Test if there is a column named "id"</span></span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Possibility to add mandatory columns in the future</span></span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Just add "OR"</span></span>
+<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> ( <span class="sc">!</span>(<span class="st">"idhal"</span> <span class="sc">%in%</span> <span class="fu">names</span>(table)) <span class="sc">|</span> <span class="sc">!</span>(<span class="st">"nom"</span> <span class="sc">%in%</span> <span class="fu">names</span>(table)) <span class="sc">|</span> <span class="sc">!</span>(<span class="st">"prenom"</span> <span class="sc">%in%</span> <span class="fu">names</span>(table)) ) { <span class="fu">stop</span>(<span class="st">"one of the following columns are missing : 'idhal' ; 'nom' ; 'prenom' "</span>) }</span>
+<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(table)</span>
+<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="load-team-table" class="level3 Sections" data-number="1.6.3">
 <h3 class="Sections anchored" data-number="1.6.3" data-anchor-id="load-team-table"><span class="header-section-number">1.6.3</span> load_team_table</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>load_team_table <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">filter_id =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>                            <span class="at">date_cols =</span> <span class="fu">c</span>(<span class="dv">7</span>,<span class="dv">8</span>),</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>                            filepath_or_url) {</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># If the parameter is a URL</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">grepl</span>(<span class="st">"^https?://"</span>, filepath_or_url)) {</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Call the load_team_table_url function with the URL</span></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="fu">load_team_table_url</span>(<span class="at">filter_id =</span> filter_id, <span class="at">date_cols =</span> date_cols, <span class="at">url =</span> filepath_or_url))</span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Otherwise, it's a local file path; call the load_team_table_csv function with the local file path</span></span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="fu">load_team_table_csv</span>(<span class="at">filter_id =</span> filter_id, <span class="at">date_cols =</span> date_cols, <span class="at">filepath =</span> filepath_or_url))</span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>load_team_table <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">filter_id =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>                            <span class="at">date_cols =</span> <span class="fu">c</span>(<span class="dv">7</span>,<span class="dv">8</span>),</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>                            filepath_or_url) {</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># If the parameter is a URL</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">grepl</span>(<span class="st">"^https?://"</span>, filepath_or_url)) {</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Call the load_team_table_url function with the URL</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="fu">load_team_table_url</span>(<span class="at">filter_id =</span> filter_id, <span class="at">date_cols =</span> date_cols, <span class="at">url =</span> filepath_or_url))</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Otherwise, it's a local file path; call the load_team_table_csv function with the local file path</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="fu">load_team_table_csv</span>(<span class="at">filter_id =</span> filter_id, <span class="at">date_cols =</span> date_cols, <span class="at">filepath =</span> filepath_or_url))</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="doc-Roxygen2" class="level3 Sections" data-number="1.6.4">
 <h3 class="Sections anchored" data-number="1.6.4" data-anchor-id="doc-Roxygen2"><span class="header-section-number">1.6.4</span> Exemple d’une documentation classique avec Roxygen2</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#' load_team_table_csv</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co">#'</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co">#' This function loads a team table from a CSV file, allowing optional filtering </span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co">#' based on the presence of an IDHAL an specifying which columns contain dates.</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co">#'</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co">#' @param filter_id erase person without IDHAL (default = TRUE)</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co">#' @param date_cols positions of dates columns, others will be read as text</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="co">#' @param filepath the file path of the CSV table</span></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="co">#'</span></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="co">#' @export</span></span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="co">#'</span></span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="co">#' @importFrom magrittr %&gt;%</span></span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="co">#' @importFrom utils read.csv</span></span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="co">#'</span></span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="co">#' @return a data.frame containing information from team</span></span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="co">#'</span></span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="co">#' @examples</span></span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="co">#' </span></span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a><span class="co">#' \dontrun{</span></span>
-<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a><span class="co">#' load_team_table_csv(filter_id = TRUE,</span></span>
-<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a><span class="co">#'                     date_cols = c(7,8),</span></span>
-<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a><span class="co">#'                     "C:/users/.../.../Classeur.csv")</span></span>
-<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a><span class="co">#' }</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#' load_team_table_csv</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co">#'</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co">#' This function loads a team table from a CSV file, allowing optional filtering </span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co">#' based on the presence of an IDHAL an specifying which columns contain dates.</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co">#'</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="co">#' @param filter_id erase person without IDHAL (default = TRUE)</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co">#' @param date_cols positions of dates columns, others will be read as text</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="co">#' @param filepath the file path of the CSV table</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="co">#'</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="co">#' @export</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="co">#'</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="co">#' @importFrom magrittr %&gt;%</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="co">#' @importFrom utils read.csv</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="co">#'</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="co">#' @return a data.frame containing information from team</span></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="co">#'</span></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a><span class="co">#' @examples</span></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a><span class="co">#' </span></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a><span class="co">#' \dontrun{</span></span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a><span class="co">#' load_team_table_csv(filter_id = TRUE,</span></span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a><span class="co">#'                     date_cols = c(7,8),</span></span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a><span class="co">#'                     "C:/users/.../.../Classeur.csv")</span></span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a><span class="co">#' }</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="tableau-des-résultats-détaillés" class="level3" data-number="1.6.5">
-<h3 data-number="1.6.5" class="anchored" data-anchor-id="tableau-des-résultats-détaillés"><span class="header-section-number">1.6.5</span> Tableau des résultats détaillés</h3>
+<section id="HAL-query" class="level3 Sections" data-number="1.6.5">
+<h3 class="Sections anchored" data-number="1.6.5" data-anchor-id="HAL-query"><span class="header-section-number">1.6.5</span> HAL_query</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>HAL_query <span class="ot">&lt;-</span> <span class="cf">function</span>(id,</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>                      <span class="at">date_min =</span> <span class="cn">NULL</span>,</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>                      <span class="at">date_max =</span> <span class="cn">NULL</span>,</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">format =</span> <span class="fu">c</span>(<span class="st">"csv"</span>, <span class="st">"bibtex"</span>, <span class="st">"json"</span>, <span class="st">"xml"</span>, <span class="st">"online"</span>),</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>                      <span class="at">grouped =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>                      <span class="at">type_id =</span> <span class="fu">c</span>(<span class="st">"person_id"</span>, <span class="st">"struct_id"</span>),</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>                      <span class="at">maxrows =</span> <span class="dv">1000</span>,</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>                      <span class="at">add_filters =</span> <span class="fu">list</span>(),</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>                      <span class="at">add_exclusions =</span> <span class="fu">list</span>(</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>                        <span class="at">status_i =</span> <span class="dv">111</span>,</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>                        <span class="at">instance_s =</span> <span class="fu">c</span>(<span class="st">"sfo"</span>, <span class="st">"dumas"</span>, <span class="st">"memsic"</span>, <span class="st">"hceres"</span>)</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>                      ),</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>                      <span class="at">add_outputs =</span> <span class="fu">character</span>(<span class="dv">0</span>),</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>                      <span class="at">sorted_by =</span> <span class="fu">c</span>(<span class="st">"producedDate_tdate"</span>, <span class="st">"desc"</span>),</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>                      <span class="at">thesis_strict =</span> T) {</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>  <span class="co"># ----- DEFAULT PARAM -------------------------------------------------------</span></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>  online <span class="ot">&lt;-</span> format[[<span class="dv">1</span>]] <span class="sc">==</span> <span class="st">"online"</span></span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>  outputs <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>    <span class="st">"docid"</span>, <span class="st">"halId_s"</span>, <span class="st">"version_i"</span>, <span class="st">"docType_s"</span>, <span class="st">"citationFull_s"</span>,</span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>    <span class="st">"citationRef_s"</span>, <span class="st">"publicationDate_tdate"</span>, <span class="st">"authFullNamePersonIDIDHal_fs"</span>, add_outputs</span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>  filters <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">docType_s =</span> <span class="fu">c</span>(<span class="st">"COMM"</span>, <span class="st">"ART"</span>, <span class="st">"OUV"</span>, <span class="st">"COUV"</span>, <span class="st">"DOUV"</span>, <span class="st">"POSTER"</span>, <span class="st">"SOFTWARE"</span>, <span class="st">"THESE"</span>, <span class="st">"HDR"</span>)</span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>  filters[<span class="fu">names</span>(add_filters)] <span class="ot">&lt;-</span> add_filters</span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>  exclusions <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>  exclusions[<span class="fu">names</span>(add_exclusions)] <span class="ot">&lt;-</span> add_exclusions</span>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a>  <span class="co"># ---------------------------------------------------------------------------</span></span>
+<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Url start</span></span>
+<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (online) {</span>
+<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a>    start_query <span class="ot">&lt;-</span> <span class="st">"https://hal.archives-ouvertes.fr/search/index/?"</span></span>
+<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb9-36"><a href="#cb9-36" aria-hidden="true" tabindex="-1"></a>    start_query <span class="ot">&lt;-</span> <span class="fu">paste0</span>(</span>
+<span id="cb9-37"><a href="#cb9-37" aria-hidden="true" tabindex="-1"></a>      <span class="st">"https://api.archives-ouvertes.fr/search/hal/"</span>, <span class="co"># API HAL</span></span>
+<span id="cb9-38"><a href="#cb9-38" aria-hidden="true" tabindex="-1"></a>      <span class="st">"?omitHeader=true"</span>,                             <span class="co"># header ommited</span></span>
+<span id="cb9-39"><a href="#cb9-39" aria-hidden="true" tabindex="-1"></a>      <span class="st">"&amp;wt="</span>, format[[<span class="dv">1</span>]], <span class="st">"&amp;"</span>                        <span class="co"># csv, bibtex, ...</span></span>
+<span id="cb9-40"><a href="#cb9-40" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb9-41"><a href="#cb9-41" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb9-42"><a href="#cb9-42" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (grouped) {</span>
+<span id="cb9-43"><a href="#cb9-43" aria-hidden="true" tabindex="-1"></a>    date_query <span class="ot">&lt;-</span> <span class="fu">query_date_grouped_parsing</span>(</span>
+<span id="cb9-44"><a href="#cb9-44" aria-hidden="true" tabindex="-1"></a>      <span class="at">id =</span> id,</span>
+<span id="cb9-45"><a href="#cb9-45" aria-hidden="true" tabindex="-1"></a>      <span class="at">type_id =</span> type_id,</span>
+<span id="cb9-46"><a href="#cb9-46" aria-hidden="true" tabindex="-1"></a>      <span class="at">date_min =</span> date_min,</span>
+<span id="cb9-47"><a href="#cb9-47" aria-hidden="true" tabindex="-1"></a>      <span class="at">date_max =</span> date_max,</span>
+<span id="cb9-48"><a href="#cb9-48" aria-hidden="true" tabindex="-1"></a>      <span class="at">online =</span> online</span>
+<span id="cb9-49"><a href="#cb9-49" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb9-50"><a href="#cb9-50" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb9-51"><a href="#cb9-51" aria-hidden="true" tabindex="-1"></a>    date_query <span class="ot">&lt;-</span> <span class="fu">query_date_ungrouped_parsing</span>(</span>
+<span id="cb9-52"><a href="#cb9-52" aria-hidden="true" tabindex="-1"></a>      <span class="at">id =</span> id,</span>
+<span id="cb9-53"><a href="#cb9-53" aria-hidden="true" tabindex="-1"></a>      <span class="at">type_id =</span> type_id,</span>
+<span id="cb9-54"><a href="#cb9-54" aria-hidden="true" tabindex="-1"></a>      <span class="at">date_min =</span> date_min,</span>
+<span id="cb9-55"><a href="#cb9-55" aria-hidden="true" tabindex="-1"></a>      <span class="at">date_max =</span> date_max,</span>
+<span id="cb9-56"><a href="#cb9-56" aria-hidden="true" tabindex="-1"></a>      <span class="at">online =</span> online</span>
+<span id="cb9-57"><a href="#cb9-57" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb9-58"><a href="#cb9-58" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb9-59"><a href="#cb9-59" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb9-60"><a href="#cb9-60" aria-hidden="true" tabindex="-1"></a>  filter_query <span class="ot">&lt;-</span> <span class="fu">query_filter_parsing</span>(</span>
+<span id="cb9-61"><a href="#cb9-61" aria-hidden="true" tabindex="-1"></a>    <span class="at">filters =</span> filters, <span class="at">exclusions =</span> exclusions,</span>
+<span id="cb9-62"><a href="#cb9-62" aria-hidden="true" tabindex="-1"></a>    <span class="at">online =</span> online</span>
+<span id="cb9-63"><a href="#cb9-63" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb9-64"><a href="#cb9-64" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (thesis_strict <span class="sc">&amp;</span> <span class="sc">!</span>online) {</span>
+<span id="cb9-65"><a href="#cb9-65" aria-hidden="true" tabindex="-1"></a>    add <span class="ot">&lt;-</span> <span class="st">"&amp;fq=NOT+(docType_s:(THESE+OR+HDR)+AND+submitType_s:(notice+OR+annex))"</span></span>
+<span id="cb9-66"><a href="#cb9-66" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb9-67"><a href="#cb9-67" aria-hidden="true" tabindex="-1"></a>    add <span class="ot">&lt;-</span> <span class="st">""</span></span>
+<span id="cb9-68"><a href="#cb9-68" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb9-69"><a href="#cb9-69" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb9-70"><a href="#cb9-70" aria-hidden="true" tabindex="-1"></a>  sorting_query <span class="ot">&lt;-</span> <span class="fu">query_sort_parsing</span>(<span class="at">sorted_by =</span> sorted_by)</span>
+<span id="cb9-71"><a href="#cb9-71" aria-hidden="true" tabindex="-1"></a>  output_query <span class="ot">&lt;-</span> <span class="fu">query_output_parsing</span>(</span>
+<span id="cb9-72"><a href="#cb9-72" aria-hidden="true" tabindex="-1"></a>    <span class="at">outputs =</span> outputs, <span class="at">n_row =</span> maxrows,</span>
+<span id="cb9-73"><a href="#cb9-73" aria-hidden="true" tabindex="-1"></a>    <span class="at">online =</span> online</span>
+<span id="cb9-74"><a href="#cb9-74" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb9-75"><a href="#cb9-75" aria-hidden="true" tabindex="-1"></a>  obj <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb9-76"><a href="#cb9-76" aria-hidden="true" tabindex="-1"></a>    <span class="at">urls =</span> <span class="fu">paste0</span>(</span>
+<span id="cb9-77"><a href="#cb9-77" aria-hidden="true" tabindex="-1"></a>      start_query,</span>
+<span id="cb9-78"><a href="#cb9-78" aria-hidden="true" tabindex="-1"></a>      date_query,</span>
+<span id="cb9-79"><a href="#cb9-79" aria-hidden="true" tabindex="-1"></a>      filter_query,</span>
+<span id="cb9-80"><a href="#cb9-80" aria-hidden="true" tabindex="-1"></a>      add,</span>
+<span id="cb9-81"><a href="#cb9-81" aria-hidden="true" tabindex="-1"></a>      sorting_query,</span>
+<span id="cb9-82"><a href="#cb9-82" aria-hidden="true" tabindex="-1"></a>      output_query</span>
+<span id="cb9-83"><a href="#cb9-83" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span></span>
+<span id="cb9-84"><a href="#cb9-84" aria-hidden="true" tabindex="-1"></a>      utils<span class="sc">::</span><span class="fu">URLencode</span>(),</span>
+<span id="cb9-85"><a href="#cb9-85" aria-hidden="true" tabindex="-1"></a>    <span class="at">description =</span> <span class="fu">list</span>(</span>
+<span id="cb9-86"><a href="#cb9-86" aria-hidden="true" tabindex="-1"></a>      <span class="at">idhal =</span> id,</span>
+<span id="cb9-87"><a href="#cb9-87" aria-hidden="true" tabindex="-1"></a>      <span class="at">date_min =</span> date_min,</span>
+<span id="cb9-88"><a href="#cb9-88" aria-hidden="true" tabindex="-1"></a>      <span class="at">date_max =</span> date_max,</span>
+<span id="cb9-89"><a href="#cb9-89" aria-hidden="true" tabindex="-1"></a>      <span class="at">outputs =</span> outputs,</span>
+<span id="cb9-90"><a href="#cb9-90" aria-hidden="true" tabindex="-1"></a>      <span class="at">format =</span> format[[<span class="dv">1</span>]],</span>
+<span id="cb9-91"><a href="#cb9-91" aria-hidden="true" tabindex="-1"></a>      <span class="at">grouped =</span> grouped,</span>
+<span id="cb9-92"><a href="#cb9-92" aria-hidden="true" tabindex="-1"></a>      <span class="at">maxrows =</span> maxrows,</span>
+<span id="cb9-93"><a href="#cb9-93" aria-hidden="true" tabindex="-1"></a>      <span class="at">filters =</span> filters,</span>
+<span id="cb9-94"><a href="#cb9-94" aria-hidden="true" tabindex="-1"></a>      <span class="at">exclusions =</span> exclusions,</span>
+<span id="cb9-95"><a href="#cb9-95" aria-hidden="true" tabindex="-1"></a>      <span class="at">outputs =</span> outputs,</span>
+<span id="cb9-96"><a href="#cb9-96" aria-hidden="true" tabindex="-1"></a>      <span class="at">sorted_by =</span> sorted_by,</span>
+<span id="cb9-97"><a href="#cb9-97" aria-hidden="true" tabindex="-1"></a>      <span class="at">thesis_strict =</span> thesis_strict</span>
+<span id="cb9-98"><a href="#cb9-98" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb9-99"><a href="#cb9-99" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb9-100"><a href="#cb9-100" aria-hidden="true" tabindex="-1"></a>  <span class="fu">class</span>(obj) <span class="ot">&lt;-</span> <span class="st">"halUrl"</span></span>
+<span id="cb9-101"><a href="#cb9-101" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(obj)</span>
+<span id="cb9-102"><a href="#cb9-102" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="tableau-des-résultats-détaillés" class="level3" data-number="1.6.6">
+<h3 data-number="1.6.6" class="anchored" data-anchor-id="tableau-des-résultats-détaillés"><span class="header-section-number">1.6.6</span> Tableau des résultats détaillés</h3>
 <p>Voici les tableaux des résultats détaillés pour les différentes méthodes et tests effectués.</p>
 </section>
 </section>
