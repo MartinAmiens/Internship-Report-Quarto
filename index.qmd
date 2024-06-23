@@ -132,9 +132,9 @@ Dans le package managHAL originel, il y avait deux fichiers contenant les foncti
 
 La fonction d'origine ne permettant pas de récupérer les publications autres qu'à partir d'identifiants numériques d'auteurs, j'ai modifié les paramètres d'entrée et le corps de la fonction afin que l'utilisateur puissent spécifier si les identifiants fournis sont des identifiants de structures ou des identifiants de personnes. La nouvelle fonction HAL_query peut donc récupérer au choix de l'utilisateur une liste de publications associés à une structure via son identifiant ou une liste de publications associés à un identifiant numérique.
 
-Les fonctions auquel fait appel HAL_query ont elles aussi été modifiées pour correspondre à la nouvelle fonction HAL_query.
+Les fonctions auquels fait appel HAL_query ont elles aussi été modifiées pour correspondre à la nouvelle fonction HAL_query.
 
-Parler des modification faites a HAL_query (add_outputs), pourquoi ? (je souhaite obtenir des informations bien particulières pour pouvoir coder le reseau de co-author et construire un sbm sur le reseau ?
+Parler du quarto avec la construction d'un réseau et la crétion d'un réseau sur un soous groupe puis parler du premier sbm réalisé;
 
 ### Conclusion des Résultats
 
