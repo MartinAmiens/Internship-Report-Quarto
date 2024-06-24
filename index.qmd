@@ -148,10 +148,11 @@ HAL_publis_Labo[1,]
 HAL_publis_auteurs <- managHAL::HAL_extract_csv(id = data_RH_csv_Example[,12] , date_min,date_max, type_id = "person_id")
 HAL_publis_auteurs[1,]
 ```
+### Ajout de fonctionnalité à ManagHAL
 
+#### Création d'un réseau de co-auteurs avec Visnetwork
 
-
-Mettre un exemple de code faisant appel à  HAL_extract_csv.
+Afin d'obtenir les informations sous-jacentes des informations bibliographiques, j'ai commencé à travailler à la cration d'un réseau de co-auteur. Pour l'instant, la fonctionalité n'existe qu'au format de script R. Au cours des semaines restantes, l'objectif est de continuer à travailler dessus et créer des fonctions simples et claires permettant à l'utilisateur de créer son propre réseau à partir de ses données.
 
 Parler du quarto avec la construction d'un réseau et la création d'un réseau sur un soous groupe puis parler du premier sbm réalisé;
 
