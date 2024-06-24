@@ -12,34 +12,21 @@ library(sbm, quietly = TRUE)
 
 ```
 
-## INTRODUCTION
+## Introduction
 
-En 2017, AgroParisTech signe l’Appel de Jussieu. Cet appel a été rédigé dans l’objectif de mettre en avant des engagements pour promouvoir la Bibliodiversité. La bibliodiversité correspond à la diversité dans le monde éditorial afin d’éviter une appropriation des espaces de ventes par des grands groupes éditeurs. Dans la continuité de la signature de l’Appel de Jussieu, AgroParisTech en partenariat avec INRAE, a adopté en 2020, une politique d’établissement dédié à la science ouverte (@science-ouverte , voir : La science ouverte à AgroParisTech – Politique d’établissement janvier 2020). Pour AgroParisTech, la science ouverte correspond à l’ « ensemble des principes et des actions qui facilitent l’ouverture et la libre dissémination, à destination de l’ensemble de la société, des productions de la recherche scientifique, ainsi que la transparence et l’ouverture des processus de la recherche » (@science-ouverte) . Un exemple concret des principes appliqués par l’établissement sont les principes FAIR pour la gestion des données de recherches. Ces derniers stipulent que les données doivent être :
+### Sciences Ouvertes
 
--   Findable : facilement trouvable.
--   Accessible : avec des conditions d’accès clairement définies.
--   Interoperable : intégrable et capable d’interagir avec d’autres outils extérieurs ou données.
--   Reusable : réutilisables, avec toutes les informations nécessaires à la compréhension de ces dernières et au cadre d’utilisation autorisé par les auteurs.
+En 2017, AgroParisTech signe l’Appel de Jussieu pour promouvoir la bibliodiversité, visant à maintenir la diversité éditoriale et éviter la domination des grands groupes éditeurs. En partenariat avec l’INRAE, AgroParisTech, en partenariat avec INRAE, adopte en 2020 une politique de science ouverte ([\@science-ouverte](@science-ouverte), voir: La science ouverte à AgroParisTech – Politique d’établissement janvier 2020), facilitant la libre diffusion et la transparence des recherches scientifiques. Un exemple concret des principes appliqués suite à l'adoption de cette politique sont les principes FAIR pour la gestion des données de recherche : Findable (facilement trouvable), Accessible (accès clairement défini), Interoperable (intégrable avec d’autres outils), et Reusable (réutilisable avec toutes les informations nécessaires).
 
-Afin de progresser vers l’accomplissement des objectifs énoncés par AgroParisTech, de nombreuses actions ont été mises en place. Notamment, la création, le 2 janvier 2023, d’une cellule HAL au sein de l’établissement. Cette cellule HAL est dirigée par la Direction de la Recherche, de l’Innovation et du Transfert Technologique et par la Direction de la Documentation et du Patrimoine Culturelle. La cellule a pour vocation à faciliter l'intégration de l'archive ouverte HAL et des services associés dans la communauté de recherche d'AgroParisTech. Elle assure et veille à la qualité des métadonnées et référentiels pour le portail HAL-AgroParisTech (@science-ouverte , voir : Cellule HAL d'AgroParisTech Missions et Services). HAL est « l’archive nationale choisie par la communauté scientifique et universitaire française pour la diffusion ouverte de ses résultats de recherche. » (@declaration-hal). HAL dispose d'un API (Application Programming Interface) complexe et très diverse. Ce dernier est un programme permettant à d'autres applications comme Rstudio de communiquer et d'échanger des données avec HAL. L'API HAL offre de nombreux choix spécifiques dans l'extraction de données et dans l'analyse statistique de ces données. La construction d'une requête permettant la récupération de données HAL spécifiés par le constructeur de la requête passe par la connaissance de cet API. Une explication plus détaillée de cet API et d'une requête HAL sera faite dans la section méthode.
+Pour atteindre ces objectifs, AgroParisTech crée le 2 janvier 2023 une cellule HAL, dirigée par la Direction de la Recherche, de l’Innovation et du Transfert Technologique, et par la Direction de la Documentation et du Patrimoine Culturel. Cette cellule facilite l'intégration de l'archive ouverte HAL dans la communauté de recherche d'AgroParisTech et veille à la qualité des métadonnées. HAL, l’archive nationale pour la diffusion ouverte des résultats de recherche, dispose d'un API permettant l’extraction et l’analyse des données via des outils comme Rstudio. Une explication plus détaillée de cet API et d'une requête HAL sera faite dans la section méthode.
 
-Bien qu’il existe des outils d’extraction de publications HAL et de création de rapport bibliographique en ligne comme ExtrHAL (@extrhal), il n’existe pas aujourd’hui de package R permettant d’extraire ces données et de réaliser des analyses statistiques sur ces dernières. C’est pourquoi en réponse à un besoin de l'unité MIA du partenariat entre AgroParisTech et INRAE, Théodore Vanrengterghem, ingénieur de recherche, s'est lancé dans la programmation d’un package R nommé "ManagHAL" réalisant l’extraction de donnée HAL et la création d’un bilan bibliographique.
+### ManagHAL, package R d'extraction de données bibliométrique HAL et d'analyse de réseaux
 
-R est un langage de programmation gratuit et en open-source, qui a été conçu pour réaliser des analyses statistiques et manipuler des données. Rstudio, est l’environnement de programmation gratuit utilisant le langage R. Dans Rstudio, il existe la possibilité de télécharger des packages. Ces derniers sont des fichiers contenant des fonctions et des données qui partagent un même thème. Ils sont très utilisés par les utilisateurs de Rstudio car les packages facilitent le développement. Il existe actuellement plus de 18000 packages en ligne.
+Les outils pour réaliser des analyses bibliométriques se répartissent en trois catégories, "general bibliometric and performance analysis, science mapping analysis, and libraries" ([\@Moral-Muñoz2020](@Moral-Muñoz2020)) ou analyse générale bibliométrique et de performances, analyses par cartographie scientifique et librairies / packages. Le package managHAL se trouve dans les troisième et deusième catégories. Il existe à ce jour d'autres outils d'analyses bibliométriques mais la majorité ne permettent pas de travailler via l'api HAL et se concentrent sur webofscience, scopus, google scholar,... Il existe des outils d’extraction de publications HAL, cependant aucun package R ne permet actuellement d'extraire ces données pour des analyses statisistiques. Pour répondre à ce besoin, Théodore Vanrengterghem a commencé à développer le package R "ManagHAL". le package permet l’extraction de données HAL et la création de bilans bibliographiques. En cours de développement, ce package ne permet pas actuellement la réalisation d'analyses bibliométriques.
 
-Durant les 2 mois et 17 jours de mon stage, j’ai eu la chance d’être accueilli au sein du département Modélisation Mathématiques, Informatique, et Physique d’AgroParisTech Palaiseau dans l’unité de recherche Mathématiques et Informatiques Appliquées. Cette unité MIA est le résultat de la collaboration entre AgroParisTech et INRAE, J’ai eu l’opportunité d’être encadré par deux tuteurs nommés Julie Albert et Pierre Barbillon qui m’ont accompagné tout au long de cette expérience. L’unité Mathématiques et Informatiques Appliquées est composée de nombreux chercheurs, doctorants et stagiaire, et est hébergé au sein du bâtiment E d’AgroParisTech Palaiseau. J’ai travaillé sur l’adaptation, la programmation, et l’intégration d’outils de constructions de réseau, et d’outils d’analyse statistiques de réseau au package ManagHAL. J’ai donc pu travailler à la mise en forme du package, à la création de fonctions. Mon stage était financé par la Direction de la Recherche, de l’Innovation et du Transfert Technologique de la cellule HAL d’AgroParisTech présenté dans les paragraphes précédents.
+Ainsi, durant mes 2 mois et 17 jours de stage au sein de l’unité de recherche Mathématiques et Informatiques Appliquées (MIA) d’AgroParisTech Palaiseau, j’ai travaillé sur la généricité du package managHAL, ainsi que sur la programmation et l’intégration d’outils d’analyse statistique de réseau au sein du package ManagHAL. Encadré par deux tuteurs, Julie Albert et Pierre Barbillon, j’ai contribué à la mise en forme du package et à la création de fonctions spécifiques.
 
-Afin de comprendre les choix que j’ai réalisé lors du développement du package, il est nécessaire de présenter le package d’origine avant mes modifications. Un point rapide sera fait au cours de la partie contexte statistique sur les réseaux et les méthodes d’analyse statistique de réseau que j’ai utilisé. Le package "ManagHAL" contenait des fichiers essentiels dans la construction d’un package R tel que buildRignore par exemple (contenant la liste des fichiers à ignorer lors de la construction du package sur l’ordinateur de l’utilisateur). Il contenait aussi des scripts R (i.e. files/fichiers) de fonctions contenant les fonctions principales du package. Celles-ci permettent de récupérer toutes les publications associées à un unique ou à des multiples identifiants d’auteurs HAL, provenant d’un fichier tabulé d’identifiants fournie par les ressources humaines. Lors de la récupération, il est possible de spécifier les données bilbiographiques des publications à récupérer. Ces dernières se présentent sous le format d’un fichier csv. Certaines de ces fonctions permettaient aussi de créer un rapport bibliographique automatique en ne donnant en entrée uniquement un identifiant auteur. Il existait des fonctions utiles au développement du package, afin de nettoyer mes données. Prenons par exemple "BorneDate" qui remplace les valeurs manquantes dans un vecteur de dates par une date limite spécifiée. Enfin, des fonctions permettaient réaliser des figures à partir des données des publications récupérés depuis HAL tel que des wordclouds ou des graphes.
-
-[**Paragraphe précédent ne me convient pas, je vais le retravailler !!!**]{.underline}
-
-La finalité du package "ManagHAL" est de faciliter l’utilisation et la compréhension des données de publications. Afin de manipuler les données de publications et comprendre celles-ci, l’approche adoptée est de réaliser des réseaux et ensuite d’utiliser des outils d’analyse statistique de réseau. Les outils principaux utilisés à l’avenir dans "ManagHAL" seront les modélisations en blocs stochastiques ou latents. Mon mémoire est organisé de la manière suivante: En premier lieu, le contexte statistique nécessaire à la compréhension des outils utilisés est présenté. Puis, dans la partie suivante sont abordés, les méthodes informatiques développées et les résultats d’analyse de données-exemples obtenus. (pour lequel tout marche, précisez que je fais ça pcq mon stage n’est pas terminé). Dans un troisième temps, les méthodes déjà publiées utilisées sont précisées. Enfin, dans une ultime partie, les résultats sont discutés.
-
-## CONTEXTE STATISTIQUE
-
-Cette partie est principalement basée sur la publication "Using Latent Block Models to Detect Structure in Ecological Networks" @latent-block-models
-
-Un réseau d’interaction est composé de nœuds (les entités) et d’arêtes (les liens entre ces entités). Toutes entités nommables peuvent être modèlisés sous forme de noeuds, et leur interactions entre elles peuent être modélisés par des arrêtes. On peut prendre pour exemple les réseaux de gènes à partir de données de co-expression. Les réseaux sont répartis en deux groupes principaux: les réseaux Unipartites, où tous les nœuds sont du même type, et les réseaux Bipartites, où il y a deux types distincts de nœuds et les liens ne se forme qu’entre des nœuds de types différents. Les interactions dans un réseau peuvent être binaires ou pondérées. Un réseau peut être encodé dans une matrice $Y$ d'adjacence telle que :
+Pour comprendre les choix réalisés lors du développement du package, il est nécessaire de réaliser une introduction au contexte statistique des réseaux. Un réseau d’interaction est constitué de nœuds (les entités) et d’arêtes (les liens entre ces entités). Toute entité peut être modélisée comme un nœud, et leurs interactions comme des arêtes. Par exemple, les réseaux de gènes à partir de données de co-expression. Les réseaux se divisent en deux catégories principales : les réseaux Unipartites où tous les nœuds sont du même type et les réseaux Bipartites où il y a deux types distincts de nœuds, et les liens ne se forment qu’entre des nœuds de types différents.[@latent-block-models] Les interactions dans un réseau peuvent être binaires ou pondérées. Un réseau peut être représenté par une matrice d'adjacence $Y$ où :
 
 ```{=tex}
 \begin{align*}
@@ -47,37 +34,18 @@ Y_{ij} \neq 0 & \quad \text{si un lien existe entre les nœuds } i \text{ et } j
 Y_{ij} = 0 & \quad \text{si aucun lien n'existe entre les nœuds } i \text{ et } j.
 \end{align*}
 ```
-Vous trouverez ci-dessous des exemples de code R pour créer et visualiser des réseaux unipartite et bipartite.
+Nous décrivons les noeuds d'un réseau comme : $V = { 1,..,N }$ , ($N$ correspond à la taille du réseau). Les arrêtes peuvent être décrites comme $E = \{ (i,j) | i,j \in V \}$ représentant les paires de nœuds entre lesquels il existe une interaction. Chaque arête $(i,j)$ indique une connexion entre les nœuds $i$ et $j$.
 
-```{r exemple de reseau, eval = FALSE}
+Il existe plusieurs approches différentes pour analyser la structure d’un réseau. Dans ce mémoire, une seule approche sera considérée. Elle suppose l’existence de groupe fonctionnels partageant un même patron de connexion. Nous nous baserons par la suite sur une méthode possible pour cette approche: les modèles probabilistes génératifs. Cette approche sera détaillée dans la section méthode.
 
-# Création d'un réseau unipartite
-set.seed(42) # Pour la reproductibilité 
-unipartite <- erdos.renyi.game(10, 0.3)
-# unipartite_graph <- plot(unipartite, main = "Réseau Unipartite", width = 800, height = 600)
-# print(unipartite_graph)
-matrice_adjacence_unipartite <- as.matrix(unipartite, "adjacency")
+Ce package s'addresse donc à un public souhaitant réaliser des analyses bibliométriques approfondis à partir de HAL. Nous verrons cependant dans la section discussion qu'il est possible d'élargir les usages du packages.
 
-# Création d'un réseau bipartite
-# Noms des nœuds
-nodes_A <- c("A1", "A2", "A3")
-nodes_B <- c("B1", "B2", "B3", "B4")
-# Liste des arêtes
-edges <- c("A1", "B1", "A1", "B2","A2", "B1", "A2", "B2", "A2", "B3", "A3", "B2", "A3", "B4")
-# Création du graphe
-bipartite <- graph(edges, directed = FALSE)
-V(bipartite)$type <- bipartite_mapping(bipartite)$type
-plot(bipartite, layout = layout_as_bipartite, vertex.color = c("skyblue", "salmon")[V(bipartite)$type + 1],
-     vertex.label.color = "black", vertex.shape = "circle", vertex.size = 30, edge.width = 2, main = "Réseau Bipartite")
-matrice_adjacence_bipartite <- as.matrix(bipartite, "adjacency")
-```
 
-| ![Réseau Unipartite](figures/unipartite_graph.png){width="324"} ![Réseau Bipartite](figures/bipartite.png){width="324"}
-| [**mettre une légende avec titre important !!!**]{.underline}
+## METHODES
 
-Nous décrivons les noeuds d'un réseau comme : $V = { 1,..,N }$ , ($N$ correspond à la taille du réseau). Les arrêtes peuvent être décrit comme $E = ...$ .
+### sbm
 
-Il existe plusieurs approches différentes pour analyser la structure d’un réseau. Dans ce mémoire, une seule approche sera considérée. Elle suppose l’existence de groupe fonctionnels partageant un même patron de connexion. Nous nous baserons par la suite sur une méthode possible pour cette approche: les modèles probabilistes génératifs.
+Cette partie est principalement basée sur la publication "Using Latent Block Models to Detect Structure in Ecological Networks" @latent-block-models
 
 Les Modèles en Bloc Stochastiques (aussi appelé SBM) sont des modèles probabilistes. Ils supposent que les nœuds d’un même réseau sont divisés en blocs (groupe, clusters) latents regroupant les entités ayant des modèles de connectivité similaires. Latents signifie qu’il n’y a pas d’apriori sur le type de structure recherchée. Ces modèles sont utiles pour détecter les communautés, les clusters aux sein d'un réseau complexe. Pour réaliser un modèle en bloc stochastique, il est nécessaire de supposer que le réseau obtenu à partir de mes données est une réalisation de mon modèle.
 
@@ -89,7 +57,7 @@ Les noeuds sont partitionnés en $K$ groupes latents. On définit un vecteur $Z$
 
 Nous avons donc comme paramètres du modèle $\theta = (\gamma, \pi)$. A partir du réseau connu, il est possible d'inférer les paramètres du modèle. Par nécessité d'écourter le rapport, une explication détaillée ne sera pas réalisée. Je vous conseille cependant d'aller voir la publication "Using Latent Block Models to Detect Structure in Ecological Networks" @latent-block-models où les explications à ce propos sont claires et précises.
 
-## METHODES
+### méthodes informatiques
 
 Comme précisé dans l'introduction, l'entièreté des méthodes informatiques développées ont été réalisées sur RStudio en utilisant le langage R version 4.4.1 sous windows 11 x64. Les packages utilisés sont les suivants :
 
@@ -148,6 +116,7 @@ HAL_publis_Labo[1,]
 HAL_publis_auteurs <- managHAL::HAL_extract_csv(id = data_RH_csv_Example[,12] , date_min,date_max, type_id = "person_id")
 HAL_publis_auteurs[1,]
 ```
+
 ### Ajout de fonctionnalité à ManagHAL
 
 #### Création d'un réseau de co-auteurs avec Visnetwork
@@ -159,7 +128,6 @@ La première partie correspond à l'extraction et au nettoyage des données. Les
 La deuxième partie concerne la construction et la visualisation du graphe. À partir des données nettoyées, des matrices de contingence ont été créées. Ces matrices ont été converties en listes de nœuds (auteurs) et en listes d'arêtes (collaborations). Les nœuds ont été colorés et groupés en fonction des années de publication, et des légendes ont été ajoutées pour faciliter la compréhension du graphe. Des descriptions supplémentaires ont été intégrées pour enrichir les légendes, et la visualisation finale du réseau a été réalisée via visnetwork.
 
 Il est possible de voir via l'exemple suivant (obtenu avec le code de l'annexe : [Script_R_reseau_co-auteur](#reseau-co-auteur)) qu'un réseau de co-auteurs permet une visualisation claire des collaborations et des périodes d'activité des différents auteurs.
-
 
 Parler du quarto avec la construction d'un réseau et la création d'un réseau sur un soous groupe puis parler du premier sbm réalisé;
 
@@ -592,8 +560,30 @@ visNetwork(node_list, edge_list, width = "100%") %>%
   visExport( type = "jpeg", name = "Full_Network_Co-authors_Example_managHAL", label = "Export as jpeg")
 
 ```
-```
 
+### exemple_reseau_unipartite_bipartite {#reseau-unipart-bipart .Sections}
+
+```{r exemple de reseau, eval = FALSE}
+# Création d'un réseau unipartite
+set.seed(42) # Pour la reproductibilité 
+unipartite <- erdos.renyi.game(10, 0.3)
+# unipartite_graph <- plot(unipartite, main = "Réseau Unipartite", width = 800, height = 600)
+# print(unipartite_graph)
+matrice_adjacence_unipartite <- as.matrix(unipartite, "adjacency")
+
+# Création d'un réseau bipartite
+# Noms des nœuds
+nodes_A <- c("A1", "A2", "A3")
+nodes_B <- c("B1", "B2", "B3", "B4")
+# Liste des arêtes
+edges <- c("A1", "B1", "A1", "B2","A2", "B1", "A2", "B2", "A2", "B3", "A3", "B2", "A3", "B4")
+# Création du graphe
+bipartite <- graph(edges, directed = FALSE)
+V(bipartite)$type <- bipartite_mapping(bipartite)$type
+plot(bipartite, layout = layout_as_bipartite, vertex.color = c("skyblue", "salmon")[V(bipartite)$type + 1],
+     vertex.label.color = "black", vertex.shape = "circle", vertex.size = 30, edge.width = 2, main = "Réseau Bipartite")
+matrice_adjacence_bipartite <- as.matrix(bipartite, "adjacency")
+```
 
 ### Tableau des résultats détaillés
 
