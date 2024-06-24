@@ -152,13 +152,14 @@ HAL_publis_auteurs[1,]
 
 #### Création d'un réseau de co-auteurs avec Visnetwork
 
-Afin d'obtenir les informations sous-jacentes des informations bibliographiques, j'ai commencé à travailler à la création d'un réseau de co-auteur. Pour l'instant, la fonctionalité n'existe qu'au format de script R sur un document quarto. Au cours des semaines restantes, l'objectif est de continuer à travailler dessus et créer des fonctions simples et claires permettant à l'utilisateur de créer son propre réseau à partir de ses données. Le script de création de fonction est inspiré d'un script fournie au préalable par ma tutrice Julie Aubert. Suite à mes modifications et mes ajouts, Il se divise en plusieurs parties ((Pour voir le script R, veuillez vous référer à l'annexe : [Script_R_reseau_co-auteur](#reseau-co-auteur)) :
+Afin d'obtenir les informations sous-jacentes des informations bibliographiques, j'ai commencé à travailler à la création d'un réseau de co-auteur. Pour l'instant, la fonctionalité n'existe qu'au format de script R sur un document quarto. Au cours des semaines restantes, l'objectif est de continuer à travailler dessus et créer des fonctions simples et claires permettant à l'utilisateur de créer son propre réseau à partir de ses données. Le script de création de fonction est inspiré d'un script fournie au préalable par ma tutrice Julie Aubert. Des modifications et des ajouts ont été apportés pour améliorer l'extraction, le nettoyage, la construction, et la visualisation des données. Suite à mes modifications et mes ajouts, le script se divise en plusieurs parties ((Pour voir le script R, veuillez vous référer à l'annexe : [Script_R_reseau_co-auteur](#reseau-co-auteur)) :
 
 La première partie correspond à l'extraction et au nettoyage des données. Les données brutes ont été organisées et nettoyées pour être adaptées à la construction du réseau. Les années de publication ont été extraites et les identifiants des auteurs ont été nettoyés. Les auteurs ont été associés aux structures pertinentes, et les incohérences de noms ou d'identifiants HAL ont été corrigées. Des identifiants fictifs ont été créés pour les auteurs sans identifiant.
 
 La deuxième partie concerne la construction et la visualisation du graphe. À partir des données nettoyées, des matrices de contingence ont été créées. Ces matrices ont été converties en listes de nœuds (auteurs) et en listes d'arêtes (collaborations). Les nœuds ont été colorés et groupés en fonction des années de publication, et des légendes ont été ajoutées pour faciliter la compréhension du graphe. Des descriptions supplémentaires ont été intégrées pour enrichir les légendes, et la visualisation finale du réseau a été réalisée via visnetwork.
 
-Il est possible de voir via l'exemple suivant qu'un réseau de co-auteurs permet une visualisation claire des collaborations et des périodes d'activité des différents auteurs.
+Il est possible de voir via l'exemple suivant (obtenu avec le code de l'annexe : [Script_R_reseau_co-auteur](#reseau-co-auteur)) qu'un réseau de co-auteurs permet une visualisation claire des collaborations et des périodes d'activité des différents auteurs.
+
 
 Parler du quarto avec la construction d'un réseau et la création d'un réseau sur un soous groupe puis parler du premier sbm réalisé;
 
