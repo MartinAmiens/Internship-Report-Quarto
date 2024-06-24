@@ -121,6 +121,8 @@ Enfin, *`load_team_table`* appelle l'une des deux fonctions en fonction du type 
 
 ```{r run example load_team_table, warning=FALSE}
 data_RH_csv_Example <- load_team_table(filter_id = TRUE, date_cols = c(6,7), filepath_or_url = "./data/Data_RH_Example.csv")
+# afin de ne garder que les lignes avec un idhal correct
+data_RH_csv_Example <- data_RH_csv_Example[which(!is.na(data_RH_csv_Example$idhal)),]
 head(data_RH_csv_Example)
 ```
 
@@ -138,7 +140,13 @@ Plusieurs fonctions présentes avant mes modifications faisait appel à HAL_quer
 date_min = "01/01/2022"
 date_max = "01/01/2023"
 
-HAL_publis_auteurs <- managHAL::HAL_extract_csv(id = 1002311, date_min,date_max, type_id = "struct_id", add_output = c("structAcronym_s","structId_i", "structHasAlphaAuthIdHalPersonid_fs"))
+# Publications à partir d'un id de laboratoire.
+HAL_publis_Labo <- managHAL::HAL_extract_csv(id = 1002311, date_min,date_max, type_id = "struct_id", add_output = c("structAcronym_s","structId_i", "structHasAlphaAuthIdHalPersonid_fs"))
+HAL_publis_Labo[1,]
+
+# Publications à partir d'ids auteurs
+HAL_publis_auteurs <- managHAL::HAL_extract_csv(id = data_RH_csv_Example[,12] , date_min,date_max, type_id = "person_id")
+HAL_publis_auteurs[1,]
 ```
 
 
@@ -212,6 +220,10 @@ load_team_table_csv <- function(filter_id = TRUE,
                                 date_cols,
                                 filepath){
   idhal <- NULL
+  
+  # read the csv table  TODO : Add message error to guide user
+  # if sep is different than ";" 
+  # and if header = false
   nbcol <- ncol(read.csv(filepath, header = TRUE, sep = ";", encoding = "UTF-8"))
   
   # define column types (dates or text if not dates)
@@ -237,6 +249,7 @@ load_team_table_csv <- function(filter_id = TRUE,
     table <- table[which(!is.na(idhal)),]
     table$idhal <- as.numeric(idhal)
     table$idhal[table$idhal == 0] <- NA
+    table <- table[which(!is.na(idhal)),]
   }
   
   # Test if there is a column named "id"
