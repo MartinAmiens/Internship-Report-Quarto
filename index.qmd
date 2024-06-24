@@ -152,11 +152,11 @@ HAL_publis_auteurs[1,]
 
 #### Création d'un réseau de co-auteurs avec Visnetwork
 
-Afin d'obtenir les informations sous-jacentes des informations bibliographiques, j'ai commencé à travailler à la création d'un réseau de co-auteur. Pour l'instant, la fonctionalité n'existe qu'au format de script R sur un document quarto. Au cours des semaines restantes, l'objectif est de continuer à travailler dessus et créer des fonctions simples et claires permettant à l'utilisateur de créer son propre réseau à partir de ses données. Le script de création de fonction est inspiré d'un script fournie au préalable par ma tutrice Julie Aubert. Suite à mes modifications et mes ajouts, Il se divise en plusieurs parties :
+Afin d'obtenir les informations sous-jacentes des informations bibliographiques, j'ai commencé à travailler à la création d'un réseau de co-auteur. Pour l'instant, la fonctionalité n'existe qu'au format de script R sur un document quarto. Au cours des semaines restantes, l'objectif est de continuer à travailler dessus et créer des fonctions simples et claires permettant à l'utilisateur de créer son propre réseau à partir de ses données. Le script de création de fonction est inspiré d'un script fournie au préalable par ma tutrice Julie Aubert. Suite à mes modifications et mes ajouts, Il se divise en plusieurs parties ((Pour voir le corps de la fonction, veuillez vous référer à l'annexe : [Script_R_reseau_co-auteur](#reseau-co-auteur)) :
 
 La première partie correspond à l'extraction des données et au nettoyage (organisation, séparation) de ces dernières afin qu'elles soient adaptées et permettent de construire un reseau correct. Dans cette partie, l'année de publication est extraite et les identifiants auteurs sont nettoyés. Les informations sur les auteurs sont extraites en colonne distinctes (nom complet, ID de personne, idHal) et convertient en caractères. Les auteurs sont ensuite associés aux structures et les informations sont à nouveau organisé en colonnes. Les données sont ensuite vérifié et les incohérences de noms ou d'identifiants HAL sont corrigées. Les colonnes avec les informations des structures et celles avec les informations des auteurs sont alors fusionnées pour obtenir un ensemble de données complet. Dernièrement, des identifiants fictifs sont crées pour les auteurs sans identifiant.
 
-La deuxième partie concerne la construction et la visualisation du graphe des co-auteurs à partir des données nettoyées et organisées. Dans cette partie, des matrices de contingence sont créées à partir des données des auteurs et des publications. Ces matrices sont ensuite converties en listes de nœuds, représentant les auteurs, et en listes d'arêtes, représentant les collaborations entre les auteurs. Les nœuds se voient attribuer des groupes et des couleurs en fonction des années de publication. Cela permet de visualiser les différentes périodes d'activité des auteurs. Des légendes sont également créées pour indiquer les tailles et les couleurs des nœuds et des arêtes, facilitant ainsi la compréhension du graphe. Ensuite, des informations supplémentaires, telles que des descriptions, sont intégrées pour enrichir les légendes des nœuds et des arêtes. Cela permet d'avoir des détails contextuels supplémentaires lors de la visualisation du graphe. Enfin, les informations finales sont ajoutées aux nœuds. Les doublons sont nettoyés et les données sont préparées pour une visualisation cohérente et complète du graphe des co-auteurs. Cette préparation finale assure que toutes les informations nécessaires sont correctement intégrées et prêtes pour être visualisées de manière efficace.
+La deuxième partie concerne la construction et la visualisation du graphe des co-auteurs à partir des données nettoyées et organisées. Dans cette partie, des matrices de contingence sont créées à partir des données des auteurs et des publications. Ces matrices sont ensuite converties en listes de nœuds, représentant les auteurs, et en listes d'arêtes, représentant les collaborations entre les auteurs. Les nœuds se voient attribuer des groupes et des couleurs en fonction des années de publication. Cela permet de visualiser les différentes périodes d'activité des auteurs. Des légendes sont également créées pour indiquer les tailles et les couleurs des nœuds et des arêtes, facilitant ainsi la compréhension du graphe. Ensuite, des informations supplémentaires, telles que des descriptions, sont intégrées pour enrichir les légendes des nœuds et des arêtes. Cela permet d'avoir des détails contextuels supplémentaires lors de la visualisation du graphe. Les informations finales sont ajoutées aux nœuds. Les doublons sont nettoyés et les données sont préparées pour une visualisation cohérente et complète du graphe des co-auteurs. Cette préparation finale assure que toutes les informations nécessaires sont correctement intégrées et prêtes pour être visualisées de manière efficace. Enfin, la visualisation du réseau est réalisé via visnetwork.
 
 Parler du quarto avec la construction d'un réseau et la création d'un réseau sur un soous groupe puis parler du premier sbm réalisé;
 
@@ -420,6 +420,198 @@ HAL_query <- function(id,
   return(obj)
 }
 ```
+
+### Script_R_reseau_co-auteur {#reseau-co-auteur .Sections}
+
+```{r, eval=FALSE}
+
+#### ------------------- Creation of a co-authors graph ------------------- ####
+
+#### --------- First part : Data extraction and cleaning
+
+publication_id_struc <- publication_id_struc %>%
+  mutate(Publication_Year = substr(publicationDate_tdate, 1, 4))
+
+
+for (i in seq_along(publication_id_struc$structHasAlphaAuthIdHalPersonid_fs)) {
+  publication_id_struc$structHasAlphaAuthIdHalPersonid_fs[i] <- gsub("\\\\", "", publication_id_struc$structHasAlphaAuthIdHalPersonid_fs[i])
+}
+
+
+# extraction of info on the authors
+data_graph_authors <- publication_id_struc %>%
+  select(halId_s, Publication_Year, authFullNamePersonIDIDHal_fs) %>%
+  separate_rows(authFullNamePersonIDIDHal_fs, sep = ",") %>%
+  separate(authFullNamePersonIDIDHal_fs, into = c("Full_Name", "Person_ID", "idhal"), sep = "_FacetSep_", fill = "right") %>%
+  mutate(across(c(Full_Name, Person_ID, idhal), as.character)) %>%
+  mutate(Person_ID = ifelse(Person_ID == "0", NA, Person_ID))
+
+
+# extraction of info on which authors belongs to which structure at the times of the publications
+data_graph_author_struc <- publication_id_struc %>%
+  select(structHasAlphaAuthIdHalPersonid_fs) %>%
+  separate_rows(structHasAlphaAuthIdHalPersonid_fs, sep = "_AlphaSep_") %>%
+  separate(structHasAlphaAuthIdHalPersonid_fs, into = c("id_name_struc", "id_full_name"), sep = "_JoinSep_") %>%
+  separate(id_full_name, into = c("idhal_s", "Person_ID", "Full_Name"), sep = "_FacetSep_", fill = "right") %>%
+  separate(id_name_struc, into = c("id_struc" , "name_struc"), sep = "_FacetSep_", fill = "right")  %>%
+  separate(Full_Name, into = c("Full_Name", "First_Letter"), sep = "," , fill = "right") %>%
+  mutate(Person_ID = ifelse(Person_ID == "0", NA, Person_ID))
+
+## data_graph_author_struc <- find_inconsistent_names_and_ids(data_graph_author_struc)
+
+
+data_graph_authors <- find_inconsistent_names_and_ids(data_graph_authors)
+
+data_graph_authors <- merge(data_graph_authors, data_graph_author_struc[, c("Person_ID", "id_struc")], by = "Person_ID", all.x = TRUE)
+
+
+# Creation of false ids only for authors without Person_ID
+# addind a mark to know which one were created and which were not
+data_graph_authors$False_id_mark <- !is.na(data_graph_authors$Person_ID)
+
+unique_authors_without_id_vec <- unique(data_graph_authors$Full_Name[which(data_graph_authors$False_id_mark== FALSE)]) ##%>%
+ 
+  ##distinct(Full_Name, .keep_all = TRUE) ##%>%
+  ##filter(is.na(Person_ID))
+
+# to create my own ids
+creation_id <- function(unique_authors_no_id_name_column) {
+  ids <- character(length(unique_authors_no_id_name_column))  
+  count <- 0
+  for (i in 1:length(unique_authors_no_id_name_column)) {
+    count <- count + 1
+    ids[i] <- count  
+  }
+  return(ids)
+}
+unique_authors_without_id <- data.frame(Full_Name=unique_authors_without_id_vec)
+unique_authors_without_id$False_Id = creation_id(unique_authors_without_id$Full_Name)
+
+# delete lines where False_Id equals Person_ID
+# i lose info here but one person out of a thousands seems ok (to be tested)
+unique_authors_without_id <- unique_authors_without_id %>%
+  filter(!False_Id %in% data_graph_authors$Person_ID)
+  
+         
+# give a false id to all authors without person id
+data_graph_authors <- data_graph_authors %>%
+  left_join(unique_authors_without_id %>% select(Full_Name, False_Id), by = "Full_Name") %>%
+  mutate(Person_ID = ifelse(is.na(Person_ID), False_Id, Person_ID)) %>%
+  select(-False_Id, -idhal)
+
+
+#### --------- Second part : Constructing and visualizing networks 
+
+# Creating the "edge list" and the "node list"
+
+## To do so we first create the contingence matrix, and then we applied the melt function
+contingence_table = data_graph_authors %>%
+  
+  count(as.numeric(Person_ID), halId_s) %>%
+  
+  dplyr::select(- n) %>% table %>% as.matrix
+
+contingence_matrix = contingence_table %*% t(contingence_table)
+
+contingence_matrix[lower.tri(contingence_matrix)] = 1000 # We set 1000 in order to applied a filter later on (in order to avoid duplication with the melt function)
+
+melt_matrix = melt(contingence_matrix);   colnames(melt_matrix) = c("from", "to", "value")
+
+edge_list = melt_matrix %>% filter(from != to & !value %in% c(0, 1000) ) %>% rename(width = value)
+
+node_list = melt_matrix %>% filter(from == to) %>% dplyr::select(- to) %>% rename(id = from) %>% mutate(label = id)
+
+
+# Creating a group variable in the node_list in order to set differents colors corresponding with the different years
+data_graph_authors$Publication_Year <- as.numeric(as.character(data_graph_authors$Publication_Year))
+
+df_group = data_graph_authors %>% 
+  
+  summarise(group = as.character (floor (mean (Publication_Year))), .by = Person_ID) %>% rename (id = Person_ID)
+
+node_list$id <- as.character(node_list$id)
+
+node_list = node_list %>%
+  
+  left_join (df_group, by = "id") 
+
+# Defining nodes and edges that will serve to build a legend for edges and nodes sizes (number of publications), and colors (years)
+range_year = range (data_graph_authors$Publication_Year)
+
+node_size = data.frame(id = c("A", "B", "C"), value = c(1, 6, 15), label = c("A", "B", "C"), group = "Number of publications")
+edge_size = data.frame(from = c("A", "B", "C"), to = c("B", "C", "A"), width = c(1, 6, 15), label = c("1", "6", "15"))
+
+node_colors = data.frame (id = as.character (range_year), value = 1, label = as.character (range_year), group = as.character (range_year))
+edge_colors = data.frame (from = as.character (range_year), to = as.character (range_year[c(2, 1)]), width  = 1, label = "")
+
+node_list = rbind (node_list, node_size, node_colors)
+edge_list = rbind (edge_list %>% mutate (label = ""), edge_size, edge_colors)
+
+edge_list = edge_list %>% mutate(size = 20)
+
+
+# Defining colors for Publication year
+df_col = data.frame (
+  group = as.character (c (range_year[1] : range_year[2])),
+  color = colorRampPalette (colors = c ("#35B779FF", "#FDE725FF")) (range_year[2] - range_year[1] + 1)
+)
+node_list = node_list %>%
+  left_join (df_col, by = "group")
+
+
+# Legend nodes 
+# Defining colors for Publication year
+df_col_Legend = data.frame (
+  label = as.character (c (range_year[1] : range_year[2])),
+  group = as.character (c (range_year[1] : range_year[2])),
+  color = colorRampPalette (colors = c ("#35B779FF", "#FDE725FF")) (range_year[2] - range_year[1] + 1)
+  
+)
+
+# legend additional information table
+node_info <- data.frame(
+  id = c("A", "B", "C"),
+  info = c("Additional info for node A", "Additional info for node B", "Additional info for node C")
+)
+
+# Join node_info with node_list to add the title column to the legend nodes
+node_list <- node_list %>%
+  left_join(node_info, by = "id") %>%
+  mutate(title = ifelse(!is.na(info), info, "")) %>%
+  select(-info) # remove the info column after using it to create the title
+
+# Convert idhal to character type
+cleaned_table <- cleaned_table %>%
+  mutate(idhal = as.character(idhal))
+
+ tmp2 <- data_graph_authors[data_graph_authors$Person_ID %in% node_list$id,]
+ node_info2 <- tmp2 %>%
+  select(Full_Name, Person_ID) %>%
+  rename(id = Person_ID) 
+ 
+ # Constructing node_info3
+ tmp3 <- cleaned_table[cleaned_table$idhal %in% node_list$id,]
+ node_info3 <- tmp3 %>%
+  select(idhal, nom, prenom, unite, equipe) %>%
+  rename(id = idhal) 
+
+# Joining node_info2 with node_list to add the title column
+node_list <- node_list %>%
+  left_join(node_info2, by = "id") %>%
+  mutate(title_info = ifelse(!is.na(Full_Name), paste("Name:", Full_Name,",", "numeric idHal:", id), NA),
+         title = ifelse(title == "", title_info, title))
+
+# Joining node_info3 with node_list to add the title column
+node_list <- node_list %>%
+  left_join(node_info3, by = "id") %>%
+  mutate(title_info = ifelse(!is.na(nom), paste("Name:", paste(nom, prenom), ",", "Team:", equipe, ",", "Unit:", unite, "," , "numeric idHal:", id), title_info)) %>%
+  mutate(title = if_else(!is.na(nom), title_info, title)) %>%
+  select(-title_info)
+
+node_list <- node_list %>% distinct(node_list$id, .keep_all = TRUE)
+```
+```
+
 
 ### Tableau des résultats détaillés
 
