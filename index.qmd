@@ -152,7 +152,7 @@ HAL_publis_auteurs[1,]
 
 #### Création d'un réseau de co-auteurs avec Visnetwork
 
-Afin d'obtenir les informations sous-jacentes des informations bibliographiques, j'ai commencé à travailler à la création d'un réseau de co-auteur. Pour l'instant, la fonctionalité n'existe qu'au format de script R sur un document quarto. Au cours des semaines restantes, l'objectif est de continuer à travailler dessus et créer des fonctions simples et claires permettant à l'utilisateur de créer son propre réseau à partir de ses données. Le script de création de fonction est inspiré d'un script fournie au préalable par ma tutrice Julie Aubert. Suite à mes modifications et mes ajouts, Il se divise en plusieurs parties ((Pour voir le corps de la fonction, veuillez vous référer à l'annexe : [Script_R_reseau_co-auteur](#reseau-co-auteur)) :
+Afin d'obtenir les informations sous-jacentes des informations bibliographiques, j'ai commencé à travailler à la création d'un réseau de co-auteur. Pour l'instant, la fonctionalité n'existe qu'au format de script R sur un document quarto. Au cours des semaines restantes, l'objectif est de continuer à travailler dessus et créer des fonctions simples et claires permettant à l'utilisateur de créer son propre réseau à partir de ses données. Le script de création de fonction est inspiré d'un script fournie au préalable par ma tutrice Julie Aubert. Suite à mes modifications et mes ajouts, Il se divise en plusieurs parties ((Pour voir le script R, veuillez vous référer à l'annexe : [Script_R_reseau_co-auteur](#reseau-co-auteur)) :
 
 La première partie correspond à l'extraction des données et au nettoyage (organisation, séparation) de ces dernières afin qu'elles soient adaptées et permettent de construire un reseau correct. Dans cette partie, l'année de publication est extraite et les identifiants auteurs sont nettoyés. Les informations sur les auteurs sont extraites en colonne distinctes (nom complet, ID de personne, idHal) et convertient en caractères. Les auteurs sont ensuite associés aux structures et les informations sont à nouveau organisé en colonnes. Les données sont ensuite vérifié et les incohérences de noms ou d'identifiants HAL sont corrigées. Les colonnes avec les informations des structures et celles avec les informations des auteurs sont alors fusionnées pour obtenir un ensemble de données complet. Dernièrement, des identifiants fictifs sont crées pour les auteurs sans identifiant.
 
@@ -609,6 +609,16 @@ node_list <- node_list %>%
   select(-title_info)
 
 node_list <- node_list %>% distinct(node_list$id, .keep_all = TRUE)
+
+# Network visualization
+visNetwork(node_list, edge_list, width = "100%") %>%
+  visIgraphLayout() %>%
+  visGroups(groupname = "Number of publications", color = "lightblue", font = list(size = 22)) %>%
+  visLegend(addNodes = df_col_Legend, main = "Graph of co-authors", useGroups = FALSE) %>%
+  visEdges(font = list(size = 22)) %>%
+  visOptions(selectedBy = "equipe") %>% 
+  visExport( type = "jpeg", name = "Full_Network_Co-authors_Example_managHAL", label = "Export as jpeg")
+
 ```
 ```
 
