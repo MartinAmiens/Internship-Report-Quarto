@@ -214,7 +214,8 @@ window.Quarto = {
   <li><a href="#resultats" id="toc-resultats" class="nav-link" data-scroll-target="#resultats"><span class="header-section-number">1.4</span> RESULTATS</a>
   <ul class="collapse">
   <li><a href="#accessibilité-et-généricité-de-managhal" id="toc-accessibilité-et-généricité-de-managhal" class="nav-link" data-scroll-target="#accessibilité-et-généricité-de-managhal"><span class="header-section-number">1.4.1</span> Accessibilité et généricité de ManagHAL</a></li>
-  <li><a href="#conclusion-des-résultats" id="toc-conclusion-des-résultats" class="nav-link" data-scroll-target="#conclusion-des-résultats"><span class="header-section-number">1.4.2</span> Conclusion des Résultats</a></li>
+  <li><a href="#ajout-de-fonctionnalité-à-managhal" id="toc-ajout-de-fonctionnalité-à-managhal" class="nav-link" data-scroll-target="#ajout-de-fonctionnalité-à-managhal"><span class="header-section-number">1.4.2</span> Ajout de fonctionnalité à ManagHAL</a></li>
+  <li><a href="#conclusion-des-résultats" id="toc-conclusion-des-résultats" class="nav-link" data-scroll-target="#conclusion-des-résultats"><span class="header-section-number">1.4.3</span> Conclusion des Résultats</a></li>
   </ul></li>
   <li><a href="#discussion" id="toc-discussion" class="nav-link" data-scroll-target="#discussion"><span class="header-section-number">1.5</span> DISCUSSION</a></li>
   <li><a href="#annexes" id="toc-annexes" class="nav-link" data-scroll-target="#annexes"><span class="header-section-number">1.6</span> ANNEXES</a>
@@ -369,29 +370,22 @@ Y_{ij} = 0 &amp; \quad \text{si aucun lien n'existe entre les nœuds } i \text{ 
 <h4 data-number="1.4.1.2" class="anchored" data-anchor-id="résultat-de-lapplication-de-load_team_table"><span class="header-section-number">1.4.1.2</span> Résultat de l’Application de <em>load_team_table</em></h4>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>data_RH_csv_Example <span class="ot">&lt;-</span> <span class="fu">load_team_table</span>(<span class="at">filter_id =</span> <span class="cn">TRUE</span>, <span class="at">date_cols =</span> <span class="fu">c</span>(<span class="dv">6</span>,<span class="dv">7</span>), <span class="at">filepath_or_url =</span> <span class="st">"./data/Data_RH_Example.csv"</span>)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data_RH_csv_Example)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># afin de ne garder que les lignes avec un idhal correct</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>data_RH_csv_Example <span class="ot">&lt;-</span> data_RH_csv_Example[<span class="fu">which</span>(<span class="sc">!</span><span class="fu">is.na</span>(data_RH_csv_Example<span class="sc">$</span>idhal)),]</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data_RH_csv_Example)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  civilite       nom   prenom   statut  rattachement debut_contrat fin_contrat
-1       M. ADJAKOSSA     Éric      CEC AgroParisTech                          
-2      Mme    ALBERT Isabelle       CR         INRAE                          
-3       M. ALLYNDREE   Joseph Doctorat AgroParisTech                          
-4      Mme   ALVAREZ Isabelle     IPEF         INRAE                          
-5       M.    ANAKOK     Emré Doctorat         INRAE    06/10/2021  05/10/2024
-6      Mme    AUBERT    Julie       IR         INRAE                          
-         financement  equipe  unite               orcid  idhal
-1                    SOLsTIS MIA PS 0000-0002-5280-0347 749339
-2                    SOLsTIS MIA PS 0000-0003-2686-917X     NA
-3                                                           NA
-4                    EkINocs MIA PS 0000-0002-5268-8666     NA
-5 ANR EcoNet/Mathnum SOLsTIS MIA PS 0000-0002-4439-4684     NA
-6                    SOLsTIS MIA PS 0000-0001-5203-5748  15356
-                     adresse_mail
-1 eric-houngla.adjakossa@inrae.fr
-2        Isabelle.Albert@inrae.fr
-3                                
-4       isabelle.alvarez@inrae.fr
-5            emre.anakok@inrae.fr
-6           julie.aubert@inrae.fr</code></pre>
+<pre><code>  civilite       nom prenom statut  rattachement debut_contrat fin_contrat
+1       M. ADJAKOSSA   Éric    CEC AgroParisTech                          
+6      Mme    AUBERT  Julie     IR         INRAE                          
+8       M. BARBILLON Pierre     PR AgroParisTech                          
+  financement  equipe  unite               orcid  idhal
+1             SOLsTIS MIA PS 0000-0002-5280-0347 749339
+6             SOLsTIS MIA PS 0000-0001-5203-5748  15356
+8             SOLsTIS MIA PS 0000-0002-7766-7693  16750
+                       adresse_mail
+1   eric-houngla.adjakossa@inrae.fr
+6             julie.aubert@inrae.fr
+8 Pierre.Barbillon@Agroparistech.fr</code></pre>
 </div>
 </div>
 <p>Lors de l’application de la fonction <em><code>load_team_table</code></em> ci-dessus en utilisant le jeu de données test Data_RH_Example, on observe le chargement d’un csv contenant les colonnes d’origines du csv fournie en entrée. Les valeurs manquantes ou mal renseignées des idhals numériques ont été remplacées par des NAs. Les dates présentes deans les colonnes de dates spécifiés par l’utilisateur ont été nettoyées et ont le bon format.</p>
@@ -405,14 +399,57 @@ Y_{ij} = 0 &amp; \quad \text{si aucun lien n'existe entre les nœuds } i \text{ 
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>date_min <span class="ot">=</span> <span class="st">"01/01/2022"</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>date_max <span class="ot">=</span> <span class="st">"01/01/2023"</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>HAL_publis_auteurs <span class="ot">&lt;-</span> managHAL<span class="sc">::</span><span class="fu">HAL_extract_csv</span>(<span class="at">id =</span> <span class="dv">1002311</span>, date_min,date_max, <span class="at">type_id =</span> <span class="st">"struct_id"</span>, <span class="at">add_output =</span> <span class="fu">c</span>(<span class="st">"structAcronym_s"</span>,<span class="st">"structId_i"</span>, <span class="st">"structHasAlphaAuthIdHalPersonid_fs"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Publications à partir d'un id de laboratoire.</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>HAL_publis_Labo <span class="ot">&lt;-</span> managHAL<span class="sc">::</span><span class="fu">HAL_extract_csv</span>(<span class="at">id =</span> <span class="dv">1002311</span>, date_min,date_max, <span class="at">type_id =</span> <span class="st">"struct_id"</span>, <span class="at">add_output =</span> <span class="fu">c</span>(<span class="st">"structAcronym_s"</span>,<span class="st">"structId_i"</span>, <span class="st">"structHasAlphaAuthIdHalPersonid_fs"</span>))</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>HAL_publis_Labo[<span class="dv">1</span>,]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    docid      halId_s version_i docType_s
+1 4440523 hal-04440523         1      COMM
+                                                                                                                                                                                                                                                                                                                                                                         citationFull_s
+1 Isabelle Lebert, Maxime Rates, Julien Pradel, Laure Mathews-Martin, Aurore Latour, et al.. Evaluation du risque d’exposition aux tiques et aux agents de la maladie de Lyme dans les espaces verts de la région lyonnaise : résultats de la surveillance 2019-2023. Colloque final de restitution du projet Biodiversa-Bioroddi, Nov 2023, Lyon (Sciences Po), France. ⟨hal-04440523⟩
+                                                                                      citationRef_s
+1 Colloque final de restitution du projet Biodiversa-Bioroddi, Nov 2023, Lyon (Sciences Po), France
+  publicationDate_tdate
+1  2023-01-01T00:00:00Z
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    authFullNamePersonIDIDHal_fs
+1 Isabelle Lebert_FacetSep_184610_FacetSep_isabelle-lebert,Maxime Rates_FacetSep_749136_FacetSep_maxime-rates,Julien Pradel_FacetSep_1284695_FacetSep_,Laure Mathews-Martin_FacetSep_1310514_FacetSep_,Aurore Latour_FacetSep_0_FacetSep_,Maximilien Barbier_FacetSep_0_FacetSep_,Gwenaël Vourc’h_FacetSep_736823_FacetSep_gwenael-vourch,Valerie Poux_FacetSep_744163_FacetSep_valerie-poux,Séverine Barry_FacetSep_744034_FacetSep_severine-barry,Sébastien Masseglia_FacetSep_744051_FacetSep_sebastien-masseglia,Severine Bord_FacetSep_180861_FacetSep_severine-bord,Karine Chalvet-Monfray_FacetSep_743281_FacetSep_karine-chalvet-monfray,Diana Sepúlveda_FacetSep_0_FacetSep_,Luc Chabanne_FacetSep_754272_FacetSep_luc-chabanne,Nathalie Charbonnel_FacetSep_736426_FacetSep_nathalie-charbonnel,Magalie René-Martellet_FacetSep_744046_FacetSep_magalie-rene-martellet
+                                                                                               structAcronym_s
+1 UMR EPIA,VAS,INRAE,UMR CBGP,Cirad,IRD [France-Sud],INRAE,Institut Agro,UM,LRFSN,ANSES,MIA Paris-Saclay,INRAE
+                                                                                                                            structId_i
+1 1002382,301767,577435,1100832,11574,451860,577435,1096330,1042499,1100589,561191,301715,1002311,148117,419361,577435,1056557,1031275
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             structHasAlphaAuthIdHalPersonid_fs
+1 L_AlphaSep_1002382_FacetSep_Unité Mixte de Recherche d'Épidémiologie des maladies Animales et zoonotiques_JoinSep_isabelle-lebert_FacetSep_184610_FacetSep_Lebert Isabelle,L_AlphaSep_301767_FacetSep_VetAgro Sup - Institut national d'enseignement supérieur et de recherche en alimentation\\, santé animale\\, sciences agronomiques et de l'environnement_JoinSep_isabelle-lebert_FacetSep_184610_FacetSep_Lebert Isabelle,L_AlphaSep_577435_FacetSep_Institut National de Recherche pour l’Agriculture\\, l’Alimentation et l’Environnement_JoinSep_isabelle-lebert_FacetSep_184610_FacetSep_Lebert Isabelle,R_AlphaSep_1002382_FacetSep_Unité Mixte de Recherche d'Épidémiologie des maladies Animales et zoonotiques_JoinSep_maxime-rates_FacetSep_749136_FacetSep_Rates Maxime,R_AlphaSep_301767_FacetSep_VetAgro Sup - Institut national d'enseignement supérieur et de recherche en alimentation\\, santé animale\\, sciences agronomiques et de l'environnement_JoinSep_maxime-rates_FacetSep_749136_FacetSep_Rates Maxime,R_AlphaSep_577435_FacetSep_Institut National de Recherche pour l’Agriculture\\, l’Alimentation et l’Environnement_JoinSep_maxime-rates_FacetSep_749136_FacetSep_Rates Maxime,P_AlphaSep_1100832_FacetSep_Centre de Biologie pour la Gestion des Populations_JoinSep__FacetSep_1284695_FacetSep_Pradel Julien,P_AlphaSep_11574_FacetSep_Centre de Coopération Internationale en Recherche Agronomique pour le Développement_JoinSep__FacetSep_1284695_FacetSep_Pradel Julien,P_AlphaSep_451860_FacetSep_Institut de Recherche pour le Développement_JoinSep__FacetSep_1284695_FacetSep_Pradel Julien,P_AlphaSep_577435_FacetSep_Institut National de Recherche pour l’Agriculture\\, l’Alimentation et l’Environnement_JoinSep__FacetSep_1284695_FacetSep_Pradel Julien,P_AlphaSep_1096330_FacetSep_Institut Agro Montpellier_JoinSep__FacetSep_1284695_FacetSep_Pradel Julien,P_AlphaSep_1042499_FacetSep_Institut national d'enseignement supérieur pour l'agriculture\\, l'alimentation et l'environnement_JoinSep__FacetSep_1284695_FacetSep_Pradel Julien,P_AlphaSep_1100589_FacetSep_Université de Montpellier_JoinSep__FacetSep_1284695_FacetSep_Pradel Julien,M_AlphaSep_561191_FacetSep_Laboratoire de la rage et de la faune sauvage de Nancy_JoinSep__FacetSep_1310514_FacetSep_Mathews-Martin Laure,M_AlphaSep_301715_FacetSep_Agence nationale de sécurité sanitaire de l'alimentation\\, de l'environnement et du travail_JoinSep__FacetSep_1310514_FacetSep_Mathews-Martin Laure,L_AlphaSep_1002382_FacetSep_Unité Mixte de Recherche d'Épidémiologie des maladies Animales et zoonotiques_JoinSep__FacetSep_0_FacetSep_Latour Aurore,L_AlphaSep_301767_FacetSep_VetAgro Sup - Institut national d'enseignement supérieur et de recherche en alimentation\\, santé animale\\, sciences agronomiques et de l'environnement_JoinSep__FacetSep_0_FacetSep_Latour Aurore,L_AlphaSep_577435_FacetSep_Institut National de Recherche pour l’Agriculture\\, l’Alimentation et l’Environnement_JoinSep__FacetSep_0_FacetSep_Latour Aurore,B_AlphaSep_1002382_FacetSep_Unité Mixte de Recherche d'Épidémiologie des maladies Animales et zoonotiques_JoinSep__FacetSep_0_FacetSep_Barbier Maximilien,B_AlphaSep_301767_FacetSep_VetAgro Sup - Institut national d'enseignement supérieur et de recherche en alimentation\\, santé animale\\, sciences agronomiques et de l'environnement_JoinSep__FacetSep_0_FacetSep_Barbier Maximilien,B_AlphaSep_577435_FacetSep_Institut National de Recherche pour l’Agriculture\\, l’Alimentation et l’Environnement_JoinSep__FacetSep_0_FacetSep_Barbier Maximilien,V_AlphaSep_1002382_FacetSep_Unité Mixte de Recherche d'Épidémiologie des maladies Animales et zoonotiques_JoinSep_gwenael-vourch_FacetSep_736823_FacetSep_Vourc’h Gwenaël,V_AlphaSep_301767_FacetSep_VetAgro Sup - Institut national d'enseignement supérieur et de recherche en alimentation\\, santé animale\\, sciences agronomiques et de l'environnement_JoinSep_gwenael-vourch_FacetSep_736823_FacetSep_Vourc’h Gwenaël,V_AlphaSep_577435_FacetSep_Institut National de Recherche pour l’Agriculture\\, l’Alimentation et l’Environnement_JoinSep_gwenael-vourch_FacetSep_736823_FacetSep_Vourc’h Gwenaël,P_AlphaSep_1002382_FacetSep_Unité Mixte de Recherche d'Épidémiologie des maladies Animales et zoonotiques_JoinSep_valerie-poux_FacetSep_744163_FacetSep_Poux Valerie,P_AlphaSep_301767_FacetSep_VetAgro Sup - Institut national d'enseignement supérieur et de recherche en alimentation\\, santé animale\\, sciences agronomiques et de l'environnement_JoinSep_valerie-poux_FacetSep_744163_FacetSep_Poux Valerie,P_AlphaSep_577435_FacetSep_Institut National de Recherche pour l’Agriculture\\, l’Alimentation et l’Environnement_JoinSep_valerie-poux_FacetSep_744163_FacetSep_Poux Valerie,B_AlphaSep_1002382_FacetSep_Unité Mixte de Recherche d'Épidémiologie des maladies Animales et zoonotiques_JoinSep_severine-barry_FacetSep_744034_FacetSep_Barry Séverine,B_AlphaSep_301767_FacetSep_VetAgro Sup - Institut national d'enseignement supérieur et de recherche en alimentation\\, santé animale\\, sciences agronomiques et de l'environnement_JoinSep_severine-barry_FacetSep_744034_FacetSep_Barry Séverine,B_AlphaSep_577435_FacetSep_Institut National de Recherche pour l’Agriculture\\, l’Alimentation et l’Environnement_JoinSep_severine-barry_FacetSep_744034_FacetSep_Barry Séverine,M_AlphaSep_1002382_FacetSep_Unité Mixte de Recherche d'Épidémiologie des maladies Animales et zoonotiques_JoinSep_sebastien-masseglia_FacetSep_744051_FacetSep_Masseglia Sébastien,M_AlphaSep_301767_FacetSep_VetAgro Sup - Institut national d'enseignement supérieur et de recherche en alimentation\\, santé animale\\, sciences agronomiques et de l'environnement_JoinSep_sebastien-masseglia_FacetSep_744051_FacetSep_Masseglia Sébastien,M_AlphaSep_577435_FacetSep_Institut National de Recherche pour l’Agriculture\\, l’Alimentation et l’Environnement_JoinSep_sebastien-masseglia_FacetSep_744051_FacetSep_Masseglia Sébastien,B_AlphaSep_1002382_FacetSep_Unité Mixte de Recherche d'Épidémiologie des maladies Animales et zoonotiques_JoinSep_severine-bord_FacetSep_180861_FacetSep_Bord Severine,B_AlphaSep_301767_FacetSep_VetAgro Sup - Institut national d'enseignement supérieur et de recherche en alimentation\\, santé animale\\, sciences agronomiques et de l'environnement_JoinSep_severine-bord_FacetSep_180861_FacetSep_Bord Severine,B_AlphaSep_577435_FacetSep_Institut National de Recherche pour l’Agriculture\\, l’Alimentation et l’Environnement_JoinSep_severine-bord_FacetSep_180861_FacetSep_Bord Severine,B_AlphaSep_1002311_FacetSep_Mathématiques et Informatique Appliquées_JoinSep_severine-bord_FacetSep_180861_FacetSep_Bord Severine,B_AlphaSep_148117_FacetSep_AgroParisTech_JoinSep_severine-bord_FacetSep_180861_FacetSep_Bord Severine,B_AlphaSep_419361_FacetSep_Université Paris-Saclay_JoinSep_severine-bord_FacetSep_180861_FacetSep_Bord Severine,B_AlphaSep_577435_FacetSep_Institut National de Recherche pour l’Agriculture\\, l’Alimentation et l’Environnement_JoinSep_severine-bord_FacetSep_180861_FacetSep_Bord Severine,C_AlphaSep_1002382_FacetSep_Unité Mixte de Recherche d'Épidémiologie des maladies Animales et zoonotiques_JoinSep_karine-chalvet-monfray_FacetSep_743281_FacetSep_Chalvet-Monfray Karine,C_AlphaSep_301767_FacetSep_VetAgro Sup - Institut national d'enseignement supérieur et de recherche en alimentation\\, santé animale\\, sciences agronomiques et de l'environnement_JoinSep_karine-chalvet-monfray_FacetSep_743281_FacetSep_Chalvet-Monfray Karine,C_AlphaSep_577435_FacetSep_Institut National de Recherche pour l’Agriculture\\, l’Alimentation et l’Environnement_JoinSep_karine-chalvet-monfray_FacetSep_743281_FacetSep_Chalvet-Monfray Karine,S_AlphaSep_1056557_FacetSep_Direction ‑ Écologie Urbaine de la Ville de Lyon_JoinSep__FacetSep_0_FacetSep_Sepúlveda Diana,S_AlphaSep_1031275_FacetSep_Partenaires INRAE_JoinSep__FacetSep_0_FacetSep_Sepúlveda Diana,C_AlphaSep_1002382_FacetSep_Unité Mixte de Recherche d'Épidémiologie des maladies Animales et zoonotiques_JoinSep_luc-chabanne_FacetSep_754272_FacetSep_Chabanne Luc,C_AlphaSep_301767_FacetSep_VetAgro Sup - Institut national d'enseignement supérieur et de recherche en alimentation\\, santé animale\\, sciences agronomiques et de l'environnement_JoinSep_luc-chabanne_FacetSep_754272_FacetSep_Chabanne Luc,C_AlphaSep_577435_FacetSep_Institut National de Recherche pour l’Agriculture\\, l’Alimentation et l’Environnement_JoinSep_luc-chabanne_FacetSep_754272_FacetSep_Chabanne Luc,C_AlphaSep_1100832_FacetSep_Centre de Biologie pour la Gestion des Populations_JoinSep_nathalie-charbonnel_FacetSep_736426_FacetSep_Charbonnel Nathalie,C_AlphaSep_11574_FacetSep_Centre de Coopération Internationale en Recherche Agronomique pour le Développement_JoinSep_nathalie-charbonnel_FacetSep_736426_FacetSep_Charbonnel Nathalie,C_AlphaSep_451860_FacetSep_Institut de Recherche pour le Développement_JoinSep_nathalie-charbonnel_FacetSep_736426_FacetSep_Charbonnel Nathalie,C_AlphaSep_577435_FacetSep_Institut National de Recherche pour l’Agriculture\\, l’Alimentation et l’Environnement_JoinSep_nathalie-charbonnel_FacetSep_736426_FacetSep_Charbonnel Nathalie,C_AlphaSep_1096330_FacetSep_Institut Agro Montpellier_JoinSep_nathalie-charbonnel_FacetSep_736426_FacetSep_Charbonnel Nathalie,C_AlphaSep_1042499_FacetSep_Institut national d'enseignement supérieur pour l'agriculture\\, l'alimentation et l'environnement_JoinSep_nathalie-charbonnel_FacetSep_736426_FacetSep_Charbonnel Nathalie,C_AlphaSep_1100589_FacetSep_Université de Montpellier_JoinSep_nathalie-charbonnel_FacetSep_736426_FacetSep_Charbonnel Nathalie,R_AlphaSep_1002382_FacetSep_Unité Mixte de Recherche d'Épidémiologie des maladies Animales et zoonotiques_JoinSep_magalie-rene-martellet_FacetSep_744046_FacetSep_René-Martellet Magalie,R_AlphaSep_301767_FacetSep_VetAgro Sup - Institut national d'enseignement supérieur et de recherche en alimentation\\, santé animale\\, sciences agronomiques et de l'environnement_JoinSep_magalie-rene-martellet_FacetSep_744046_FacetSep_René-Martellet Magalie,R_AlphaSep_577435_FacetSep_Institut National de Recherche pour l’Agriculture\\, l’Alimentation et l’Environnement_JoinSep_magalie-rene-martellet_FacetSep_744046_FacetSep_René-Martellet Magalie</code></pre>
 </div>
-<p>Mettre un exemple de code faisant appel à HAL_extract_csv.</p>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Publications à partir d'ids auteurs</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>HAL_publis_auteurs <span class="ot">&lt;-</span> managHAL<span class="sc">::</span><span class="fu">HAL_extract_csv</span>(<span class="at">id =</span> data_RH_csv_Example[,<span class="dv">12</span>] , date_min,date_max, <span class="at">type_id =</span> <span class="st">"person_id"</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>HAL_publis_auteurs[<span class="dv">1</span>,]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    docid      halId_s version_i docType_s
+1 4311126 hal-04157375         1       ART
+                                                                                                                                                                                                                                                                                   citationFull_s
+1 Joanna Moro, Gaëtan Roisné-Hamelin, Nadezda Khodorova, Douglas Rutledge, Jean-Charles Martin, et al.. Pipecolate and taurine are rat urinary biomarkers for lysine and threonine deficiencies. Journal of Nutrition, 2023, 153 (9), pp 2571-2584. ⟨10.1016/j.tjnut.2023.06.039⟩. ⟨hal-04157375⟩
+                                                                     citationRef_s
+1 Journal of Nutrition, 2023, 153 (9), pp 2571-2584. ⟨10.1016/j.tjnut.2023.06.039⟩
+  publicationDate_tdate
+1  2023-01-01T00:00:00Z
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            authFullNamePersonIDIDHal_fs
+1 Joanna Moro_FacetSep_0_FacetSep_,Gaëtan Roisné-Hamelin_FacetSep_0_FacetSep_,Nadezda Khodorova_FacetSep_0_FacetSep_,Douglas Rutledge_FacetSep_0_FacetSep_,Jean-Charles Martin_FacetSep_0_FacetSep_,Pierre Barbillon_FacetSep_16750_FacetSep_pierre-barbillon,Daniel Tomé_FacetSep_0_FacetSep_,Claire C. Gaudichon_FacetSep_14336_FacetSep_claire-gaudichon,Catherine Tardivel_FacetSep_0_FacetSep_,Delphine Jouan-Rimbaud Bouveresse_FacetSep_736758_FacetSep_delphine-jouan-rimbaud-bouveresse,Azzout-Marniche Dalila_FacetSep_1081818_FacetSep_dalila-azzout-marniche</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="ajout-de-fonctionnalité-à-managhal" class="level3" data-number="1.4.2">
+<h3 data-number="1.4.2" class="anchored" data-anchor-id="ajout-de-fonctionnalité-à-managhal"><span class="header-section-number">1.4.2</span> Ajout de fonctionnalité à ManagHAL</h3>
+<section id="création-dun-réseau-de-co-auteurs-avec-visnetwork" class="level4" data-number="1.4.2.1">
+<h4 data-number="1.4.2.1" class="anchored" data-anchor-id="création-dun-réseau-de-co-auteurs-avec-visnetwork"><span class="header-section-number">1.4.2.1</span> Création d’un réseau de co-auteurs avec Visnetwork</h4>
+<p>Afin d’obtenir les informations sous-jacentes des informations bibliographiques, j’ai commencé à travailler à la création d’un réseau de co-auteur. Pour l’instant, la fonctionalité n’existe qu’au format de script R sur un document quarto. Au cours des semaines restantes, l’objectif est de continuer à travailler dessus et créer des fonctions simples et claires permettant à l’utilisateur de créer son propre réseau à partir de ses données. Le script de création de fonction est inspiré d’un script fournie au préalable par ma tutrice Julie Aubert. Suite à mes modifications et mes ajouts, Il se divise en plusieurs parties :</p>
+<p>La première partie correspond à l’extraction des données et au nettoyage (organisation, séparation) de ces dernières afin qu’elles soient adaptées et permettent de construire un reseau correct. Dans cette partie, l’année de publication est extraite et les identifiants auteurs sont nettoyés. Les informations sur les auteurs sont extraites en colonne distinctes (nom complet, ID de personne, idHal) et convertient en caractères. Les auteurs sont ensuite associés aux structures et les informations sont à nouveau organisé en colonnes. Les données sont ensuite vérifié et les incohérences de noms ou d’identifiants HAL sont corrigées. Les colonnes avec les informations des structures et celles avec les informations des auteurs sont alors fusionnées pour obtenir un ensemble de données complet. Dernièrement, des identifiants fictifs sont crées pour les auteurs sans identifiant.</p>
+<p>La deuxième partie concerne la construction et la visualisation du graphe des co-auteurs à partir des données nettoyées et organisées. Dans cette partie, des matrices de contingence sont créées à partir des données des auteurs et des publications. Ces matrices sont ensuite converties en listes de nœuds, représentant les auteurs, et en listes d’arêtes, représentant les collaborations entre les auteurs. Les nœuds se voient attribuer des groupes et des couleurs en fonction des années de publication. Cela permet de visualiser les différentes périodes d’activité des auteurs. Des légendes sont également créées pour indiquer les tailles et les couleurs des nœuds et des arêtes, facilitant ainsi la compréhension du graphe. Ensuite, des informations supplémentaires, telles que des descriptions, sont intégrées pour enrichir les légendes des nœuds et des arêtes. Cela permet d’avoir des détails contextuels supplémentaires lors de la visualisation du graphe. Enfin, les informations finales sont ajoutées aux nœuds. Les doublons sont nettoyés et les données sont préparées pour une visualisation cohérente et complète du graphe des co-auteurs. Cette préparation finale assure que toutes les informations nécessaires sont correctement intégrées et prêtes pour être visualisées de manière efficace.</p>
 <p>Parler du quarto avec la construction d’un réseau et la création d’un réseau sur un soous groupe puis parler du premier sbm réalisé;</p>
 </section>
 </section>
-<section id="conclusion-des-résultats" class="level3" data-number="1.4.2">
-<h3 data-number="1.4.2" class="anchored" data-anchor-id="conclusion-des-résultats"><span class="header-section-number">1.4.2</span> Conclusion des Résultats</h3>
+<section id="conclusion-des-résultats" class="level3" data-number="1.4.3">
+<h3 data-number="1.4.3" class="anchored" data-anchor-id="conclusion-des-résultats"><span class="header-section-number">1.4.3</span> Conclusion des Résultats</h3>
 <p>Exemple via chatGPT</p>
 <p>Les méthodes développées au cours de ce stage ont permis d’améliorer significativement les performances des algorithmes existants. L’optimisation de l’algorithme X a réduit le temps de traitement de 40%, tandis que les ajustements apportés au modèle Y ont augmenté la précision de 5%. Ces résultats démontrent l’efficacité des approches choisies pour répondre aux limitations des méthodes précédentes.</p>
 </section>
@@ -426,245 +463,250 @@ Y_{ij} = 0 &amp; \quad \text{si aucun lien n'existe entre les nœuds } i \text{ 
 <section id="load-team-table-url" class="level3 Sections" data-number="1.6.1">
 <h3 class="Sections anchored" data-number="1.6.1" data-anchor-id="load-team-table-url"><span class="header-section-number">1.6.1</span> load_team_table_url</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>load_team_table_url <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">filter_id =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>                                date_cols,</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>                                url) {</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  idhal <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  tmp_file <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="fu">tempfile</span>(), <span class="st">".xlsx"</span>)</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">download.file</span>(</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">url =</span> url,</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">destfile =</span> tmp_file,</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">mode =</span> <span class="st">"wb"</span></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>  nbcol <span class="ot">&lt;-</span> <span class="fu">ncol</span>(readxl<span class="sc">::</span><span class="fu">read_xlsx</span>(tmp_file,</span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">sheet =</span> <span class="st">"Membres"</span>))</span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>  col_types <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="st">"text"</span>,nbcol)</span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>  col_types[date_cols] <span class="ot">&lt;-</span> <span class="st">'date'</span></span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>  table <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_xlsx</span>(tmp_file,</span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>                             <span class="at">sheet =</span> <span class="st">"Membres"</span>,</span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>                             <span class="at">col_types =</span> col_types</span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">rename_with</span>(</span>
-<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>      clean_names</span>
-<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span></span>
-<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">mutate_if</span>(<span class="cf">function</span>(x) {</span>
-<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>      <span class="st">"POSIXt"</span> <span class="sc">%in%</span> <span class="fu">class</span>(x)</span>
-<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>    }, <span class="sc">~</span> <span class="fu">format</span>(.x, <span class="st">"%d/%m/%Y"</span>))</span>
-<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (filter_id) {</span>
-<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>    table <span class="ot">&lt;-</span> <span class="fu">suppressWarnings</span>(table <span class="sc">%&gt;%</span></span>
-<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>                                dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(<span class="fu">as.numeric</span>(idhal))) <span class="sc">%&gt;%</span></span>
-<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>                                dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">idhal =</span> <span class="fu">as.numeric</span>(idhal)))</span>
-<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Test if there is a column named "id"</span></span>
-<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Possibility to add mandatory columns in the future</span></span>
-<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Just add "OR"</span></span>
-<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> ( <span class="sc">!</span>(<span class="st">"idhal"</span> <span class="sc">%in%</span> <span class="fu">names</span>(table)) <span class="sc">|</span> <span class="sc">!</span>(<span class="st">"nom"</span> <span class="sc">%in%</span> <span class="fu">names</span>(table)) <span class="sc">|</span> <span class="sc">!</span>(<span class="st">"prenom"</span> <span class="sc">%in%</span> <span class="fu">names</span>(table)) ) { <span class="fu">stop</span>(<span class="st">"one of the following columns are missing : 'idhal' ; 'nom' ; 'prenom' "</span>) }</span>
-<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(table)</span>
-<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>load_team_table_url <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">filter_id =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>                                date_cols,</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>                                url) {</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  idhal <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  tmp_file <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="fu">tempfile</span>(), <span class="st">".xlsx"</span>)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">download.file</span>(</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">url =</span> url,</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">destfile =</span> tmp_file,</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">mode =</span> <span class="st">"wb"</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>  nbcol <span class="ot">&lt;-</span> <span class="fu">ncol</span>(readxl<span class="sc">::</span><span class="fu">read_xlsx</span>(tmp_file,</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">sheet =</span> <span class="st">"Membres"</span>))</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>  col_types <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="st">"text"</span>,nbcol)</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>  col_types[date_cols] <span class="ot">&lt;-</span> <span class="st">'date'</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>  table <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_xlsx</span>(tmp_file,</span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>                             <span class="at">sheet =</span> <span class="st">"Membres"</span>,</span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>                             <span class="at">col_types =</span> col_types</span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">rename_with</span>(</span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>      clean_names</span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span></span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">mutate_if</span>(<span class="cf">function</span>(x) {</span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>      <span class="st">"POSIXt"</span> <span class="sc">%in%</span> <span class="fu">class</span>(x)</span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>    }, <span class="sc">~</span> <span class="fu">format</span>(.x, <span class="st">"%d/%m/%Y"</span>))</span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (filter_id) {</span>
+<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a>    table <span class="ot">&lt;-</span> <span class="fu">suppressWarnings</span>(table <span class="sc">%&gt;%</span></span>
+<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a>                                dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(<span class="fu">as.numeric</span>(idhal))) <span class="sc">%&gt;%</span></span>
+<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a>                                dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">idhal =</span> <span class="fu">as.numeric</span>(idhal)))</span>
+<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Test if there is a column named "id"</span></span>
+<span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Possibility to add mandatory columns in the future</span></span>
+<span id="cb8-37"><a href="#cb8-37" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Just add "OR"</span></span>
+<span id="cb8-38"><a href="#cb8-38" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> ( <span class="sc">!</span>(<span class="st">"idhal"</span> <span class="sc">%in%</span> <span class="fu">names</span>(table)) <span class="sc">|</span> <span class="sc">!</span>(<span class="st">"nom"</span> <span class="sc">%in%</span> <span class="fu">names</span>(table)) <span class="sc">|</span> <span class="sc">!</span>(<span class="st">"prenom"</span> <span class="sc">%in%</span> <span class="fu">names</span>(table)) ) { <span class="fu">stop</span>(<span class="st">"one of the following columns are missing : 'idhal' ; 'nom' ; 'prenom' "</span>) }</span>
+<span id="cb8-39"><a href="#cb8-39" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb8-40"><a href="#cb8-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(table)</span>
+<span id="cb8-41"><a href="#cb8-41" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="load-team-table-csv" class="level3 Sections" data-number="1.6.2">
 <h3 class="Sections anchored" data-number="1.6.2" data-anchor-id="load-team-table-csv"><span class="header-section-number">1.6.2</span> load_team_table_csv</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>load_team_table_csv <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">filter_id =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>                                date_cols,</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>                                filepath){</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  idhal <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  nbcol <span class="ot">&lt;-</span> <span class="fu">ncol</span>(<span class="fu">read.csv</span>(filepath, <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">sep =</span> <span class="st">";"</span>, <span class="at">encoding =</span> <span class="st">"UTF-8"</span>))</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># define column types (dates or text if not dates)</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  col_types <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="st">"character"</span>, nbcol)</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  col_types[date_cols] <span class="ot">&lt;-</span> <span class="st">'character'</span></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>  table <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(filepath,</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>                    <span class="at">header =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>                    <span class="at">sep =</span> <span class="st">";"</span>,</span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>                    <span class="at">encoding =</span> <span class="st">"UTF-8"</span>,</span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>                    <span class="at">colClasses =</span> col_types</span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">rename_with</span>(  <span class="co"># clean the columns names </span></span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>      clean_names</span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span></span>
-<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">mutate_if</span>(<span class="cf">function</span>(x) {  <span class="co"># Convert specified column to dates</span></span>
-<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>      <span class="st">"POSIXt"</span> <span class="sc">%in%</span> <span class="fu">class</span>(x)</span>
-<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>    }, <span class="sc">~</span> <span class="fu">format</span>(.x, <span class="st">"%d/%m/%Y"</span>))</span>
-<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Filter out rows without IDHAL</span></span>
-<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (filter_id) {</span>
-<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>    idhal <span class="ot">&lt;-</span> table<span class="sc">$</span>idhal</span>
-<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>    table <span class="ot">&lt;-</span> table[<span class="fu">which</span>(<span class="sc">!</span><span class="fu">is.na</span>(idhal)),]</span>
-<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>    table<span class="sc">$</span>idhal <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(idhal)</span>
-<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>    table<span class="sc">$</span>idhal[table<span class="sc">$</span>idhal <span class="sc">==</span> <span class="dv">0</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
-<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Test if there is a column named "id"</span></span>
-<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Possibility to add mandatory columns in the future</span></span>
-<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Just add "OR"</span></span>
-<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> ( <span class="sc">!</span>(<span class="st">"idhal"</span> <span class="sc">%in%</span> <span class="fu">names</span>(table)) <span class="sc">|</span> <span class="sc">!</span>(<span class="st">"nom"</span> <span class="sc">%in%</span> <span class="fu">names</span>(table)) <span class="sc">|</span> <span class="sc">!</span>(<span class="st">"prenom"</span> <span class="sc">%in%</span> <span class="fu">names</span>(table)) ) { <span class="fu">stop</span>(<span class="st">"one of the following columns are missing : 'idhal' ; 'nom' ; 'prenom' "</span>) }</span>
-<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(table)</span>
-<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>load_team_table_csv <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">filter_id =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>                                date_cols,</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>                                filepath){</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  idhal <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># read the csv table  </span><span class="al">TODO</span><span class="co"> : Add message error to guide user</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># if sep is different than ";" </span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># and if header = false</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>  nbcol <span class="ot">&lt;-</span> <span class="fu">ncol</span>(<span class="fu">read.csv</span>(filepath, <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">sep =</span> <span class="st">";"</span>, <span class="at">encoding =</span> <span class="st">"UTF-8"</span>))</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># define column types (dates or text if not dates)</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>  col_types <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="st">"character"</span>, nbcol)</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>  col_types[date_cols] <span class="ot">&lt;-</span> <span class="st">'character'</span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>  table <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(filepath,</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>                    <span class="at">header =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>                    <span class="at">sep =</span> <span class="st">";"</span>,</span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>                    <span class="at">encoding =</span> <span class="st">"UTF-8"</span>,</span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>                    <span class="at">colClasses =</span> col_types</span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">rename_with</span>(  <span class="co"># clean the columns names </span></span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>      clean_names</span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span></span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">mutate_if</span>(<span class="cf">function</span>(x) {  <span class="co"># Convert specified column to dates</span></span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>      <span class="st">"POSIXt"</span> <span class="sc">%in%</span> <span class="fu">class</span>(x)</span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>    }, <span class="sc">~</span> <span class="fu">format</span>(.x, <span class="st">"%d/%m/%Y"</span>))</span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Filter out rows without IDHAL</span></span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (filter_id) {</span>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a>    idhal <span class="ot">&lt;-</span> table<span class="sc">$</span>idhal</span>
+<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a>    table <span class="ot">&lt;-</span> table[<span class="fu">which</span>(<span class="sc">!</span><span class="fu">is.na</span>(idhal)),]</span>
+<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a>    table<span class="sc">$</span>idhal <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(idhal)</span>
+<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a>    table<span class="sc">$</span>idhal[table<span class="sc">$</span>idhal <span class="sc">==</span> <span class="dv">0</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
+<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a>    table <span class="ot">&lt;-</span> table[<span class="fu">which</span>(<span class="sc">!</span><span class="fu">is.na</span>(idhal)),]</span>
+<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb9-36"><a href="#cb9-36" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb9-37"><a href="#cb9-37" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Test if there is a column named "id"</span></span>
+<span id="cb9-38"><a href="#cb9-38" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Possibility to add mandatory columns in the future</span></span>
+<span id="cb9-39"><a href="#cb9-39" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Just add "OR"</span></span>
+<span id="cb9-40"><a href="#cb9-40" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> ( <span class="sc">!</span>(<span class="st">"idhal"</span> <span class="sc">%in%</span> <span class="fu">names</span>(table)) <span class="sc">|</span> <span class="sc">!</span>(<span class="st">"nom"</span> <span class="sc">%in%</span> <span class="fu">names</span>(table)) <span class="sc">|</span> <span class="sc">!</span>(<span class="st">"prenom"</span> <span class="sc">%in%</span> <span class="fu">names</span>(table)) ) { <span class="fu">stop</span>(<span class="st">"one of the following columns are missing : 'idhal' ; 'nom' ; 'prenom' "</span>) }</span>
+<span id="cb9-41"><a href="#cb9-41" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb9-42"><a href="#cb9-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(table)</span>
+<span id="cb9-43"><a href="#cb9-43" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="load-team-table" class="level3 Sections" data-number="1.6.3">
 <h3 class="Sections anchored" data-number="1.6.3" data-anchor-id="load-team-table"><span class="header-section-number">1.6.3</span> load_team_table</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>load_team_table <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">filter_id =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>                            <span class="at">date_cols =</span> <span class="fu">c</span>(<span class="dv">7</span>,<span class="dv">8</span>),</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>                            filepath_or_url) {</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># If the parameter is a URL</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">grepl</span>(<span class="st">"^https?://"</span>, filepath_or_url)) {</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Call the load_team_table_url function with the URL</span></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="fu">load_team_table_url</span>(<span class="at">filter_id =</span> filter_id, <span class="at">date_cols =</span> date_cols, <span class="at">url =</span> filepath_or_url))</span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Otherwise, it's a local file path; call the load_team_table_csv function with the local file path</span></span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="fu">load_team_table_csv</span>(<span class="at">filter_id =</span> filter_id, <span class="at">date_cols =</span> date_cols, <span class="at">filepath =</span> filepath_or_url))</span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>load_team_table <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">filter_id =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>                            <span class="at">date_cols =</span> <span class="fu">c</span>(<span class="dv">7</span>,<span class="dv">8</span>),</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>                            filepath_or_url) {</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># If the parameter is a URL</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">grepl</span>(<span class="st">"^https?://"</span>, filepath_or_url)) {</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Call the load_team_table_url function with the URL</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="fu">load_team_table_url</span>(<span class="at">filter_id =</span> filter_id, <span class="at">date_cols =</span> date_cols, <span class="at">url =</span> filepath_or_url))</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Otherwise, it's a local file path; call the load_team_table_csv function with the local file path</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="fu">load_team_table_csv</span>(<span class="at">filter_id =</span> filter_id, <span class="at">date_cols =</span> date_cols, <span class="at">filepath =</span> filepath_or_url))</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="doc-Roxygen2" class="level3 Sections" data-number="1.6.4">
 <h3 class="Sections anchored" data-number="1.6.4" data-anchor-id="doc-Roxygen2"><span class="header-section-number">1.6.4</span> Exemple d’une documentation classique avec Roxygen2</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#' load_team_table_csv</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co">#'</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co">#' This function loads a team table from a CSV file, allowing optional filtering </span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co">#' based on the presence of an IDHAL an specifying which columns contain dates.</span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co">#'</span></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="co">#' @param filter_id erase person without IDHAL (default = TRUE)</span></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co">#' @param date_cols positions of dates columns, others will be read as text</span></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="co">#' @param filepath the file path of the CSV table</span></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="co">#'</span></span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="co">#' @export</span></span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="co">#'</span></span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="co">#' @importFrom magrittr %&gt;%</span></span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="co">#' @importFrom utils read.csv</span></span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="co">#'</span></span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="co">#' @return a data.frame containing information from team</span></span>
-<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="co">#'</span></span>
-<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a><span class="co">#' @examples</span></span>
-<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a><span class="co">#' </span></span>
-<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a><span class="co">#' \dontrun{</span></span>
-<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a><span class="co">#' load_team_table_csv(filter_id = TRUE,</span></span>
-<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a><span class="co">#'                     date_cols = c(7,8),</span></span>
-<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a><span class="co">#'                     "C:/users/.../.../Classeur.csv")</span></span>
-<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a><span class="co">#' }</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">#' load_team_table_csv</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co">#'</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co">#' This function loads a team table from a CSV file, allowing optional filtering </span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co">#' based on the presence of an IDHAL an specifying which columns contain dates.</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="co">#'</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="co">#' @param filter_id erase person without IDHAL (default = TRUE)</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="co">#' @param date_cols positions of dates columns, others will be read as text</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="co">#' @param filepath the file path of the CSV table</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="co">#'</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="co">#' @export</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="co">#'</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="co">#' @importFrom magrittr %&gt;%</span></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="co">#' @importFrom utils read.csv</span></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a><span class="co">#'</span></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a><span class="co">#' @return a data.frame containing information from team</span></span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a><span class="co">#'</span></span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a><span class="co">#' @examples</span></span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a><span class="co">#' </span></span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a><span class="co">#' \dontrun{</span></span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a><span class="co">#' load_team_table_csv(filter_id = TRUE,</span></span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a><span class="co">#'                     date_cols = c(7,8),</span></span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a><span class="co">#'                     "C:/users/.../.../Classeur.csv")</span></span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a><span class="co">#' }</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="HAL-query" class="level3 Sections" data-number="1.6.5">
 <h3 class="Sections anchored" data-number="1.6.5" data-anchor-id="HAL-query"><span class="header-section-number">1.6.5</span> HAL_query</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>HAL_query <span class="ot">&lt;-</span> <span class="cf">function</span>(id,</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>                      <span class="at">date_min =</span> <span class="cn">NULL</span>,</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>                      <span class="at">date_max =</span> <span class="cn">NULL</span>,</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">format =</span> <span class="fu">c</span>(<span class="st">"csv"</span>, <span class="st">"bibtex"</span>, <span class="st">"json"</span>, <span class="st">"xml"</span>, <span class="st">"online"</span>),</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>                      <span class="at">grouped =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>                      <span class="at">type_id =</span> <span class="fu">c</span>(<span class="st">"person_id"</span>, <span class="st">"struct_id"</span>),</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>                      <span class="at">maxrows =</span> <span class="dv">1000</span>,</span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>                      <span class="at">add_filters =</span> <span class="fu">list</span>(),</span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>                      <span class="at">add_exclusions =</span> <span class="fu">list</span>(</span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>                        <span class="at">status_i =</span> <span class="dv">111</span>,</span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>                        <span class="at">instance_s =</span> <span class="fu">c</span>(<span class="st">"sfo"</span>, <span class="st">"dumas"</span>, <span class="st">"memsic"</span>, <span class="st">"hceres"</span>)</span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>                      ),</span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>                      <span class="at">add_outputs =</span> <span class="fu">character</span>(<span class="dv">0</span>),</span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>                      <span class="at">sorted_by =</span> <span class="fu">c</span>(<span class="st">"producedDate_tdate"</span>, <span class="st">"desc"</span>),</span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>                      <span class="at">thesis_strict =</span> T) {</span>
-<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>  <span class="co"># ----- DEFAULT PARAM -------------------------------------------------------</span></span>
-<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>  online <span class="ot">&lt;-</span> format[[<span class="dv">1</span>]] <span class="sc">==</span> <span class="st">"online"</span></span>
-<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>  outputs <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
-<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>    <span class="st">"docid"</span>, <span class="st">"halId_s"</span>, <span class="st">"version_i"</span>, <span class="st">"docType_s"</span>, <span class="st">"citationFull_s"</span>,</span>
-<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>    <span class="st">"citationRef_s"</span>, <span class="st">"publicationDate_tdate"</span>, <span class="st">"authFullNamePersonIDIDHal_fs"</span>, add_outputs</span>
-<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>  filters <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
-<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">docType_s =</span> <span class="fu">c</span>(<span class="st">"COMM"</span>, <span class="st">"ART"</span>, <span class="st">"OUV"</span>, <span class="st">"COUV"</span>, <span class="st">"DOUV"</span>, <span class="st">"POSTER"</span>, <span class="st">"SOFTWARE"</span>, <span class="st">"THESE"</span>, <span class="st">"HDR"</span>)</span>
-<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>  filters[<span class="fu">names</span>(add_filters)] <span class="ot">&lt;-</span> add_filters</span>
-<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>  exclusions <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
-<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>  exclusions[<span class="fu">names</span>(add_exclusions)] <span class="ot">&lt;-</span> add_exclusions</span>
-<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a>  <span class="co"># ---------------------------------------------------------------------------</span></span>
-<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Url start</span></span>
-<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (online) {</span>
-<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a>    start_query <span class="ot">&lt;-</span> <span class="st">"https://hal.archives-ouvertes.fr/search/index/?"</span></span>
-<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
-<span id="cb9-36"><a href="#cb9-36" aria-hidden="true" tabindex="-1"></a>    start_query <span class="ot">&lt;-</span> <span class="fu">paste0</span>(</span>
-<span id="cb9-37"><a href="#cb9-37" aria-hidden="true" tabindex="-1"></a>      <span class="st">"https://api.archives-ouvertes.fr/search/hal/"</span>, <span class="co"># API HAL</span></span>
-<span id="cb9-38"><a href="#cb9-38" aria-hidden="true" tabindex="-1"></a>      <span class="st">"?omitHeader=true"</span>,                             <span class="co"># header ommited</span></span>
-<span id="cb9-39"><a href="#cb9-39" aria-hidden="true" tabindex="-1"></a>      <span class="st">"&amp;wt="</span>, format[[<span class="dv">1</span>]], <span class="st">"&amp;"</span>                        <span class="co"># csv, bibtex, ...</span></span>
-<span id="cb9-40"><a href="#cb9-40" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb9-41"><a href="#cb9-41" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb9-42"><a href="#cb9-42" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (grouped) {</span>
-<span id="cb9-43"><a href="#cb9-43" aria-hidden="true" tabindex="-1"></a>    date_query <span class="ot">&lt;-</span> <span class="fu">query_date_grouped_parsing</span>(</span>
-<span id="cb9-44"><a href="#cb9-44" aria-hidden="true" tabindex="-1"></a>      <span class="at">id =</span> id,</span>
-<span id="cb9-45"><a href="#cb9-45" aria-hidden="true" tabindex="-1"></a>      <span class="at">type_id =</span> type_id,</span>
-<span id="cb9-46"><a href="#cb9-46" aria-hidden="true" tabindex="-1"></a>      <span class="at">date_min =</span> date_min,</span>
-<span id="cb9-47"><a href="#cb9-47" aria-hidden="true" tabindex="-1"></a>      <span class="at">date_max =</span> date_max,</span>
-<span id="cb9-48"><a href="#cb9-48" aria-hidden="true" tabindex="-1"></a>      <span class="at">online =</span> online</span>
-<span id="cb9-49"><a href="#cb9-49" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb9-50"><a href="#cb9-50" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
-<span id="cb9-51"><a href="#cb9-51" aria-hidden="true" tabindex="-1"></a>    date_query <span class="ot">&lt;-</span> <span class="fu">query_date_ungrouped_parsing</span>(</span>
-<span id="cb9-52"><a href="#cb9-52" aria-hidden="true" tabindex="-1"></a>      <span class="at">id =</span> id,</span>
-<span id="cb9-53"><a href="#cb9-53" aria-hidden="true" tabindex="-1"></a>      <span class="at">type_id =</span> type_id,</span>
-<span id="cb9-54"><a href="#cb9-54" aria-hidden="true" tabindex="-1"></a>      <span class="at">date_min =</span> date_min,</span>
-<span id="cb9-55"><a href="#cb9-55" aria-hidden="true" tabindex="-1"></a>      <span class="at">date_max =</span> date_max,</span>
-<span id="cb9-56"><a href="#cb9-56" aria-hidden="true" tabindex="-1"></a>      <span class="at">online =</span> online</span>
-<span id="cb9-57"><a href="#cb9-57" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb9-58"><a href="#cb9-58" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb9-59"><a href="#cb9-59" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb9-60"><a href="#cb9-60" aria-hidden="true" tabindex="-1"></a>  filter_query <span class="ot">&lt;-</span> <span class="fu">query_filter_parsing</span>(</span>
-<span id="cb9-61"><a href="#cb9-61" aria-hidden="true" tabindex="-1"></a>    <span class="at">filters =</span> filters, <span class="at">exclusions =</span> exclusions,</span>
-<span id="cb9-62"><a href="#cb9-62" aria-hidden="true" tabindex="-1"></a>    <span class="at">online =</span> online</span>
-<span id="cb9-63"><a href="#cb9-63" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb9-64"><a href="#cb9-64" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (thesis_strict <span class="sc">&amp;</span> <span class="sc">!</span>online) {</span>
-<span id="cb9-65"><a href="#cb9-65" aria-hidden="true" tabindex="-1"></a>    add <span class="ot">&lt;-</span> <span class="st">"&amp;fq=NOT+(docType_s:(THESE+OR+HDR)+AND+submitType_s:(notice+OR+annex))"</span></span>
-<span id="cb9-66"><a href="#cb9-66" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
-<span id="cb9-67"><a href="#cb9-67" aria-hidden="true" tabindex="-1"></a>    add <span class="ot">&lt;-</span> <span class="st">""</span></span>
-<span id="cb9-68"><a href="#cb9-68" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb9-69"><a href="#cb9-69" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb9-70"><a href="#cb9-70" aria-hidden="true" tabindex="-1"></a>  sorting_query <span class="ot">&lt;-</span> <span class="fu">query_sort_parsing</span>(<span class="at">sorted_by =</span> sorted_by)</span>
-<span id="cb9-71"><a href="#cb9-71" aria-hidden="true" tabindex="-1"></a>  output_query <span class="ot">&lt;-</span> <span class="fu">query_output_parsing</span>(</span>
-<span id="cb9-72"><a href="#cb9-72" aria-hidden="true" tabindex="-1"></a>    <span class="at">outputs =</span> outputs, <span class="at">n_row =</span> maxrows,</span>
-<span id="cb9-73"><a href="#cb9-73" aria-hidden="true" tabindex="-1"></a>    <span class="at">online =</span> online</span>
-<span id="cb9-74"><a href="#cb9-74" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb9-75"><a href="#cb9-75" aria-hidden="true" tabindex="-1"></a>  obj <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
-<span id="cb9-76"><a href="#cb9-76" aria-hidden="true" tabindex="-1"></a>    <span class="at">urls =</span> <span class="fu">paste0</span>(</span>
-<span id="cb9-77"><a href="#cb9-77" aria-hidden="true" tabindex="-1"></a>      start_query,</span>
-<span id="cb9-78"><a href="#cb9-78" aria-hidden="true" tabindex="-1"></a>      date_query,</span>
-<span id="cb9-79"><a href="#cb9-79" aria-hidden="true" tabindex="-1"></a>      filter_query,</span>
-<span id="cb9-80"><a href="#cb9-80" aria-hidden="true" tabindex="-1"></a>      add,</span>
-<span id="cb9-81"><a href="#cb9-81" aria-hidden="true" tabindex="-1"></a>      sorting_query,</span>
-<span id="cb9-82"><a href="#cb9-82" aria-hidden="true" tabindex="-1"></a>      output_query</span>
-<span id="cb9-83"><a href="#cb9-83" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span></span>
-<span id="cb9-84"><a href="#cb9-84" aria-hidden="true" tabindex="-1"></a>      utils<span class="sc">::</span><span class="fu">URLencode</span>(),</span>
-<span id="cb9-85"><a href="#cb9-85" aria-hidden="true" tabindex="-1"></a>    <span class="at">description =</span> <span class="fu">list</span>(</span>
-<span id="cb9-86"><a href="#cb9-86" aria-hidden="true" tabindex="-1"></a>      <span class="at">idhal =</span> id,</span>
-<span id="cb9-87"><a href="#cb9-87" aria-hidden="true" tabindex="-1"></a>      <span class="at">date_min =</span> date_min,</span>
-<span id="cb9-88"><a href="#cb9-88" aria-hidden="true" tabindex="-1"></a>      <span class="at">date_max =</span> date_max,</span>
-<span id="cb9-89"><a href="#cb9-89" aria-hidden="true" tabindex="-1"></a>      <span class="at">outputs =</span> outputs,</span>
-<span id="cb9-90"><a href="#cb9-90" aria-hidden="true" tabindex="-1"></a>      <span class="at">format =</span> format[[<span class="dv">1</span>]],</span>
-<span id="cb9-91"><a href="#cb9-91" aria-hidden="true" tabindex="-1"></a>      <span class="at">grouped =</span> grouped,</span>
-<span id="cb9-92"><a href="#cb9-92" aria-hidden="true" tabindex="-1"></a>      <span class="at">maxrows =</span> maxrows,</span>
-<span id="cb9-93"><a href="#cb9-93" aria-hidden="true" tabindex="-1"></a>      <span class="at">filters =</span> filters,</span>
-<span id="cb9-94"><a href="#cb9-94" aria-hidden="true" tabindex="-1"></a>      <span class="at">exclusions =</span> exclusions,</span>
-<span id="cb9-95"><a href="#cb9-95" aria-hidden="true" tabindex="-1"></a>      <span class="at">outputs =</span> outputs,</span>
-<span id="cb9-96"><a href="#cb9-96" aria-hidden="true" tabindex="-1"></a>      <span class="at">sorted_by =</span> sorted_by,</span>
-<span id="cb9-97"><a href="#cb9-97" aria-hidden="true" tabindex="-1"></a>      <span class="at">thesis_strict =</span> thesis_strict</span>
-<span id="cb9-98"><a href="#cb9-98" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb9-99"><a href="#cb9-99" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb9-100"><a href="#cb9-100" aria-hidden="true" tabindex="-1"></a>  <span class="fu">class</span>(obj) <span class="ot">&lt;-</span> <span class="st">"halUrl"</span></span>
-<span id="cb9-101"><a href="#cb9-101" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(obj)</span>
-<span id="cb9-102"><a href="#cb9-102" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>HAL_query <span class="ot">&lt;-</span> <span class="cf">function</span>(id,</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>                      <span class="at">date_min =</span> <span class="cn">NULL</span>,</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>                      <span class="at">date_max =</span> <span class="cn">NULL</span>,</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">format =</span> <span class="fu">c</span>(<span class="st">"csv"</span>, <span class="st">"bibtex"</span>, <span class="st">"json"</span>, <span class="st">"xml"</span>, <span class="st">"online"</span>),</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>                      <span class="at">grouped =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>                      <span class="at">type_id =</span> <span class="fu">c</span>(<span class="st">"person_id"</span>, <span class="st">"struct_id"</span>),</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>                      <span class="at">maxrows =</span> <span class="dv">1000</span>,</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>                      <span class="at">add_filters =</span> <span class="fu">list</span>(),</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>                      <span class="at">add_exclusions =</span> <span class="fu">list</span>(</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>                        <span class="at">status_i =</span> <span class="dv">111</span>,</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>                        <span class="at">instance_s =</span> <span class="fu">c</span>(<span class="st">"sfo"</span>, <span class="st">"dumas"</span>, <span class="st">"memsic"</span>, <span class="st">"hceres"</span>)</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>                      ),</span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>                      <span class="at">add_outputs =</span> <span class="fu">character</span>(<span class="dv">0</span>),</span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>                      <span class="at">sorted_by =</span> <span class="fu">c</span>(<span class="st">"producedDate_tdate"</span>, <span class="st">"desc"</span>),</span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>                      <span class="at">thesis_strict =</span> T) {</span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>  <span class="co"># ----- DEFAULT PARAM -------------------------------------------------------</span></span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>  online <span class="ot">&lt;-</span> format[[<span class="dv">1</span>]] <span class="sc">==</span> <span class="st">"online"</span></span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>  outputs <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>    <span class="st">"docid"</span>, <span class="st">"halId_s"</span>, <span class="st">"version_i"</span>, <span class="st">"docType_s"</span>, <span class="st">"citationFull_s"</span>,</span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>    <span class="st">"citationRef_s"</span>, <span class="st">"publicationDate_tdate"</span>, <span class="st">"authFullNamePersonIDIDHal_fs"</span>, add_outputs</span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>  filters <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">docType_s =</span> <span class="fu">c</span>(<span class="st">"COMM"</span>, <span class="st">"ART"</span>, <span class="st">"OUV"</span>, <span class="st">"COUV"</span>, <span class="st">"DOUV"</span>, <span class="st">"POSTER"</span>, <span class="st">"SOFTWARE"</span>, <span class="st">"THESE"</span>, <span class="st">"HDR"</span>)</span>
+<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a>  filters[<span class="fu">names</span>(add_filters)] <span class="ot">&lt;-</span> add_filters</span>
+<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a>  exclusions <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a>  exclusions[<span class="fu">names</span>(add_exclusions)] <span class="ot">&lt;-</span> add_exclusions</span>
+<span id="cb12-30"><a href="#cb12-30" aria-hidden="true" tabindex="-1"></a>  <span class="co"># ---------------------------------------------------------------------------</span></span>
+<span id="cb12-31"><a href="#cb12-31" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb12-32"><a href="#cb12-32" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Url start</span></span>
+<span id="cb12-33"><a href="#cb12-33" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (online) {</span>
+<span id="cb12-34"><a href="#cb12-34" aria-hidden="true" tabindex="-1"></a>    start_query <span class="ot">&lt;-</span> <span class="st">"https://hal.archives-ouvertes.fr/search/index/?"</span></span>
+<span id="cb12-35"><a href="#cb12-35" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb12-36"><a href="#cb12-36" aria-hidden="true" tabindex="-1"></a>    start_query <span class="ot">&lt;-</span> <span class="fu">paste0</span>(</span>
+<span id="cb12-37"><a href="#cb12-37" aria-hidden="true" tabindex="-1"></a>      <span class="st">"https://api.archives-ouvertes.fr/search/hal/"</span>, <span class="co"># API HAL</span></span>
+<span id="cb12-38"><a href="#cb12-38" aria-hidden="true" tabindex="-1"></a>      <span class="st">"?omitHeader=true"</span>,                             <span class="co"># header ommited</span></span>
+<span id="cb12-39"><a href="#cb12-39" aria-hidden="true" tabindex="-1"></a>      <span class="st">"&amp;wt="</span>, format[[<span class="dv">1</span>]], <span class="st">"&amp;"</span>                        <span class="co"># csv, bibtex, ...</span></span>
+<span id="cb12-40"><a href="#cb12-40" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb12-41"><a href="#cb12-41" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb12-42"><a href="#cb12-42" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (grouped) {</span>
+<span id="cb12-43"><a href="#cb12-43" aria-hidden="true" tabindex="-1"></a>    date_query <span class="ot">&lt;-</span> <span class="fu">query_date_grouped_parsing</span>(</span>
+<span id="cb12-44"><a href="#cb12-44" aria-hidden="true" tabindex="-1"></a>      <span class="at">id =</span> id,</span>
+<span id="cb12-45"><a href="#cb12-45" aria-hidden="true" tabindex="-1"></a>      <span class="at">type_id =</span> type_id,</span>
+<span id="cb12-46"><a href="#cb12-46" aria-hidden="true" tabindex="-1"></a>      <span class="at">date_min =</span> date_min,</span>
+<span id="cb12-47"><a href="#cb12-47" aria-hidden="true" tabindex="-1"></a>      <span class="at">date_max =</span> date_max,</span>
+<span id="cb12-48"><a href="#cb12-48" aria-hidden="true" tabindex="-1"></a>      <span class="at">online =</span> online</span>
+<span id="cb12-49"><a href="#cb12-49" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb12-50"><a href="#cb12-50" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb12-51"><a href="#cb12-51" aria-hidden="true" tabindex="-1"></a>    date_query <span class="ot">&lt;-</span> <span class="fu">query_date_ungrouped_parsing</span>(</span>
+<span id="cb12-52"><a href="#cb12-52" aria-hidden="true" tabindex="-1"></a>      <span class="at">id =</span> id,</span>
+<span id="cb12-53"><a href="#cb12-53" aria-hidden="true" tabindex="-1"></a>      <span class="at">type_id =</span> type_id,</span>
+<span id="cb12-54"><a href="#cb12-54" aria-hidden="true" tabindex="-1"></a>      <span class="at">date_min =</span> date_min,</span>
+<span id="cb12-55"><a href="#cb12-55" aria-hidden="true" tabindex="-1"></a>      <span class="at">date_max =</span> date_max,</span>
+<span id="cb12-56"><a href="#cb12-56" aria-hidden="true" tabindex="-1"></a>      <span class="at">online =</span> online</span>
+<span id="cb12-57"><a href="#cb12-57" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb12-58"><a href="#cb12-58" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb12-59"><a href="#cb12-59" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb12-60"><a href="#cb12-60" aria-hidden="true" tabindex="-1"></a>  filter_query <span class="ot">&lt;-</span> <span class="fu">query_filter_parsing</span>(</span>
+<span id="cb12-61"><a href="#cb12-61" aria-hidden="true" tabindex="-1"></a>    <span class="at">filters =</span> filters, <span class="at">exclusions =</span> exclusions,</span>
+<span id="cb12-62"><a href="#cb12-62" aria-hidden="true" tabindex="-1"></a>    <span class="at">online =</span> online</span>
+<span id="cb12-63"><a href="#cb12-63" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb12-64"><a href="#cb12-64" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (thesis_strict <span class="sc">&amp;</span> <span class="sc">!</span>online) {</span>
+<span id="cb12-65"><a href="#cb12-65" aria-hidden="true" tabindex="-1"></a>    add <span class="ot">&lt;-</span> <span class="st">"&amp;fq=NOT+(docType_s:(THESE+OR+HDR)+AND+submitType_s:(notice+OR+annex))"</span></span>
+<span id="cb12-66"><a href="#cb12-66" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb12-67"><a href="#cb12-67" aria-hidden="true" tabindex="-1"></a>    add <span class="ot">&lt;-</span> <span class="st">""</span></span>
+<span id="cb12-68"><a href="#cb12-68" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb12-69"><a href="#cb12-69" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb12-70"><a href="#cb12-70" aria-hidden="true" tabindex="-1"></a>  sorting_query <span class="ot">&lt;-</span> <span class="fu">query_sort_parsing</span>(<span class="at">sorted_by =</span> sorted_by)</span>
+<span id="cb12-71"><a href="#cb12-71" aria-hidden="true" tabindex="-1"></a>  output_query <span class="ot">&lt;-</span> <span class="fu">query_output_parsing</span>(</span>
+<span id="cb12-72"><a href="#cb12-72" aria-hidden="true" tabindex="-1"></a>    <span class="at">outputs =</span> outputs, <span class="at">n_row =</span> maxrows,</span>
+<span id="cb12-73"><a href="#cb12-73" aria-hidden="true" tabindex="-1"></a>    <span class="at">online =</span> online</span>
+<span id="cb12-74"><a href="#cb12-74" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb12-75"><a href="#cb12-75" aria-hidden="true" tabindex="-1"></a>  obj <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb12-76"><a href="#cb12-76" aria-hidden="true" tabindex="-1"></a>    <span class="at">urls =</span> <span class="fu">paste0</span>(</span>
+<span id="cb12-77"><a href="#cb12-77" aria-hidden="true" tabindex="-1"></a>      start_query,</span>
+<span id="cb12-78"><a href="#cb12-78" aria-hidden="true" tabindex="-1"></a>      date_query,</span>
+<span id="cb12-79"><a href="#cb12-79" aria-hidden="true" tabindex="-1"></a>      filter_query,</span>
+<span id="cb12-80"><a href="#cb12-80" aria-hidden="true" tabindex="-1"></a>      add,</span>
+<span id="cb12-81"><a href="#cb12-81" aria-hidden="true" tabindex="-1"></a>      sorting_query,</span>
+<span id="cb12-82"><a href="#cb12-82" aria-hidden="true" tabindex="-1"></a>      output_query</span>
+<span id="cb12-83"><a href="#cb12-83" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span></span>
+<span id="cb12-84"><a href="#cb12-84" aria-hidden="true" tabindex="-1"></a>      utils<span class="sc">::</span><span class="fu">URLencode</span>(),</span>
+<span id="cb12-85"><a href="#cb12-85" aria-hidden="true" tabindex="-1"></a>    <span class="at">description =</span> <span class="fu">list</span>(</span>
+<span id="cb12-86"><a href="#cb12-86" aria-hidden="true" tabindex="-1"></a>      <span class="at">idhal =</span> id,</span>
+<span id="cb12-87"><a href="#cb12-87" aria-hidden="true" tabindex="-1"></a>      <span class="at">date_min =</span> date_min,</span>
+<span id="cb12-88"><a href="#cb12-88" aria-hidden="true" tabindex="-1"></a>      <span class="at">date_max =</span> date_max,</span>
+<span id="cb12-89"><a href="#cb12-89" aria-hidden="true" tabindex="-1"></a>      <span class="at">outputs =</span> outputs,</span>
+<span id="cb12-90"><a href="#cb12-90" aria-hidden="true" tabindex="-1"></a>      <span class="at">format =</span> format[[<span class="dv">1</span>]],</span>
+<span id="cb12-91"><a href="#cb12-91" aria-hidden="true" tabindex="-1"></a>      <span class="at">grouped =</span> grouped,</span>
+<span id="cb12-92"><a href="#cb12-92" aria-hidden="true" tabindex="-1"></a>      <span class="at">maxrows =</span> maxrows,</span>
+<span id="cb12-93"><a href="#cb12-93" aria-hidden="true" tabindex="-1"></a>      <span class="at">filters =</span> filters,</span>
+<span id="cb12-94"><a href="#cb12-94" aria-hidden="true" tabindex="-1"></a>      <span class="at">exclusions =</span> exclusions,</span>
+<span id="cb12-95"><a href="#cb12-95" aria-hidden="true" tabindex="-1"></a>      <span class="at">outputs =</span> outputs,</span>
+<span id="cb12-96"><a href="#cb12-96" aria-hidden="true" tabindex="-1"></a>      <span class="at">sorted_by =</span> sorted_by,</span>
+<span id="cb12-97"><a href="#cb12-97" aria-hidden="true" tabindex="-1"></a>      <span class="at">thesis_strict =</span> thesis_strict</span>
+<span id="cb12-98"><a href="#cb12-98" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb12-99"><a href="#cb12-99" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb12-100"><a href="#cb12-100" aria-hidden="true" tabindex="-1"></a>  <span class="fu">class</span>(obj) <span class="ot">&lt;-</span> <span class="st">"halUrl"</span></span>
+<span id="cb12-101"><a href="#cb12-101" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(obj)</span>
+<span id="cb12-102"><a href="#cb12-102" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="tableau-des-résultats-détaillés" class="level3" data-number="1.6.6">

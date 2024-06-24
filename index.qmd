@@ -152,35 +152,11 @@ HAL_publis_auteurs[1,]
 
 #### Création d'un réseau de co-auteurs avec Visnetwork
 
-Afin d'obtenir les informations sous-jacentes des informations bibliographiques, j'ai commencé à travailler à la création d'un réseau de co-auteur. Pour l'instant, la fonctionalité n'existe qu'au format de script R sur un document quarto. Au cours des semaines restantes, l'objectif est de continuer à travailler dessus et créer des fonctions simples et claires permettant à l'utilisateur de créer son propre réseau à partir de ses données. Le script de création de fonction est inspiré d'un script fournie au préalable par ma tutrice Julie Aubert. Suite à mes modifications et mes ajouts, Il se divise en plusieurs parties. La première partie correspond à l'extraction des données et au nettoyage (organisation, séparation) de ces dernières afin qu'elles soient adaptées et permettent de construire un reseau correct. Dans cette partie, l'année de publication est extraite et les identifiants auteurs sont nettoyés. Les informations sur les auteurs sont extraites en colonne distinctes (nom complet, ID de personne, idHal) et convertient en caractères. Les auteurs sont ensuite associés aux structures et les informations sont à nouveau organisé en colonnes. Les données sont ensuite vérifié et les incohérences de noms ou d'identifiants HAL sont corrigées. Les colonnes avec les informations des structures et celles avec les informations des auteurs sont alors fusionnées pour obtenir un ensemble de données complet. Dernièrement, des identifiants fictifs sont crées pour les auteurs sans identifiant.
+Afin d'obtenir les informations sous-jacentes des informations bibliographiques, j'ai commencé à travailler à la création d'un réseau de co-auteur. Pour l'instant, la fonctionalité n'existe qu'au format de script R sur un document quarto. Au cours des semaines restantes, l'objectif est de continuer à travailler dessus et créer des fonctions simples et claires permettant à l'utilisateur de créer son propre réseau à partir de ses données. Le script de création de fonction est inspiré d'un script fournie au préalable par ma tutrice Julie Aubert. Suite à mes modifications et mes ajouts, Il se divise en plusieurs parties :
 
+La première partie correspond à l'extraction des données et au nettoyage (organisation, séparation) de ces dernières afin qu'elles soient adaptées et permettent de construire un reseau correct. Dans cette partie, l'année de publication est extraite et les identifiants auteurs sont nettoyés. Les informations sur les auteurs sont extraites en colonne distinctes (nom complet, ID de personne, idHal) et convertient en caractères. Les auteurs sont ensuite associés aux structures et les informations sont à nouveau organisé en colonnes. Les données sont ensuite vérifié et les incohérences de noms ou d'identifiants HAL sont corrigées. Les colonnes avec les informations des structures et celles avec les informations des auteurs sont alors fusionnées pour obtenir un ensemble de données complet. Dernièrement, des identifiants fictifs sont crées pour les auteurs sans identifiant.
 
-
-
-
-4. Création d'Identifiants Fictifs
-Création d'identifiants fictifs pour les auteurs sans ID :
-
-Génère des identifiants fictifs pour les auteurs qui n'ont pas d'ID existant.
-Assigne ces identifiants fictifs aux auteurs concernés.
-5. Construction des Matrices et Listes pour le Graphe
-Création de la liste des arêtes et des nœuds :
-
-Crée des matrices de contingence à partir des données des auteurs et des publications.
-Convertit ces matrices en listes de nœuds (représentant les auteurs) et d'arêtes (représentant les collaborations).
-6. Attribution des Groupes et des Couleurs
-Ajout de groupes et couleurs pour les années de publication :
-
-Attribue des groupes et des couleurs aux nœuds en fonction des années de publication.
-Crée des légendes pour les tailles et les couleurs des nœuds et des arêtes, facilitant la visualisation du graphe.
-7. Ajout des Informations Supplémentaires pour la Légende
-Ajout des informations supplémentaires pour la légende :
-
-Crée et intègre des informations supplémentaires (comme des descriptions) pour les légendes des nœuds et des arêtes.
-8. Nettoyage Final et Préparation des Données
-Nettoyage final et intégration des informations de nœuds :
-
-Ajoute les informations finales aux nœuds, nettoie les doublons et prépare les données pour une visualisation cohérente et complète du graphe des co-auteurs.
+La deuxième partie concerne la construction et la visualisation du graphe des co-auteurs à partir des données nettoyées et organisées. Dans cette partie, des matrices de contingence sont créées à partir des données des auteurs et des publications. Ces matrices sont ensuite converties en listes de nœuds, représentant les auteurs, et en listes d'arêtes, représentant les collaborations entre les auteurs. Les nœuds se voient attribuer des groupes et des couleurs en fonction des années de publication. Cela permet de visualiser les différentes périodes d'activité des auteurs. Des légendes sont également créées pour indiquer les tailles et les couleurs des nœuds et des arêtes, facilitant ainsi la compréhension du graphe. Ensuite, des informations supplémentaires, telles que des descriptions, sont intégrées pour enrichir les légendes des nœuds et des arêtes. Cela permet d'avoir des détails contextuels supplémentaires lors de la visualisation du graphe. Enfin, les informations finales sont ajoutées aux nœuds. Les doublons sont nettoyés et les données sont préparées pour une visualisation cohérente et complète du graphe des co-auteurs. Cette préparation finale assure que toutes les informations nécessaires sont correctement intégrées et prêtes pour être visualisées de manière efficace.
 
 Parler du quarto avec la construction d'un réseau et la création d'un réseau sur un soous groupe puis parler du premier sbm réalisé;
 
