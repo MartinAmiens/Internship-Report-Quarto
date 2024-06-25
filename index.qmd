@@ -140,15 +140,19 @@ La deuxième partie concerne la construction et la visualisation du graphe. À p
 
 Il est possible de voir via l'exemple suivant (obtenu avec le code de l'annexe : [Script_R_reseau_co-auteur](#reseau-co-auteur)) qu'un réseau de co-auteurs permet une visualisation claire des collaborations et des périodes d'activité des différents auteurs.
 
-![Réseau co-auteur](figures/Full_Network_Co-authors_Example_managHAL.jpeg){width="648"}
+![Réseau de co-auteurs](figures/Full_Network_Co-authors_Example_managHAL.jpeg){width="648"}
 
-A travers cet exemple, les limitations de la création de réseau sur les données récupérées via un identifiant de laboratoire transparaissent. De fait, on voit l'appartition de cercle de co-auteurs très denses. Ces cercles correspondent généralement à une unique publication contenant de nombreux auteurs. J'ai tout de même réalisé un modèle en bloc stochastique sur ce réseau (voir le code en annexe :[]()) mettre un exemple des couleurs obtenues. 
+A travers cet exemple, les limitations de la création de réseau sur les données récupérées via un identifiant de laboratoire transparaissent. De fait, on voit l'appartition de cercle de co-auteurs très denses. Ces cercles correspondent généralement à une unique publication contenant de nombreux auteurs. J'ai tout de même réalisé un modèle en bloc stochastique sur ce réseau. Pour cela, j'ai crée une matrice d'adjacence, puis j'ai utilisé cette matrice avec les fonctions codées apr le package SBM pour obtenir mon modèle. Enfin, j'ai ajouté les couleurs aux noeuds en fonction de leurs appartenance aux groupes determiné lors de la création du modèle (voir le code du script en annexe :[Script_R_SBM](#Script-R-SBM-Full-Network)).
 
-expliquer mon insatisfaction vis à vis de ce que j'obtiens.
+**mettre un exemple des couleurs obtenues.**
+
+**expliquer mon insatisfaction vis à vis de ce que j'obtiens.**
 
 C'est pourquoi, j'ai décidé sur conseil de mes tuteurs de réaliser les mêmes manipulations sur un sous-groupe de données ne contenant que celles des auteurs affiliés à une structure.
 
 pas satisfait car présence d'auteurs n'étant plus affiliés mais ayant toujours le tag de la structure dans leur compte api (à mettre dans la discussion ?)
+
+De plus, le sbm obtenu n'étant toujours pas exactement satisfaisant une autre proposition a été mise en avant, se contenter de réaliser un sbm sur les composantes connexes du réseau.
 
 Parler du quarto avec la construction d'un réseau et la création d'un réseau sur un sous-groupe puis parler du premier sbm réalisé;
 
@@ -613,6 +617,56 @@ V(bipartite)$type <- bipartite_mapping(bipartite)$type
 plot(bipartite, layout = layout_as_bipartite, vertex.color = c("skyblue", "salmon")[V(bipartite)$type + 1],
      vertex.label.color = "black", vertex.shape = "circle", vertex.size = 30, edge.width = 2, main = "Réseau Bipartite")
 matrice_adjacence_bipartite <- as.matrix(bipartite, "adjacency")
+```
+
+### Script_R_SBM {#Script-R-SBM-Full-Network .section}
+
+```{r creation matrix adjacency estimation of Simple SBM and visualisation, eval=FALSE}
+# Create an empty adjacence matrix
+matrice_adjacence <- matrix(0, nrow = length(node_list$id), ncol = length(node_list$id))
+colnames(matrice_adjacence) <- node_list$id
+rownames(matrice_adjacence) <- node_list$id
+
+# fill in the adjacence matrix
+for (k in 1:nrow(edge_list)) {
+  i <- match(edge_list$from[k], node_list$id)
+  j <- match(edge_list$to[k], node_list$id)
+  matrice_adjacence[i, j] <- edge_list$width[k]
+}
+# deleting the legend lines
+matrice_adjacence <- matrice_adjacence[1:(nrow(matrice_adjacence) - 5), ]
+matrice_adjacence <- matrice_adjacence[,1:(ncol(matrice_adjacence) - 5)]
+
+plotMyMatrix(matrice_adjacence, dimLabels = list(row = "id", col = "id"))
+# Estimation of a simple SBM using the adjacence matrix
+my_model <- estimateSimpleSBM(matrice_adjacence, model = "poisson", dimLabels = c("id"))
+# ne fonctionne pas sur quarto (l'acces au ancien plot)
+
+# creation graph avec attribution des groupes
+load("C:/users/marti/OneDrive/Bureau/Stage/donnees_sbm.Rdata")
+group_membership <- apply(my_model$indMemberships, 1, which.max)
+group_colors <- rainbow(max(group_membership))
+df_col_group = data.frame(
+  group = 1:17,
+  group_colors
+)
+node_list <- node_list[1:(nrow(node_list) - 5), ]
+df_col = data.frame (
+  id <- node_list$id,
+  group_membership <- group_membership,
+  color = df_col_group$group_colors[apply(my_model$indMemberships, 1, which.max)]
+)
+node_list$group = df_col$group_membership....apply.my_model.indMemberships..1..which.max.
+node_list$color = df_col$color
+
+# Network visualization
+visNetwork(node_list, edge_list, width = "100%") %>%
+  visIgraphLayout() %>%
+  visGroups(groupname = "Number of publications", color = "lightblue", font = list(size = 22)) %>%
+  visLegend() %>%
+  visEdges(font = list(size = 22)) %>%
+  visOptions(selectedBy = "color")
+
 ```
 
 ## BIBLIOGRAPHIE
