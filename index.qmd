@@ -1,6 +1,8 @@
+
+
 # MANAGHAL, DONNEES BIBLIOMETRIQUES, RESEAUX ET ANALYSES STATISTIQUES DE RESEAUX
 
-```{r chargement des librairies, echo = FALSE, warning = FALSE, message=FALSE, tidy.opts=list(width.cutoff=60)}
+```{r chargement des librairies, echo = FALSE, warning = FALSE, message=FALSE, tidy.opts=list(width.cutoff=50)}
 library(igraph, quietly = TRUE)
 library(tidyr, quietly = TRUE)
 library(managHAL, quietly = TRUE)
@@ -86,7 +88,7 @@ Enfin, *`load_team_table`* appelle l'une des deux fonctions en fonction du type 
 
 #### Résultat de l'Application de *load_team_table*
 
-```{r run example load_team_table, warning=FALSE, tidy.opts=list(width.cutoff=60)}
+```{r run example load_team_table, warning=FALSE, tidy.opts=list(width.cutoff=50)}
 data_RH_csv_Example <- load_team_table(filter_id = TRUE, date_cols = c(6,7), filepath_or_url = "./data/Data_RH_Example.csv")
 # afin de ne garder que les lignes avec un idhal correct
 data_RH_csv_Example <- data_RH_csv_Example[which(!is.na(data_RH_csv_Example$idhal)),]
@@ -103,7 +105,7 @@ La fonction d'origine ne créer pas d'url d'une page permettant de récupérer l
 
 Plusieurs fonctions présentes avant mes modifications faisait appel à HAL_query. Ces dernières comme HAL_extract_csv ont donc été modifiées afin de corespondre à la nouvelle version de HAL_query. De même Les fonctions auquelles fait appel HAL_query ont elles aussi été modifiées pour correspondre à HAL_query. HAL_extract_csv est une fonction récupèrant l'url via HAL_query. Pour montrer les résultats obtenus avec HAL_query, des exemples ci-dessous seront réalisés avec HAL_extract_csv pour une liste d'identifiants numérique d'auteurs et pour un identifiant d'une unité/laboratoire. Il sera ajouté des sorties via le paramètres add_outputs :
 
-```{r exemple utiliation HAL extract csv, tidy.opts=list(width.cutoff=60)}
+```{r exemple utiliation HAL extract csv, tidy.opts=list(width.cutoff=50)}
 date_min = "01/01/2022"
 date_max = "01/01/2023"
 
@@ -144,7 +146,7 @@ parler de l'efficacité de ce que j'ai code, des modifications à venir et de ce
 
 ### load_team_table_url {#load-team-table-url .Sections}
 
-```{r load_team_table_url example, eval=FALSE, tidy.opts=list(width.cutoff=60)}
+```{r load_team_table_url example, eval=FALSE, tidy.opts=list(width.cutoff=50)}
 load_team_table_url <- function(filter_id = TRUE,
                                 date_cols,
                                 url) {
@@ -190,7 +192,7 @@ load_team_table_url <- function(filter_id = TRUE,
 
 ### load_team_table_csv {#load-team-table-csv .Sections}
 
-```{r load_team_table_csv example, eval=FALSE, tidy.opts=list(width.cutoff=60)}
+```{r load_team_table_csv example, eval=FALSE, tidy.opts=list(width.cutoff=50)}
 load_team_table_csv <- function(filter_id = TRUE,
                                 date_cols,
                                 filepath){
@@ -238,7 +240,7 @@ load_team_table_csv <- function(filter_id = TRUE,
 
 ### load_team_table {#load-team-table .Sections}
 
-```{r load_team_table example, eval=FALSE, tidy.opts=list(width.cutoff=60)}
+```{r load_team_table example, eval=FALSE, tidy.opts=list(width.cutoff=50)}
 load_team_table <- function(filter_id = TRUE,
                             date_cols = c(7,8),
                             filepath_or_url) {
@@ -258,7 +260,7 @@ load_team_table <- function(filter_id = TRUE,
 
 ### Exemple d'une documentation classique avec Roxygen2 {#doc-Roxygen2 .Sections}
 
-```{r, eval=FALSE, tidy.opts=list(width.cutoff=60)}
+```{r doc example, eval=FALSE, tidy.opts=list(width.cutoff=50)}
 #' load_team_table_csv
 #'
 #' This function loads a team table from a CSV file, allowing optional filtering 
@@ -286,7 +288,7 @@ load_team_table <- function(filter_id = TRUE,
 
 ### HAL_query {#HAL-query .Sections}
 
-```{r hal query, tidy.opts=list(width.cutoff=60)}
+```{r hal query, tidy.opts=list(width.cutoff=50)}
 HAL_query <- function(id,
                       date_min = NULL,
                       date_max = NULL,
@@ -393,7 +395,7 @@ HAL_query <- function(id,
 
 ### Script_R_reseau_co-auteur {#reseau-co-auteur .Sections}
 
-```{r script reseau co auteur, eval=FALSE, tidy.opts=list(width.cutoff=60)}
+```{r script reseau co auteur, eval=FALSE, tidy.opts=list(width.cutoff=50)}
 
 #### ------------------- Creation of a co-authors graph ------------------- ####
 
@@ -562,7 +564,7 @@ visNetwork(node_list, edge_list, width = "100%") %>%
 
 ### exemple_reseau_unipartite_bipartite {#reseau-unipart-bipart .Sections}
 
-```{r exemple de reseau, eval = FALSE, tidy.opts=list(width.cutoff=60)}
+```{r exemple de reseau, eval = FALSE, tidy.opts=list(width.cutoff=50)}
 # Création d'un réseau unipartite
 set.seed(42) # Pour la reproductibilité 
 unipartite <- erdos.renyi.game(10, 0.3)
