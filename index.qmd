@@ -78,7 +78,7 @@ Afin de pouvoir construire une requête HAL pour récupèrer des données biblio
 
 Pour finir, l'entièreté du stage s'est inscrit dans une dynamique de développement et d'intégration continue via la forge gitlab d'AgroParisTech. La forge gitLab MIA, du partenariat INRAE et AgroParisTech, est un logiciel DevOps passant par le language Git. Git est un système de controle, de versionnage du code des dévéloppeurs gratuit et open source. Il permet à plusieurs développeurs de travailler sur un code sur un même dépot et d'avancer ensemble par le biais de "merge". "Merge" siginife que la personne modifiant un fichier contenant du code pousse en ligne sur le depot partagé , les modifications réalisées.
 
-## RESULTATS
+## Résultats
 
 Cette section présente les résultats obtenus au cours de mon stage. Elle est divisée en deux parties principales: Les modifications au package ManagHAL d'origine dans l'objectif de le rendre plus générique et plus accessible, puis l'ajout de fonctionnalités au package managHAL. Par choix, seulement certaines fonctions et scripts R du package sont abordés. L'éxécution de ces derniers est réalisée par le biais d'un exemple. Cet exemple est basé sur des données du Laboratoire MIA d'AgroPariTech-Palaiseau. Chaque fonction est expliquée en détail, suivie des raisons justifiant son développement. Il est important de noter que mon stage se terminant le 26 juillet, Le package est encore en développement. Certaines fonctionnalités sont encore en travail. Les fonctions présentées fonctionnent dans le cadre de l'exemple. Si vous souhaitez executer les scripts fournis dans le mémoire, il est nécéssaire d'avoir accès au package ManagHAL. ManagHAL est pour le moment indisponible. Dans cette section, les noms de *`fonctions`* seront en italique et les noms des **scripts R** contenant les fonctions seront en gras.
 
@@ -178,7 +178,7 @@ En ce qui concerne les utilisations potentielles du package développé, en prem
 
 En conclusion, ce stage a permis de réaliser des avancées significatives dans le développement de l’outil qu’est le package ManagHAL malgré les défis rencontrés. Les prochaines étapes incluront des optimisations et des développements supplémentaires pour renforcer l’impact et la portée du travail réalisé, tout en restant alignées avec les principes de la science ouverte. Cette démarche, combinée à une réflexion continue sur les objectifs et les résultats, permettra non seulement d’améliorer la qualité du travail actuel, mais aussi de poser les bases pour l’entretien du package par les futurs développeurs.
 
-## ANNEXES
+## Annexes
 
 ### load_team_table_url {#load-team-table-url .Sections}
 
