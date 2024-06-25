@@ -150,17 +150,12 @@ A travers cet exemple, les limitations de la création de réseau sur les donné
 
 C'est pourquoi, j'ai décidé sur conseil de mes tuteurs de réaliser les mêmes manipulations sur un sous-groupe de données ne contenant que celles des auteurs affiliés à une structure.
 
-pas satisfait car présence d'auteurs n'étant plus affiliés mais ayant toujours le tag de la structure dans leur compte api (à mettre dans la discussion ?)
+**pas satisfait car présence d'auteurs n'étant plus affiliés mais ayant toujours le tag de la structure dans leur compte api (à mettre dans la discussion ?)**
 
 De plus, le sbm obtenu n'étant toujours pas exactement satisfaisant une autre proposition a été mise en avant, se contenter de réaliser un sbm sur les composantes connexes du réseau.
 
-Parler du quarto avec la construction d'un réseau et la création d'un réseau sur un sous-groupe puis parler du premier sbm réalisé;
+**la création d'un réseau sur un sous-groupe puis parler du second sbm réalisé.**
 
-### Conclusion des Résultats
-
-Exemple via chatGPT
-
-Les méthodes développées au cours de ce stage ont permis d'améliorer significativement les performances des algorithmes existants. L'optimisation de l'algorithme X a réduit le temps de traitement de 40%, tandis que les ajustements apportés au modèle Y ont augmenté la précision de 5%. Ces résultats démontrent l'efficacité des approches choisies pour répondre aux limitations des méthodes précédentes.
 
 ## Discussion
 
