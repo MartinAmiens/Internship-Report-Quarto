@@ -68,7 +68,7 @@ Les noeuds sont partitionnés en $K$ groupes latents. On définit un vecteur $Z$
 
 Nous avons donc comme paramètres du modèle $\theta = (\gamma, \pi)$. A partir du réseau connu, il est possible d'inférer les paramètres du modèle. Par nécessité d'écourter le rapport, une explication détaillée ne sera pas réalisée. Je vous conseille cependant d'aller voir la publication "Using Latent Block Models to Detect Structure in Ecological Networks" @latent-block-models où les explications à ce propos sont claires et précises.
 
-### méthodes informatiques
+### Méthodes informatiques
 
 Comme précisé dans l'introduction, l'entièreté des méthodes informatiques développées ont été réalisées sur RStudio en utilisant le langage R version 4.4.1 sous windows 11 x64. Les packages utilisés sont les suivants :
 
@@ -144,7 +144,7 @@ Il est possible de voir via l'exemple suivant (obtenu avec le code de l'annexe :
 
 A travers cet exemple, les limitations de la création de réseau sur les données récupérées via un identifiant de laboratoire transparaissent. De fait, on voit l'appartition de cercle de co-auteurs très denses. Ces cercles correspondent généralement à une unique publication contenant de nombreux auteurs.
 
-#### Modèlisation en blocs stochastiques
+#### Modélisation en blocs stochastiques
 
 J'ai tout de même réalisé un modèle en bloc stochastique sur ce réseau. (voir le code du script en annexe :[Script_R_SBM](#Script-R-SBM-Full-Network)). Pour cela j'ai crée une matrice d'adjacence vide et je l'ai remplie avec les connexions pondérées des nœuds, puis nettoyée pour la lisibilité et visualisée avec plotMyMatrix. Ensuite, un modèle SBM est estimé à partir de cette matrice, les nœuds sont classés en groupes colorés. Enfin, le réseau est visualisé avec visNetwork, incluant des options pour une meilleure compréhension et esthétique. 
 
