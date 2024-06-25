@@ -146,7 +146,7 @@ A travers cet exemple, les limitations de la création de réseau sur les donné
 
 expliquer mon insatisfaction vis à vis de ce que j'obtiens.
 
-C'est pourquoi, j'ai décidé sur conseil de mes tuteurs de réalisé les mêmes manipulations sur un sous-groupe de données ne contenant que celles des auteurs affiliés à une structure.
+C'est pourquoi, j'ai décidé sur conseil de mes tuteurs de réaliser les mêmes manipulations sur un sous-groupe de données ne contenant que celles des auteurs affiliés à une structure.
 
 pas satisfait car présence d'auteurs n'étant plus affiliés mais ayant toujours le tag de la structure dans leur compte api (à mettre dans la discussion ?)
 
