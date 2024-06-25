@@ -161,6 +161,8 @@ C'est pourquoi, j'ai décidé sur conseil de mes tuteurs de réaliser les mêmes
 De plus, le sbm obtenu n'étant toujours pas exactement satisfaisant une autre proposition a été mise en avant, se contenter de réaliser un sbm sur les composantes connexes du réseau.
 
 **la création d'un réseau sur un sous-groupe puis parler du second sbm réalisé.**
+voir le code fait hors du quarto
+
 
 ## Discussion
 
@@ -668,5 +670,123 @@ visNetwork(node_list, edge_list, width = "100%") %>%
   visOptions(selectedBy = "color")
 
 ```
+
+### Script_R_Sous-groupe {#Script-R-SBM-Partial-Network .section}
+
+```{r partial network and sbm, eval=FALSE}
+## test pour obtenir un sous groupe
+find_info_author_associated_with_id_struc <- function(data_frame_info_author_struc){
+  data_info_author_associated_with_id_struc <- data_frame_info_author_struc[data_frame_info_author_struc$id_struc == 1002311,]
+  return(data_info_author_associated_with_id_struc)
+  }
+data_test_info_author_id_struc <- find_info_author_associated_with_id_struc(data_graph_author_struc)
+data_graph_author_struc$Full_Name[data_graph_author_struc$id_struc == 1002311]
+data_test_info_author_id_struc <- unique(data_test_info_author_id_struc)
+
+#### ------------------------------------------------------
+data_test_info_author_id_struc <- data_test_info_author_id_struc %>%
+  separate(Full_Name, into = c("Nom", "Prenom"), extra = "merge" , sep = " ", fill = "right") 
+data_test_info_author_id_struc <- data_test_info_author_id_struc %>%
+  unite("Full_Name", Prenom, Nom, sep = " ")
+temp_cleaned_data_author <- NULL
+temp_cleaned_data_author$Full_Name <- managHAL:::clean_names(data_test_info_author_id_struc$Full_Name)
+# print inconsistent ids 
+inconsistent_ids <- find_inconsistent_ids(data_test_info_author_id_struc)
+if (length (inconsistent_ids$Person_ID > 1)){
+  message(paste0("Il y a ", length(inconsistent_ids$Person_ID), " auteurs ayant leurs identifiant(s) HAL mal associé(s) à leurs noms :"))
+  print(inconsistent_ids$Person_ID)
+}
+# print inconsistent ids and names
+inconsistent_names_ids <- find_inconsistent_names_ids(data_test_info_author_id_struc)
+if ( length (inconsistent_names_ids$Full_Name > 1)){
+  message(paste0("Il y a ", length(inconsistent_names_ids$Full_Name), " Auteur ayant plusieurs formes auteurs ayant leurs identifiant(s) HAL mal associé(s) :"))
+  print(inconsistent_names_ids$Full_Name)
+}
+# Replace Person_ID values in data_authors with corresponding values from inconsistent_ids
+data_test_info_author_id_struc$Person_ID <- ifelse(data_test_info_author_id_struc$Full_Name %in% inconsistent_ids$Full_Name,                                             inconsistent_ids$Person_ID[match(data_test_info_author_id_struc$Full_Name, inconsistent_ids$Full_Name)],
+                                                   data_test_info_author_id_struc$Person_ID)
+data_test_info_author_id_struc <- unique(data_test_info_author_id_struc)
+# Update the temporary data.frame
+temp_cleaned_data_author$Person_ID <- data_test_info_author_id_struc$Person_ID
+  ### 2nd version : via chatGPT
+  for (i in seq_len(nrow(inconsistent_names_ids))) {
+    idx <- which(temp_cleaned_data_author$Full_Name == inconsistent_names_ids$Full_Name[i])
+    
+    if (length(idx) == i) {
+      temp_cleaned_data_author$Person_ID[idx] <- inconsistent_names_ids$Person_ID[i]}}
+  # My version : Replace Person_ID values in the temporary dataframe
+  ## for (i in seq_len(nrow(inconsistent_names_ids))) {
+  ##   temp_cleaned_data_author[temp_cleaned_data_author$Full_Name == inconsistent_names_ids$Full_Name[i], "Person_ID"] <- inconsistent_names_ids$Person_ID[i]
+  ## }
+# Replace Person_ID values in the original dataframe
+data_test_info_author_id_struc$Person_ID <- temp_cleaned_data_author$Person_ID
+
+#### -----------------------------------------------------------
+# Create a logical vector for matching Full_Name
+match_vector <- data_test_info_author_id_struc$Full_Name %in% node_list$Full_Name
+# Print the match_vector to see which rows match
+print(match_vector)
+# Assign Person_ID where Full_Name matches
+data_test_info_author_id_struc <- data_test_info_author_id_struc %>%
+  mutate(Person_ID = ifelse(is.na(Person_ID) & Full_Name %in% node_list$Full_Name,
+                            node_list$id[match(Full_Name, node_list$Full_Name)],
+                            Person_ID))
+# Print the updated dataframe
+print(data_test_info_author_id_struc)
+node_list <- node_list %>%
+  filter(id %in% data_test_info_author_id_struc$Person_ID)
+# Filter edge_list to keep only rows where both 'from' and 'to' are in data_test_info_author_id_struc$Person_ID
+edge_list <- edge_list %>%
+  filter(from %in% data_test_info_author_id_struc$Person_ID & to %in% data_test_info_author_id_struc$Person_ID)
+# Network visualization
+visNetwork(node_list, edge_list, width = "100%") %>%
+  visIgraphLayout() %>%
+  visGroups(groupname = "Number of publications", color = "lightblue", font = list(size = 22)) %>%
+  visLegend(addNodes = df_col_Legend, main = "Graph of Co-authors from MIA", useGroups = FALSE) %>%
+  visEdges(font = list(size = 22)) %>%
+  visOptions(selectedBy = "equipe") %>% 
+  visExport( type = "jpeg", name = "Full_Network_Co-authors_Example_managHAL", label = "Export as jpeg")
+##  visSave(selfcontained = TRUE, file = "Partial_Network_Co-authors_Example_managHAL.html", background = "white" )
+#### ------------------------------------------------------------------------
+## sbm
+# Create an empty adjacence matrix
+matrice_adjacence <- matrix(0, nrow = length(node_list$id), ncol = length(node_list$id))
+colnames(matrice_adjacence) <- node_list$id
+rownames(matrice_adjacence) <- node_list$id
+# fill in the adjacence matrix
+for (k in 1:nrow(edge_list)) {
+  i <- match(edge_list$from[k], node_list$id)
+  j <- match(edge_list$to[k], node_list$id)
+  matrice_adjacence[i, j] <- edge_list$width[k]
+}
+plotMyMatrix(matrice_adjacence, dimLabels = list(row = "id", col = "id"))
+# Estimation of a simple SBM using the adjacence matrix
+my_model <- estimateSimpleSBM(matrice_adjacence, model = "poisson", dimLabels = c("id"))
+# ne fonctionne pas sur quarto (l'acces au ancien plot)
+my_model$nbBlocks
+group_membership <- apply(my_model$indMemberships, 1, which.max)
+group_colors <- rainbow(max(group_membership))
+df_col_group = data.frame(
+  group = 1:3,
+  group_colors
+)
+## node_list <- node_list[1:(nrow(node_list) - 5), ] la legnende non presente car selection labo
+df_col = data.frame (
+  id <- node_list$id,
+  group_membership <- group_membership,
+  color = df_col_group$group_colors[apply(my_model$indMemberships, 1, which.max)]
+)
+node_list$group = df_col$group_membership....apply.my_model.indMemberships..1..which.max.
+node_list$color = df_col$color
+# Network visualization
+visNetwork(node_list, edge_list, width = "100%") %>%
+  visIgraphLayout() %>%
+  visGroups(groupname = "Number of publications", color = "lightblue", font = list(size = 22)) %>%
+  visLegend() %>%
+  visEdges(font = list(size = 22)) %>%
+  visOptions(selectedBy = "color")
+plot(my_model, type = "expected")
+```
+
 
 ## BIBLIOGRAPHIE
