@@ -40,7 +40,7 @@ Ce package s'addresse donc à un public souhaitant réaliser des analyses biblio
 
 Cette partie est principalement basée sur la publication "Using Latent Block Models to Detect Structure in Ecological Networks" @latent-block-models
 
-Les réseaux se divisent en deux catégories principales (voir figures suivante): les réseaux Unipartites où tous les nœuds sont du même type et les réseaux Bipartites où il y a deux types distincts de nœuds, et les liens ne se forment qu’entre des nœuds de types différents.(voir [exemple_reseau_unipartite_bipartite](#reseau-unipart-bipart) pour le code de réalisation des réseaux d'exemple)
+Les réseaux se divisent en deux catégories principales (voir figures suivantes): les réseaux Unipartites où tous les nœuds sont du même type et les réseaux Bipartites où il y a deux types distincts de nœuds, et les liens ne se forment qu’entre des nœuds de types différents.(voir [exemple_reseau_unipartite_bipartite](#reseau-unipart-bipart) pour le code de réalisation des réseaux d'exemple)
 
 **Exemple des deux types de réseaux**
 
@@ -80,7 +80,7 @@ Pour finir, l'entièreté du stage s'est inscrit dans une dynamique de développ
 
 ## RESULTATS
 
-Cette section présente les résultats obtenus au cours de mon stage. Elle est divisée en deux parties principales: Les modifications au package ManagHAL d'origine dans l'objectif de le rendre plus générique et plus accessible, puis l'ajout de fonctionnalités au package managHAL. Par choix, seulement certaines fonctions et scripts R du package sont abordés. L'éxècution de ces derniers est réalisée par le biais d'un exemple. Cet exemple est basé sur des données du Laboratoire MIA d'AgroPariTech-Palaiseau. Chaque fonction est expliquée en détail, suivie des raisons justifiant son développement. Il est important de noter que mon stage se terminant le 26 juillet, Le package est encore en développement. Certaines fonctionnalités sont encore en travail. Les fonctions présentées fonctionnent dans le cadre de l'exemple. Dans cette section, les noms de *`fonctions`* seront en italique et les noms des **scripts R** contenant les fonctions seront en gras.
+Cette section présente les résultats obtenus au cours de mon stage. Elle est divisée en deux parties principales: Les modifications au package ManagHAL d'origine dans l'objectif de le rendre plus générique et plus accessible, puis l'ajout de fonctionnalités au package managHAL. Par choix, seulement certaines fonctions et scripts R du package sont abordés. L'éxécution de ces derniers est réalisée par le biais d'un exemple. Cet exemple est basé sur des données du Laboratoire MIA d'AgroPariTech-Palaiseau. Chaque fonction est expliquée en détail, suivie des raisons justifiant son développement. Il est important de noter que mon stage se terminant le 26 juillet, Le package est encore en développement. Certaines fonctionnalités sont encore en travail. Les fonctions présentées fonctionnent dans le cadre de l'exemple. Si vous souhaitez executer les scripts fournis dans le mémoire, il est nécéssaire d'avoir accès au package ManagHAL. ManagHAL est pour le moment indisponible. Dans cette section, les noms de *`fonctions`* seront en italique et les noms des **scripts R** contenant les fonctions seront en gras.
 
 ### Accessibilité et généricité de ManagHAL
 
@@ -140,7 +140,17 @@ La deuxième partie concerne la construction et la visualisation du graphe. À p
 
 Il est possible de voir via l'exemple suivant (obtenu avec le code de l'annexe : [Script_R_reseau_co-auteur](#reseau-co-auteur)) qu'un réseau de co-auteurs permet une visualisation claire des collaborations et des périodes d'activité des différents auteurs.
 
-Parler du quarto avec la construction d'un réseau et la création d'un réseau sur un soous groupe puis parler du premier sbm réalisé;
+![Réseau co-auteur](figures/Full_Network_Co-authors_Example_managHAL.jpeg){width="648"}
+
+A travers cet exemple, les limitations de la création de réseau sur les données récupérées via un identifiant de laboratoire transparaissent. De fait, on voit l'appartition de cercle de co-auteurs très denses. Ces cercles correspondent généralement à une unique publication contenant de nombreux auteurs. J'ai tout de même réalisé un modèle en bloc stochastique sur ce réseau (voir le code en annexe :[]()) mettre un exemple des couleurs obtenues. 
+
+expliquer mon insatisfaction vis à vis de ce que j'obtiens.
+
+C'est pourquoi, j'ai décidé sur conseil de mes tuteurs de réalisé les mêmes manipulations sur un sous-groupe de données ne contenant que celles des auteurs affiliés à une structure.
+
+pas satisfait car présence d'auteurs n'étant plus affiliés mais ayant toujours le tag de la structure dans leur compte api (à mettre dans la discussion ?)
+
+Parler du quarto avec la construction d'un réseau et la création d'un réseau sur un sous-groupe puis parler du premier sbm réalisé;
 
 ### Conclusion des Résultats
 
