@@ -30,12 +30,8 @@ Les outils pour réaliser des analyses bibliométriques se répartissent en troi
 
 Ainsi, durant mes 2 mois et 17 jours de stage au sein de l’unité de recherche Mathématiques et Informatiques Appliquées (MIA) d’AgroParisTech Palaiseau, j’ai travaillé sur la généricité du package managHAL, ainsi que sur la programmation et l’intégration d’outils d’analyse statistique de réseau au sein du package ManagHAL. Encadré par deux tuteurs, Julie Albert et Pierre Barbillon, j’ai contribué à la mise en forme du package et à la création de fonctions spécifiques.
 
-Pour comprendre les choix réalisés lors du développement du package, il est nécessaire de réaliser une introduction aux réseaux. Un réseau d’interaction est constitué de nœuds (les entités) et d’arêtes (les liens entre ces entités). Toute entité peut être modélisée comme un nœud, et leurs interactions comme des arêtes. Les réseaux sont utilisés comme représentation comme objet d'analyse statistique dans de nombreux domaines.Par exemple, Des réseaux de gènes sont réalisés à partir de données de co-expression. Il est possible de donner d'autres exemples comme les analyses de réseaux d'interactions d'espèces qui sont réalisés en écologie (mettre lien vers vignette sbm espece arbre). Les utilisations des réseaux sont nombreuses. Les réseaux se divisent en deux catégories principales (voir figures suivante): les réseaux Unipartites où tous les nœuds sont du même type et les réseaux Bipartites où il y a deux types distincts de nœuds, et les liens ne se forment qu’entre des nœuds de types différents.(voir [exemple_reseau_unipartite_bipartite](#reseau-unipart-bipart) pour le code de réalisation des réseaux d'exemple)
-
-#### Exemple des deux types de réseau
-
-![Réseau Unipartite](figures/unipartite_graph.png){width="324"}
-![Réseau Bipartite](figures/bipartite.png){width="324"}
+Pour comprendre les choix réalisés lors du développement du package, il est nécessaire de réaliser une introduction aux réseaux. Un réseau d’interaction est constitué de nœuds (les entités) et d’arêtes (les liens entre ces entités). Toute entité peut être modélisée comme un nœud, et leurs interactions comme des arêtes. Dans le cadre du package ManagHAl, j'utiliserai les réseaux pour modéliser un réseau de co-publications (ou co-auteurs). Les noeuds représenteront des auteurs, et les arrêtes entre ces noeuds (auteurs) seront l'existence de publications scientifiques co-écrite par les deux noeuds. La taille d'un noeud représentera le nombre de publications écrite par cet auteur (noeud) et la largeur d'une arrete pourra correspondre au nombre de publication co-ecrite par les deux noeuds (co-auteurs).
+Les réseaux ne sont cependant pas exclusifs à l'analyse de données bibliométriques. En effet, les réseaux sont utilisés comme représentation et comme objet d'analyse statistique dans de nombreux domaines.Par exemple, des réseaux de gènes sont réalisés à partir de données de co-expression. Il est possible de donner d'autres exemples comme les analyses de réseaux d'interactions entre  des espèces réalisées en écologie (mettre lien vers vignette sbm espece arbre). Les utilisations des réseaux sont nombreuses. L'introduction au réseaux et leurs analyses sera approfondi dans la section méthodes.
 
 Ce package s'addresse donc à un public souhaitant réaliser des analyses bibliométriques approfondis à partir de HAL. Nous verrons cependant dans la section discussion qu'il est possible d'élargir les usages du packages.
 
@@ -44,6 +40,13 @@ Ce package s'addresse donc à un public souhaitant réaliser des analyses biblio
 ### Modèle de graphe aléatoire
 
 Cette partie est principalement basée sur la publication "Using Latent Block Models to Detect Structure in Ecological Networks" @latent-block-models
+
+Les réseaux se divisent en deux catégories principales (voir figures suivante): les réseaux Unipartites où tous les nœuds sont du même type et les réseaux Bipartites où il y a deux types distincts de nœuds, et les liens ne se forment qu’entre des nœuds de types différents.(voir [exemple_reseau_unipartite_bipartite](#reseau-unipart-bipart) pour le code de réalisation des réseaux d'exemple)
+
+**Exemple des deux types de réseaux**
+
+![Réseau Unipartite](figures/unipartite_graph.png){width="324"}
+![Réseau Bipartite](figures/bipartite.png){width="324"}
 
 Les interactions dans un réseau peuvent être binaires ou pondérées. Un réseau peut être représenté par une matrice d'adjacence $Y$ où :
 
