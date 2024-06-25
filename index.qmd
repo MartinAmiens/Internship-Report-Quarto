@@ -1,4 +1,6 @@
-
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(tidy=TRUE, tidy.opts=list(width.cutoff=50))
+```
 
 # MANAGHAL, DONNEES BIBLIOMETRIQUES, RESEAUX ET ANALYSES STATISTIQUES DE RESEAUX
 
