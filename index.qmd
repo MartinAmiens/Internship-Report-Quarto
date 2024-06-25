@@ -148,7 +148,7 @@ A travers cet exemple, les limitations de la création de réseau sur les donné
 
 J'ai tout de même réalisé un modèle en bloc stochastique sur ce réseau. (voir le code du script en annexe :[Script_R_SBM](#Script-R-SBM-Full-Network)). Pour cela j'ai crée une matrice d'adjacence vide et je l'ai remplie avec les connexions pondérées des nœuds, puis nettoyée pour la lisibilité et visualisée avec plotMyMatrix. Ensuite, un modèle SBM est estimé à partir de cette matrice, les nœuds sont classés en groupes colorés. Enfin, le réseau est visualisé avec visNetwork, incluant des options pour une meilleure compréhension et esthétique. 
 
-![Application des couleurs d'appartenance des noeuds via le modèle ](figures/Full_Network_Co-authors_SBM_Example_managHAL.jpeg){width="648"}
+![Application des couleurs d'appartenance des noeuds via le modèle ](figures/Full_Network_Co-authors_SBM_Example_managHAL.png){width="600"}
 
 **mettre un exemple des couleurs obtenues.**
 
