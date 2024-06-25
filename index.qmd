@@ -142,7 +142,13 @@ Il est possible de voir via l'exemple suivant (obtenu avec le code de l'annexe :
 
 ![Réseau de co-auteurs](figures/Full_Network_Co-authors_Example_managHAL.jpeg){width="648"}
 
-A travers cet exemple, les limitations de la création de réseau sur les données récupérées via un identifiant de laboratoire transparaissent. De fait, on voit l'appartition de cercle de co-auteurs très denses. Ces cercles correspondent généralement à une unique publication contenant de nombreux auteurs. J'ai tout de même réalisé un modèle en bloc stochastique sur ce réseau. Pour cela, j'ai crée une matrice d'adjacence, puis j'ai utilisé cette matrice avec les fonctions codées apr le package SBM pour obtenir mon modèle. Enfin, j'ai ajouté les couleurs aux noeuds en fonction de leurs appartenance aux groupes determiné lors de la création du modèle (voir le code du script en annexe :[Script_R_SBM](#Script-R-SBM-Full-Network)).
+A travers cet exemple, les limitations de la création de réseau sur les données récupérées via un identifiant de laboratoire transparaissent. De fait, on voit l'appartition de cercle de co-auteurs très denses. Ces cercles correspondent généralement à une unique publication contenant de nombreux auteurs.
+
+#### Modèlisation en blocs stochastiques
+
+J'ai tout de même réalisé un modèle en bloc stochastique sur ce réseau. (voir le code du script en annexe :[Script_R_SBM](#Script-R-SBM-Full-Network)). Pour cela j'ai crée une matrice d'adjacence vide et je l'ai remplie avec les connexions pondérées des nœuds, puis nettoyée pour la lisibilité et visualisée avec plotMyMatrix. Ensuite, un modèle SBM est estimé à partir de cette matrice, les nœuds sont classés en groupes colorés. Enfin, le réseau est visualisé avec visNetwork, incluant des options pour une meilleure compréhension et esthétique. 
+
+![Application des couleurs d'appartenance des noeuds via le modèle ](figures/Full_Network_Co-authors_SBM_Example_managHAL.jpeg){width="648"}
 
 **mettre un exemple des couleurs obtenues.**
 
@@ -155,7 +161,6 @@ C'est pourquoi, j'ai décidé sur conseil de mes tuteurs de réaliser les mêmes
 De plus, le sbm obtenu n'étant toujours pas exactement satisfaisant une autre proposition a été mise en avant, se contenter de réaliser un sbm sur les composantes connexes du réseau.
 
 **la création d'un réseau sur un sous-groupe puis parler du second sbm réalisé.**
-
 
 ## Discussion
 
