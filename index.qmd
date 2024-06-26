@@ -146,21 +146,14 @@ A travers cet exemple, les limitations de la création de réseau sur les donné
 
 #### Modélisation en blocs stochastiques
 
-J'ai tout de même réalisé un modèle en bloc stochastique sur ce réseau. (voir le code du script en annexe :[Script_R_SBM](#Script-R-SBM-Full-Network)). Pour cela j'ai crée une matrice d'adjacence vide et je l'ai remplie avec les connexions pondérées des nœuds, puis nettoyée pour la lisibilité et visualisée avec plotMyMatrix. Ensuite, un modèle SBM est estimé à partir de cette matrice, les nœuds sont classés en groupes colorés. Enfin, le réseau est visualisé avec visNetwork, incluant des options pour une meilleure compréhension et esthétique.
+J'ai tout de même réalisé un modèle en bloc stochastique sur ce réseau. (voir le code du script en annexe :[Script_R_SBM](#Script-R-SBM-Full-Network)). Pour cela j'ai crée une matrice d'adjacence vide et je l'ai remplie avec les connexions pondérées des nœuds, puis nettoyée pour la lisibilité et visualisée avec plotMyMatrix. Ensuite, un modèle SBM est estimé à partir de cette matrice, les nœuds sont classés en groupes colorés. Enfin, le réseau est visualisé avec visNetwork, incluant des options pour une meilleure compréhension et esthétique. 
 
 ![Application des couleurs d'appartenance des noeuds via le modèle](figures/Full_Network_Co-authors_SBM_Example_managHAL.png){width="500"}
 
-**mettre un exemple des couleurs obtenues.**
+L'apparition de groupes de noeuds avec des interactions similaires colorés était attendue. Or dans l'exemple suivant, des groupes d'une même couleur n'apparaissent pas et les noeuds avec des profils de connexion similaire ne semble pas être placé dans un même groupe.
+C'est pourquoi, j'ai décidé sur conseil de mes tuteurs de réaliser les mêmes manipulations sur un sous-groupe de données ne contenant que celles des auteurs affiliés à une seule structure. Nous avons noté la présence d'un biais  car certains auteurs n'étant plus affiliés à la structure ont toujours le tag de la structure dans leur compte HAL. Ils apparaissent affiliés à la structure sans l'être réellement.
 
-**expliquer mon insatisfaction vis à vis de ce que j'obtiens.**
-
-C'est pourquoi, j'ai décidé sur conseil de mes tuteurs de réaliser les mêmes manipulations sur un sous-groupe de données ne contenant que celles des auteurs affiliés à une structure.
-
-**pas satisfait car présence d'auteurs n'étant plus affiliés mais ayant toujours le tag de la structure dans leur compte api (à mettre dans la discussion ?)**
-
-De plus, le sbm obtenu n'étant toujours pas exactement satisfaisant une autre proposition a été mise en avant, se contenter de réaliser un sbm sur les composantes connexes du réseau.
-
-**la création d'un réseau sur un sous-groupe puis parler du second sbm réalisé.** voir le code fait hors du quarto
+De plus, le sbm obtenu n'étant toujours pas satisfaisant, une autre proposition a été mise en avant, se contenter de réaliser un sbm sur les composantes connexes du réseau. Cela n'a pas été encore réalisé et fait partie des possibles améliorations future du package {managHAL}.
 
 ## Discussion
 
