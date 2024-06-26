@@ -317,7 +317,7 @@ Cette fonction permet le chargement d'un fichier csv depuis une adresse locale d
 #' }
 ```
 
-Ce script permet la création d'une documentation de fonction classique via la commande : `devtools::document()`.
+Ce script permet la création d'une documentation de fonction classique via la commande : `devtools::document()`. Elle est au format utilisé par {roxygen2}.
 
 ### HAL_query {#HAL-query .Sections}
 
@@ -425,6 +425,8 @@ HAL_query <- function(id,
   return(obj)
 }
 ```
+
+Cette fonction permet de créer une adresse url d'une requête à l'API HAL. Elle prend en entrée différents paramètres de spécification du rendu. Elle donne en sortie une URL.
 
 ### Script_R_reseau_co-auteur {#reseau-co-auteur .Sections}
 
@@ -595,6 +597,8 @@ visNetwork(node_list, edge_list, width = "100%") %>%
 
 ```
 
+Ce script permet la création d'un réseau de co-auteur à partir de données bibliographique HAL.
+
 ### exemple_reseau_unipartite_bipartite {#reseau-unipart-bipart .Sections}
 
 ```{r exemple de reseau, eval = FALSE, tidy.opts=list(width.cutoff=50)}
@@ -618,6 +622,8 @@ plot(bipartite, layout = layout_as_bipartite, vertex.color = c("skyblue", "salmo
      vertex.label.color = "black", vertex.shape = "circle", vertex.size = 30, edge.width = 2, main = "Réseau Bipartite")
 matrice_adjacence_bipartite <- as.matrix(bipartite, "adjacency")
 ```
+
+Ce script permet de créer les réseaux unipartites et bipartites présent dans les méthodes.
 
 ### Script_R_SBM {#Script-R-SBM-Full-Network .section}
 
@@ -666,10 +672,11 @@ visNetwork(node_list, edge_list, width = "100%") %>%
   visLegend() %>%
   visEdges(font = list(size = 22)) %>%
   visOptions(selectedBy = "color")
-
 ```
 
-### Script_R_Sous-groupe {#Script-R-SBM-Partial-Network .section}
+Ce script permet de réaliser un modèle en bloc stochastiques depuis le réseau créé dans l'annexe [Script_R_reseau_co-auteur](#reseau-co-auteur). 
+
+### Script_R_Sous-groupe
 
 ```{r partial network and sbm, eval=FALSE}
 ## test pour obtenir un sous groupe
@@ -785,5 +792,6 @@ visNetwork(node_list, edge_list, width = "100%") %>%
   visOptions(selectedBy = "color")
 plot(my_model, type = "expected")
 ```
+Ce script permet de créer un sous-groupe du réseau, de construire un modèle en bloc stochastique à partir de ce nouveau réseau et de visualiser le tout.
 
 ## BIBLIOGRAPHIE
