@@ -12,6 +12,6 @@ book:
     - index.qmd
 header-includes:
     - \usepackage{geometry}
-geometry: margin=0.9in
+geometry: margin=0.8in
 keywords: [R, Rstudio, ManagHAL, Réseaux, SBM, LBM, Sciences Ouvertes, HAL]
 bibliography: [bibliography/references.bib]
