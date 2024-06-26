@@ -9,7 +9,7 @@ html:
   header-includes:
     - \usepackage{geometry}
     - \AtBeginDocument{\renewcommand{\contentsname}{Table des matières}}
-  geometry: margin=1in
+  geometry: margin=0.9in
 
 pdf:
   toc: true
@@ -22,4 +22,4 @@ pdf:
   header-includes:
     - \usepackage{geometry}
     - \AtBeginDocument{\renewcommand{\contentsname}{Table des matières}}
-  geometry: margin=1in
+  geometry: margin=0.9in

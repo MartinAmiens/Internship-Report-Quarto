@@ -10,5 +10,8 @@ book:
   date: "2024-06-16"
   chapters:
     - index.qmd
+header-includes:
+    - \usepackage{geometry}
+geometry: margin=0.9in
 keywords: [R, Rstudio, ManagHAL, Réseaux, SBM, LBM, Sciences Ouvertes, HAL]
 bibliography: [bibliography/references.bib]
