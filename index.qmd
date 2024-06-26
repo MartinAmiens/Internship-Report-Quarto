@@ -130,7 +130,7 @@ HAL_publis_auteurs[1,]
 
 ### Ajout de fonctionnalité à {managHAL}
 
-#### Création d'un réseau de co-auteurs avec Visnetwork
+#### Création d'un réseau de co-auteurs et visualisation avec visNetwork
 
 Afin d'obtenir les informations sous-jacentes des informations bibliographiques, j'ai commencé à travailler à la création d'un réseau de co-auteur. Pour l'instant, la fonctionalité n'existe qu'au format de script R sur un document quarto. Au cours des semaines restantes, l'objectif est de continuer à travailler dessus et créer des fonctions simples et claires permettant à l'utilisateur de créer son propre réseau à partir de ses données. Le script de création de fonction est inspiré d'un script fournie au préalable par ma tutrice Julie Aubert. Des modifications et des ajouts ont été apportés pour améliorer l'extraction, le nettoyage, la construction, et la visualisation des données. Suite à mes modifications et mes ajouts, le script se divise en plusieurs parties ((Pour voir le script R, veuillez vous référer à l'annexe : [Script_R_reseau_co-auteur](#reseau-co-auteur)) :
 
@@ -140,7 +140,7 @@ La deuxième partie concerne la construction et la visualisation du graphe. À p
 
 Il est possible de voir via l'exemple suivant (obtenu avec le code de l'annexe : [Script_R_reseau_co-auteur](#reseau-co-auteur)) qu'un réseau de co-auteurs permet une visualisation claire des collaborations et des périodes d'activité des différents auteurs.
 
-![Réseau de co-auteurs](figures/Full_Network_Co-authors_Example_managHAL.jpeg){width="648"}
+![Réseau de co-auteurs](figures/Full_Network_Co-authors_Example_managHAL.jpeg){width="500"}
 
 A travers cet exemple, les limitations de la création de réseau sur les données récupérées via un identifiant de laboratoire transparaissent. De fait, on voit l'appartition de cercle de co-auteurs très denses. Ces cercles correspondent généralement à une unique publication contenant de nombreux auteurs.
 
@@ -148,7 +148,7 @@ A travers cet exemple, les limitations de la création de réseau sur les donné
 
 J'ai tout de même réalisé un modèle en bloc stochastique sur ce réseau. (voir le code du script en annexe :[Script_R_SBM](#Script-R-SBM-Full-Network)). Pour cela j'ai crée une matrice d'adjacence vide et je l'ai remplie avec les connexions pondérées des nœuds, puis nettoyée pour la lisibilité et visualisée avec plotMyMatrix. Ensuite, un modèle SBM est estimé à partir de cette matrice, les nœuds sont classés en groupes colorés. Enfin, le réseau est visualisé avec visNetwork, incluant des options pour une meilleure compréhension et esthétique.
 
-![Application des couleurs d'appartenance des noeuds via le modèle](figures/Full_Network_Co-authors_SBM_Example_managHAL.png){width="600"}
+![Application des couleurs d'appartenance des noeuds via le modèle](figures/Full_Network_Co-authors_SBM_Example_managHAL.png){width="500"}
 
 **mettre un exemple des couleurs obtenues.**
 
