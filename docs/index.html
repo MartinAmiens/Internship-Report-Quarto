@@ -6,11 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Martin AMIENS">
-<meta name="dcterms.date" content="2024-06-16">
 <meta name="keywords" content="R, Rstudio, ManagHAL, Réseaux, SBM, LBM, Sciences Ouvertes, HAL">
 
-<title>Mémoire de Stage - Package ManagHAL</title>
+<title>index</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -81,7 +79,6 @@ div.csl-indent {
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="site_libs/quarto-search/fuse.min.js"></script>
@@ -123,7 +120,7 @@ div.csl-indent {
     "search-label": "Search"
   }
 }</script>
-</head><body class="nav-sidebar floating">\usepackage{geometry}
+</head><body class="fullcontent">\usepackage{geometry}
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -160,120 +157,23 @@ window.Quarto = {
 
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-        <i class="bi bi-layout-text-sidebar-reverse"></i>
-      </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">{MANAGHAL}, DONNEES BIBLIOMETRIQUES, RESEAUX ET ANALYSES STATISTIQUES DE RESEAUX</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-        </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
-        <i class="bi bi-search"></i>
-      </button>
-    </div>
-  </nav>
-</header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
-    <div class="sidebar-title mb-0 py-0">
-      <a href="./">Mémoire de Stage - Package ManagHAL</a> 
-    </div>
-      </div>
-        <div class="mt-2 flex-shrink-0 align-items-center">
-        <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Search"></div>
-        </div>
-        </div>
-    <div class="sidebar-menu-container"> 
-    <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">{MANAGHAL}, DONNEES BIBLIOMETRIQUES, RESEAUX ET ANALYSES STATISTIQUES DE RESEAUX</span></span></a>
-  </div>
-</li>
-    </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#managhal-donnees-bibliometriques-reseaux-et-analyses-statistiques-de-reseaux" id="toc-managhal-donnees-bibliometriques-reseaux-et-analyses-statistiques-de-reseaux" class="nav-link active" data-scroll-target="#managhal-donnees-bibliometriques-reseaux-et-analyses-statistiques-de-reseaux"><span class="header-section-number">1</span> {MANAGHAL}, DONNEES BIBLIOMETRIQUES, RESEAUX ET ANALYSES STATISTIQUES DE RESEAUX</a>
-  <ul class="collapse">
-  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction"><span class="header-section-number">1.1</span> Introduction</a>
-  <ul class="collapse">
-  <li><a href="#sciences-ouvertes" id="toc-sciences-ouvertes" class="nav-link" data-scroll-target="#sciences-ouvertes"><span class="header-section-number">1.1.1</span> Sciences Ouvertes</a></li>
-  <li><a href="#managhal-package-r-dextraction-de-données-bibliométrique-hal-et-danalyse-de-réseaux" id="toc-managhal-package-r-dextraction-de-données-bibliométrique-hal-et-danalyse-de-réseaux" class="nav-link" data-scroll-target="#managhal-package-r-dextraction-de-données-bibliométrique-hal-et-danalyse-de-réseaux"><span class="header-section-number">1.1.2</span> {ManagHAL}, package R d’extraction de données bibliométrique HAL et d’analyse de réseaux</a></li>
-  </ul></li>
-  <li><a href="#méthodes" id="toc-méthodes" class="nav-link" data-scroll-target="#méthodes"><span class="header-section-number">1.2</span> Méthodes</a>
-  <ul class="collapse">
-  <li><a href="#modèle-de-graphe-aléatoire" id="toc-modèle-de-graphe-aléatoire" class="nav-link" data-scroll-target="#modèle-de-graphe-aléatoire"><span class="header-section-number">1.2.1</span> Modèle de graphe aléatoire</a></li>
-  <li><a href="#méthodes-informatiques" id="toc-méthodes-informatiques" class="nav-link" data-scroll-target="#méthodes-informatiques"><span class="header-section-number">1.2.2</span> Méthodes informatiques</a></li>
-  </ul></li>
-  <li><a href="#résultats" id="toc-résultats" class="nav-link" data-scroll-target="#résultats"><span class="header-section-number">1.3</span> Résultats</a>
-  <ul class="collapse">
-  <li><a href="#accessibilité-et-généricité-de-managhal" id="toc-accessibilité-et-généricité-de-managhal" class="nav-link" data-scroll-target="#accessibilité-et-généricité-de-managhal"><span class="header-section-number">1.3.1</span> Accessibilité et généricité de {managHAL}</a></li>
-  <li><a href="#ajout-de-fonctionnalité-à-managhal" id="toc-ajout-de-fonctionnalité-à-managhal" class="nav-link" data-scroll-target="#ajout-de-fonctionnalité-à-managhal"><span class="header-section-number">1.3.2</span> Ajout de fonctionnalité à {managHAL}</a></li>
-  </ul></li>
-  <li><a href="#discussion" id="toc-discussion" class="nav-link" data-scroll-target="#discussion"><span class="header-section-number">1.4</span> Discussion</a></li>
-  <li><a href="#annexes" id="toc-annexes" class="nav-link" data-scroll-target="#annexes"><span class="header-section-number">1.5</span> Annexes</a>
-  <ul class="collapse">
-  <li><a href="#load-team-table-url" id="toc-load-team-table-url" class="nav-link" data-scroll-target="#load-team-table-url"><span class="header-section-number">1.5.1</span> load_team_table_url</a></li>
-  <li><a href="#load-team-table-csv" id="toc-load-team-table-csv" class="nav-link" data-scroll-target="#load-team-table-csv"><span class="header-section-number">1.5.2</span> load_team_table_csv</a></li>
-  <li><a href="#load-team-table" id="toc-load-team-table" class="nav-link" data-scroll-target="#load-team-table"><span class="header-section-number">1.5.3</span> load_team_table</a></li>
-  <li><a href="#doc-Roxygen2" id="toc-doc-Roxygen2" class="nav-link" data-scroll-target="#doc-Roxygen2"><span class="header-section-number">1.5.4</span> Exemple d’une documentation classique avec Roxygen2</a></li>
-  <li><a href="#HAL-query" id="toc-HAL-query" class="nav-link" data-scroll-target="#HAL-query"><span class="header-section-number">1.5.5</span> HAL_query</a></li>
-  <li><a href="#reseau-co-auteur" id="toc-reseau-co-auteur" class="nav-link" data-scroll-target="#reseau-co-auteur"><span class="header-section-number">1.5.6</span> Script_R_reseau_co-auteur</a></li>
-  <li><a href="#reseau-unipart-bipart" id="toc-reseau-unipart-bipart" class="nav-link" data-scroll-target="#reseau-unipart-bipart"><span class="header-section-number">1.5.7</span> exemple_reseau_unipartite_bipartite</a></li>
-  <li><a href="#Script-R-SBM-Full-Network" id="toc-Script-R-SBM-Full-Network" class="nav-link" data-scroll-target="#Script-R-SBM-Full-Network"><span class="header-section-number">1.5.8</span> Script_R_SBM</a></li>
-  <li><a href="#Script-R-SBM-Partial-Network" id="toc-Script-R-SBM-Partial-Network" class="nav-link" data-scroll-target="#Script-R-SBM-Partial-Network"><span class="header-section-number">1.5.9</span> Script_R_Sous-groupe</a></li>
-  </ul></li>
-  <li><a href="#bibliographie" id="toc-bibliographie" class="nav-link" data-scroll-target="#bibliographie"><span class="header-section-number">1.6</span> BIBLIOGRAPHIE</a></li>
-  </ul></li>
-  </ul>
-</nav>
-    </div>
+    
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Mémoire de Stage - Package ManagHAL</h1>
 </div>
 
 
-<div class="quarto-title-meta-author">
-  <div class="quarto-title-meta-heading">Author</div>
-  <div class="quarto-title-meta-heading">Affiliation</div>
-  
-    <div class="quarto-title-meta-contents">
-    <p class="author">Martin AMIENS </p>
-  </div>
-  <div class="quarto-title-meta-contents">
-        <p class="affiliation">
-            Université Paris-saclay - Master BIBS
-          </p>
-      </div>
-  </div>
 
 <div class="quarto-title-meta">
 
-      
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">June 16, 2024</p>
-    </div>
-  </div>
+    
   
     
   </div>
@@ -289,27 +189,27 @@ window.Quarto = {
 </header>
 
 
-<section id="managhal-donnees-bibliometriques-reseaux-et-analyses-statistiques-de-reseaux" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> {MANAGHAL}, DONNEES BIBLIOMETRIQUES, RESEAUX ET ANALYSES STATISTIQUES DE RESEAUX</h1>
-<section id="introduction" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">1.1</span> Introduction</h2>
-<section id="sciences-ouvertes" class="level3" data-number="1.1.1">
-<h3 data-number="1.1.1" class="anchored" data-anchor-id="sciences-ouvertes"><span class="header-section-number">1.1.1</span> Sciences Ouvertes</h3>
+<section id="managhal-donnees-bibliometriques-reseaux-et-analyses-statistiques-de-reseaux" class="level1">
+<h1>{MANAGHAL}, DONNEES BIBLIOMETRIQUES, RESEAUX ET ANALYSES STATISTIQUES DE RESEAUX</h1>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<section id="sciences-ouvertes" class="level3">
+<h3 class="anchored" data-anchor-id="sciences-ouvertes">Sciences Ouvertes</h3>
 <p>En 2017, AgroParisTech signe l’Appel de Jussieu pour promouvoir la bibliodiversité, visant à maintenir la diversité éditoriale et éviter la domination des grands groupes éditeurs. AgroParisTech, en partenariat avec INRAE, adopte en 2020 une politique de science ouverte (<a href="https://www.agroparistech.fr/recherche/science-ouverte"><span class="citation" data-cites="science-ouverte">AgroParisTech (<span>2024</span>)</span></a>, voir: La science ouverte à AgroParisTech – Politique d’établissement janvier 2020), facilitant la libre diffusion et la transparence des recherches scientifiques. Un exemple concret des principes appliqués suite à l’adoption de cette politique sont les principes FAIR pour la gestion des données de recherche : Findable (facilement trouvable), Accessible (accès clairement défini), Interoperable (intégrable avec d’autres outils), et Reusable (réutilisable avec toutes les informations nécessaires).</p>
 <p>Pour atteindre ces objectifs, AgroParisTech crée le 2 janvier 2023 une cellule HAL, dirigée par la Direction de la Recherche, de l’Innovation et du Transfert Technologique, et par la Direction de la Documentation et du Patrimoine Culturel. Cette cellule facilite l’intégration de l’archive ouverte HAL dans la communauté de recherche d’AgroParisTech et veille à la qualité des métadonnées. HAL, ou HyperArticles en Lignes, est “l’archive nationale pour la diffusion ouverte des résultats de recherche” (<a href="https://about.hal.science/"><span class="citation" data-cites="aboutHAL"><span>“About HAL”</span> (<span>n.d.</span>)</span></a>). Elle est une plateforme en ligne développé en 2001 par le Centre pour la communication scientifique directe du CNRS. Cette plateforme dispose d’un API permettant l’extraction et l’analyse des données via des outils comme RStudio. Une explication plus détaillée de cet API et d’une requête HAL sera faite dans la section méthode.</p>
 </section>
-<section id="managhal-package-r-dextraction-de-données-bibliométrique-hal-et-danalyse-de-réseaux" class="level3" data-number="1.1.2">
-<h3 data-number="1.1.2" class="anchored" data-anchor-id="managhal-package-r-dextraction-de-données-bibliométrique-hal-et-danalyse-de-réseaux"><span class="header-section-number">1.1.2</span> {ManagHAL}, package R d’extraction de données bibliométrique HAL et d’analyse de réseaux</h3>
+<section id="managhal-package-r-dextraction-de-données-bibliométrique-hal-et-danalyse-de-réseaux" class="level3">
+<h3 class="anchored" data-anchor-id="managhal-package-r-dextraction-de-données-bibliométrique-hal-et-danalyse-de-réseaux">{ManagHAL}, package R d’extraction de données bibliométrique HAL et d’analyse de réseaux</h3>
 <p>Les outils pour réaliser des analyses bibliométriques se répartissent en trois catégories, “general bibliometric and performance analysis, science mapping analysis, and libraries” (<a href="https://revista.profesionaldelainformacion.com/index.php/EPI/article/view/epi.2020.ene.03"><span class="citation" data-cites="Moral-Muñoz2020">Moral-Muñoz et al. (<span>2020</span>)</span></a>) ou analyse générale bibliométrique et de performances, analyses par cartographie scientifique et librairies / packages. Le package {managHAL} se trouve dans les troisième et deuxième catégories. Il existe à ce jour d’autres outils d’analyses bibliométriques mais la majorité ne permettent pas de travailler via l’api HAL et se concentrent sur webofscience, scopus, google scholar,… Il existe des outils d’extraction de publications HAL, cependant aucun package R ne permet actuellement d’extraire ces données pour réaliser des analyses statisistiques. Pour répondre à ce besoin, Théodore Vanrengterghem a commencé à développer le package R {managHAL}. Le package permet l’extraction de données HAL et la création de bilans bibliographiques. En cours de développement, ce package ne permet pas actuellement la réalisation d’analyses bibliométriques.</p>
 <p>Ainsi, durant mes 2 mois et 17 jours de stage au sein de l’unité mixte de recherche Mathématiques et Informatique Appliquées (MIA) - Paris Saclay, associée aux tutelles AgroParisTech, INRAE et Université Paris Saclay, j’ai travaillé sur rendre le package {managHAL} plus accessible et utilisable par d’autres unités de recherches que l’unité MIA - Paris Saclay. J’ai aussi travaillé sur la programmation et l’intégration d’outils d’analyse statistique de réseau au sein du package. Encadré par deux tuteurs, Julie Aubert et Pierre Barbillon, j’ai contribué à la mise en forme du package et à la création de fonctions spécifiques.</p>
 <p>Pour comprendre les choix réalisés lors du développement du package, il est nécessaire de réaliser une introduction aux réseaux. Un réseau d’interaction est constitué de nœuds (les entités) et d’arêtes (les liens entre ces entités). Dans le cadre du package {managHAl}, j’utiliserai les réseaux pour modéliser un réseau de co-publications (ou co-auteurs). Les noeuds représenteront des auteurs, et les arêtes entre ces noeuds (auteurs) seront l’existence de publications scientifiques co-écrite par les deux noeuds. La taille d’un nœud représentera le nombre de publications écrites par cet auteur (noeud) et la largeur d’une arête pourra correspondre au nombre de publications co-ecrites par les deux noeuds (co-auteurs). Les réseaux ne sont cependant pas exclusifs à l’analyse de données bibliométriques. En effet, les réseaux sont utilisés comme représentation et comme objet d’analyse statistique dans de nombreux domaines. Par exemple, des réseaux de régulations de gènes sont réalisés à partir de données de co-expression. Il est possible de donner d’autres exemples comme les analyses de réseaux d’interactions entre des espèces (réseau trophique) réalisées en écologie (<a href="https://github.com/GrossSBM/sbm/blob/master/vignettes/SBM_fungus_tree_network.Rmd">analyse réalisée dans une vignette du package {sbm}</a>). Les utilisations des réseaux sont nombreuses. L’introduction aux réseaux et leurs analyses sera approfondie dans la section méthodes.</p>
 <p>Ce package s’adresse donc à un public souhaitant réaliser des analyses bibliométriques approfondies à partir de HAL. Nous verrons cependant dans la section discussion qu’il est possible d’élargir les usages du package.</p>
 </section>
 </section>
-<section id="méthodes" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="méthodes"><span class="header-section-number">1.2</span> Méthodes</h2>
-<section id="modèle-de-graphe-aléatoire" class="level3" data-number="1.2.1">
-<h3 data-number="1.2.1" class="anchored" data-anchor-id="modèle-de-graphe-aléatoire"><span class="header-section-number">1.2.1</span> Modèle de graphe aléatoire</h3>
+<section id="méthodes" class="level2">
+<h2 class="anchored" data-anchor-id="méthodes">Méthodes</h2>
+<section id="modèle-de-graphe-aléatoire" class="level3">
+<h3 class="anchored" data-anchor-id="modèle-de-graphe-aléatoire">Modèle de graphe aléatoire</h3>
 <p>Cette partie est principalement basée sur la publication “Using Latent Block Models to Detect Structure in Ecological Networks” <a href="https://onlinelibrary.wiley.com/doi/10.1002/9781119902799.ch6"><span class="citation" data-cites="latent-block-models">Aubert et al. (<span>2022</span>)</span></a>.</p>
 <p>Les réseaux se divisent en deux catégories principales (voir figures suivantes): les réseaux unipartites où tous les nœuds sont du même type et les réseaux bipartites où il y a deux types distincts de nœuds, et les liens ne se forment qu’entre des nœuds de types différents.(voir <a href="#reseau-unipart-bipart">exemple_reseau_unipartite_bipartite</a> pour le code de réalisation des réseaux d’exemple)</p>
 <p><strong>Exemple des deux types de réseaux</strong></p>
@@ -329,29 +229,29 @@ Y_{ij} = 0 &amp; \quad \text{si aucun lien n'existe entre les nœuds } i \text{ 
 </ul>
 <p>Nous avons donc comme paramètres du modèle <span class="math inline">\(\theta = (\gamma, \pi)\)</span>. A partir du réseau connu, il est possible d’inférer les paramètres du modèle. Par nécessité d’écourter le rapport, une explication détaillée ne sera pas réalisée. Je vous conseille cependant d’aller voir la publication “Using Latent Block Models to Detect Structure in Ecological Networks” <span class="citation" data-cites="latent-block-models">Aubert et al. (<a href="#ref-latent-block-models" role="doc-biblioref">2022</a>)</span> où les explications à ce propos sont claires et précises.</p>
 </section>
-<section id="méthodes-informatiques" class="level3" data-number="1.2.2">
-<h3 data-number="1.2.2" class="anchored" data-anchor-id="méthodes-informatiques"><span class="header-section-number">1.2.2</span> Méthodes informatiques</h3>
+<section id="méthodes-informatiques" class="level3">
+<h3 class="anchored" data-anchor-id="méthodes-informatiques">Méthodes informatiques</h3>
 <p>Comme précisé dans l’introduction, l’intégralité des méthodes informatiques développées ont été réalisées sur RStudio en utilisant le langage R version 4.4.1 sous Windows 11 x64. Les packages utilisés sont les suivants :</p>
 <p>Le package {dplyr} <span class="citation" data-cites="dplyr">(<a href="#ref-dplyr" role="doc-biblioref">Wickham et al. 2023</a>)</span> est utilisé pour la manipulation et la transformation des données grâce à une syntaxe claire et cohérente. Ce package facilite les opérations courantes telles que la sélection, le filtrage, le regroupement et le résumé des données. Le package {mailR} <span class="citation" data-cites="mailR">(<a href="#ref-mailR" role="doc-biblioref">Premraj 2021</a>)</span> est utilisé pour l’envoi d’emails avec des pièces jointes directement depuis R, ce qui est utile pour automatiser l’envoi de rapports. Le package {askpass} <span class="citation" data-cites="askpass">(<a href="#ref-askpass" role="doc-biblioref">Ooms 2023</a>)</span> est utilisé pour gérer les mots de passe de manière sécurisée. Le package {furrr} <span class="citation" data-cites="furrr">(<a href="#ref-furrr" role="doc-biblioref">Vaughan and Dancho 2022</a>)</span> est utilisé pour paralléliser les tâches en combinaison avec le package future <span class="citation" data-cites="future">(<a href="#ref-future" role="doc-biblioref">Bengtsson 2021</a>)</span>. Le package {future} <span class="citation" data-cites="future">(<a href="#ref-future" role="doc-biblioref">Bengtsson 2021</a>)</span> permet l’exécution de code en parallèle, ce qui réduit le temps de traitement des tâches lourdes. Le package {ggplot2} <span class="citation" data-cites="ggplot2">(<a href="#ref-ggplot2" role="doc-biblioref">Wickham 2016</a>)</span> est utilisé pour la création de visualisations graphiques sophistiquées. Le package {magrittr} <span class="citation" data-cites="magrittr">(<a href="#ref-magrittr" role="doc-biblioref">Bache and Wickham 2022</a>)</span> fournit des opérateurs pour améliorer la lisibilité du code, en particulier l’opérateur <code>%&gt;%</code> (pipe). Le package {purrr} <span class="citation" data-cites="purrr">(<a href="#ref-purrr" role="doc-biblioref">Wickham and Henry 2023</a>)</span> est utilisé pour les opérations fonctionnelles sur les listes et autres structures de données. Le package {quarto} <span class="citation" data-cites="quarto">(<a href="#ref-quarto" role="doc-biblioref">Allaire and Dervieux 2024</a>)</span> est utilisé pour la création de documents dynamiques et de rapports. Le package {readxl} <span class="citation" data-cites="readxl">(<a href="#ref-readxl" role="doc-biblioref">Wickham and Bryan 2023</a>)</span> permet la lecture de fichiers Excel. Le package {rvest} <span class="citation" data-cites="rvest">(<a href="#ref-rvest" role="doc-biblioref">Wickham 2024</a>)</span> est utilisé pour le web scraping, c’est-à-dire l’extraction de données à partir de pages web. Le package {SnowballC} <span class="citation" data-cites="SnowballC">(<a href="#ref-SnowballC" role="doc-biblioref">Bouchet-Valat 2023</a>)</span> est utilisé pour le traitement de la langue naturelle, en particulier pour la lemmatisation. Le package {stringr} <span class="citation" data-cites="stringr">(<a href="#ref-stringr" role="doc-biblioref">Wickham 2023</a>)</span> fournit des fonctions pour la manipulation des chaînes de caractères. Le package {tictoc} <span class="citation" data-cites="tictoc">(<a href="#ref-tictoc" role="doc-biblioref">Izrailev 2024</a>)</span> est utilisé pour mesurer le temps d’exécution des morceaux de code. Le package {tm} <span class="citation" data-cites="tm">(<a href="#ref-tm" role="doc-biblioref">Feinerer and Hornik 2024</a>)</span> est utilisé pour le text mining (extraction de connaissances à partir de textes). Le package {wordcloud} <span class="citation" data-cites="wordcloud">(<a href="#ref-wordcloud" role="doc-biblioref">Fellows 2018</a>)</span> est utilisé pour la création de nuages de mots. Le package {Visnetwork} <span class="citation" data-cites="chiquet2020">(<a href="#ref-chiquet2020" role="doc-biblioref">Chiquet, Donnet, and Barbillon 2020</a>)</span> est utilisé pour la visualisation de réseaux dynamiques. Le package {Sbm} <span class="citation" data-cites="sbm">(<a href="#ref-sbm" role="doc-biblioref">Chiquet, Donnet, and Barbillon 2024</a>)</span> est utilisé pour réaliser les analyses statistiques de réseaux.</p>
 <p>Afin de pouvoir construire une requête HAL pour récupérer des données bibliographiques de publications d’auteurs, il est nécessaire de comprendre comment construire une requête. Pour construire une requête HAL, il faut au moins un paramètre <code>q</code> qui contient la requête de recherche. Ce paramètre doit spécifier le champ de recherche suivi de la valeur. Par exemple, pour rechercher le terme “test” : <code>http://api.archives-ouvertes.fr/search/?q=test&amp;wt=xml</code> . Si le champ n’est pas spécifié, la recherche s’effectue par défaut dans l’index texte. Pour rechercher dans un champ particulier, il faut utiliser <code>champ:terme</code> : <code>http://api.archives-ouvertes.fr/search/?q=title_t:japon&amp;wt=xml</code> . Pour échapper certains caractères spéciaux utilisés par Apache Solr, utilisez <code>\</code>. Par exemple, <code>(1+1):2</code> devient <code>\(1\+1\)\:2</code>. (voir <span class="citation" data-cites="api-hal"><span>“Documentation API-HAL”</span> (<a href="#ref-api-hal" role="doc-biblioref">n.d.</a>)</span>). Il est possible d’indiquer le format de la réponse (sous-entendant le format des données récupérées) via le paramètre <code>wt</code> . Pour finir il est possible de spécifier les champs à retourner dans la réponse via le paramètre <code>fl</code> et de faire un filtre des données via le paramètre <code>fq</code> (<a href="https://api.archives-ouvertes.fr/docs/search/?#q"><span class="citation" data-cites="api-hal"><span>“Documentation API-HAL”</span> (<span>n.d.</span>)</span></a>). Toutes les possibilités de l’API HAL n’ont pas été abordées dans ce court résumé. Il est pourtant compréhensible que l’API HAL est très diverse et permet une grande liberté à l’utilisateur pour l’extraction des données. De plus, il existe un nombre de champs considérables. Certains seront abordés par la suite dans la section résultats.</p>
 <p>Pour finir, la totalité du stage s’est inscrit dans une dynamique de développement et d’intégration continue via la forge Gitlab d’INRAE. La forge GitLab, est un logiciel DevOps passant par le langage Git. Git est un système de contrôle, de versionning du code des développeurs gratuit et open source. Il permet à plusieurs développeurs de travailler sur un code sur un même dépôt et d’avancer ensemble par le biais de “merge”. “Merge” signifie que la personne modifiant un fichier contenant du code pousse en ligne sur le dépôt partagé , les modifications réalisées.</p>
 </section>
 </section>
-<section id="résultats" class="level2" data-number="1.3">
-<h2 data-number="1.3" class="anchored" data-anchor-id="résultats"><span class="header-section-number">1.3</span> Résultats</h2>
+<section id="résultats" class="level2">
+<h2 class="anchored" data-anchor-id="résultats">Résultats</h2>
 <p>Cette section présente les résultats obtenus au cours de mon stage. Elle est divisée en deux parties principales: Les modifications faites au package {managHAL} d’origine dans l’objectif de le rendre plus générique et plus accessible, puis l’ajout de fonctionnalités au package {managHAL}. Par choix, seulement certaines fonctions et scripts R du package sont abordés. L’exécution de ces derniers est réalisée par le biais d’un exemple. Cet exemple est basé sur des données de l’UMR MIA-Paris-Saclay. Chaque fonction est expliquée en détail, suivie des raisons justifiant son développement. Il est important de noter que mon stage se terminant le 26 juillet, Le package est encore en développement. Certaines fonctionnalités sont encore en travail. Les fonctions présentées fonctionnent dans le cadre de l’exemple. Si vous souhaitez exécuter les scripts fournis dans le mémoire, il est nécessaire d’avoir accès au package {managHAL}. Dans cette section, les noms de <em><code>fonctions</code></em> seront en italique et les noms des <strong>scripts R</strong> contenant les fonctions seront en gras.</p>
-<section id="accessibilité-et-généricité-de-managhal" class="level3" data-number="1.3.1">
-<h3 data-number="1.3.1" class="anchored" data-anchor-id="accessibilité-et-généricité-de-managhal"><span class="header-section-number">1.3.1</span> Accessibilité et généricité de {managHAL}</h3>
+<section id="accessibilité-et-généricité-de-managhal" class="level3">
+<h3 class="anchored" data-anchor-id="accessibilité-et-généricité-de-managhal">Accessibilité et généricité de {managHAL}</h3>
 <p>Lors de mon stage, j’ai d’abord décidé de rendre le package plus accessible et générique. Pour ce faire, il m’était nécessaire de réorganiser et modifier certaines fonctions déjà présentes codées par Théodore Vanrengterghem.</p>
-<section id="modifications-de-la-fonction-load_mia_table" class="level4" data-number="1.3.1.1">
-<h4 data-number="1.3.1.1" class="anchored" data-anchor-id="modifications-de-la-fonction-load_mia_table"><span class="header-section-number">1.3.1.1</span> Modifications de la fonction <em><code>load_mia_table</code></em></h4>
+<section id="modifications-de-la-fonction-load_mia_table" class="level4">
+<h4 class="anchored" data-anchor-id="modifications-de-la-fonction-load_mia_table">Modifications de la fonction <em><code>load_mia_table</code></em></h4>
 <p>J’ai commencé par modifier dans le fichier <strong>mia_table.R</strong> la fonction <em><code>load_mia_table</code></em>. A l’origine, cette fonction permettait le chargement d’un csv en ligne fourni par les Ressources Humaines depuis un serveur. Le fichier contient des informations telles que le nom, le prénom, l’idhal, l’équipe, etc, des personnes appartenant au labo. Cette fonction n’était pas générique. Ainsi, il était nécessaire de la modifier. J’ai fait le choix de renommer le fichier <strong>load_table.R</strong>. J’ai remplacé la fonction <em><code>load_mia_table</code></em> par trois fonctions <em><code>load_team_table_csv</code></em>, <em><code>load_team_table_url</code></em>, et <em><code>load_team_table</code></em>. J’ai aussi modifié la majorité des fonctions déjà présentes dans le package faisant appel à <em><code>load_mia_table</code></em>. Les paramètres en entrée des trois fonctions sont les même que la fonction <em><code>load_mia_table</code></em> d’origine avec l’ajout d’un paramètre permettant à l’utilisateur de rentrer l’adresse du fichier. J’ai ensuite créé une documentation via le package {roxygène2} conforme aux critères requis pour un package mis en ligne (veuillez vous référez à l’annexe : <a href="#doc-Roxygen2">Exemple d’une documentation classique avec Roxygen2</a> ) pour chacune des trois fonctions.</p>
 <p><em><code>load_team_table_url</code></em> permet de charger un csv dans RStudio depuis un fichier en ligne. J’ai décidé pour <em><code>load_team_table_url</code></em> de garder en majeur partie le code d’origine et de simplement le réadapter par soucis de temps. J’y ai ajouté des conditions de présence de colonnes obligatoires afin d’obliger l’utilisateur à fournir des colonnes sous un format spécifique. (Pour voir le corps de la fonction, veuillez vous référer à l’annexe : <a href="#load-team-table-url">load_team_table_url</a>)</p>
 <p><em><code>load_team_table_csv</code></em> est basée sur la construction de <em><code>load_team_table_url</code></em>. Je l’ai adapté pour pouvoir charger depuis un fichier local de la machine de l’utilisateur en utilisant <em>read.csv</em>. De même que dans <em><code>load_team_table_url</code></em>, j’y ai ajouté des conditions de présence de colonnes obligatoires afin d’obliger l’utilisateur à fournir des colonnes sous un format spécifique. (Pour voir le corps de la fonction, veuillez vous référer à l’annexe : <a href="#load-team-table-csv">load_team_table_csv</a>)</p>
 <p>Enfin, <em><code>load_team_table</code></em> appelle l’une des deux fonctions en fonction du type d’adresse fourni : URL ou chemin de fichier local. Le type de l’adresse est déterminé en utilisant <em><code>grepl</code></em>, qui utilise une expression régulière. (Pour voir le corps de la fonction, veuillez vous référer à l’annexe : <a href="#load-team-table">load_team_table</a>)</p>
 </section>
-<section id="résultat-de-lapplication-de-load_team_table" class="level4" data-number="1.3.1.2">
-<h4 data-number="1.3.1.2" class="anchored" data-anchor-id="résultat-de-lapplication-de-load_team_table"><span class="header-section-number">1.3.1.2</span> Résultat de l’Application de <em>load_team_table</em></h4>
+<section id="résultat-de-lapplication-de-load_team_table" class="level4">
+<h4 class="anchored" data-anchor-id="résultat-de-lapplication-de-load_team_table">Résultat de l’Application de <em>load_team_table</em></h4>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>data_RH_csv_Example <span class="ot">&lt;-</span> <span class="fu">load_team_table</span>(<span class="at">filter_id =</span> <span class="cn">TRUE</span>,</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">date_cols =</span> <span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">7</span>), <span class="at">filepath_or_url =</span> <span class="st">"./data/Data_RH_Example.csv"</span>)</span>
@@ -377,8 +277,8 @@ Y_{ij} = 0 &amp; \quad \text{si aucun lien n'existe entre les nœuds } i \text{ 
 </div>
 <p>Lors de l’application de la fonction <em><code>load_team_table</code></em> ci-dessus en utilisant le jeu de données test Data_RH_Example, on observe le chargement d’un csv contenant les colonnes d’origine du csv fournies en entrée. Les valeurs manquantes ou mal renseignées des idhals numériques ont été remplacées par des NAs. Les dates présentes dans les colonnes de dates spécifiées par l’utilisateur ont été nettoyées et ont le bon format.</p>
 </section>
-<section id="modifications-des-fonctions-régissant-la-requête-hal" class="level4" data-number="1.3.1.3">
-<h4 data-number="1.3.1.3" class="anchored" data-anchor-id="modifications-des-fonctions-régissant-la-requête-hal"><span class="header-section-number">1.3.1.3</span> Modifications des fonctions régissant la requête HAL</h4>
+<section id="modifications-des-fonctions-régissant-la-requête-hal" class="level4">
+<h4 class="anchored" data-anchor-id="modifications-des-fonctions-régissant-la-requête-hal">Modifications des fonctions régissant la requête HAL</h4>
 <p>Dans le package {managHAL} originel, il y avait deux fichiers contenant les fonctions nécessaires à la construction d’une requête HAL. Ces deux fichiers se nomment <strong>HAL_reports.R</strong> et <strong>HAL_queries.R</strong>. La fonction principale de construction d’une requête HAL est <em><code>HAL_query</code></em>. Elle prend en entrée différents paramètres et construit une url correspondant à une requête HAL. Ces différents paramètres définissent les différents champs, filtres, sorties demandées de la requête. Les champs de sortie ne convenant pas et manquait d’information pour la construction d’un réseau. Ainsi, après réflexion et discussion avec mes tuteurs Julie Aubert et Pierre Barbillon, j’ai modifié les différents champs de sorties afin d’obtenir les données nécessaires et essentielles à la construction d’un réseau. Par exemple, le champ ‘authFullNamePersonIDIDHal_fs’ permet de spécifier à HAL_query de récupérer les noms et les identifiants HAL numériques des autheurs d’une même publication. Le paramètre add_output ajouté par Théodore Vanrengterghem dans la fonction d’origine permet à l’utilisateur de rentrer des champs de sortie spécifiques en plus. Ce paramètre a été beaucoup utilisé au cours de ce stage dans la création de fonction permettant la création de réseau.</p>
 <p>La fonction d’origine ne créer pas d’url d’une page permettant de récupérer les publications autres qu’à partir d’identifiants numériques d’auteurs, j’ai modifié les paramètres d’entrée et le corps de la fonction afin que l’utilisateur puissent spécifier si les identifiants fournis sont des identifiants de structures ou des identifiants de personnes. La nouvelle fonction HAL_query crée un url qui peut récupérer au choix de l’utilisateur une liste de publications associés à une structure via son identifiant ou une liste de publications associés à un identifiant numérique. (Pour voir le corps de la fonction, veuillez vous référer à l’annexe : <a href="#HAL-query">HAL_query</a>)</p>
 <p>Plusieurs fonctions présentes avant mes modifications faisait appel à HAL_query. Ces dernières comme HAL_extract_csv ont donc été modifiées afin de correspondre à la nouvelle version de HAL_query. De même Les fonctions auquelles fait appel HAL_query ont elles aussi été modifiées pour correspondre à HAL_query. HAL_extract_csv est une fonction récupèrant l’url via HAL_query. Pour montrer les résultats obtenus avec HAL_query, des exemples ci-dessous seront réalisés avec HAL_extract_csv pour une liste d’identifiants numérique d’auteurs et pour un identifiant d’une unité/laboratoire. Il sera ajouté des sorties via le paramètres add_outputs :</p>
@@ -428,10 +328,10 @@ Y_{ij} = 0 &amp; \quad \text{si aucun lien n'existe entre les nœuds } i \text{ 
 </div>
 </section>
 </section>
-<section id="ajout-de-fonctionnalité-à-managhal" class="level3" data-number="1.3.2">
-<h3 data-number="1.3.2" class="anchored" data-anchor-id="ajout-de-fonctionnalité-à-managhal"><span class="header-section-number">1.3.2</span> Ajout de fonctionnalité à {managHAL}</h3>
-<section id="création-dun-réseau-de-co-auteurs-et-visualisation-avec-visnetwork" class="level4" data-number="1.3.2.1">
-<h4 data-number="1.3.2.1" class="anchored" data-anchor-id="création-dun-réseau-de-co-auteurs-et-visualisation-avec-visnetwork"><span class="header-section-number">1.3.2.1</span> Création d’un réseau de co-auteurs et visualisation avec visNetwork</h4>
+<section id="ajout-de-fonctionnalité-à-managhal" class="level3">
+<h3 class="anchored" data-anchor-id="ajout-de-fonctionnalité-à-managhal">Ajout de fonctionnalité à {managHAL}</h3>
+<section id="création-dun-réseau-de-co-auteurs-et-visualisation-avec-visnetwork" class="level4">
+<h4 class="anchored" data-anchor-id="création-dun-réseau-de-co-auteurs-et-visualisation-avec-visnetwork">Création d’un réseau de co-auteurs et visualisation avec visNetwork</h4>
 <p>Afin d’obtenir les informations sous-jacentes des données bibliographiques, j’ai commencé à travailler à la création d’un réseau de co-auteur. Pour l’instant, la fonctionnalité n’existe qu’au format de script R sur un document quarto. Au cours des semaines restantes, l’objectif est de continuer à travailler dessus et créer des fonctions simples et claires permettant à l’utilisateur de créer son propre réseau à partir de ses données. Le script de création de fonction est inspiré d’un script fournie au préalable par ma tutrice Julie Aubert. Des modifications et des ajouts ont été apportés pour améliorer l’extraction, le nettoyage, la construction, et la visualisation des données. Suite à mes modifications et mes ajouts, le script se divise en plusieurs parties ((Pour voir le script R, veuillez vous référer à l’annexe : <a href="#reseau-co-auteur">Script_R_reseau_co-auteur</a>) :</p>
 <p>La première partie correspond à l’extraction et au nettoyage des données. Les données brutes ont été organisées et nettoyées pour être adaptées à la construction du réseau. Les années de publication ont été extraites et les identifiants des auteurs ont été nettoyé. Les auteurs ont été associés aux structures pertinentes, et les incohérences de noms ou d’identifiants HAL ont été corrigées. Des identifiants fictifs ont été créés pour les auteurs sans identifiant.</p>
 <p>La deuxième partie concerne la construction et la visualisation du graphe. À partir des données nettoyées, des matrices de contingence ont été créées. Ces matrices ont été converties en listes de nœuds (auteurs) et en listes d’arêtes (collaborations). Les nœuds ont été colorés et groupés en fonction des années de publication, et des légendes ont été ajoutées pour faciliter la compréhension du graphe. Des descriptions supplémentaires ont été intégrées pour enrichir les légendes, et la visualisation finale du réseau a été réalisée via visnetwork.</p>
@@ -444,8 +344,8 @@ Y_{ij} = 0 &amp; \quad \text{si aucun lien n'existe entre les nœuds } i \text{ 
 </div>
 <p>A travers cet exemple, les limitations de la création de réseau sur les données récupérées via un identifiant de laboratoire transparaissent. De fait, on voit l’apparition de cercle de co-auteurs très denses. Ces cercles correspondent généralement à une unique publication contenant de nombreux auteurs.</p>
 </section>
-<section id="modélisation-en-blocs-stochastiques" class="level4" data-number="1.3.2.2">
-<h4 data-number="1.3.2.2" class="anchored" data-anchor-id="modélisation-en-blocs-stochastiques"><span class="header-section-number">1.3.2.2</span> Modélisation en blocs stochastiques</h4>
+<section id="modélisation-en-blocs-stochastiques" class="level4">
+<h4 class="anchored" data-anchor-id="modélisation-en-blocs-stochastiques">Modélisation en blocs stochastiques</h4>
 <p>J’ai tout de même réalisé un modèle en bloc stochastique sur ce réseau. (voir le code du script en annexe :<a href="#Script-R-SBM-Full-Network">Script_R_SBM</a>). Pour cela j’ai créé une matrice d’adjacence vide et je l’ai remplie avec les connexions pondérées des nœuds, puis nettoyée pour la lisibilité et visualisée avec plotMyMatrix. Ensuite, un modèle SBM est estimé à partir de cette matrice, les nœuds sont classés en groupes colorés. Enfin, le réseau est visualisé avec visNetwork, incluant des options pour une meilleure compréhension et esthétique.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -464,8 +364,8 @@ Y_{ij} = 0 &amp; \quad \text{si aucun lien n'existe entre les nœuds } i \text{ 
 </section>
 </section>
 </section>
-<section id="discussion" class="level2" data-number="1.4">
-<h2 data-number="1.4" class="anchored" data-anchor-id="discussion"><span class="header-section-number">1.4</span> Discussion</h2>
+<section id="discussion" class="level2">
+<h2 class="anchored" data-anchor-id="discussion">Discussion</h2>
 <p>Au cours de cette partie, plusieurs sujets seront abordés. Les limites actuelles du package {managHAL} et les possibles améliorations seront discutées. Les résultats obtenus seront replacés dans un contexte scientifique plus large. Enfin, les utilisations potentielles du package {managHAL} seront examinées.</p>
 <p>Premièrement, il est important de parler des limites rencontrées au cours de ce projet. Un des défis a été l’intégration de l’API HAL. Malgré mes efforts, l’API HAL s’est révélée complexe et souvent peu intuitive. En effet, il existe des centaines de champs pour récupérer des données sur l’API HAL. Cela m’a freiné dans la compréhension de l’API et dans la modification des fonctions utilisant cette dernière. Les erreurs rencontrées étaient souvent dues à une mauvaise récupération des données ou à une confusion de ma part par rapport au formatage de ces dernières. J’ai donc eu besoin de nombreuses heures de recherches, de débogage et de tests pour obtenir les résultats attendus.</p>
 <p>De plus, bien que le code développé ait montré une certaine efficacité en terme de temps de calcul, il reste des marges d’amélioration. Par exemple, certaines parties du code pourraient être optimisées pour améliorer les performances des fonctions et réduire le temps de traitement. Remplacer les boucles <code>for</code> par <code>apply</code>, qui est optimisée et plus rapide, pourrait être une solution. De même, pour la création de réseaux et l’utilisation de modélisation en bloc stochastique, il est encore possible d’améliorer le temps de traitement en recherchant et modifiant les options des fonctions utilisées ou en créant des sous-groupes comme présenté dans les résultats.</p>
@@ -474,10 +374,10 @@ Y_{ij} = 0 &amp; \quad \text{si aucun lien n'existe entre les nœuds } i \text{ 
 <p>En conclusion, ce stage a permis de réaliser des avancées significatives dans le développement de l’outil qu’est le package {managHAL} malgré les défis rencontrés. Les prochaines étapes incluront des optimisations et des développements supplémentaires pour renforcer l’impact et la portée du travail réalisé, tout en restant alignées avec les principes de la science ouverte. Cette démarche, combinée à une réflexion continue sur les objectifs et les résultats, permettra non seulement d’améliorer la qualité du travail actuel, mais aussi de poser les bases pour l’entretien du package par les futurs développeurs.</p>
 <div style="page-break-after: always;"></div>
 </section>
-<section id="annexes" class="level2" data-number="1.5">
-<h2 data-number="1.5" class="anchored" data-anchor-id="annexes"><span class="header-section-number">1.5</span> Annexes</h2>
-<section id="load-team-table-url" class="level3 Sections" data-number="1.5.1">
-<h3 class="Sections anchored" data-number="1.5.1" data-anchor-id="load-team-table-url"><span class="header-section-number">1.5.1</span> load_team_table_url</h3>
+<section id="annexes" class="level2">
+<h2 class="anchored" data-anchor-id="annexes">Annexes</h2>
+<section id="load-team-table-url" class="level3 Sections">
+<h3 class="Sections anchored" data-anchor-id="load-team-table-url">load_team_table_url</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>load_team_table_url <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">filter_id =</span> <span class="cn">TRUE</span>, date_cols,</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    url) {</span>
@@ -514,8 +414,8 @@ Y_{ij} = 0 &amp; \quad \text{si aucun lien n'existe entre les nœuds } i \text{ 
 </div>
 <p>Cette fonction permet le chargement d’un fichier csv depuis un url. Elle prend en entrée une adresse url, un booléen déterminant le nettoyage ou non des valeurs idHALs, et un vecteur contenant le numéro des colonnes de dates. Elle donne en sortie le chargement d’un fichier csv.</p>
 </section>
-<section id="load-team-table-csv" class="level3 Sections" data-number="1.5.2">
-<h3 class="Sections anchored" data-number="1.5.2" data-anchor-id="load-team-table-csv"><span class="header-section-number">1.5.2</span> load_team_table_csv</h3>
+<section id="load-team-table-csv" class="level3 Sections">
+<h3 class="Sections anchored" data-anchor-id="load-team-table-csv">load_team_table_csv</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>load_team_table_csv <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">filter_id =</span> <span class="cn">TRUE</span>,</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>                                date_cols,</span>
@@ -562,8 +462,8 @@ Y_{ij} = 0 &amp; \quad \text{si aucun lien n'existe entre les nœuds } i \text{ 
 </div>
 <p>Cette fonction permet le chargement d’un fichier csv depuis une adresse locale de la machine de l’utilisateur. Elle prend en entrée une adresse locale d’un fichier csv, un booléen déterminant le nettoyage ou non des valeurs idHALs, et un vecteur contenant le numéro des colonnes de dates. Elle donne en sortie le chargement d’un fichier csv.</p>
 </section>
-<section id="load-team-table" class="level3 Sections" data-number="1.5.3">
-<h3 class="Sections anchored" data-number="1.5.3" data-anchor-id="load-team-table"><span class="header-section-number">1.5.3</span> load_team_table</h3>
+<section id="load-team-table" class="level3 Sections">
+<h3 class="Sections anchored" data-anchor-id="load-team-table">load_team_table</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>load_team_table <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">filter_id =</span> <span class="cn">TRUE</span>, <span class="at">date_cols =</span> <span class="fu">c</span>(<span class="dv">7</span>,</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="dv">8</span>), filepath_or_url) {</span>
@@ -587,8 +487,8 @@ Y_{ij} = 0 &amp; \quad \text{si aucun lien n'existe entre les nœuds } i \text{ 
 </div>
 <p>Cette fonction permet le chargement d’un fichier csv depuis une adresse locale de la machine de l’utilisateur ou depuis une adresse url. Elle prend en entrée une adresse locale d’un fichier csv ou une URL, un booléen déterminant le nettoyage ou non des valeurs idHALs, et un vecteur contenant le numéro des colonnes de dates. Elle donne en sortie le chargement d’un fichier csv.</p>
 </section>
-<section id="doc-Roxygen2" class="level3 Sections" data-number="1.5.4">
-<h3 class="Sections anchored" data-number="1.5.4" data-anchor-id="doc-Roxygen2"><span class="header-section-number">1.5.4</span> Exemple d’une documentation classique avec Roxygen2</h3>
+<section id="doc-Roxygen2" class="level3 Sections">
+<h3 class="Sections anchored" data-anchor-id="doc-Roxygen2">Exemple d’une documentation classique avec Roxygen2</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">#' load_team_table_csv</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co">#'</span></span>
@@ -616,8 +516,8 @@ Y_{ij} = 0 &amp; \quad \text{si aucun lien n'existe entre les nœuds } i \text{ 
 </div>
 <p>Ce script permet la création d’une documentation de fonction classique via la commande : <code>devtools::document()</code>. Elle est au format utilisé par {roxygen2}.</p>
 </section>
-<section id="HAL-query" class="level3 Sections" data-number="1.5.5">
-<h3 class="Sections anchored" data-number="1.5.5" data-anchor-id="HAL-query"><span class="header-section-number">1.5.5</span> HAL_query</h3>
+<section id="HAL-query" class="level3 Sections">
+<h3 class="Sections anchored" data-anchor-id="HAL-query">HAL_query</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>HAL_query <span class="ot">&lt;-</span> <span class="cf">function</span>(id,</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>                      <span class="at">date_min =</span> <span class="cn">NULL</span>,</span>
@@ -724,8 +624,8 @@ Y_{ij} = 0 &amp; \quad \text{si aucun lien n'existe entre les nœuds } i \text{ 
 </div>
 <p>Cette fonction permet de créer une adresse url d’une requête à l’API HAL. Elle prend en entrée différents paramètres de spécification du rendu. Elle donne en sortie une URL.</p>
 </section>
-<section id="reseau-co-auteur" class="level3 Sections" data-number="1.5.6">
-<h3 class="Sections anchored" data-number="1.5.6" data-anchor-id="reseau-co-auteur"><span class="header-section-number">1.5.6</span> Script_R_reseau_co-auteur</h3>
+<section id="reseau-co-auteur" class="level3 Sections">
+<h3 class="Sections anchored" data-anchor-id="reseau-co-auteur">Script_R_reseau_co-auteur</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="do">#### ------------------- Creation of a co-authors</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="do">#### graph ------------------- ####</span></span>
@@ -954,8 +854,8 @@ Y_{ij} = 0 &amp; \quad \text{si aucun lien n'existe entre les nœuds } i \text{ 
 </div>
 <p>Ce script permet la création d’un réseau de co-auteur à partir de données bibliographique HAL.</p>
 </section>
-<section id="reseau-unipart-bipart" class="level3 Sections" data-number="1.5.7">
-<h3 class="Sections anchored" data-number="1.5.7" data-anchor-id="reseau-unipart-bipart"><span class="header-section-number">1.5.7</span> exemple_reseau_unipartite_bipartite</h3>
+<section id="reseau-unipart-bipart" class="level3 Sections">
+<h3 class="Sections anchored" data-anchor-id="reseau-unipart-bipart">exemple_reseau_unipartite_bipartite</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Création d'un réseau unipartite</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">42</span>)  <span class="co"># Pour la reproductibilité </span></span>
@@ -984,8 +884,8 @@ Y_{ij} = 0 &amp; \quad \text{si aucun lien n'existe entre les nœuds } i \text{ 
 </div>
 <p>Ce script permet de créer les réseaux unipartites et bipartites présent dans les méthodes.</p>
 </section>
-<section id="Script-R-SBM-Full-Network" class="level3 section" data-number="1.5.8">
-<h3 class="section anchored" data-number="1.5.8" data-anchor-id="Script-R-SBM-Full-Network"><span class="header-section-number">1.5.8</span> Script_R_SBM</h3>
+<section id="Script-R-SBM-Full-Network" class="level3 section">
+<h3 class="section anchored" data-anchor-id="Script-R-SBM-Full-Network">Script_R_SBM</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create an empty adjacence matrix</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>matrice_adjacence <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>, <span class="at">nrow =</span> <span class="fu">length</span>(node_list<span class="sc">$</span>id),</span>
@@ -1038,8 +938,8 @@ Y_{ij} = 0 &amp; \quad \text{si aucun lien n'existe entre les nœuds } i \text{ 
 </div>
 <p>Ce script permet de réaliser un modèle en bloc stochastiques depuis le réseau créé dans l’annexe <a href="#reseau-co-auteur">Script_R_reseau_co-auteur</a>.</p>
 </section>
-<section id="Script-R-SBM-Partial-Network" class="level3 section" data-number="1.5.9">
-<h3 class="section anchored" data-number="1.5.9" data-anchor-id="Script-R-SBM-Partial-Network"><span class="header-section-number">1.5.9</span> Script_R_Sous-groupe</h3>
+<section id="Script-R-SBM-Partial-Network" class="level3 section">
+<h3 class="section anchored" data-anchor-id="Script-R-SBM-Partial-Network">Script_R_Sous-groupe</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="do">## test pour obtenir un sous groupe</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>find_info_author_associated_with_id_struc <span class="ot">&lt;-</span> <span class="cf">function</span>(data_frame_info_author_struc) {</span>
@@ -1183,8 +1083,8 @@ Y_{ij} = 0 &amp; \quad \text{si aucun lien n'existe entre les nœuds } i \text{ 
 <p>Ce script permet de créer un sous-groupe du réseau, de construire un modèle en bloc stochastique à partir de ce nouveau réseau et de visualiser le tout.</p>
 </section>
 </section>
-<section id="bibliographie" class="level2" data-number="1.6">
-<h2 data-number="1.6" class="anchored" data-anchor-id="bibliographie"><span class="header-section-number">1.6</span> BIBLIOGRAPHIE</h2>
+<section id="bibliographie" class="level2">
+<h2 class="anchored" data-anchor-id="bibliographie">BIBLIOGRAPHIE</h2>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
